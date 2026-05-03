@@ -1,0 +1,190 @@
+- id: edge_E01_to_C01
+  from: E01_canonical_forward_sanity
+  to: C01_forward_sanity
+  relation: supports
+  strength: strong
+  scope: "canonical ideal Biot-Savart"
+  caveat: "Does not validate finite-width, return path, FEM, or real QDM/NV."
+  evidence_files:
+    - outputs/by_claim/C01_forward_sanity/FORWARD_SANITY_EVIDENCE.md
+
+- id: edge_E02_to_C02
+  from: E02_observability_bxy_bz
+  to: C02_single_plane_identifiability_boundary
+  relation: supports
+  strength: strong
+  scope: "ideal thin-sheet single-plane observations"
+  caveat: "Does not make arbitrary multilayer inversion identifiable."
+  evidence_files:
+    - outputs/by_claim/C02_identifiability_boundary/IDENTIFIABILITY_EVIDENCE.md
+
+- id: edge_E03_to_C02
+  from: E03_two_layer_via_topology
+  to: C02_single_plane_identifiability_boundary
+  relation: supports
+  strength: medium
+  scope: "two-layer generated route/via benchmark"
+  caveat: "Synthetic route-like families only."
+  evidence_files:
+    - outputs/by_claim/C02_identifiability_boundary/TWO_LAYER_TOPOLOGY_EVIDENCE.md
+
+- id: edge_E03_to_C03
+  from: E03_two_layer_via_topology
+  to: C03_unet_topology_baseline_boundary
+  relation: motivates
+  strength: medium
+  scope: "two-layer generated route/via benchmark"
+  caveat: "This provides a benchmark distribution, not a final detector."
+  evidence_files:
+    - outputs/by_claim/C03_topology_baseline_boundary/DATASET_BOUNDARY_EVIDENCE.md
+
+- id: edge_E04_to_C03
+  from: E04_topology_baseline_and_failures
+  to: C03_unet_topology_baseline_boundary
+  relation: limits
+  strength: strong
+  scope: "synthetic and PyPEEC-domain stress"
+  caveat: "Topology-aware models remain baselines with no-via and return-path failures."
+  evidence_files:
+    - outputs/by_claim/C03_topology_baseline_boundary/TOPOLOGY_BASELINE_EVIDENCE.md
+
+- id: edge_E04_to_C04
+  from: E04_topology_baseline_and_failures
+  to: C04_inverse_crime_and_operator_gap
+  relation: supports
+  strength: medium
+  scope: "operator stress diagnostics"
+  caveat: "Diagnostic stress, not external solver proof."
+  evidence_files:
+    - outputs/by_claim/C04_inverse_crime_operator_gap/OPERATOR_STRESS_EVIDENCE.md
+
+- id: edge_E04_to_C11
+  from: E04_topology_baseline_and_failures
+  to: C11_mechanism_level_explanation
+  relation: motivates
+  strength: medium
+  scope: "no-via and return-path failure analysis"
+  caveat: "Failure labels are not yet full mechanism-level correctness metrics."
+  evidence_files:
+    - outputs/by_claim/C11_mechanism_explanation/FAILURE_MECHANISM_EVIDENCE.md
+
+- id: edge_E05_to_C13
+  from: E05_qdm_like_observation_stress
+  to: C13_calibration_protocol_reality
+  relation: motivates
+  strength: medium
+  scope: "QDM-like observation proxy"
+  caveat: "Not real ODMR or measured sensor calibration."
+  evidence_files:
+    - outputs/by_claim/C13_calibration_protocol_reality/QDM_LIKE_OBSERVATION_EVIDENCE.md
+
+- id: edge_E06_to_C04
+  from: E06_multifidelity_operator_gap
+  to: C04_inverse_crime_and_operator_gap
+  relation: supports
+  strength: strong
+  scope: "low/medium/high surrogate fidelity ladder"
+  caveat: "High-fidelity branch is still a surrogate."
+  evidence_files:
+    - outputs/by_claim/C04_inverse_crime_operator_gap/MULTIFIDELITY_EVIDENCE.md
+
+- id: edge_E07_to_C05
+  from: E07_pypeec_solver_bridge
+  to: C05_pypeec_solver_bridge
+  relation: supports
+  strength: strong
+  scope: "generated PyPEEC conductor cases"
+  caveat: "PyPEEC-domain bridge is not real CAD/FEM/QDM validation."
+  evidence_files:
+    - outputs/by_claim/C05_solver_bridge/PYPEEC_SOLVER_BRIDGE_EVIDENCE.md
+
+- id: edge_E07_to_C04
+  from: E07_pypeec_solver_bridge
+  to: C04_inverse_crime_and_operator_gap
+  relation: limits
+  strength: medium
+  scope: "centerline/finite-width/PyPEEC solver gap"
+  caveat: "Generated solver bridge exposes operator gap but does not close it."
+  evidence_files:
+    - outputs/by_claim/C05_solver_bridge/PYPEEC_SOLVER_BRIDGE_EVIDENCE.md
+
+- id: edge_E08_to_C06
+  from: E08_graph_hypothesis_system_id
+  to: C06_graph_hypothesis_system_identification
+  relation: supports
+  strength: strong
+  scope: "generated graph and generated PyPEEC-domain H0/H1/H2/H3"
+  caveat: "No real CAD/Gerber/GDS graph import."
+  evidence_files:
+    - outputs/by_claim/C06_graph_hypothesis_system_id/GRAPH_HYPOTHESIS_EVIDENCE.md
+
+- id: edge_E08_to_C07
+  from: E08_graph_hypothesis_system_id
+  to: C07_stacked_evidence_calibration
+  relation: supports
+  strength: strong
+  scope: "legal generated PyPEEC calibration/held-out folds"
+  caveat: "Does not support no-calibration or real-world deployment claims."
+  evidence_files:
+    - outputs/by_claim/C07_stacked_evidence_calibration/STACKED_EVIDENCE_CALIBRATION.md
+
+- id: edge_E08_to_C08
+  from: E08_graph_hypothesis_system_id
+  to: C08_ood_refusal_safety
+  relation: supports
+  strength: medium
+  scope: "generated hidden and near-hidden stress"
+  caveat: "Accepted hidden rows still need mechanism-level correctness."
+  evidence_files:
+    - outputs/by_claim/C08_ood_refusal_safety/OOD_REFUSAL_EVIDENCE.md
+
+- id: edge_E08_to_C09
+  from: E08_graph_hypothesis_system_id
+  to: C09_fewshot_family_adaptation
+  relation: supports
+  strength: medium
+  scope: "generated family few-shot adaptation"
+  caveat: "Calibration label source is not yet realistic."
+  evidence_files:
+    - outputs/by_claim/C09_fewshot_family_adaptation/FEWSHOT_FAMILY_ADAPTATION.md
+
+- id: edge_E08_to_C11
+  from: E08_graph_hypothesis_system_id
+  to: C11_mechanism_level_explanation
+  relation: limits
+  strength: strong
+  scope: "hidden and near-hidden accepted-row analysis"
+  caveat: "Primary-label accuracy does not prove mechanism explanation."
+  evidence_files:
+    - outputs/by_claim/C11_mechanism_explanation/MECHANISM_BOUNDARY_EVIDENCE.md
+
+- id: edge_E08_to_C13
+  from: E08_graph_hypothesis_system_id
+  to: C13_calibration_protocol_reality
+  relation: motivates
+  strength: medium
+  scope: "few-shot generated-family calibration"
+  caveat: "Real calibration source remains unresolved."
+  evidence_files:
+    - outputs/by_claim/C13_calibration_protocol_reality/REAL_CALIBRATION_BOUNDARY.md
+
+- id: edge_E09_to_C12
+  from: E09_real_data_intake_gate
+  to: C12_real_qdm_nv_validation
+  relation: requires
+  strength: strong
+  scope: "real-data intake gate"
+  caveat: "No measured rows are validated by the scaffold alone."
+  evidence_files:
+    - outputs/by_claim/C12_real_qdm_nv_validation/REAL_DATA_INTAKE_GATE.md
+
+- id: edge_E09_to_C13
+  from: E09_real_data_intake_gate
+  to: C13_calibration_protocol_reality
+  relation: motivates
+  strength: medium
+  scope: "real calibration gate design"
+  caveat: "The protocol is not validated until real rows exist."
+  evidence_files:
+    - outputs/by_claim/C13_calibration_protocol_reality/REAL_CALIBRATION_BOUNDARY.md
+

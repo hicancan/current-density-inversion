@@ -1,0 +1,170 @@
+E01_canonical_forward_sanity:
+  title: "Canonical Biot-Savart forward sanity package"
+  claim: C01_forward_sanity
+  secondary_claims: []
+  data: [D00_canonical_wire_loop_via]
+  physics: [P01_biot_savart_maxwell_forward, P02_divB_zero]
+  forward: [F01_analytic_reference, F02_centerline_biot_savart]
+  observation: [O01_ideal_Bxyz]
+  representation: [R01_pixel_current_map]
+  algorithm: []
+  protocol: [S01_random_split]
+  metrics: [M01_field_l2_or_rmse, M05_divB_residual, M15_real_sanity_pass_fail]
+  outputs:
+    - outputs/by_claim/C01_forward_sanity/FORWARD_SANITY_EVIDENCE.md
+  result_summary: "Canonical wire, loop, and via cases support sign, linearity, standoff, and via-field sanity within ideal free-space assumptions."
+  status: passed
+  last_run: "2026-05-03"
+
+E02_observability_bxy_bz:
+  title: "Single-plane observability and Bxy/Bz inversion boundary"
+  claim: C02_single_plane_identifiability_boundary
+  secondary_claims: []
+  data: [D00_canonical_wire_loop_via, D01_two_layer_route]
+  physics: [P01_biot_savart_maxwell_forward]
+  forward: [F02_centerline_biot_savart]
+  observation: [O01_ideal_Bxyz, O02_Bz_only, O03_Bxy]
+  representation: [R01_pixel_current_map]
+  algorithm: [A03_stream_function_or_pinn_baseline]
+  protocol: [S01_random_split]
+  metrics: [M01_field_l2_or_rmse, M13_family_generalization_gap]
+  outputs:
+    - outputs/by_claim/C02_identifiability_boundary/IDENTIFIABILITY_EVIDENCE.md
+  result_summary: "Standoff suppresses high-frequency information, inverse amplification is visible, Bxy and Bz have different finite-FOV failure modes, and single-plane multilayer inversion remains rank-limited."
+  status: passed
+  last_run: "2026-05-03"
+
+E03_two_layer_via_topology:
+  title: "Two-layer via topology and benchmark distribution evidence"
+  claim: C02_single_plane_identifiability_boundary
+  secondary_claims: [C03_unet_topology_baseline_boundary]
+  data: [D01_two_layer_route, D02_dense_via, D03_no_via_hard_negative]
+  physics: [P01_biot_savart_maxwell_forward, P03_layer_topology_residual, P04_divJ_source_sink_consistency]
+  forward: [F02_centerline_biot_savart, F03_finite_width_surrogate]
+  observation: [O01_ideal_Bxyz]
+  representation: [R01_pixel_current_map, R02_layer_current_plus_via_source_sink]
+  algorithm: []
+  protocol: [S01_random_split, S02_variant_heldout]
+  metrics: [M01_field_l2_or_rmse, M02_current_l2_or_rmse, M03_topology_residual]
+  outputs:
+    - outputs/by_claim/C02_identifiability_boundary/TWO_LAYER_TOPOLOGY_EVIDENCE.md
+    - outputs/by_claim/C03_topology_baseline_boundary/DATASET_BOUNDARY_EVIDENCE.md
+  result_summary: "Two-layer source/sink topology can be generated and checked, but the route-like distribution is still synthetic and does not include PDN/KCL realism."
+  status: passed
+  last_run: "2026-05-03"
+
+E04_topology_baseline_and_failures:
+  title: "Topology-aware inverse baseline and no-via/return failure diagnostics"
+  claim: C03_unet_topology_baseline_boundary
+  secondary_claims: [C04_inverse_crime_and_operator_gap, C11_mechanism_level_explanation]
+  data: [D01_two_layer_route, D02_dense_via, D03_no_via_hard_negative, D04_return_path_family, D05_bend_corner_artifact]
+  physics: [P03_layer_topology_residual, P04_divJ_source_sink_consistency, P09_finite_width_material_thickness]
+  forward: [F02_centerline_biot_savart, F03_finite_width_surrogate, F04_pypeec]
+  observation: [O01_ideal_Bxyz, O05_psf_blur, O06_noise_background]
+  representation: [R01_pixel_current_map, R02_layer_current_plus_via_source_sink, R08_hypothesis_set]
+  algorithm: [A01_unet, A02_topology_aware_unet, A04_hypothesis_scorer]
+  protocol: [S02_variant_heldout, S05_solver_heldout, S06_hidden_stress, S11_no_leakage_calibration_heldout, S12_conformal_or_selective_risk_protocol]
+  metrics: [M02_current_l2_or_rmse, M03_topology_residual, M06_h0_false_any, M07_h1_recall, M08_accepted_accuracy, M09_accepted_risk, M10_reject_rate]
+  outputs:
+    - outputs/by_claim/C03_topology_baseline_boundary/TOPOLOGY_BASELINE_EVIDENCE.md
+    - outputs/by_claim/C04_inverse_crime_operator_gap/OPERATOR_STRESS_EVIDENCE.md
+    - outputs/by_claim/C11_mechanism_explanation/FAILURE_MECHANISM_EVIDENCE.md
+  result_summary: "Topology-aware image inverse methods reduce topology residuals but no-via false positives, return-current mismatch, and mechanism ambiguity remain material."
+  status: partial
+  last_run: "2026-05-03"
+
+E05_qdm_like_observation_stress:
+  title: "QDM-like observation stress and calibration-risk evidence"
+  claim: C13_calibration_protocol_reality
+  secondary_claims: []
+  data: [D01_two_layer_route]
+  physics: [P01_biot_savart_maxwell_forward]
+  forward: [F02_centerline_biot_savart]
+  observation: [O04_qdm_nv_projection, O05_psf_blur, O06_noise_background, O07_standoff_tilt_registration]
+  representation: [R01_pixel_current_map, R02_layer_current_plus_via_source_sink]
+  algorithm: []
+  protocol: [S01_random_split]
+  metrics: [M01_field_l2_or_rmse, M15_real_sanity_pass_fail]
+  outputs:
+    - outputs/by_claim/C13_calibration_protocol_reality/QDM_LIKE_OBSERVATION_EVIDENCE.md
+  result_summary: "PSF, correlated noise, confidence, standoff tilt, and NV projection risks are quantifiable observation stressors but not real ODMR-level validation."
+  status: passed
+  last_run: "2026-05-03"
+
+E06_multifidelity_operator_gap:
+  title: "Multi-fidelity anti-inverse-crime operator-gap evidence"
+  claim: C04_inverse_crime_and_operator_gap
+  secondary_claims: []
+  data: [D01_two_layer_route, D04_return_path_family]
+  physics: [P01_biot_savart_maxwell_forward, P09_finite_width_material_thickness, P08_return_path_completeness]
+  forward: [F02_centerline_biot_savart, F03_finite_width_surrogate]
+  observation: [O01_ideal_Bxyz, O05_psf_blur, O06_noise_background]
+  representation: [R01_pixel_current_map, R02_layer_current_plus_via_source_sink]
+  algorithm: [A08_differentiable_forward_optimization]
+  protocol: [S05_solver_heldout]
+  metrics: [M01_field_l2_or_rmse, M02_current_l2_or_rmse, M13_family_generalization_gap]
+  outputs:
+    - outputs/by_claim/C04_inverse_crime_operator_gap/MULTIFIDELITY_EVIDENCE.md
+  result_summary: "Low-to-medium-to-high operator gaps show that same-operator inverse tests are over-optimistic and calibration/held-out separation is necessary."
+  status: passed
+  last_run: "2026-05-03"
+
+E07_pypeec_solver_bridge:
+  title: "PyPEEC solver bridge and generated H0/H1/H2/H3 distribution evidence"
+  claim: C05_pypeec_solver_bridge
+  secondary_claims: [C04_inverse_crime_and_operator_gap]
+  data: [D06_pypeec_generated_h0_h1_h2_h3]
+  physics: [P01_biot_savart_maxwell_forward, P09_finite_width_material_thickness]
+  forward: [F02_centerline_biot_savart, F03_finite_width_surrogate, F04_pypeec]
+  observation: [O01_ideal_Bxyz]
+  representation: [R01_pixel_current_map, R04_route_graph, R08_hypothesis_set]
+  algorithm: [A04_hypothesis_scorer]
+  protocol: [S05_solver_heldout, S11_no_leakage_calibration_heldout]
+  metrics: [M01_field_l2_or_rmse, M06_h0_false_any, M07_h1_recall]
+  outputs:
+    - outputs/by_claim/C05_solver_bridge/PYPEEC_SOLVER_BRIDGE_EVIDENCE.md
+  result_summary: "PyPEEC runs form a higher-fidelity generated solver bridge and expose centerline/finite-width/PyPEEC field gaps."
+  status: passed
+  last_run: "2026-05-03"
+
+E08_graph_hypothesis_system_id:
+  title: "Graph hypothesis identification, stacked evidence, refusal, and adaptation evidence"
+  claim: C06_graph_hypothesis_system_identification
+  secondary_claims: [C07_stacked_evidence_calibration, C08_ood_refusal_safety, C09_fewshot_family_adaptation, C11_mechanism_level_explanation, C13_calibration_protocol_reality]
+  data: [D03_no_via_hard_negative, D04_return_path_family, D05_bend_corner_artifact, D06_pypeec_generated_h0_h1_h2_h3, D07_hidden_near_boundary]
+  physics: [P01_biot_savart_maxwell_forward, P08_return_path_completeness, P09_finite_width_material_thickness]
+  forward: [F02_centerline_biot_savart, F03_finite_width_surrogate, F04_pypeec]
+  observation: [O01_ideal_Bxyz, O09_multi_state_excitation]
+  representation: [R04_route_graph, R05_basis_bank, R08_hypothesis_set, R09_posterior_candidate_set]
+  algorithm: [A04_hypothesis_scorer, A05_stacked_evidence_calibrator, A06_feature_distance_ood_refusal, A07_fewshot_family_adaptation, A11_conformal_prediction, A12_bayesian_or_glrt_model_evidence]
+  protocol: [S02_variant_heldout, S03_family_heldout, S04_mechanism_heldout, S05_solver_heldout, S06_hidden_stress, S07_near_hidden_severity, S08_fewshot_family_calibration, S11_no_leakage_calibration_heldout, S12_conformal_or_selective_risk_protocol]
+  metrics: [M06_h0_false_any, M07_h1_recall, M08_accepted_accuracy, M09_accepted_risk, M10_reject_rate, M11_mechanism_level_correctness, M12_calibration_cost, M13_family_generalization_gap, M14_hidden_accept_risk]
+  outputs:
+    - outputs/by_claim/C06_graph_hypothesis_system_id/GRAPH_HYPOTHESIS_EVIDENCE.md
+    - outputs/by_claim/C07_stacked_evidence_calibration/STACKED_EVIDENCE_CALIBRATION.md
+    - outputs/by_claim/C08_ood_refusal_safety/OOD_REFUSAL_EVIDENCE.md
+    - outputs/by_claim/C09_fewshot_family_adaptation/FEWSHOT_FAMILY_ADAPTATION.md
+    - outputs/by_claim/C11_mechanism_explanation/MECHANISM_BOUNDARY_EVIDENCE.md
+  result_summary: "Graph hypothesis scoring, stacked evidence fusion, feature-distance refusal, and few-shot generated-family adaptation support the system-identification direction with explicit generated-domain boundaries."
+  status: partial
+  last_run: "2026-05-03"
+
+E09_real_data_intake_gate:
+  title: "Real QDM/NV data intake and simple-wire sanity gate design"
+  claim: C12_real_qdm_nv_validation
+  secondary_claims: [C13_calibration_protocol_reality]
+  data: [D10_real_qdm_nv]
+  physics: [P01_biot_savart_maxwell_forward]
+  forward: [F07_real_measurement]
+  observation: [O04_qdm_nv_projection, O05_psf_blur, O06_noise_background, O07_standoff_tilt_registration]
+  representation: [R07_proxy_graph_from_measurement]
+  algorithm: []
+  protocol: [S10_real_heldout, S11_no_leakage_calibration_heldout]
+  metrics: [M15_real_sanity_pass_fail]
+  outputs:
+    - outputs/by_claim/C12_real_qdm_nv_validation/REAL_DATA_INTAKE_GATE.md
+    - outputs/by_claim/C13_calibration_protocol_reality/REAL_CALIBRATION_BOUNDARY.md
+  result_summary: "Metadata, array loading, background subtraction, plotting, and simple-wire sanity gates are specified before any real-data diagnosis claim."
+  status: planned
+  last_run: "2026-05-03"
+
