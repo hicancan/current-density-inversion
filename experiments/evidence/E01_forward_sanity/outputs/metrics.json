@@ -1,0 +1,89 @@
+{
+  "units": {
+    "length": "m",
+    "current": "A",
+    "magnetic_field": "T"
+  },
+  "grid": {
+    "fov_m": 0.002,
+    "nx": 161,
+    "ny": 161,
+    "z_m": 0.0001,
+    "dx_m": 1.2499999999999924e-05,
+    "dy_m": 1.2499999999999924e-05
+  },
+  "current_A": 0.001,
+  "single_wire": {
+    "finite_length_m": 0.02,
+    "infinite_wire_rel_l2_error_central_mask": 0.000905331408941824,
+    "sign_reversal_max_abs_ratio": 0.0
+  },
+  "rect_loop": {
+    "width_m": 0.0009,
+    "height_m": 0.0006,
+    "superposition_rel_l2_error": 0.0,
+    "max_abs_B_T": 1.920226188453874e-06
+  },
+  "single_via": {
+    "z0_m": -5e-05,
+    "z1_m": 5e-05,
+    "max_abs_Bxy_T": 4.842544442506687e-07,
+    "max_abs_Bz_T": 0.0,
+    "Bz_over_Bxy_max_ratio": 0.0
+  },
+  "standoff_scan": {
+    "h_m": [
+      1e-05,
+      2.5e-05,
+      5e-05,
+      0.0001,
+      0.00025,
+      0.0005
+    ],
+    "max_abs_B_T": [
+      1.99999900000075e-05,
+      7.999975000117188e-06,
+      3.999950000937481e-06,
+      1.9999000074993757e-06,
+      7.997501171264983e-07,
+      3.995009355511379e-07
+    ],
+    "mean_abs_B_T": [
+      1.0552516070452226e-06,
+      8.717247820669799e-07,
+      7.340440965657212e-07,
+      5.966297848119163e-07,
+      4.169558997354144e-07,
+      2.872973786423918e-07
+    ],
+    "max_abs_B_monotonic_decreasing": true
+  },
+  "acceptance_gates": {
+    "finite_wire_matches_infinite_reference": {
+      "threshold": "relative_l2 < 2e-3",
+      "value": 0.000905331408941824,
+      "pass": true
+    },
+    "current_reversal_is_antisymmetric": {
+      "threshold": "max_abs_ratio < 1e-12",
+      "value": 0.0,
+      "pass": true
+    },
+    "rect_loop_superposition_is_exact": {
+      "threshold": "relative_l2 < 1e-12",
+      "value": 0.0,
+      "pass": true
+    },
+    "vertical_via_has_no_bz": {
+      "threshold": "Bz/Bxy < 1e-10",
+      "value": 0.0,
+      "pass": true
+    },
+    "standoff_reduces_field_strength": {
+      "threshold": "max |B| strictly decreases with h",
+      "value": true,
+      "pass": true
+    }
+  },
+  "all_acceptance_gates_passed": true
+}

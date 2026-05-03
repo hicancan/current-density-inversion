@@ -12,6 +12,12 @@ E01_canonical_forward_sanity:
   metrics: [M01_field_l2_or_rmse, M05_divB_residual, M15_real_sanity_pass_fail]
   outputs:
     - outputs/by_claim/C01_forward_sanity/FORWARD_SANITY_EVIDENCE.md
+  runtime:
+    package_dir: experiments/evidence/E01_forward_sanity
+    run_command: "uv run --with-requirements requirements.txt python src/experiments/run_all.py --out outputs"
+    test_command: "uv run --with-requirements requirements.txt --with pytest pytest -q tests"
+    metrics_files:
+      - experiments/evidence/E01_forward_sanity/outputs/metrics.json
   result_summary: "Canonical wire, loop, and via cases support sign, linearity, standoff, and via-field sanity within ideal free-space assumptions."
   status: passed
   last_run: "2026-05-03"
@@ -30,6 +36,12 @@ E02_observability_bxy_bz:
   metrics: [M01_field_l2_or_rmse, M13_family_generalization_gap]
   outputs:
     - outputs/by_claim/C02_identifiability_boundary/IDENTIFIABILITY_EVIDENCE.md
+  runtime:
+    package_dir: experiments/evidence/E02_identifiability_boundary
+    run_command: "uv run --with-requirements requirements.txt python src/experiments/run_all.py"
+    test_command: "uv run --with-requirements requirements.txt --with pytest pytest -q tests"
+    metrics_files:
+      - experiments/evidence/E02_identifiability_boundary/outputs/metrics.json
   result_summary: "Standoff suppresses high-frequency information, inverse amplification is visible, Bxy and Bz have different finite-FOV failure modes, and single-plane multilayer inversion remains rank-limited."
   status: passed
   last_run: "2026-05-03"
@@ -49,6 +61,12 @@ E03_two_layer_via_topology:
   outputs:
     - outputs/by_claim/C02_identifiability_boundary/TWO_LAYER_TOPOLOGY_EVIDENCE.md
     - outputs/by_claim/C03_topology_baseline_boundary/DATASET_BOUNDARY_EVIDENCE.md
+  runtime:
+    package_dir: experiments/evidence/E03_two_layer_via_topology
+    run_command: "uv run --with-requirements requirements.txt python src/experiments/run_all.py --config configs/default.json"
+    test_command: "uv run --with-requirements requirements.txt --with pytest pytest -q tests"
+    metrics_files:
+      - experiments/evidence/E03_two_layer_via_topology/outputs/metrics.json
   result_summary: "Two-layer source/sink topology can be generated and checked, but the route-like distribution is still synthetic and does not include PDN/KCL realism."
   status: passed
   last_run: "2026-05-03"
@@ -69,6 +87,13 @@ E04_topology_baseline_and_failures:
     - outputs/by_claim/C03_topology_baseline_boundary/TOPOLOGY_BASELINE_EVIDENCE.md
     - outputs/by_claim/C04_inverse_crime_operator_gap/OPERATOR_STRESS_EVIDENCE.md
     - outputs/by_claim/C11_mechanism_explanation/FAILURE_MECHANISM_EVIDENCE.md
+  runtime:
+    package_dir: experiments/evidence/E04_topology_baseline
+    run_command: "uv run --with-requirements requirements.txt python src/run_all.py --config configs/default.json"
+    smoke_command: "uv run --with-requirements requirements.txt --with pytest pytest -q tests"
+    test_command: "uv run --with-requirements requirements.txt --with pytest pytest -q tests"
+    metrics_files:
+      - experiments/evidence/E04_topology_baseline/outputs/metrics.json
   result_summary: "Topology-aware image inverse methods reduce topology residuals but no-via false positives, return-current mismatch, and mechanism ambiguity remain material."
   status: partial
   last_run: "2026-05-03"
@@ -87,6 +112,12 @@ E05_qdm_like_observation_stress:
   metrics: [M01_field_l2_or_rmse, M15_real_sanity_pass_fail]
   outputs:
     - outputs/by_claim/C13_calibration_protocol_reality/QDM_LIKE_OBSERVATION_EVIDENCE.md
+  runtime:
+    package_dir: experiments/evidence/E05_qdm_like_observation_stress
+    run_command: "uv run --with-requirements requirements.txt python src/run_all.py"
+    test_command: "uv run --with-requirements requirements.txt --with pytest pytest -q tests"
+    metrics_files:
+      - experiments/evidence/E05_qdm_like_observation_stress/outputs/metrics.json
   result_summary: "PSF, correlated noise, confidence, standoff tilt, and NV projection risks are quantifiable observation stressors but not real ODMR-level validation."
   status: passed
   last_run: "2026-05-03"
@@ -105,6 +136,12 @@ E06_multifidelity_operator_gap:
   metrics: [M01_field_l2_or_rmse, M02_current_l2_or_rmse, M13_family_generalization_gap]
   outputs:
     - outputs/by_claim/C04_inverse_crime_operator_gap/MULTIFIDELITY_EVIDENCE.md
+  runtime:
+    package_dir: experiments/evidence/E06_operator_gap
+    run_command: "uv run --with-requirements requirements.txt python src/run_all.py"
+    test_command: "uv run --with-requirements requirements.txt --with pytest pytest -q tests"
+    metrics_files:
+      - experiments/evidence/E06_operator_gap/outputs/metrics.json
   result_summary: "Low-to-medium-to-high operator gaps show that same-operator inverse tests are over-optimistic and calibration/held-out separation is necessary."
   status: passed
   last_run: "2026-05-03"
@@ -123,6 +160,13 @@ E07_pypeec_solver_bridge:
   metrics: [M01_field_l2_or_rmse, M06_h0_false_any, M07_h1_recall]
   outputs:
     - outputs/by_claim/C05_solver_bridge/PYPEEC_SOLVER_BRIDGE_EVIDENCE.md
+  runtime:
+    package_dir: experiments/evidence/E07_solver_bridge
+    run_command: "uv run --with numpy --with pypeec python src/run_all.py"
+    smoke_command: "uv run --with numpy --with pypeec python src/run_all.py --quick --config configs/default.json --out-dir quick_runtime"
+    test_command: "uv run --with numpy --with pypeec --with pytest pytest -q tests"
+    metrics_files:
+      - experiments/evidence/E07_solver_bridge/outputs/metrics.json
   result_summary: "PyPEEC runs form a higher-fidelity generated solver bridge and expose centerline/finite-width/PyPEEC field gaps."
   status: passed
   last_run: "2026-05-03"
@@ -145,6 +189,12 @@ E08_graph_hypothesis_system_id:
     - outputs/by_claim/C08_ood_refusal_safety/OOD_REFUSAL_EVIDENCE.md
     - outputs/by_claim/C09_fewshot_family_adaptation/FEWSHOT_FAMILY_ADAPTATION.md
     - outputs/by_claim/C11_mechanism_explanation/MECHANISM_BOUNDARY_EVIDENCE.md
+  runtime:
+    package_dir: experiments/evidence/E08_graph_hypothesis
+    run_command: "uv run --with-requirements requirements.txt python src/run_all.py"
+    test_command: "uv run --with-requirements requirements.txt --with pytest pytest -q tests"
+    metrics_files:
+      - experiments/evidence/E08_graph_hypothesis/outputs/metrics.json
   result_summary: "Graph hypothesis scoring, stacked evidence fusion, feature-distance refusal, and few-shot generated-family adaptation support the system-identification direction with explicit generated-domain boundaries."
   status: partial
   last_run: "2026-05-03"
@@ -164,7 +214,10 @@ E09_real_data_intake_gate:
   outputs:
     - outputs/by_claim/C12_real_qdm_nv_validation/REAL_DATA_INTAKE_GATE.md
     - outputs/by_claim/C13_calibration_protocol_reality/REAL_CALIBRATION_BOUNDARY.md
+  runtime:
+    package_dir: experiments/evidence/E09_real_data_intake_gate
+    smoke_command: "uv run --with-requirements requirements.txt python src/validate_real_case_metadata.py examples/example_case_template.json"
+    test_command: "uv run --with-requirements requirements.txt --with pytest pytest -q tests"
   result_summary: "Metadata, array loading, background subtraction, plotting, and simple-wire sanity gates are specified before any real-data diagnosis claim."
   status: planned
   last_run: "2026-05-03"
-

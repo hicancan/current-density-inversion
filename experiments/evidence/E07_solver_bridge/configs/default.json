@@ -1,0 +1,246 @@
+{
+  "experiment_name": "exp07-pypeec-solver-cross-validation",
+  "random_seed": 20260429,
+  "units": "SI",
+  "sensor_grid": {
+    "n": 17,
+    "fov_m": 0.0012,
+    "z_m": 8e-05
+  },
+  "currents": {
+    "default_current_a": 0.001
+  },
+  "geometry": {
+    "layer_gap_m": 5e-05,
+    "default_trace_width_m": 4e-05,
+    "default_trace_thickness_m": 1e-05,
+    "default_via_radius_m": 2e-05,
+    "default_segment_subdivisions": 12,
+    "finite_width_filaments": {
+      "n_width": 3,
+      "n_thickness": 1
+    }
+  },
+  "pypeec": {
+    "backend": "real_pypeec_api",
+    "minimum_version": "5.8.0",
+    "cross_section_fill": true,
+    "voxel_pitch_xy_m": 6e-05,
+    "voxel_pitch_z_m": 2.5e-05,
+    "n_xy": 17,
+    "n_z": 7,
+    "raster_step_fraction": 0.45,
+    "rho_re_ohm_m": 1.72e-08,
+    "source_admittance_s": 0.0,
+    "sink_impedance_ohm": 1e-06,
+    "solver": {
+      "fft_library": "SciPy",
+      "integral_simplify": 20.0,
+      "direct_rel_tol": 1e-06,
+      "direct_n_inner": 10,
+      "direct_n_outer": 10,
+      "power_n_min": 2,
+      "power_n_cmp": 2
+    },
+    "convergence_sweep": {
+      "enabled": true,
+      "cases": [
+        "straight_trace",
+        "via_pair",
+        "two_layer_route_with_via",
+        "dense_via_background",
+        "no_via_background"
+      ],
+      "levels": [
+        {
+          "label": "coarse",
+          "voxel_pitch_xy_m": 6e-05,
+          "voxel_pitch_z_m": 2.5e-05,
+          "n_xy": 17,
+          "n_z": 7
+        },
+        {
+          "label": "medium",
+          "voxel_pitch_xy_m": 4e-05,
+          "voxel_pitch_z_m": 2.5e-05,
+          "n_xy": 25,
+          "n_z": 7
+        },
+        {
+          "label": "fine",
+          "voxel_pitch_xy_m": 3e-05,
+          "voxel_pitch_z_m": 2.5e-05,
+          "n_xy": 33,
+          "n_z": 7
+        },
+        {
+          "label": "ultrafine",
+          "voxel_pitch_xy_m": 2e-05,
+          "voxel_pitch_z_m": 2.5e-05,
+          "n_xy": 49,
+          "n_z": 7
+        }
+      ]
+    },
+    "notes": "No proxy fallback is allowed. exp07 must execute pypeec.run_mesher_data and pypeec.run_solver_data."
+  },
+  "exp03_like_subset": {
+    "enabled": true,
+    "cases": [
+      "two_layer_route_with_via",
+      "multi_via_route",
+      "dense_via_background",
+      "no_via_background",
+      "bend_artifact_trace"
+    ],
+    "notes": "Small connected Manhattan cases and deterministic variants that mirror exp03 route families before PyPEEC fields are routed into exp04/exp06."
+  },
+  "pypeec_distribution_targets": {
+    "enabled": true,
+    "target_cases_per_hypothesis": {
+      "H0_sheet_only": 100,
+      "H1_sheet_via": 100,
+      "H2_sheet_return": 100,
+      "H3_sheet_artifact": 100
+    },
+    "base_cases_by_hypothesis": {
+      "H0_sheet_only": [
+        "no_via_background"
+      ],
+      "H1_sheet_via": [
+        "two_layer_route_with_via",
+        "multi_via_route",
+        "dense_via_background"
+      ],
+      "H2_sheet_return": [
+        "trace_with_return_path"
+      ],
+      "H3_sheet_artifact": [
+        "bend_artifact_trace"
+      ]
+    },
+    "max_variant_index": 220,
+    "notes": "Deterministically expands the real PyPEEC mini distribution before solving so exp08 receives at least 100 bridge cases for each H0/H1/H2/H3 hypothesis class."
+  },
+  "cases": [
+    "straight_trace",
+    "finite_width_trace",
+    "l_shape_trace",
+    "single_via",
+    "via_pair",
+    "trace_with_return_path",
+    "trace_with_return_path__v01",
+    "trace_with_return_path__v02",
+    "trace_with_return_path__v03",
+    "trace_with_return_path__v04",
+    "trace_with_return_path__v05",
+    "trace_with_return_path__v06",
+    "trace_with_return_path__v07",
+    "trace_with_return_path__v08",
+    "trace_with_return_path__v09",
+    "trace_with_return_path__v10",
+    "trace_with_return_path__v11",
+    "trace_with_return_path__v12",
+    "trace_with_return_path__v13",
+    "trace_with_return_path__v14",
+    "trace_with_return_path__v15",
+    "trace_with_return_path__v16",
+    "trace_with_return_path__v17",
+    "trace_with_return_path__v18",
+    "trace_with_return_path__v19",
+    "two_layer_route_with_via",
+    "two_layer_route_with_via__v01",
+    "two_layer_route_with_via__v02",
+    "two_layer_route_with_via__v03",
+    "two_layer_route_with_via__v04",
+    "two_layer_route_with_via__v05",
+    "two_layer_route_with_via__v06",
+    "two_layer_route_with_via__v07",
+    "two_layer_route_with_via__v08",
+    "two_layer_route_with_via__v09",
+    "two_layer_route_with_via__v10",
+    "two_layer_route_with_via__v11",
+    "two_layer_route_with_via__v12",
+    "two_layer_route_with_via__v13",
+    "two_layer_route_with_via__v14",
+    "two_layer_route_with_via__v15",
+    "two_layer_route_with_via__v16",
+    "two_layer_route_with_via__v17",
+    "two_layer_route_with_via__v18",
+    "two_layer_route_with_via__v19",
+    "multi_via_route",
+    "multi_via_route__v01",
+    "multi_via_route__v02",
+    "multi_via_route__v03",
+    "multi_via_route__v04",
+    "multi_via_route__v05",
+    "multi_via_route__v06",
+    "multi_via_route__v07",
+    "multi_via_route__v08",
+    "multi_via_route__v09",
+    "multi_via_route__v10",
+    "multi_via_route__v11",
+    "multi_via_route__v12",
+    "multi_via_route__v13",
+    "multi_via_route__v14",
+    "multi_via_route__v15",
+    "multi_via_route__v16",
+    "multi_via_route__v17",
+    "multi_via_route__v18",
+    "multi_via_route__v19",
+    "dense_via_background",
+    "dense_via_background__v01",
+    "dense_via_background__v02",
+    "dense_via_background__v03",
+    "dense_via_background__v04",
+    "dense_via_background__v05",
+    "dense_via_background__v06",
+    "dense_via_background__v07",
+    "dense_via_background__v08",
+    "dense_via_background__v09",
+    "dense_via_background__v10",
+    "dense_via_background__v11",
+    "dense_via_background__v12",
+    "dense_via_background__v13",
+    "dense_via_background__v14",
+    "dense_via_background__v15",
+    "dense_via_background__v16",
+    "dense_via_background__v17",
+    "dense_via_background__v18",
+    "dense_via_background__v19",
+    "no_via_background",
+    "no_via_background__v01",
+    "no_via_background__v02",
+    "no_via_background__v03",
+    "no_via_background__v04",
+    "no_via_background__v05",
+    "no_via_background__v06",
+    "no_via_background__v07",
+    "no_via_background__v08",
+    "no_via_background__v09",
+    "no_via_background__v10",
+    "no_via_background__v11",
+    "no_via_background__v12",
+    "no_via_background__v13",
+    "no_via_background__v14",
+    "no_via_background__v15",
+    "no_via_background__v16",
+    "no_via_background__v17",
+    "no_via_background__v18",
+    "no_via_background__v19"
+  ],
+  "acceptance_thresholds": {
+    "max_terminal_current_rel_error": 0.02,
+    "max_single_via_pypeec_bz_over_bxy": 0.25,
+    "min_finite_width_gap_median": 0.0001,
+    "max_finite_width_gap_median": 0.75,
+    "max_pypeec_raw_gap_median": 2.5,
+    "max_pypeec_shape_gap_median": 1.25,
+    "min_finite_width_voxel_ratio": 1.1,
+    "max_convergence_shape_delta": 0.25,
+    "max_finest_step_convergence_shape_delta": 0.15,
+    "min_exp03_like_case_count": 80,
+    "max_exp03_like_shape_gap_median": 1.25,
+    "max_exp03_like_source_current_rel_error": 0.02
+  }
+}

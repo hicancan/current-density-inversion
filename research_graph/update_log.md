@@ -52,3 +52,82 @@ Next required evidence:
 - implement `D08_pdn_kcl_circuit_graph` with KCL, current closure, return path,
   and held-out/few-shot protocols.
 
+## 2026-05-03 - Runnable evidence packages
+
+Claim affected:
+- C01-C09
+- C11-C13
+
+Change type:
+- runnable evidence implementation added
+- no-leakage runtime commands registered
+- evidence output gate check added
+
+Files changed:
+- `experiments/evidence/`
+- `research_graph/experiments.yml`
+- `scripts/run_evidence.py`
+- `scripts/check_evidence_outputs.py`
+- `tests/test_graph_integrity.py`
+
+Evidence:
+- Claim-graph evidence packages now contain runnable code, configs, tests, and
+  local result artifacts.
+
+Metrics:
+- `scripts/check_evidence_outputs.py` checks registered metrics gates.
+- `scripts/run_evidence.py --all --mode test --continue-on-fail` runs the
+  evidence package test suites.
+
+Claim status before:
+- graph state initialized with evidence summaries only.
+
+Claim status after:
+- graph state initialized with runnable evidence packages.
+
+Cannot claim:
+- real QDM/NV validation.
+- real CAD/Gerber/GDS validation.
+- deployment-safe via/no-via diagnosis.
+
+Next required evidence:
+- implement and validate the PDN/KCL circuit-graph distribution.
+
+## 2026-05-03 - Runtime verification pass
+
+Claim affected:
+- C01-C09
+- C11-C13
+
+Change type:
+- runtime verification
+- path repair
+
+Files changed:
+- `experiments/evidence/`
+- `research_graph/experiments.yml`
+
+Evidence:
+- Evidence package unit tests pass across all registered runtime packages.
+- Reproduction smoke entries were run for canonical forward, observability,
+  two-layer topology, sensor observation stress, operator gap, solver quick
+  bridge, graph hypothesis scoring, and real-data intake validation.
+
+Metrics:
+- All registered metrics gates pass.
+- Graph hypothesis scoring reports `all_scientific_gates_passed`.
+
+Claim status before:
+- runnable evidence packages registered.
+
+Claim status after:
+- runnable evidence packages verified locally.
+
+Cannot claim:
+- real QDM/NV validation.
+- full retraining of the image inverse benchmark during the smoke run.
+- PDN/KCL distribution robustness.
+
+Next required evidence:
+- run the full image-inverse training package only when retraining is needed;
+  current claim state uses the preserved gate artifacts and package tests.

@@ -1,0 +1,13 @@
+{
+  "experiment": "exp02-observability-and-bxy-vs-bz",
+  "description": "MVP-1: observability calculator and Bxy-vs-Bz Fourier inversion sanity experiment",
+  "default_grid": {
+    "n": 128,
+    "fov_m": 0.001
+  },
+  "standoff_m": 0.00005,
+  "notes": [
+    "All internal units use SI.",
+    "This experiment deliberately uses the ideal thin-sheet Fourier model. Sensor/QDM effects are deferred to later stages."
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "units": "SI",
+  "grid": {
+    "fov_m": 0.002,
+    "n": 129,
+    "sensor_z_m": 0.0
+  },
+  "physics": {
+    "current_A": 0.001,
+    "layer1_z_m": -0.00005,
+    "layer2_z_m": -0.00013,
+    "via_x_m": 0.0,
+    "via_y_m": 0.0,
+    "left_port_x_m": -0.00075,
+    "right_port_x_m": 0.00075,
+    "route_y_m": 0.0,
+    "n_quad": 180
+  },
+  "template": {
+    "scan_stride_px": 1,
+    "n_quad": 120
+  },
+  "dataset": {
+    "n_samples": 48,
+    "n": 65,
+    "fov_m": 0.002,
+    "seed": 1234,
+    "n_quad": 80
+  },
+  "benchmark_dataset": {
+    "n": 49,
+    "fov_m": 0.002,
+    "seed": 20260429,
+    "n_quad": 32,
+    "splits": {
+      "train": 512,
+      "val": 128,
+      "test": 128,
+      "ood": 128
+    },
+    "noise_relative_to_max_abs_B": {
+      "train": 0.002,
+      "val": 0.002,
+      "test": 0.002,
+      "ood": 0.01
+    }
+  },
+  "layer_mixing": {
+    "shallow_z_m": -0.00005,
+    "depth_offsets_um": [10, 20, 40, 80, 160, 320]
+  }
+}

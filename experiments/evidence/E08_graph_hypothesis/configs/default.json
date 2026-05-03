@@ -1,0 +1,131 @@
+{
+  "experiment_name": "exp08-graph-system-identification",
+  "seed": 20260430,
+  "units": "SI",
+  "grid": {
+    "n": 25,
+    "fov_m": 0.002,
+    "obs_z_m": 0.0
+  },
+  "geometry": {
+    "layer_depths_m": [0.000055, 0.000125],
+    "return_depth_m": 0.00018,
+    "corner_artifact_depth_m": 0.000075,
+    "via_radius_m": 0.000025,
+    "edge_discretization": 22,
+    "via_discretization": 14,
+    "min_trace_separation_m": 0.00022
+  },
+  "dataset": {
+    "n_val_per_class": 30,
+    "n_test_per_class": 50,
+    "n_ood_per_class": 25,
+    "classes": ["no_via", "true_via", "return_path", "bend_artifact"],
+    "noise_std_relative_to_max_abs_b": {
+      "val": 0.006,
+      "test": 0.006,
+      "ood": 0.014
+    },
+    "ood_shift": {
+      "current_scale_range": [0.45, 1.75],
+      "standoff_jitter_m": 0.000025,
+      "geometry_jitter_m": 0.00006,
+      "extra_background_return_probability": 0.30
+    }
+  },
+  "currents": {
+    "edge_current_a_range": [0.0015, 0.0075],
+    "via_current_fraction_range": [0.30, 0.85],
+    "return_current_fraction_range": [0.25, 0.95],
+    "artifact_current_fraction_range": [0.12, 0.45]
+  },
+  "scoring": {
+    "ridge_alpha": 0.000001,
+    "extra_basis_l1_penalty": 0.0005,
+    "complexity_penalty_grid": [0.0, 0.0005, 0.001, 0.002, 0.004, 0.008, 0.015, 0.03],
+    "max_allowed_no_via_fp_for_threshold_selection": 0.20,
+    "hypotheses": ["H0_sheet_only", "H1_sheet_via", "H2_sheet_return", "H3_sheet_artifact"]
+  },
+  "pypeec_bridge": {
+    "enabled": true,
+    "npz_path": "../E07_solver_bridge/data/pypeec_exp03_like_mini_dataset.npz"
+  },
+  "hidden_stress": {
+    "n_per_family": 24
+  },
+  "registration_search": {
+    "via_offset_radius_m": 0.00024,
+    "via_offset_grid_n": 3
+  },
+  "global_registration": {
+    "translation_radius_m": 0.00008,
+    "rotation_degrees": [-1.5, 0.0, 1.5],
+    "scales": [0.985, 1.0, 1.015]
+  },
+  "registration_stress": {
+    "n_per_class": 8,
+    "translation_um": [0, 40, 80, 120],
+    "rotation_deg": [1.0, 2.0],
+    "scale_delta": [0.01, 0.02],
+    "standoff_um": [15, 30],
+    "tilt_mrad": [10, 20]
+  },
+  "pypeec_aware_basis": {
+    "trace_half_width_m": 0.00003,
+    "return_offset_m": 0.00012,
+    "via_spread_m": 0.00006,
+    "artifact_length_m": 0.00008,
+    "modes": ["finite_width_sheet", "return_bank", "artifact_bank", "distributed_via", "combined_pypeec_aware"]
+  },
+  "model_evidence": {
+    "parameter_count_penalty": 0.0002,
+    "extra_count_penalty": 0.004,
+    "bic_weight": 0.08,
+    "h0_prior_penalty": 0.006,
+    "modes": ["residual_only", "default_score", "parameter_count", "extra_count", "bic_like", "h0_conservative"]
+  },
+  "model_selection_calibration": {
+    "pypeec_calibration_fraction": 0.50,
+    "repeated_split_count": 31,
+    "repeated_split_seed": 20260501,
+    "bootstrap_ci_level": 0.90,
+    "target_cases_per_hypothesis": {
+      "H0_sheet_only": 100,
+      "H1_sheet_via": 100,
+      "H2_sheet_return": 100,
+      "H3_sheet_artifact": 100
+    },
+    "min_h1_accuracy": 0.65,
+    "objective_weights": {
+      "accuracy": 0.40,
+      "h0_accuracy": 0.30,
+      "h1_accuracy": 0.20,
+      "h2_accuracy": 0.10,
+      "false_positive": 0.10,
+      "parameter_count": 0.02
+    }
+  },
+  "unknown_rejection": {
+    "margin_quantile": 0.05,
+    "residual_quantile": 0.95,
+    "residual_multiplier": 1.5,
+    "clean_false_reject_target": 0.20,
+    "target_hidden_accept_rate": 0.30,
+    "target_accepted_hidden_risk": 0.20
+  },
+  "multistate": {
+    "second_state_noise_std_relative_to_max_abs_b": 0.010,
+    "design_policies": ["random_independent", "sheet_rescale", "extra_boost", "extra_sign_flip", "low_noise_repeat", "h0_disambiguation", "h1_h2_separation", "max_expected_margin", "min_expected_entropy"]
+  },
+  "active_constraints": {
+    "max_extra_gain": 2.20,
+    "max_sheet_drop": 0.45,
+    "allow_extra_sign_flip": true,
+    "allowed_policies": ["random_independent", "sheet_rescale", "extra_boost", "h0_disambiguation", "h1_h2_separation", "max_expected_margin", "min_expected_entropy"]
+  },
+  "artifacts": {
+    "write_dataset_npz": true,
+    "write_case_jsonl": true,
+    "write_figures": true
+  }
+}

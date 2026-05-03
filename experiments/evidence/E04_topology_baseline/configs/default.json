@@ -1,0 +1,104 @@
+{
+  "seed": 20260429,
+  "dataset_path": "../E03_two_layer_via_topology/data/two_layer_via_benchmark.npz",
+  "device": "auto",
+  "training": {
+    "epochs": 80,
+    "batch_size": 16,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "base_channels": 24,
+    "topology_lambda": 0.1,
+    "amp": true
+  },
+  "ridge": {
+    "lambda": 0.01
+  },
+  "physical_forward": {
+    "layer1_z_m": -0.00005,
+    "layer2_z_m": -0.00013,
+    "sensor_z_m": 0.0
+  },
+  "physics_baseline": {
+    "enabled": true,
+    "tikhonov_lambda": 1e-24,
+    "landweber_iterations": 12,
+    "step_scale": 0.8
+  },
+  "analysis": {
+    "lambda_sweep": [0.0, 0.01, 0.03, 0.1, 0.3],
+    "lambda_sweep_epochs": 50,
+    "multi_seed": [20260429, 20260430, 20260431],
+    "multi_seed_epochs": 50
+  },
+  "stress": {
+    "enabled": true,
+    "noise_relative_to_max_abs_B": 0.01,
+    "psf_sigma_px": 1.2,
+    "tilt_gain_fraction": 0.03,
+    "channel_mixing_matrix": [
+      [1.00, 0.04, 0.02],
+      [-0.03, 1.00, 0.03],
+      [0.02, -0.02, 0.96]
+    ]
+  },
+  "operator_stress": {
+    "enabled": true,
+    "trace_width_m": 0.000028,
+    "via_radius_m": 0.000018,
+    "n_width_filaments": 3,
+    "return_scale": 0.22,
+    "ground_z_m": -0.00024
+  },
+  "pypeec_operator_stress_bridge": {
+    "enabled": true,
+    "metrics_path": "../E07_solver_bridge/outputs/metrics.json",
+    "min_exp03_like_shape_gap": 0.05,
+    "max_exp03_like_shape_gap": 1.25,
+    "required_cases_completed": 100,
+    "notes": "Read-only frozen operator-stress bridge from exp07. It reports real PyPEEC field gaps next to exp04 stress results without using PyPEEC fields for training, validation, or threshold calibration."
+  },
+  "pypeec_frozen_inference": {
+    "enabled": true,
+    "dataset_path": "../E07_solver_bridge/data/pypeec_exp03_like_mini_dataset.npz",
+    "min_cases": 100,
+    "min_exp03_like_cases": 80,
+    "max_topology_mse_ratio": 2.0,
+    "max_overall_l2_ratio": 2.0,
+    "max_exp03_like_topology_mse_ratio": 3.0,
+    "max_exp03_like_overall_l2_ratio": 3.0,
+    "notes": "No-training, no-calibration frozen inference on the exp07 PyPEEC mini dataset, including subset diagnostics."
+  },
+  "null_via_hypothesis_gate": {
+    "enabled": true,
+    "weight_s1_peak": 1.0,
+    "weight_topology_improvement": 0.8,
+    "weight_physical_b_improvement": 2.0,
+    "weight_dog_score": 0.08,
+    "artifact_radius_options_px": [0.0, 1.0, 2.0, 3.0],
+    "return_radius_px": 2.0,
+    "artifact_physical_override_options": [0.0, 0.01, 0.03, 0.05],
+    "score_quantiles": [0.0, 0.005, 0.01, 0.02, 0.05, 0.15, 0.30, 0.45, 0.60, 0.75],
+    "min_validation_recall": 0.85,
+    "pareto_max_points": 36,
+    "notes": "Null-via gate parameters are selected only on synthetic validation stress and then frozen for PyPEEC evaluation."
+  },
+  "via_detector": {
+    "dog_sigma_px": 2.0,
+    "false_positive_quantile": 1.0,
+    "strict_threshold_multiplier": 1.35
+  },
+  "two_stage_refinement": {
+    "dog_sigma_px": 2.0,
+    "false_positive_quantile": 1.0,
+    "threshold_multiplier": 1.35,
+    "blend_with_prediction": 0.65
+  },
+  "gates": {
+    "topology_mse_ratio_max": 0.85,
+    "overall_l2_ratio_max": 1.25,
+    "unet_beats_zero_l2_max": 0.95,
+    "ood_topology_mse_ratio_max": 0.95,
+    "multi_seed_topology_mse_ratio_mean_max": 0.95
+  }
+}

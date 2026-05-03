@@ -30,6 +30,7 @@ The research stance is deliberately conservative:
 ```text
 research_graph/      Claim graph SSOT and update log.
 experiments/claims/  Claim-scoped experiment plans and evidence loops.
+experiments/evidence/ Claim-graph evidence packages with runnable code.
 outputs/by_claim/    Claim-scoped human-readable evidence summaries.
 docs/protocols/      No-leakage and real-data validation protocols.
 src/research_ssot/   Lightweight graph loader, validator, and renderers.
@@ -43,6 +44,8 @@ tests/               Integrity tests for the SSOT.
 uv sync
 uv run python scripts/validate_graph.py
 uv run python scripts/render_claim_matrix.py
+uv run python scripts/check_evidence_outputs.py
+uv run python scripts/run_evidence.py --all --mode test --continue-on-fail
 uv run pytest -q
 ```
 
@@ -58,4 +61,3 @@ Every completed study must produce:
 - a human-readable output table or report;
 - evidence edges that support, limit, contradict, require, or motivate claims;
 - a claim-boundary update when failures or limitations appear.
-

@@ -9,7 +9,11 @@ __pycache__/
 outputs/**/*.png
 outputs/**/*.svg
 outputs/**/*.pdf
+experiments/evidence/**/data/
+experiments/evidence/**/quick_runtime/
+experiments/evidence/**/outputs/**/*.png
+experiments/evidence/**/outputs/**/*.svg
+experiments/evidence/**/outputs/**/*.pdf
 data/raw/
 data/generated/
 data/external/
-

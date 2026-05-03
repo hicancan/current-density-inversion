@@ -1,0 +1,35 @@
+{
+  "case_id": "example_wire_coupon_state_001",
+  "field": {
+    "path": "data/example_wire_coupon_state_001_B_meas.npz",
+    "array_key": "B_meas",
+    "shape": [64, 64, 3],
+    "component_order": ["Bx", "By", "Bz"],
+    "units": "tesla"
+  },
+  "grid": {
+    "pixel_size_m": 1.0e-6,
+    "origin": "center"
+  },
+  "sensor_pose": {
+    "standoff_m": "unknown",
+    "tilt_x_mrad": "unknown",
+    "tilt_y_mrad": "unknown",
+    "layout_to_image_transform": null
+  },
+  "background": {
+    "path": null,
+    "protocol": "none"
+  },
+  "sample": {
+    "type": "wire",
+    "geometry_path": null
+  },
+  "excitation": {
+    "state_id": "dc_state_001",
+    "current_a": "unknown",
+    "source_port": "P1",
+    "return_port": "P2"
+  },
+  "claim_boundary": "real-data interface only"
+}

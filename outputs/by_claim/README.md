@@ -10,3 +10,4 @@ Generated summary tables:
 Each claim folder contains the evidence reports referenced by
 `research_graph/experiments.yml` and `research_graph/evidence_edges.yml`.
 
+The runnable evidence packages live under `experiments/evidence/`.

@@ -1,0 +1,18 @@
+{
+  "description": "Stage-1 Biot-Savart forward sanity check. All units are SI.",
+  "grid": {
+    "fov_m": 0.002,
+    "nx": 161,
+    "ny": 161,
+    "measurement_z_m": 0.0001
+  },
+  "current_A": 0.001,
+  "sources": {
+    "long_wire_length_m": 0.02,
+    "rect_loop_width_m": 0.0009,
+    "rect_loop_height_m": 0.0006,
+    "via_z0_m": -0.00005,
+    "via_z1_m": 0.00005
+  },
+  "standoff_scan_m": [0.00001, 0.000025, 0.00005, 0.0001, 0.00025, 0.0005]
+}

@@ -1,0 +1,215 @@
+{
+  "experiment": "exp02-observability-and-bxy-vs-bz",
+  "units": {
+    "length": "m internally; figures use micrometres",
+    "magnetic_field": "T internally; some figures use microtesla",
+    "sheet_current": "A/m arbitrary scale in examples"
+  },
+  "notes": [
+    "This experiment is a theoretical observability and single-layer Fourier inversion check, not a neural network experiment.",
+    "Bxy and Bz inversions use the ideal thin-sheet free-space spectral model; real QDM sensor effects are intentionally left for later experiments."
+  ],
+  "attenuation_threshold_table": {
+    "z_5_um": {
+      "lambda_at_attenuation_0.1_um": 13.643763538418412,
+      "lambda_at_attenuation_0.01_um": 6.821881769209206,
+      "lambda_at_attenuation_0.001_um": 4.547921179472804
+    },
+    "z_10_um": {
+      "lambda_at_attenuation_0.1_um": 27.287527076836824,
+      "lambda_at_attenuation_0.01_um": 13.643763538418412,
+      "lambda_at_attenuation_0.001_um": 9.095842358945609
+    },
+    "z_25_um": {
+      "lambda_at_attenuation_0.1_um": 68.21881769209207,
+      "lambda_at_attenuation_0.01_um": 34.10940884604604,
+      "lambda_at_attenuation_0.001_um": 22.739605897364022
+    },
+    "z_50_um": {
+      "lambda_at_attenuation_0.1_um": 136.43763538418415,
+      "lambda_at_attenuation_0.01_um": 68.21881769209207,
+      "lambda_at_attenuation_0.001_um": 45.479211794728045
+    },
+    "z_100_um": {
+      "lambda_at_attenuation_0.1_um": 272.8752707683683,
+      "lambda_at_attenuation_0.01_um": 136.43763538418415,
+      "lambda_at_attenuation_0.001_um": 90.95842358945609
+    },
+    "z_250_um": {
+      "lambda_at_attenuation_0.1_um": 682.1881769209208,
+      "lambda_at_attenuation_0.01_um": 341.0940884604604,
+      "lambda_at_attenuation_0.001_um": 227.39605897364024
+    },
+    "z_500_um": {
+      "lambda_at_attenuation_0.1_um": 1364.3763538418416,
+      "lambda_at_attenuation_0.01_um": 682.1881769209208,
+      "lambda_at_attenuation_0.001_um": 454.7921179472805
+    }
+  },
+  "rel_l2_bxy_clean_full": 7.636483302599897e-06,
+  "rel_l2_bz_clean_full": 4.5752510309098396e-05,
+  "rel_l2_bxy_finite_fov": 0.050634547904487764,
+  "rel_l2_bz_finite_fov": 0.5206670800978869,
+  "standoffs_um": [
+    10,
+    25,
+    50,
+    100,
+    200
+  ],
+  "noise_levels_relative_to_max_field": [
+    0.0,
+    0.002,
+    0.005,
+    0.01,
+    0.02
+  ],
+  "regularized_recovery_min_wavelength_um": 100.0,
+  "rel_l2_bxy_noise_scan": [
+    [
+      0.0667527432541239,
+      0.06675367868204256,
+      0.06699659302145129,
+      0.06768289107263119,
+      0.07028102978604125
+    ],
+    [
+      0.06675274325412386,
+      0.06711993731743106,
+      0.068777007102053,
+      0.0745561837757263,
+      0.09515911230778538
+    ],
+    [
+      0.06675274325412381,
+      0.2562646969866839,
+      0.6273093838494661,
+      1.2440629048353773,
+      2.5229352010615176
+    ],
+    [
+      0.06675274327648884,
+      436151.59432504623,
+      1069858.828615353,
+      2170736.450830628,
+      4333021.063012395
+    ],
+    [
+      42039673722760.875,
+      7.67473493804725e+26,
+      2.2710425204247332e+27,
+      4.1539776733274336e+27,
+      8.248228714855937e+27
+    ]
+  ],
+  "rel_l2_bz_noise_scan": [
+    [
+      0.06675274325412403,
+      0.0669394733124379,
+      0.0673282840186473,
+      0.06880058415427892,
+      0.07288924774634378
+    ],
+    [
+      0.06675274325412396,
+      0.06733935585722213,
+      0.07094326683048142,
+      0.08108511750695344,
+      0.11401046979942733
+    ],
+    [
+      0.06675274325412404,
+      0.297373586856086,
+      0.7408063611639693,
+      1.464798984714671,
+      2.950871119072076
+    ],
+    [
+      0.06675274318950121,
+      449286.10759175033,
+      1132185.8065663883,
+      2263974.5397414872,
+      4549653.247881768
+    ],
+    [
+      27680194965552.098,
+      8.707780526070262e+26,
+      1.9080130133688056e+27,
+      3.7293238342656197e+27,
+      7.695022009480837e+27
+    ]
+  ],
+  "two_layer_single_plane_rank_gate": {
+    "standoff_um": 50.0,
+    "layer_depths_um": [
+      50.0,
+      130.0
+    ],
+    "feature_um": [
+      40.0,
+      80.0,
+      160.0,
+      320.0,
+      640.0
+    ],
+    "deep_to_shallow_response_ratio": [
+      3.4873423562089973e-06,
+      0.0018674427317079893,
+      0.04321391826377225,
+      0.20787957635076193,
+      0.4559381277659963
+    ],
+    "rank_per_feature": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "smallest_singular_value_per_feature": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "largest_singular_value_per_feature": [
+      1.5070172753992293e-07,
+      0.0003882038808249142,
+      0.019721261399270714,
+      0.14336774856787796,
+      0.4117600504146001
+    ],
+    "single_plane_two_layer_rank_deficient": true,
+    "interpretation": "single-plane Bxyz improves modal SNR but does not by itself identify layer labels without extra priors or measurements"
+  },
+  "acceptance_gates": {
+    "clean_full_field_bxy_inverse_is_self_consistent": {
+      "threshold": "relative_l2 < 1e-4",
+      "value": 7.636483302599897e-06,
+      "pass": true
+    },
+    "clean_full_field_bz_inverse_is_self_consistent_except_dc": {
+      "threshold": "relative_l2 < 1e-3",
+      "value": 4.5752510309098396e-05,
+      "pass": true
+    },
+    "finite_fov_damages_bz_more_than_bxy": {
+      "threshold": "Bz finite-FOV error > 5x Bxy finite-FOV error",
+      "value": 10.282842479013027,
+      "pass": true
+    },
+    "two_layer_single_plane_is_rank_deficient": {
+      "threshold": "rank_per_feature all equal 1",
+      "value": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "pass": true
+    }
+  },
+  "all_acceptance_gates_passed": true
+}

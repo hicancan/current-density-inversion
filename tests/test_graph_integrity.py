@@ -36,3 +36,12 @@ def test_pdn_kcl_node_is_high_priority_missing_node() -> None:
     assert node["status"] == "missing"
     assert "M04_kcl_residual" in node["required_metrics"]
 
+
+def test_registered_runtime_packages_exist() -> None:
+    graph = load_graph(ROOT)
+    for evidence_id, evidence in graph.experiments.items():
+        runtime = evidence.get("runtime")
+        if runtime:
+            package_dir = ROOT / runtime["package_dir"]
+            assert package_dir.exists(), evidence_id
+            assert (package_dir / "requirements.txt").exists() or evidence_id == "E07_pypeec_solver_bridge"

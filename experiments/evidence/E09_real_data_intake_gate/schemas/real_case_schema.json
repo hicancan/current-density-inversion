@@ -1,0 +1,35 @@
+{
+  "case_id": "string",
+  "field": {
+    "path": "relative-or-absolute path to .npz",
+    "array_key": "B_meas",
+    "shape": ["ny", "nx", "n_components"],
+    "component_order": ["Bx", "By", "Bz"],
+    "units": "tesla"
+  },
+  "grid": {
+    "pixel_size_m": "positive float",
+    "origin": "center | top_left | custom"
+  },
+  "sensor_pose": {
+    "standoff_m": "positive float | unknown",
+    "tilt_x_mrad": "float | unknown",
+    "tilt_y_mrad": "float | unknown",
+    "layout_to_image_transform": "optional object"
+  },
+  "background": {
+    "path": "optional path",
+    "protocol": "none | subtract_zero_current | subtract_reference"
+  },
+  "sample": {
+    "type": "wire | coupon | fpc | pcb | chip | unknown",
+    "geometry_path": "optional path"
+  },
+  "excitation": {
+    "state_id": "string",
+    "current_a": "float | unknown",
+    "source_port": "optional string",
+    "return_port": "optional string"
+  },
+  "claim_boundary": "real-data interface only"
+}

@@ -1,0 +1,42 @@
+{
+  "seed": 20260429,
+  "fov_m": 0.002,
+  "grid_n": 40,
+  "current_A": 0.005,
+  "layer1_depth_m": 2e-05,
+  "layer2_depth_m": 9e-05,
+  "standoff_m": 5e-05,
+  "tilt_alpha": 0.006,
+  "tilt_beta": -0.004,
+  "segment_subdivisions": 16,
+  "psf_sigma_px": 1.25,
+  "noise_sigma_uT": [
+    0.12,
+    0.16,
+    0.1
+  ],
+  "noise_corr": [
+    [
+      1.0,
+      0.38,
+      -0.22
+    ],
+    [
+      0.38,
+      1.0,
+      0.18
+    ],
+    [
+      -0.22,
+      0.18,
+      1.0
+    ]
+  ],
+  "nv_axis_gain_mismatch": [1.03, 0.97, 1.015, 0.985],
+  "spatial_corr_sigma_px": 1.2,
+  "confidence_floor": 0.35,
+  "confidence_percentile": 90,
+  "via_patch_radius_px": 6,
+  "dog_sigma_small_px": 1.0,
+  "dog_sigma_large_px": 3.0
+}

@@ -1,0 +1,62 @@
+# Exp08 hidden-mechanism failure cases
+
+| case | family | class | true H | pred H | margin | via evidence | true residual | pred residual |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| hidden_shifted_true_via_ood_09000_true_via | shifted_true_via | true_via | H1_sheet_via | H0_sheet_only | 9.572e-05 | -1.379e-04 | 0.1764 | 0.1768 |
+| hidden_mismatched_artifact_ood_10000_bend_artifact | mismatched_artifact | bend_artifact | H3_sheet_artifact | H0_sheet_only | 4.665e-04 | -4.869e-04 | 0.2096 | 0.2096 |
+| hidden_hidden_return_no_via_ood_08001_no_via | hidden_return_no_via | no_via | H0_sheet_only | H2_sheet_return | 7.840e-04 | -4.943e-04 | 0.2764 | 0.2751 |
+| hidden_shifted_true_via_ood_09001_true_via | shifted_true_via | true_via | H1_sheet_via | H0_sheet_only | 4.693e-04 | -4.693e-04 | 0.2166 | 0.2166 |
+| hidden_mismatched_artifact_ood_10001_bend_artifact | mismatched_artifact | bend_artifact | H3_sheet_artifact | H0_sheet_only | 3.791e-04 | -5.000e-04 | 0.1393 | 0.1395 |
+| hidden_hidden_return_no_via_ood_08002_no_via | hidden_return_no_via | no_via | H0_sheet_only | H2_sheet_return | 8.541e-04 | -4.802e-04 | 0.2050 | 0.2036 |
+| hidden_shifted_true_via_ood_09002_true_via | shifted_true_via | true_via | H1_sheet_via | H0_sheet_only | 4.044e-04 | -4.674e-04 | 0.1960 | 0.1960 |
+| hidden_mismatched_artifact_ood_10002_bend_artifact | mismatched_artifact | bend_artifact | H3_sheet_artifact | H2_sheet_return | 5.618e-04 | -4.609e-04 | 0.1547 | 0.1540 |
+| hidden_shifted_true_via_ood_09003_true_via | shifted_true_via | true_via | H1_sheet_via | H0_sheet_only | 1.865e-05 | -1.865e-05 | 0.1029 | 0.1034 |
+| hidden_mismatched_artifact_ood_10003_bend_artifact | mismatched_artifact | bend_artifact | H3_sheet_artifact | H0_sheet_only | 3.131e-04 | -4.526e-04 | 0.1822 | 0.1824 |
+| hidden_hidden_return_no_via_ood_08004_no_via | hidden_return_no_via | no_via | H0_sheet_only | H2_sheet_return | 0.0053 | -4.949e-04 | 0.1686 | 0.1628 |
+| hidden_shifted_true_via_ood_09004_true_via | shifted_true_via | true_via | H1_sheet_via | H0_sheet_only | 8.890e-05 | -3.070e-04 | 0.1136 | 0.1138 |
+| hidden_mismatched_artifact_ood_10004_bend_artifact | mismatched_artifact | bend_artifact | H3_sheet_artifact | H0_sheet_only | 4.782e-04 | -5.000e-04 | 0.0878 | 0.0878 |
+| hidden_shifted_true_via_ood_09005_true_via | shifted_true_via | true_via | H1_sheet_via | H0_sheet_only | 4.512e-04 | -4.773e-04 | 0.1024 | 0.1024 |
+| hidden_mismatched_artifact_ood_10005_bend_artifact | mismatched_artifact | bend_artifact | H3_sheet_artifact | H0_sheet_only | 2.585e-04 | -2.585e-04 | 0.1347 | 0.1347 |
+| hidden_combined_true_via_hidden_return_ood_11005_true_via | combined_true_via_hidden_return | true_via | H1_sheet_via | H2_sheet_return | 0.0075 | 1.737e-04 | 0.2517 | 0.2442 |
+| hidden_shifted_true_via_ood_09006_true_via | shifted_true_via | true_via | H1_sheet_via | H0_sheet_only | 3.948e-04 | -4.123e-04 | 0.1150 | 0.1151 |
+| hidden_mismatched_artifact_ood_10006_bend_artifact | mismatched_artifact | bend_artifact | H3_sheet_artifact | H0_sheet_only | 2.380e-04 | -3.926e-04 | 0.1289 | 0.1291 |
+| hidden_shifted_true_via_ood_09007_true_via | shifted_true_via | true_via | H1_sheet_via | H0_sheet_only | 3.094e-04 | -3.094e-04 | 0.2254 | 0.2256 |
+| hidden_mismatched_artifact_ood_10007_bend_artifact | mismatched_artifact | bend_artifact | H3_sheet_artifact | H0_sheet_only | 2.074e-05 | -4.865e-04 | 0.1054 | 0.1055 |
+| hidden_hidden_return_no_via_ood_08008_no_via | hidden_return_no_via | no_via | H0_sheet_only | H2_sheet_return | 0.0041 | -4.837e-04 | 0.1656 | 0.1610 |
+| hidden_shifted_true_via_ood_09008_true_via | shifted_true_via | true_via | H1_sheet_via | H0_sheet_only | 2.943e-04 | -2.943e-04 | 0.1947 | 0.1949 |
+| hidden_mismatched_artifact_ood_10008_bend_artifact | mismatched_artifact | bend_artifact | H3_sheet_artifact | H0_sheet_only | 6.849e-05 | -4.946e-04 | 0.2148 | 0.2150 |
+| hidden_combined_true_via_hidden_return_ood_11008_true_via | combined_true_via_hidden_return | true_via | H1_sheet_via | H2_sheet_return | 0.0045 | 0.0044 | 0.1476 | 0.1431 |
+| hidden_shifted_true_via_ood_09009_true_via | shifted_true_via | true_via | H1_sheet_via | H0_sheet_only | 8.904e-05 | -4.921e-04 | 0.1249 | 0.1249 |
+| hidden_mismatched_artifact_ood_10009_bend_artifact | mismatched_artifact | bend_artifact | H3_sheet_artifact | H2_sheet_return | 6.579e-04 | -4.414e-04 | 0.1329 | 0.1319 |
+| hidden_mismatched_artifact_ood_10010_bend_artifact | mismatched_artifact | bend_artifact | H3_sheet_artifact | H0_sheet_only | 3.284e-04 | -3.284e-04 | 0.1460 | 0.1460 |
+| hidden_combined_true_via_hidden_return_ood_11010_true_via | combined_true_via_hidden_return | true_via | H1_sheet_via | H2_sheet_return | 0.0569 | 0.0010 | 0.3934 | 0.3364 |
+| hidden_shifted_true_via_ood_09011_true_via | shifted_true_via | true_via | H1_sheet_via | H0_sheet_only | 3.536e-04 | -4.699e-04 | 0.1204 | 0.1204 |
+| hidden_mismatched_artifact_ood_10011_bend_artifact | mismatched_artifact | bend_artifact | H3_sheet_artifact | H0_sheet_only | 4.577e-04 | -4.577e-04 | 0.0886 | 0.0886 |
+| hidden_shifted_true_via_ood_09012_true_via | shifted_true_via | true_via | H1_sheet_via | H0_sheet_only | 4.321e-04 | -4.321e-04 | 0.1130 | 0.1131 |
+| hidden_mismatched_artifact_ood_10012_bend_artifact | mismatched_artifact | bend_artifact | H3_sheet_artifact | H0_sheet_only | 1.081e-04 | -4.823e-04 | 0.1073 | 0.1073 |
+| hidden_hidden_return_no_via_ood_08013_no_via | hidden_return_no_via | no_via | H0_sheet_only | H2_sheet_return | 0.0053 | -3.497e-04 | 0.1590 | 0.1532 |
+| hidden_shifted_true_via_ood_09013_true_via | shifted_true_via | true_via | H1_sheet_via | H0_sheet_only | 2.379e-04 | -2.432e-04 | 0.1160 | 0.1163 |
+| hidden_mismatched_artifact_ood_10013_bend_artifact | mismatched_artifact | bend_artifact | H3_sheet_artifact | H2_sheet_return | 0.0012 | -4.975e-04 | 0.2067 | 0.2051 |
+| hidden_shifted_true_via_ood_09014_true_via | shifted_true_via | true_via | H1_sheet_via | H0_sheet_only | 3.206e-04 | -3.206e-04 | 0.0902 | 0.0903 |
+| hidden_mismatched_artifact_ood_10014_bend_artifact | mismatched_artifact | bend_artifact | H3_sheet_artifact | H0_sheet_only | 4.859e-04 | -4.948e-04 | 0.1963 | 0.1963 |
+| hidden_combined_true_via_hidden_return_ood_11014_true_via | combined_true_via_hidden_return | true_via | H1_sheet_via | H2_sheet_return | 0.0033 | -4.932e-04 | 0.1910 | 0.1872 |
+| hidden_shifted_true_via_ood_09015_true_via | shifted_true_via | true_via | H1_sheet_via | H0_sheet_only | 1.636e-04 | -2.773e-04 | 0.1819 | 0.1821 |
+| hidden_mismatched_artifact_ood_10015_bend_artifact | mismatched_artifact | bend_artifact | H3_sheet_artifact | H2_sheet_return | 8.573e-05 | -4.952e-04 | 0.1118 | 0.1112 |
+| hidden_shifted_true_via_ood_09016_true_via | shifted_true_via | true_via | H1_sheet_via | H0_sheet_only | 7.013e-05 | -7.013e-05 | 0.0988 | 0.0992 |
+| hidden_mismatched_artifact_ood_10016_bend_artifact | mismatched_artifact | bend_artifact | H3_sheet_artifact | H0_sheet_only | 3.616e-04 | -4.969e-04 | 0.1210 | 0.1210 |
+| hidden_mismatched_artifact_ood_10017_bend_artifact | mismatched_artifact | bend_artifact | H3_sheet_artifact | H0_sheet_only | 1.015e-04 | -4.692e-04 | 0.1765 | 0.1765 |
+| hidden_shifted_true_via_ood_09018_true_via | shifted_true_via | true_via | H1_sheet_via | H3_sheet_artifact | 3.870e-05 | -3.081e-05 | 0.0833 | 0.0833 |
+| hidden_mismatched_artifact_ood_10018_bend_artifact | mismatched_artifact | bend_artifact | H3_sheet_artifact | H0_sheet_only | 3.781e-04 | -3.781e-04 | 0.1887 | 0.1887 |
+| hidden_shifted_true_via_ood_09019_true_via | shifted_true_via | true_via | H1_sheet_via | H0_sheet_only | 2.603e-04 | -2.603e-04 | 0.1258 | 0.1260 |
+| hidden_mismatched_artifact_ood_10019_bend_artifact | mismatched_artifact | bend_artifact | H3_sheet_artifact | H0_sheet_only | 3.724e-04 | -3.724e-04 | 0.2353 | 0.2353 |
+| hidden_shifted_true_via_ood_09020_true_via | shifted_true_via | true_via | H1_sheet_via | H0_sheet_only | 2.477e-04 | -3.958e-04 | 0.2336 | 0.2337 |
+| hidden_mismatched_artifact_ood_10020_bend_artifact | mismatched_artifact | bend_artifact | H3_sheet_artifact | H2_sheet_return | 2.744e-05 | -4.987e-04 | 0.1174 | 0.1171 |
+| hidden_combined_true_via_hidden_return_ood_11020_true_via | combined_true_via_hidden_return | true_via | H1_sheet_via | H2_sheet_return | 0.0024 | -9.589e-06 | 0.3718 | 0.3694 |
+| hidden_hidden_return_no_via_ood_08021_no_via | hidden_return_no_via | no_via | H0_sheet_only | H2_sheet_return | 0.0060 | -3.790e-04 | 0.2890 | 0.2825 |
+| hidden_shifted_true_via_ood_09021_true_via | shifted_true_via | true_via | H1_sheet_via | H0_sheet_only | 1.937e-04 | -1.937e-04 | 0.0855 | 0.0858 |
+| hidden_mismatched_artifact_ood_10021_bend_artifact | mismatched_artifact | bend_artifact | H3_sheet_artifact | H0_sheet_only | 4.219e-04 | -4.905e-04 | 0.1253 | 0.1254 |
+| hidden_mismatched_artifact_ood_10022_bend_artifact | mismatched_artifact | bend_artifact | H3_sheet_artifact | H0_sheet_only | 1.609e-04 | -4.659e-04 | 0.1938 | 0.1938 |
+| hidden_shifted_true_via_ood_09023_true_via | shifted_true_via | true_via | H1_sheet_via | H0_sheet_only | 3.074e-04 | -3.676e-04 | 0.0890 | 0.0891 |
+| hidden_mismatched_artifact_ood_10023_bend_artifact | mismatched_artifact | bend_artifact | H3_sheet_artifact | H0_sheet_only | 2.485e-04 | -4.596e-04 | 0.2344 | 0.2345 |
+
+Total hidden-stress misclassified cases: `56`.
