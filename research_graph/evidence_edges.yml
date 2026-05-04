@@ -388,6 +388,46 @@
   evidence_files:
     - outputs/by_claim/C06_graph_hypothesis_system_id/MULTI_HEIGHT_MULTISTATE_EVIDENCE.md
 
+- id: edge_E15_to_C10
+  from: E15_four_layer_via_chain_benchmark
+  to: C10_pdn_kcl_distribution_need
+  relation: supports
+  strength: medium
+  scope: "generated four-layer via-chain benchmark with stress families"
+  caveat: "Generated benchmark only; does not validate real four-layer PCB/chip, CAD/Gerber/GDS, external solvers, or real QDM/NV."
+  evidence_files:
+    - outputs/by_claim/C10_pdn_kcl_distribution_need/FOUR_LAYER_VIA_CHAIN_EVIDENCE.md
+
+- id: edge_E15_to_C02
+  from: E15_four_layer_via_chain_benchmark
+  to: C02_single_plane_identifiability_boundary
+  relation: supports
+  strength: medium
+  scope: "four-layer single-plane magnetic observation with deep-layer attenuation"
+  caveat: "Generated thin-sheet ideal free-space magnetic fields only."
+  evidence_files:
+    - outputs/by_claim/C02_identifiability_boundary/FOUR_LAYER_VIA_CHAIN_EVIDENCE.md
+
+- id: edge_E15_to_C06
+  from: E15_four_layer_via_chain_benchmark
+  to: C06_graph_hypothesis_system_identification
+  relation: supports
+  strength: medium
+  scope: "graph/KCL-aware baseline reduces layer misallocation versus naive in generated domain"
+  caveat: "Generated graph/KCL constraints only; not real CAD/Gerber graph candidates."
+  evidence_files:
+    - outputs/by_claim/C06_graph_hypothesis_system_id/FOUR_LAYER_VIA_CHAIN_EVIDENCE.md
+
+- id: edge_E15_limits_C10
+  from: E15_four_layer_via_chain_benchmark
+  to: C10_pdn_kcl_distribution_need
+  relation: limits
+  strength: strong
+  scope: "generated four-layer benchmark boundaries"
+  caveat: "Generated benchmark only; via-chain detection under generated ideal fields does not prove real hardware sensitivity."
+  evidence_files:
+    - outputs/by_claim/C10_pdn_kcl_distribution_need/FOUR_LAYER_VIA_CHAIN_EVIDENCE.md
+
 - id: edge_E14_to_C06
   from: E14_layout_graph_import_scaffold
   to: C06_graph_hypothesis_system_identification

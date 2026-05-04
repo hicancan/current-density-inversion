@@ -62,6 +62,7 @@ C02_single_plane_identifiability_boundary:
   - E02_observability_bxy_bz
   - E03_two_layer_via_topology
   - E13_multi_height_multistate_observability
+  - E15_four_layer_via_chain_benchmark
   limited_by: []
   contradicted_by: []
   cannot_claim:
@@ -222,7 +223,7 @@ C06_graph_hypothesis_system_identification:
     algorithm: [A04_hypothesis_scorer, A12_bayesian_or_glrt_model_evidence, A14_pdn_physics_aware_learner]
     protocol: [S02_variant_heldout, S03_family_heldout, S05_solver_heldout, S06_hidden_stress]
     metrics: [M04_kcl_residual, M06_h0_false_any, M07_h1_recall, M08_accepted_accuracy, M09_accepted_risk, M10_reject_rate, M16_predicted_kcl_residual, M17_predicted_current_closure_error]
-  supported_by: [E08_graph_hypothesis_system_id, E12_pdn_physics_learning, E13_multi_height_multistate_observability, E14_layout_graph_import_scaffold]
+  supported_by: [E08_graph_hypothesis_system_id, E12_pdn_physics_learning, E13_multi_height_multistate_observability, E14_layout_graph_import_scaffold, E15_four_layer_via_chain_benchmark]
   limited_by: [E07_pypeec_solver_bridge, E08_graph_hypothesis_system_id, E14_layout_graph_import_scaffold]
   contradicted_by: []
   cannot_claim:
@@ -379,7 +380,7 @@ C10_pdn_kcl_distribution_need:
     algorithm: [A04_hypothesis_scorer, A14_pdn_physics_aware_learner]
     protocol: [S03_family_heldout, S11_no_leakage_calibration_heldout]
     metrics: [M01_field_l2_or_rmse, M04_kcl_residual, M05_divB_residual, M06_h0_false_any, M07_h1_recall, M13_family_generalization_gap, M16_predicted_kcl_residual, M17_predicted_current_closure_error]
-  supported_by: [E10_pdn_kcl_distribution, E11_chip_like_pdn_distribution, E12_pdn_physics_learning, E14_layout_graph_import_scaffold]
+  supported_by: [E10_pdn_kcl_distribution, E11_chip_like_pdn_distribution, E12_pdn_physics_learning, E14_layout_graph_import_scaffold, E15_four_layer_via_chain_benchmark]
   limited_by: []
   contradicted_by: []
   cannot_claim:
