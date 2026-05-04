@@ -1,0 +1,42 @@
+{
+  "seed": 20260504,
+  "layer_depths": {
+    "L1": -0.02,
+    "L2": -0.08,
+    "L3": -0.16,
+    "L4": -0.26
+  },
+  "grid_size": 12,
+  "sensor_grid_size": 14,
+  "sensor_z": 0.06,
+  "in_plane_extent": [-0.32, 0.32, -0.32, 0.32],
+  "families": [
+    "nominal_via_chain",
+    "no_via_hard_negative",
+    "dense_via_cluster",
+    "return_grid_bottleneck",
+    "deep_layer_only",
+    "layer_misallocation_trap"
+  ],
+  "variants_per_family": 3,
+  "seed_per_variant_step": 7,
+  "ridge_alpha": 0.01,
+  "kcl_constraint_weight": 0.5,
+  "inverse_max_iter": 200,
+  "inverse_lr": 0.01,
+  "inverse_b_weight": 1.0,
+  "inverse_kcl_weight": 0.5,
+  "inverse_topo_weight": 0.3,
+  "inverse_via_sparsity_weight": 0.1,
+  "inverse_layer_prior_weight": 0.05,
+  "via_precision_threshold": 0.8,
+  "via_recall_threshold": 0.4,
+  "no_via_fp_threshold": 0.3,
+  "topology_residual_threshold": 0.5,
+  "kcl_residual_threshold": 0.05,
+  "b_residual_threshold": 0.3,
+  "layer_rmse_threshold": 0.35,
+  "layer_cosine_threshold": 0.60,
+  "misallocation_reduction_threshold": 0.05,
+  "deep_attenuation_slope_threshold": 0.015
+}

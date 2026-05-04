@@ -72,3 +72,15 @@ background subtraction, component plotting, and simple-wire sanity stub are
 callable and machine-checked. No measured rows are present. No real via/no-via
 diagnosis can be claimed before units, coordinate frame, standoff, background
 subtraction, polarity, and simple-wire sanity pass on measured data.
+
+## OQ08: Can physics-constrained differentiable inverse overcome dense-via and deep-layer failure modes?
+
+Status: active, E18 documents four failure modes.
+
+`E18_physics_constrained_pdn_inverse` demonstrates KCL residual improvement
+but identifies: (1) dense-via recall = 0 on cluster stress cases, (2) deep-layer
+misallocation > 0.3, (3) return-grid ambiguity where new method has higher RMSE
+than ridge, (4) aggregate KCL-RMSE tradeoff. Open question: can multi-height
+observations (E13), improved via priors, or external-solver calibration
+resolve these failure modes? Also: can the unified leaderboard be expanded
+with Tikhonov/L1-curl baselines from E17 for complete comparison?

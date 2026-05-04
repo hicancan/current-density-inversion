@@ -1,5 +1,32 @@
 # Update Log
 
+## 2026-05-04 - Physics-constrained multilayer PDN inverse evidence (E18)
+
+Claim affected:
+- C10_pdn_kcl_distribution_need (+E18 in supported_by)
+- C06_graph_hypothesis_system_identification (+E18 in supported_by)
+- C04_inverse_crime_and_operator_gap (+E18 in supported_by)
+- C02_single_plane_identifiability_boundary (+E18 in supported_by)
+
+Change type:
+- new evidence package E18 added with physics-constrained differentiable
+  inverse, unified baseline leaderboard, failure case analysis
+
+Evidence:
+- E18 implements graph_kcl_differentiable_inverse: warm-started constrained
+  ridge + L-BFGS-B composite loss + KCL post-projection vs 4 baselines
+  on 18 cases, 6 families, 11 channels.
+
+Metrics:
+- KCL residual: 2.4e-19 (new) vs 1.6e-13 (ridge)
+- Layer misallocation: 0.213 (new) ≈ 0.213 (graph_kcl_aware)
+- 4 failure cases: dense-via recall=0, deep-layer >0.3, return-grid, KCL-RMSE tradeoff
+- All acceptance gates pass
+
+Tests run:
+- tests: PASS (13 tests, 0.52s)
+- Full run: PASS (14.1s, all gates passed)
+
 ## 2026-05-04 - Next-stage current inversion breakthrough evidence integration
 
 Claim affected:

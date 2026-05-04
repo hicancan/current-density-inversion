@@ -527,3 +527,43 @@
   caveat: "Optimal regularization parameters are tuned on the same generated distribution; not validated against external solvers or real measurements."
   evidence_files:
     - outputs/by_claim/C02_identifiability_boundary/L1_CURL_DIVFREE_EVIDENCE.md
+
+- id: edge_E18_to_C10
+  from: E18_physics_constrained_pdn_inverse
+  to: C10_pdn_kcl_distribution_need
+  relation: supports
+  strength: medium
+  scope: "generated four-layer via-chain benchmark with physics-constrained inverse and unified leaderboard"
+  caveat: "Generated-domain prototype with 18 cases; not real CAD/GDS, external solver, or real QDM/NV validation."
+  evidence_files:
+    - outputs/by_claim/C10_pdn_kcl_distribution_need/PHYSICS_CONSTRAINED_PDN_INVERSE_EVIDENCE.md
+
+- id: edge_E18_to_C06
+  from: E18_physics_constrained_pdn_inverse
+  to: C06_graph_hypothesis_system_identification
+  relation: supports
+  strength: medium
+  scope: "KCL-constrained differentiable inverse reduces KCL residual vs unconstrained baselines in generated domain"
+  caveat: "KCL improvement comes with current RMSE tradeoff; generated graph constraints only."
+  evidence_files:
+    - outputs/by_claim/C06_graph_hypothesis_system_id/PHYSICS_CONSTRAINED_PDN_INVERSE_EVIDENCE.md
+
+- id: edge_E18_to_C04
+  from: E18_physics_constrained_pdn_inverse
+  to: C04_inverse_crime_and_operator_gap
+  relation: supports
+  strength: medium
+  scope: "same-operator generated benchmark with unified baseline comparison"
+  caveat: "Same-operator inverse; no external solver or real measurement gap tested."
+  evidence_files:
+    - outputs/by_claim/C04_inverse_crime_operator_gap/PHYSICS_CONSTRAINED_PDN_INVERSE_EVIDENCE.md
+
+- id: edge_E18_limits_C10
+  from: E18_physics_constrained_pdn_inverse
+  to: C10_pdn_kcl_distribution_need
+  relation: limits
+  strength: strong
+  scope: "generated-domain physics-constrained inverse boundary"
+  caveat: "Dense-via recall is 0, deep-layer misallocation >0.3, KCL-RMSE tradeoff documented. Prototype scale (18 cases). Cannot claim real board PDN robustness."
+  evidence_files:
+    - outputs/by_claim/C10_pdn_kcl_distribution_need/PHYSICS_CONSTRAINED_PDN_INVERSE_EVIDENCE.md

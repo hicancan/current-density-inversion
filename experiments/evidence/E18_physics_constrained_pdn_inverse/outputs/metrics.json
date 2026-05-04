@@ -1,0 +1,912 @@
+{
+  "acceptance_gates": {
+    "cannot_claim_boundaries_documented": true,
+    "e18_dataset_generated_or_loaded": true,
+    "failure_cases_reported": true,
+    "four_layer_11_channel_outputs_present": true,
+    "kcl_residual_reported": true,
+    "layer_misallocation_reported": true,
+    "leaderboard_contains_required_baselines": true,
+    "new_inverse_runs_to_completion": true,
+    "new_method_matches_or_improves_vs_ridge": true,
+    "new_method_reduces_kcl_residual_vs_unconstrained": true,
+    "new_method_reduces_misallocation_vs_incorrect_two_layer": true,
+    "new_method_reduces_misallocation_vs_naive": true,
+    "new_method_reports_tradeoff_vs_best_b_residual_baseline": true,
+    "no_leakage_protocol_documented": true,
+    "physical_b_residual_reported": true,
+    "same_split_comparison_documented": true,
+    "via_metrics_reported": true
+  },
+  "aggregate_metrics": {
+    "graph_kcl_aware": {
+      "b_residual_rel": 0.9999999999950582,
+      "current_closure_error": 4.3465082275415056e-12,
+      "current_relative_l2": 0.9999999999999041,
+      "current_rmse": 0.013204909814785774,
+      "kcl_residual": 4.9203450854163426e-17,
+      "layer_misallocation": 0.21278251272531457,
+      "layer_wise_rmse": {
+        "L1": 2.4999999999997145,
+        "L2": 3.999999999999932,
+        "L3": 2.499999999999952,
+        "L4": 0.9999999999999994
+      },
+      "no_via_fp": 0.0,
+      "physical_b_residual": 8.114997842998716e-10,
+      "runtime_s": 0.18856385555530628,
+      "topology_residual": 4.9203450854163426e-17,
+      "via_f1": 0.0,
+      "via_precision": 0.0,
+      "via_recall": 0.0
+    },
+    "graph_kcl_differentiable_inverse": {
+      "b_residual_rel": 0.9999999999950602,
+      "current_closure_error": 4.346508227541467e-12,
+      "current_relative_l2": 0.9999999999999041,
+      "current_rmse": 0.013204909814785774,
+      "kcl_residual": 2.403585567828323e-19,
+      "layer_misallocation": 0.21278251273108384,
+      "layer_wise_rmse": {
+        "L1": 2.4999999999997145,
+        "L2": 3.999999999999933,
+        "L3": 2.499999999999952,
+        "L4": 0.9999999999999994
+      },
+      "no_via_fp": 0.0,
+      "physical_b_residual": 8.114997842998731e-10,
+      "runtime_s": 0.35397751666682276,
+      "topology_residual": 2.403585567828323e-19,
+      "via_f1": 0.0,
+      "via_precision": 0.0,
+      "via_recall": 0.0
+    },
+    "incorrect_two_layer": {
+      "b_residual_rel": 0.9999999999933549,
+      "current_closure_error": 2.2154084645358297e-12,
+      "current_relative_l2": 0.9999999999997606,
+      "current_rmse": 0.013204909814784624,
+      "kcl_residual": 1.3858969073287709e-13,
+      "layer_misallocation": 0.3038322143294842,
+      "layer_wise_rmse": {
+        "L1": 2.4999999999990914,
+        "L2": 0.6666666666666666,
+        "L3": 0.8333333333333334,
+        "L4": 1.0000000000000369
+      },
+      "no_via_fp": 0.0,
+      "physical_b_residual": 8.114997842984839e-10,
+      "runtime_s": 0.053071783332699046,
+      "topology_residual": 1.3858969073287709e-13,
+      "via_f1": 0.0,
+      "via_precision": 0.0,
+      "via_recall": 0.0
+    },
+    "naive_single_layer": {
+      "b_residual_rel": 0.9999999999936152,
+      "current_closure_error": 1.5881225566859262e-12,
+      "current_relative_l2": 0.9999999999997612,
+      "current_rmse": 0.013204909814784633,
+      "kcl_residual": 1.3733840398865735e-13,
+      "layer_misallocation": 0.31685471529857745,
+      "layer_wise_rmse": {
+        "L1": 2.4999999999990914,
+        "L2": 0.6666666666666666,
+        "L3": 0.8333333333333334,
+        "L4": 1.0
+      },
+      "no_via_fp": 0.0,
+      "physical_b_residual": 8.114997842987026e-10,
+      "runtime_s": 0.019955627777461713,
+      "topology_residual": 1.3733840398865735e-13,
+      "via_f1": 0.0,
+      "via_precision": 0.0,
+      "via_recall": 0.0
+    },
+    "ridge_least_squares": {
+      "b_residual_rel": 0.9999999999905052,
+      "current_closure_error": 4.346508227526515e-12,
+      "current_relative_l2": 0.9999999999997234,
+      "current_rmse": 0.013204909814784177,
+      "kcl_residual": 1.5886480340623458e-13,
+      "layer_misallocation": 0.21872823925026294,
+      "layer_wise_rmse": {
+        "L1": 2.4999999999990914,
+        "L2": 3.999999999999775,
+        "L3": 2.49999999999988,
+        "L4": 1.0000000000000369
+      },
+      "no_via_fp": 0.0,
+      "physical_b_residual": 8.11499784296102e-10,
+      "runtime_s": 0.15955538888920273,
+      "topology_residual": 1.5886480340623458e-13,
+      "via_f1": 0.0,
+      "via_precision": 0.0,
+      "via_recall": 0.0
+    }
+  },
+  "all_acceptance_gates_passed": true,
+  "baseline_names": [
+    "naive_single_layer",
+    "incorrect_two_layer",
+    "ridge_least_squares",
+    "graph_kcl_aware"
+  ],
+  "cannot_claim": [
+    "real QDM/NV validation",
+    "real CAD/Gerber/GDS validation",
+    "external FEM/FastHenry/COMSOL validation",
+    "real multilayer PCB/PDN recovery",
+    "real hardware via-chain sensitivity",
+    "generated benchmark transfers to real hardware",
+    "graph/KCL/differentiable inverse universally outperforms all baselines",
+    "L1-curl literature method has been beaten unless exact reproduction is implemented",
+    "mechanism-level correctness without mechanism labels"
+  ],
+  "case_count": 18,
+  "claim_id": "C10_pdn_kcl_distribution_need",
+  "evidence_id": "E18_physics_constrained_pdn_inverse",
+  "failure_cases": [
+    {
+      "detail": "Via recall 0.000 < 0.5 on dense-via cases",
+      "family": "dense_via_cluster",
+      "type": "dense_via_low_recall"
+    },
+    {
+      "detail": "Layer misallocation 0.424 > 0.3 on deep-layer cases",
+      "family": "deep_layer_only",
+      "type": "deep_layer_misallocation"
+    },
+    {
+      "detail": "New method has higher current RMSE than ridge on return-grid cases",
+      "family": "return_grid_bottleneck",
+      "type": "return_grid_ambiguity"
+    },
+    {
+      "detail": "KCL residual improves but overall current RMSE is worse than ridge",
+      "family": "aggregate",
+      "type": "kcl_improves_but_rmse_worsens"
+    }
+  ],
+  "family_count": 6,
+  "family_metrics": {
+    "graph_kcl_aware": {
+      "deep_layer_only": {
+        "b_residual_rel": 0.9999999999868532,
+        "current_closure_error": 1.0216639511463898e-11,
+        "current_relative_l2": 0.9999999999999188,
+        "current_rmse": 0.0060940889405009776,
+        "kcl_residual": 2.8385150638996336e-17,
+        "layer_misallocation": 0.42370146366251155,
+        "layer_wise_rmse": {
+          "L1": 10.0,
+          "L2": 10.0,
+          "L3": 0.9999999999999184,
+          "L4": 0.9999999999999195
+        },
+        "no_via_fp": 0.0,
+        "physical_b_residual": 3.337547246026303e-10,
+        "topology_residual": 2.8385150638996336e-17,
+        "via_f1": 0.0,
+        "via_precision": 0.0,
+        "via_recall": 0.0
+      },
+      "dense_via_cluster": {
+        "b_residual_rel": 0.999999999995695,
+        "current_closure_error": 4.666231496898785e-12,
+        "current_relative_l2": 0.999999999999977,
+        "current_rmse": 0.024676474295132787,
+        "kcl_residual": 6.840613574627106e-17,
+        "layer_misallocation": 0.1477591618117887,
+        "layer_wise_rmse": {
+          "L1": 0.9999999999996411,
+          "L2": 0.9999999999998197,
+          "L3": 0.9999999999998815,
+          "L4": 1.0000000000000508
+        },
+        "no_via_fp": 0.0,
+        "physical_b_residual": 1.131777202008478e-09,
+        "topology_residual": 6.840613574627106e-17,
+        "via_f1": 0.0,
+        "via_precision": 0.0,
+        "via_recall": 0.0
+      },
+      "layer_misallocation_trap": {
+        "b_residual_rel": 0.9999999999971733,
+        "current_closure_error": 2.485472648813341e-12,
+        "current_relative_l2": 0.9999999999997177,
+        "current_rmse": 0.00547638010004121,
+        "kcl_residual": 4.512249236129537e-17,
+        "layer_misallocation": 0.13406440154366298,
+        "layer_wise_rmse": {
+          "L1": 0.9999999999995963,
+          "L2": 10.0,
+          "L3": 10.0,
+          "L4": 1.0000000000000286
+        },
+        "no_via_fp": 0.0,
+        "physical_b_residual": 7.886538148233406e-10,
+        "topology_residual": 4.512249236129537e-17,
+        "via_f1": 0.0,
+        "via_precision": 0.0,
+        "via_recall": 0.0
+      },
+      "no_via_hard_negative": {
+        "b_residual_rel": 0.9999999999971211,
+        "current_closure_error": 1.6210522422758813e-12,
+        "current_relative_l2": 0.999999999999886,
+        "current_rmse": 0.008124295278372967,
+        "kcl_residual": 2.8547953222175863e-17,
+        "layer_misallocation": 0.19548510301642708,
+        "layer_wise_rmse": {
+          "L1": 0.9999999999997181,
+          "L2": 1.0000000000000069,
+          "L3": 0.9999999999999366,
+          "L4": 1.0000000000000047
+        },
+        "no_via_fp": 0.0,
+        "physical_b_residual": 6.676868946666781e-10,
+        "topology_residual": 2.8547953222175863e-17,
+        "via_f1": 0.0,
+        "via_precision": 0.0,
+        "via_recall": 0.0
+      },
+      "nominal_via_chain": {
+        "b_residual_rel": 0.999999999995691,
+        "current_closure_error": 5.591497606389395e-12,
+        "current_relative_l2": 0.9999999999999458,
+        "current_rmse": 0.01857054323235392,
+        "kcl_residual": 8.010525643412683e-17,
+        "layer_misallocation": 0.17041326212703942,
+        "layer_wise_rmse": {
+          "L1": 0.9999999999995612,
+          "L2": 0.9999999999997974,
+          "L3": 0.9999999999999721,
+          "L4": 0.9999999999999917
+        },
+        "no_via_fp": 0.0,
+        "physical_b_residual": 1.224052297018432e-09,
+        "topology_residual": 8.010525643412683e-17,
+        "via_f1": 0.0,
+        "via_precision": 0.0,
+        "via_recall": 0.0
+      },
+      "return_grid_bottleneck": {
+        "b_residual_rel": 0.9999999999978156,
+        "current_closure_error": 1.4981558594077307e-12,
+        "current_relative_l2": 0.9999999999999778,
+        "current_rmse": 0.01628767704231279,
+        "kcl_residual": 4.46537167221151e-17,
+        "layer_misallocation": 0.20527168419045783,
+        "layer_wise_rmse": {
+          "L1": 0.9999999999997696,
+          "L2": 0.9999999999999712,
+          "L3": 1.0000000000000047,
+          "L4": 0.9999999999999999
+        },
+        "no_via_fp": 0.0,
+        "physical_b_residual": 7.230737726796706e-10,
+        "topology_residual": 4.46537167221151e-17,
+        "via_f1": 0.0,
+        "via_precision": 0.0,
+        "via_recall": 0.0
+      }
+    },
+    "graph_kcl_differentiable_inverse": {
+      "deep_layer_only": {
+        "b_residual_rel": 0.9999999999868566,
+        "current_closure_error": 1.0216639511463853e-11,
+        "current_relative_l2": 0.9999999999999188,
+        "current_rmse": 0.0060940889405009776,
+        "kcl_residual": 1.423162972363996e-19,
+        "layer_misallocation": 0.42370145542043275,
+        "layer_wise_rmse": {
+          "L1": 10.0,
+          "L2": 10.0,
+          "L3": 0.9999999999999184,
+          "L4": 0.9999999999999195
+        },
+        "no_via_fp": 0.0,
+        "physical_b_residual": 3.3375472460263145e-10,
+        "topology_residual": 1.423162972363996e-19,
+        "via_f1": 0.0,
+        "via_precision": 0.0,
+        "via_recall": 0.0
+      },
+      "dense_via_cluster": {
+        "b_residual_rel": 0.9999999999956968,
+        "current_closure_error": 4.666231496898703e-12,
+        "current_relative_l2": 0.9999999999999772,
+        "current_rmse": 0.024676474295132787,
+        "kcl_residual": 3.357880879742191e-19,
+        "layer_misallocation": 0.14775915864757402,
+        "layer_wise_rmse": {
+          "L1": 0.9999999999996412,
+          "L2": 0.9999999999998198,
+          "L3": 0.9999999999998818,
+          "L4": 1.0000000000000508
+        },
+        "no_via_fp": 0.0,
+        "physical_b_residual": 1.1317772020084799e-09,
+        "topology_residual": 3.357880879742191e-19,
+        "via_f1": 0.0,
+        "via_precision": 0.0,
+        "via_recall": 0.0
+      },
+      "layer_misallocation_trap": {
+        "b_residual_rel": 0.999999999997175,
+        "current_closure_error": 2.4854726488133143e-12,
+        "current_relative_l2": 0.9999999999997179,
+        "current_rmse": 0.005476380100041211,
+        "kcl_residual": 2.1672241752210472e-19,
+        "layer_misallocation": 0.13406440173092327,
+        "layer_wise_rmse": {
+          "L1": 0.9999999999995964,
+          "L2": 10.0,
+          "L3": 10.0,
+          "L4": 1.0000000000000286
+        },
+        "no_via_fp": 0.0,
+        "physical_b_residual": 7.886538148233418e-10,
+        "topology_residual": 2.1672241752210472e-19,
+        "via_f1": 0.0,
+        "via_precision": 0.0,
+        "via_recall": 0.0
+      },
+      "no_via_hard_negative": {
+        "b_residual_rel": 0.9999999999971219,
+        "current_closure_error": 1.6210522422758593e-12,
+        "current_relative_l2": 0.999999999999886,
+        "current_rmse": 0.008124295278372967,
+        "kcl_residual": 1.33993978131834e-19,
+        "layer_misallocation": 0.1954851050459054,
+        "layer_wise_rmse": {
+          "L1": 0.9999999999997184,
+          "L2": 1.0000000000000067,
+          "L3": 0.9999999999999366,
+          "L4": 1.0000000000000047
+        },
+        "no_via_fp": 0.0,
+        "physical_b_residual": 6.676868946666786e-10,
+        "topology_residual": 1.33993978131834e-19,
+        "via_f1": 0.0,
+        "via_precision": 0.0,
+        "via_recall": 0.0
+      },
+      "nominal_via_chain": {
+        "b_residual_rel": 0.9999999999956929,
+        "current_closure_error": 5.5914976063893615e-12,
+        "current_relative_l2": 0.9999999999999458,
+        "current_rmse": 0.01857054323235392,
+        "kcl_residual": 3.934526147545729e-19,
+        "layer_misallocation": 0.17041326395719705,
+        "layer_wise_rmse": {
+          "L1": 0.9999999999995616,
+          "L2": 0.9999999999997975,
+          "L3": 0.999999999999972,
+          "L4": 0.9999999999999917
+        },
+        "no_via_fp": 0.0,
+        "physical_b_residual": 1.2240522970184348e-09,
+        "topology_residual": 3.934526147545729e-19,
+        "via_f1": 0.0,
+        "via_precision": 0.0,
+        "via_recall": 0.0
+      },
+      "return_grid_bottleneck": {
+        "b_residual_rel": 0.9999999999978173,
+        "current_closure_error": 1.4981558594077107e-12,
+        "current_relative_l2": 0.9999999999999778,
+        "current_rmse": 0.01628767704231279,
+        "kcl_residual": 2.198779450778637e-19,
+        "layer_misallocation": 0.20527169158447067,
+        "layer_wise_rmse": {
+          "L1": 0.9999999999997699,
+          "L2": 0.9999999999999712,
+          "L3": 1.0000000000000047,
+          "L4": 0.9999999999999999
+        },
+        "no_via_fp": 0.0,
+        "physical_b_residual": 7.23073772679672e-10,
+        "topology_residual": 2.198779450778637e-19,
+        "via_f1": 0.0,
+        "via_precision": 0.0,
+        "via_recall": 0.0
+      }
+    },
+    "incorrect_two_layer": {
+      "deep_layer_only": {
+        "b_residual_rel": 0.9999999999868573,
+        "current_closure_error": 5.2063203620428015e-12,
+        "current_relative_l2": 0.999999999999951,
+        "current_rmse": 0.006094088940501191,
+        "kcl_residual": 6.161726723074428e-14,
+        "layer_misallocation": 0.4728551743293446,
+        "layer_wise_rmse": {
+          "L1": 10.0,
+          "L2": 0.0,
+          "L3": 1.0,
+          "L4": 0.9999999999998802
+        },
+        "no_via_fp": 0.0,
+        "physical_b_residual": 3.337547246041996e-10,
+        "topology_residual": 6.161726723074428e-14,
+        "via_f1": 0.0,
+        "via_precision": 0.0,
+        "via_recall": 0.0
+      },
+      "dense_via_cluster": {
+        "b_residual_rel": 0.9999999999936876,
+        "current_closure_error": 2.3484517913167325e-12,
+        "current_relative_l2": 0.9999999999999525,
+        "current_rmse": 0.024676474295132127,
+        "kcl_residual": 1.906352087106193e-13,
+        "layer_misallocation": 0.30147349714465127,
+        "layer_wise_rmse": {
+          "L1": 0.9999999999988104,
+          "L2": 1.0,
+          "L3": 1.0,
+          "L4": 1.0000000000001428
+        },
+        "no_via_fp": 0.0,
+        "physical_b_residual": 1.1317772020063571e-09,
+        "topology_residual": 1.906352087106193e-13,
+        "via_f1": 0.0,
+        "via_precision": 0.0,
+        "via_recall": 0.0
+      },
+      "layer_misallocation_trap": {
+        "b_residual_rel": 0.9999999999946007,
+        "current_closure_error": 1.2734186695203956e-12,
+        "current_relative_l2": 0.9999999999991411,
+        "current_rmse": 0.005476380100038275,
+        "kcl_residual": 1.3818759619421879e-13,
+        "layer_misallocation": 0.1324704473790225,
+        "layer_wise_rmse": {
+          "L1": 0.9999999999987507,
+          "L2": 0.0,
+          "L3": 0.0,
+          "L4": 1.0000000000001406
+        },
+        "no_via_fp": 0.0,
+        "physical_b_residual": 7.8865381482133e-10,
+        "topology_residual": 1.3818759619421879e-13,
+        "via_f1": 0.0,
+        "via_precision": 0.0,
+        "via_recall": 0.0
+      },
+      "no_via_hard_negative": {
+        "b_residual_rel": 0.9999999999957292,
+        "current_closure_error": 7.999013338833742e-13,
+        "current_relative_l2": 0.9999999999997149,
+        "current_rmse": 0.00812429527837164,
+        "kcl_residual": 1.126198950569122e-13,
+        "layer_misallocation": 0.30815553645784943,
+        "layer_wise_rmse": {
+          "L1": 0.9999999999992198,
+          "L2": 1.0,
+          "L3": 1.0,
+          "L4": 1.0000000000000122
+        },
+        "no_via_fp": 0.0,
+        "physical_b_residual": 6.676868946657343e-10,
+        "topology_residual": 1.126198950569122e-13,
+        "via_f1": 0.0,
+        "via_precision": 0.0,
+        "via_recall": 0.0
+      },
+      "nominal_via_chain": {
+        "b_residual_rel": 0.9999999999936823,
+        "current_closure_error": 2.8874639204255197e-12,
+        "current_relative_l2": 0.9999999999998743,
+        "current_rmse": 0.01857054323235258,
+        "kcl_residual": 2.1345885998961004e-13,
+        "layer_misallocation": 0.30239589944176476,
+        "layer_wise_rmse": {
+          "L1": 0.9999999999985687,
+          "L2": 1.0,
+          "L3": 1.0,
+          "L4": 1.0000000000000204
+        },
+        "no_via_fp": 0.0,
+        "physical_b_residual": 1.2240522970156242e-09,
+        "topology_residual": 2.1345885998961004e-13,
+        "via_f1": 0.0,
+        "via_precision": 0.0,
+        "via_recall": 0.0
+      },
+      "return_grid_bottleneck": {
+        "b_residual_rel": 0.999999999995572,
+        "current_closure_error": 7.768947100261533e-13,
+        "current_relative_l2": 0.9999999999999295,
+        "current_rmse": 0.01628767704231193,
+        "kcl_residual": 1.1501931721515793e-13,
+        "layer_misallocation": 0.3056427312242728,
+        "layer_wise_rmse": {
+          "L1": 0.9999999999991988,
+          "L2": 1.0,
+          "L3": 1.0,
+          "L4": 1.000000000000025
+        },
+        "no_via_fp": 0.0,
+        "physical_b_residual": 7.230737726776585e-10,
+        "topology_residual": 1.1501931721515793e-13,
+        "via_f1": 0.0,
+        "via_precision": 0.0,
+        "via_recall": 0.0
+      }
+    },
+    "naive_single_layer": {
+      "deep_layer_only": {
+        "b_residual_rel": 0.9999999999877782,
+        "current_closure_error": 3.706999529595395e-12,
+        "current_relative_l2": 1.0,
+        "current_rmse": 0.006094088940501539,
+        "kcl_residual": 6.04016799742243e-14,
+        "layer_misallocation": 0.5,
+        "layer_wise_rmse": {
+          "L1": 10.0,
+          "L2": 0.0,
+          "L3": 1.0,
+          "L4": 1.0
+        },
+        "no_via_fp": 0.0,
+        "physical_b_residual": 3.3375472460479365e-10,
+        "topology_residual": 6.04016799742243e-14,
+        "via_f1": 0.0,
+        "via_precision": 0.0,
+        "via_recall": 0.0
+      },
+      "dense_via_cluster": {
+        "b_residual_rel": 0.9999999999938715,
+        "current_closure_error": 1.7267038257954124e-12,
+        "current_relative_l2": 0.9999999999999502,
+        "current_rmse": 0.02467647429513205,
+        "kcl_residual": 1.8928841114024893e-13,
+        "layer_misallocation": 0.31609195402298845,
+        "layer_wise_rmse": {
+          "L1": 0.9999999999988104,
+          "L2": 1.0,
+          "L3": 1.0,
+          "L4": 1.0
+        },
+        "no_via_fp": 0.0,
+        "physical_b_residual": 1.1317772020065844e-09,
+        "topology_residual": 1.8928841114024893e-13,
+        "via_f1": 0.0,
+        "via_precision": 0.0,
+        "via_recall": 0.0
+      },
+      "layer_misallocation_trap": {
+        "b_residual_rel": 0.9999999999946869,
+        "current_closure_error": 8.873851956346832e-13,
+        "current_relative_l2": 0.9999999999991016,
+        "current_rmse": 0.005476380100038092,
+        "kcl_residual": 1.3718324465621704e-13,
+        "layer_misallocation": 0.14044943820224717,
+        "layer_wise_rmse": {
+          "L1": 0.9999999999987507,
+          "L2": 0.0,
+          "L3": 0.0,
+          "L4": 1.0
+        },
+        "no_via_fp": 0.0,
+        "physical_b_residual": 7.886538148213964e-10,
+        "topology_residual": 1.3718324465621704e-13,
+        "via_f1": 0.0,
+        "via_precision": 0.0,
+        "via_recall": 0.0
+      },
+      "no_via_hard_negative": {
+        "b_residual_rel": 0.9999999999958068,
+        "current_closure_error": 5.886260992414608e-13,
+        "current_relative_l2": 0.9999999999997131,
+        "current_rmse": 0.00812429527837162,
+        "kcl_residual": 1.1204465976403583e-13,
+        "layer_misallocation": 0.31609195402298845,
+        "layer_wise_rmse": {
+          "L1": 0.9999999999992198,
+          "L2": 1.0,
+          "L3": 1.0,
+          "L4": 1.0
+        },
+        "no_via_fp": 0.0,
+        "physical_b_residual": 6.67686894665793e-10,
+        "topology_residual": 1.1204465976403583e-13,
+        "via_f1": 0.0,
+        "via_precision": 0.0,
+        "via_recall": 0.0
+      },
+      "nominal_via_chain": {
+        "b_residual_rel": 0.9999999999939035,
+        "current_closure_error": 2.0544071599521927e-12,
+        "current_relative_l2": 0.9999999999998738,
+        "current_rmse": 0.01857054323235256,
+        "kcl_residual": 2.1127431549384495e-13,
+        "layer_misallocation": 0.3160919540229885,
+        "layer_wise_rmse": {
+          "L1": 0.9999999999985687,
+          "L2": 1.0,
+          "L3": 1.0,
+          "L4": 1.0
+        },
+        "no_via_fp": 0.0,
+        "physical_b_residual": 1.2240522970159218e-09,
+        "topology_residual": 2.1127431549384495e-13,
+        "via_f1": 0.0,
+        "via_precision": 0.0,
+        "via_recall": 0.0
+      },
+      "return_grid_bottleneck": {
+        "b_residual_rel": 0.9999999999956443,
+        "current_closure_error": 5.646135298964121e-13,
+        "current_relative_l2": 0.999999999999929,
+        "current_rmse": 0.01628767704231193,
+        "kcl_residual": 1.1383811290337318e-13,
+        "layer_misallocation": 0.312402991520252,
+        "layer_wise_rmse": {
+          "L1": 0.9999999999991988,
+          "L2": 1.0,
+          "L3": 1.0,
+          "L4": 1.0
+        },
+        "no_via_fp": 0.0,
+        "physical_b_residual": 7.230737726777268e-10,
+        "topology_residual": 1.1383811290337318e-13,
+        "via_f1": 0.0,
+        "via_precision": 0.0,
+        "via_recall": 0.0
+      }
+    },
+    "ridge_least_squares": {
+      "deep_layer_only": {
+        "b_residual_rel": 0.9999999999792708,
+        "current_closure_error": 1.021663951142828e-11,
+        "current_relative_l2": 0.9999999999998375,
+        "current_rmse": 0.0060940889405004224,
+        "kcl_residual": 7.558821992683902e-14,
+        "layer_misallocation": 0.43742116786129587,
+        "layer_wise_rmse": {
+          "L1": 10.0,
+          "L2": 10.0,
+          "L3": 0.9999999999998076,
+          "L4": 0.9999999999998802
+        },
+        "no_via_fp": 0.0,
+        "physical_b_residual": 3.337547246000123e-10,
+        "topology_residual": 7.558821992683902e-14,
+        "via_f1": 0.0,
+        "via_precision": 0.0,
+        "via_recall": 0.0
+      },
+      "dense_via_cluster": {
+        "b_residual_rel": 0.9999999999912242,
+        "current_closure_error": 4.666231496844589e-12,
+        "current_relative_l2": 0.9999999999999245,
+        "current_rmse": 0.024676474295131364,
+        "kcl_residual": 2.1660940670986454e-13,
+        "layer_misallocation": 0.16537359112667158,
+        "layer_wise_rmse": {
+          "L1": 0.9999999999988104,
+          "L2": 0.9999999999993836,
+          "L3": 0.9999999999996599,
+          "L4": 1.0000000000001428
+        },
+        "no_via_fp": 0.0,
+        "physical_b_residual": 1.1317772020034214e-09,
+        "topology_residual": 2.1660940670986454e-13,
+        "via_f1": 0.0,
+        "via_precision": 0.0,
+        "via_recall": 0.0
+      },
+      "layer_misallocation_trap": {
+        "b_residual_rel": 0.9999999999928808,
+        "current_closure_error": 2.485472648818894e-12,
+        "current_relative_l2": 0.9999999999991411,
+        "current_rmse": 0.005476380100038275,
+        "kcl_residual": 1.5665907456012147e-13,
+        "layer_misallocation": 0.13440288358574448,
+        "layer_wise_rmse": {
+          "L1": 0.9999999999987507,
+          "L2": 10.0,
+          "L3": 10.0,
+          "L4": 1.0000000000001406
+        },
+        "no_via_fp": 0.0,
+        "physical_b_residual": 7.886538148199943e-10,
+        "topology_residual": 1.5665907456012147e-13,
+        "via_f1": 0.0,
+        "via_precision": 0.0,
+        "via_recall": 0.0
+      },
+      "no_via_hard_negative": {
+        "b_residual_rel": 0.9999999999944215,
+        "current_closure_error": 1.6210522422477228e-12,
+        "current_relative_l2": 0.9999999999996857,
+        "current_rmse": 0.008124295278371498,
+        "kcl_residual": 1.2590303076909932e-13,
+        "layer_misallocation": 0.19802973418846406,
+        "layer_wise_rmse": {
+          "L1": 0.9999999999992198,
+          "L2": 1.0000000000000269,
+          "L3": 0.9999999999998227,
+          "L4": 1.0000000000000122
+        },
+        "no_via_fp": 0.0,
+        "physical_b_residual": 6.676868946647913e-10,
+        "topology_residual": 1.2590303076909932e-13,
+        "via_f1": 0.0,
+        "via_precision": 0.0,
+        "via_recall": 0.0
+      },
+      "nominal_via_chain": {
+        "b_residual_rel": 0.9999999999910925,
+        "current_closure_error": 5.591497606410206e-12,
+        "current_relative_l2": 0.9999999999998272,
+        "current_rmse": 0.018570543232351636,
+        "kcl_residual": 2.462338627353548e-13,
+        "layer_misallocation": 0.17682743870918435,
+        "layer_wise_rmse": {
+          "L1": 0.9999999999985687,
+          "L2": 0.9999999999993671,
+          "L3": 0.9999999999999126,
+          "L4": 1.0000000000000204
+        },
+        "no_via_fp": 0.0,
+        "physical_b_residual": 1.2240522970120704e-09,
+        "topology_residual": 2.462338627353548e-13,
+        "via_f1": 0.0,
+        "via_precision": 0.0,
+        "via_recall": 0.0
+      },
+      "return_grid_bottleneck": {
+        "b_residual_rel": 0.9999999999941417,
+        "current_closure_error": 1.4981558594094004e-12,
+        "current_relative_l2": 0.9999999999999245,
+        "current_rmse": 0.016287677042311852,
+        "kcl_residual": 1.321952257361283e-13,
+        "layer_misallocation": 0.20031462003021736,
+        "layer_wise_rmse": {
+          "L1": 0.9999999999991988,
+          "L2": 0.9999999999998699,
+          "L3": 1.000000000000077,
+          "L4": 1.000000000000025
+        },
+        "no_via_fp": 0.0,
+        "physical_b_residual": 7.230737726763216e-10,
+        "topology_residual": 1.321952257361283e-13,
+        "via_f1": 0.0,
+        "via_precision": 0.0,
+        "via_recall": 0.0
+      }
+    }
+  },
+  "generated_at": "2026-05-04T10:08:45Z",
+  "improvement_ratios": {
+    "graph_kcl_aware": {
+      "b_residual_rel": 1.000000000000002,
+      "current_rmse": 1.0,
+      "kcl_residual": 0.004884993889864414,
+      "layer_misallocation": 1.0000000000271134
+    },
+    "incorrect_two_layer": {
+      "b_residual_rel": 1.0000000000017053,
+      "current_rmse": 1.000000000000087,
+      "kcl_residual": 1.7343177224206982e-06,
+      "layer_misallocation": 0.7003290062598052
+    },
+    "naive_single_layer": {
+      "b_residual_rel": 1.000000000001445,
+      "current_rmse": 1.0000000000000864,
+      "kcl_residual": 1.7501190475657726e-06,
+      "layer_misallocation": 0.6715459876637005
+    },
+    "ridge_least_squares": {
+      "b_residual_rel": 1.000000000004555,
+      "current_rmse": 1.000000000000121,
+      "kcl_residual": 1.5129755089187966e-06,
+      "layer_misallocation": 0.9728168317929164
+    }
+  },
+  "leaderboard": [
+    {
+      "b_residual_rel": 0.9999999999936152,
+      "closure_error": 1.5881225566859262e-12,
+      "current_rmse": 0.013204909814784633,
+      "kcl_residual": 1.3733840398865735e-13,
+      "layer_misallocation": 0.31685471529857745,
+      "method": "naive_single_layer",
+      "no_via_fp": 0.0,
+      "rank": 1,
+      "runtime_s": 0.019955627777461713,
+      "via_f1": 0.0
+    },
+    {
+      "b_residual_rel": 0.9999999999933549,
+      "closure_error": 2.2154084645358297e-12,
+      "current_rmse": 0.013204909814784624,
+      "kcl_residual": 1.3858969073287709e-13,
+      "layer_misallocation": 0.3038322143294842,
+      "method": "incorrect_two_layer",
+      "no_via_fp": 0.0,
+      "rank": 2,
+      "runtime_s": 0.053071783332699046,
+      "via_f1": 0.0
+    },
+    {
+      "b_residual_rel": 0.9999999999905052,
+      "closure_error": 4.346508227526515e-12,
+      "current_rmse": 0.013204909814784177,
+      "kcl_residual": 1.5886480340623458e-13,
+      "layer_misallocation": 0.21872823925026294,
+      "method": "ridge_least_squares",
+      "no_via_fp": 0.0,
+      "rank": 3,
+      "runtime_s": 0.15955538888920273,
+      "via_f1": 0.0
+    },
+    {
+      "b_residual_rel": 0.9999999999950582,
+      "closure_error": 4.3465082275415056e-12,
+      "current_rmse": 0.013204909814785774,
+      "kcl_residual": 4.9203450854163426e-17,
+      "layer_misallocation": 0.21278251272531457,
+      "method": "graph_kcl_aware",
+      "no_via_fp": 0.0,
+      "rank": 4,
+      "runtime_s": 0.18856385555530628,
+      "via_f1": 0.0
+    },
+    {
+      "b_residual_rel": 0.9999999999950602,
+      "closure_error": 4.346508227541467e-12,
+      "current_rmse": 0.013204909814785774,
+      "kcl_residual": 2.403585567828323e-19,
+      "layer_misallocation": 0.21278251273108384,
+      "method": "graph_kcl_differentiable_inverse",
+      "no_via_fp": 0.0,
+      "rank": 5,
+      "runtime_s": 0.35397751666682276,
+      "via_f1": 0.0
+    }
+  ],
+  "leakage_audit": {
+    "calibration_rows": [],
+    "calibration_source": "No calibration rows used for threshold or model selection.",
+    "heldout_rows": [
+      "heldout"
+    ],
+    "heldout_rows_explicitly_calibration": false,
+    "hidden_rows": [],
+    "model_selection_rows": [],
+    "model_selection_source": "not_applicable",
+    "no_hidden_heldout_leakage": true,
+    "proxy_fallback_used": false,
+    "pypeec_stress_rows_used_for_training": false,
+    "same_split_comparison": true,
+    "threshold_selection_rows": [],
+    "thresholds_source": "none"
+  },
+  "method_names": [
+    "naive_single_layer",
+    "incorrect_two_layer",
+    "ridge_least_squares",
+    "graph_kcl_aware",
+    "graph_kcl_differentiable_inverse"
+  ],
+  "run_audit": {
+    "audit_date": "2026-05-04",
+    "fresh_full_run_completed": true,
+    "mode": "full_run",
+    "run_command": "uv run --with-requirements requirements.txt python src/run_all.py --config configs/default.json --out outputs",
+    "smoke_or_test_only": false,
+    "total_runtime_s": 14.482306099998823
+  },
+  "schema_version": "research-ssot-metrics-v1",
+  "secondary_claims": [
+    "C06_graph_hypothesis_system_identification",
+    "C02_single_plane_identifiability_boundary",
+    "C04_inverse_crime_and_operator_gap"
+  ],
+  "status": "passed"
+}

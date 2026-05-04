@@ -33,3 +33,10 @@ Do not claim:
     devices, real CAD/GDS layouts, or external solvers.
 24. The differentiable forward being a linear FFT operator guarantees correct
     gradient-based optimization under real measurement noise.
+25. The physics-constrained differentiable inverse (E18) universally outperforms
+    all baselines; dense-via recall is 0 and deep-layer misallocation >0.3.
+26. KCL residual improvement from constrained optimization proves current
+    accuracy improvement; KCL-RMSE tradeoff is documented.
+27. A generated-domain unified leaderboard proves real-hardware ranking.
+28. Warm-started L-BFGS-B with post-projection is optimal; hyperparameters
+    are tuned on the generated distribution only.

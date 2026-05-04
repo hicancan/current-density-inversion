@@ -427,3 +427,29 @@ E16_differentiable_forward_layer:
   result_summary: "FFT-domain differentiable Biot-Savart forward layer supports 2D sheet Jx/Jy -> Bx/By/Bz and via source/sink s_l -> Bx/By with numpy reference and optional torch autograd path. All acceptance gates pass."
   status: passed
   last_run: "2026-05-04"
+
+E18_physics_constrained_pdn_inverse:
+  title: "Physics-constrained multilayer PDN inverse with unified baseline leaderboard"
+  claim: C10_pdn_kcl_distribution_need
+  secondary_claims: [C06_graph_hypothesis_system_identification, C02_single_plane_identifiability_boundary, C04_inverse_crime_and_operator_gap]
+  data: [D11_chip_like_generated_pdn_family]
+  physics: [P01_biot_savart_maxwell_forward, P04_divJ_source_sink_consistency, P05_kcl_node_conservation, P07_current_closure_loop]
+  forward: [F02_centerline_biot_savart]
+  observation: [O01_ideal_Bxyz]
+  representation: [R01_pixel_current_map, R02_layer_current_plus_via_source_sink, R06_pdn_circuit_graph]
+  algorithm: [A04_hypothesis_scorer, A08_differentiable_forward_optimization]
+  protocol: [S02_variant_heldout, S11_no_leakage_calibration_heldout]
+  metrics: [M01_field_l2_or_rmse, M02_current_l2_or_rmse, M03_topology_residual, M04_kcl_residual, M06_h0_false_any, M07_h1_recall, M16_predicted_kcl_residual, M17_predicted_current_closure_error]
+  outputs:
+    - outputs/by_claim/C10_pdn_kcl_distribution_need/PHYSICS_CONSTRAINED_PDN_INVERSE_EVIDENCE.md
+    - outputs/by_claim/C06_graph_hypothesis_system_id/PHYSICS_CONSTRAINED_PDN_INVERSE_EVIDENCE.md
+    - outputs/by_claim/C04_inverse_crime_operator_gap/PHYSICS_CONSTRAINED_PDN_INVERSE_EVIDENCE.md
+  runtime:
+    package_dir: experiments/evidence/E18_physics_constrained_pdn_inverse
+    run_command: "uv run --with-requirements requirements.txt python src/run_all.py --config configs/default.json --out outputs"
+    test_command: "uv run --with-requirements requirements.txt --with pytest python -m pytest -q tests"
+    metrics_files:
+      - experiments/evidence/E18_physics_constrained_pdn_inverse/outputs/metrics.json
+  result_summary: "Physics-constrained multilayer PDN inverse (warm-started constrained ridge + L-BFGS-B composite loss + KCL post-projection) vs 4 baselines on generated 4-layer via-chain benchmark (18 cases, 6 families). New method reduces KCL residual vs unconstrained and matches graph_kcl_aware on misallocation. Honest failures: dense-via recall 0, deep-layer misallocation >0.3, KCL-RMSE tradeoff. Prototype/generated-domain evidence."
+  status: passed
+  last_run: "2026-05-04"
