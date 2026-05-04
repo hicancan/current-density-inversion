@@ -1,0 +1,21 @@
+{
+  "seed": 20260504,
+  "grid_size": 16,
+  "sensor_fov": 1.4,
+  "heights": [0.35, 0.55, 0.75],
+  "n_states_list": [1, 2, 4],
+  "component_modes": ["Bz", "Bxy", "Bxyz"],
+  "layer_z": {"L1_route": -0.1, "L2_route": -0.2, "L0_return": -0.3},
+  "effective_rank_threshold": 1e-6,
+  "n_segments_per_case": 16,
+  "n_cases": 40,
+  "test_split_ratio": 0.5,
+  "separability_margin_threshold": 0.05,
+  "via_auc_threshold": 0.85,
+  "layer_misallocation_threshold": 0.20,
+  "return_confusion_threshold": 0.15,
+  "condition_number_improvement_ratio": 0.9,
+  "margin_improvement_ratio": 0.95,
+  "rank_not_worse_tolerance": 0.95
+}
+

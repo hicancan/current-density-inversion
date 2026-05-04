@@ -296,6 +296,56 @@ Next required evidence:
   solvers.
 - add mechanism labels and accepted-row mechanism audits.
 
+## 2026-05-04 - Multi-height multi-state observability evidence
+
+Claim affected:
+- C02_single_plane_identifiability_boundary
+- C06_graph_hypothesis_system_identification
+
+Change type:
+- new evidence package E13_multi_height_multistate_observability added
+- observability nodes O08 (multi-height) and O09 (multi-state) status upgraded
+- C02 and C06 supported_by updated with E13
+- evidence edges registered (E13->C02 supports+limits, E13->C06 supports+limits)
+
+Files changed:
+- `experiments/evidence/E13_multi_height_multistate_observability/`
+- `outputs/by_claim/C02_identifiability_boundary/`
+- `outputs/by_claim/C06_graph_hypothesis_system_id/`
+- `research_graph/`
+
+Evidence:
+- `E13_multi_height_multistate_observability` evaluates 27 configurations across
+  3 heights, 3 state counts, 3 component modes, and 2 graph-prior settings on
+  40 generated two-layer route/via/return cases. Effective rank is stable across
+  heights (~10), multi-state excitation improves hypothesis margin, Bxyz matches
+  Bz, and graph prior reduces layer misallocation (~1.4x).
+
+Metrics:
+- Case count: 40, Configurations: 27
+- All 6 acceptance gates passed.
+- Effective rank: stable at ~10 across heights
+- Graph prior layer error reduction: ~1.4x
+
+Claim status before:
+- C02: supported by E02, E03.
+- C06: supported by E08, E12.
+
+Claim status after:
+- C02: supported by E02, E03, E13.
+- C06: supported by E08, E12, E13.
+
+Cannot claim:
+- arbitrary real multilayer recovery from multi-height observations
+- real QDM/NV validation
+- hardware-feasible active measurement
+- generated-domain graph prior proves real CAD/GDS graph inference
+
+Next required evidence:
+- validate multi-height/multi-state observability with real measurement or
+  external solver held-out rows.
+- replace generated graph families with CAD/Gerber/GDS-derived graph candidates.
+
 ## 2026-05-04 - Agent-native full-run audit and old-experiment migration
 
 Claim affected:

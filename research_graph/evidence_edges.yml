@@ -348,6 +348,46 @@
   evidence_files:
     - outputs/by_claim/C11_mechanism_explanation/PHYSICS_LEARNING_BOUNDARY.md
 
+- id: edge_E13_to_C02
+  from: E13_multi_height_multistate_observability
+  to: C02_single_plane_identifiability_boundary
+  relation: supports
+  strength: strong
+  scope: "generated-domain multi-height multi-state observability"
+  caveat: "Generated-domain evidence only; cannot claim arbitrary real multilayer recovery or real QDM/NV validation."
+  evidence_files:
+    - outputs/by_claim/C02_identifiability_boundary/MULTI_HEIGHT_MULTISTATE_EVIDENCE.md
+
+- id: edge_E13_to_C06
+  from: E13_multi_height_multistate_observability
+  to: C06_graph_hypothesis_system_identification
+  relation: supports
+  strength: medium
+  scope: "generated-domain graph/hypothesis prior reduces layer misallocation"
+  caveat: "Generated-domain evidence only; graph prior improvement does not prove real CAD/GDS graph inference."
+  evidence_files:
+    - outputs/by_claim/C06_graph_hypothesis_system_id/MULTI_HEIGHT_MULTISTATE_EVIDENCE.md
+
+- id: edge_E13_limits_C02
+  from: E13_multi_height_multistate_observability
+  to: C02_single_plane_identifiability_boundary
+  relation: limits
+  strength: strong
+  scope: "generated-domain observability boundary"
+  caveat: "E13 shows generated-domain observability improvement but does not validate real multilayer recovery, real QDM/NV, or hardware-feasible active measurement."
+  evidence_files:
+    - outputs/by_claim/C02_identifiability_boundary/MULTI_HEIGHT_MULTISTATE_EVIDENCE.md
+
+- id: edge_E13_limits_C06
+  from: E13_multi_height_multistate_observability
+  to: C06_graph_hypothesis_system_identification
+  relation: limits
+  strength: strong
+  scope: "generated-domain graph prior boundary"
+  caveat: "E13 graph prior evidence is generated-domain and does not replace imported CAD/Gerber/GDS graph candidates or real QDM/NV validation."
+  evidence_files:
+    - outputs/by_claim/C06_graph_hypothesis_system_id/MULTI_HEIGHT_MULTISTATE_EVIDENCE.md
+
 - id: edge_E14_to_C06
   from: E14_layout_graph_import_scaffold
   to: C06_graph_hypothesis_system_identification
