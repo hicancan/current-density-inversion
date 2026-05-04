@@ -27,3 +27,12 @@ Overall: PASS
 The thin-sheet Fourier operator is an ideal free-space model. Multilayer
 separation still requires topology, masks, multiple measurements, or other
 priors; Bxyz alone on one plane does not label layers.
+
+## Agent Audit Metadata
+
+- Metrics file: `outputs/metrics.json`
+- Schema version: `research-ssot-metrics-v1`
+- Calibration source: No calibration rows used for threshold or model selection.
+- Threshold source: none
+- Model-selection source: not_applicable
+- Audit date: 2026-05-04

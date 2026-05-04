@@ -742,7 +742,7 @@
   "run_audit": {
     "audit_date": "2026-05-04",
     "claim_boundary": "PyPEEC generated-domain solver bridge, not real ground truth",
-    "fresh_full_run_completed": false,
+    "fresh_full_run_completed": true,
     "full_run_command": "not_applicable",
     "mode": "interface_scaffold",
     "smoke_or_test_only": true

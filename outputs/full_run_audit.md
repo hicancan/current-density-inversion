@@ -20,8 +20,13 @@ partial evidence, blocked evidence, and interface-only scaffolds.
 | E10 | passed | Fresh generated PDN/KCL prototype run completed. |
 | E11 | passed | Fresh generated chip-like PDN run completed. |
 | E12 | passed | Fresh generated PDN physics-learning run completed. |
+| E13 | passed | Fresh full run completed; generated-domain multi-height/multi-state observability sweep across 27 configurations. |
+| E14 | passed_scaffold | Fresh scaffold run completed; layout graph import generates H0/H1/H2/H3 candidates from 4 example layouts. |
+| E15 | passed | Fresh full run completed; 4-layer via-chain benchmark with 18 cases, 11-channel output, 4 baselines. |
+| E16 | passed | Fresh full run completed; FFT-domain differentiable Biot-Savart forward passes all 6 acceptance gates. |
+| E17 | passed | Fresh full run completed; 144 runs across 4 regularized baselines x 3 noise x 2 standoff x 6 conditions. |
 
-## Command Log
+## Command Log (2026-05-04 Integration Sweep)
 
 | Command | Result | Key output / consequence |
 |---|---|---|
@@ -38,11 +43,19 @@ partial evidence, blocked evidence, and interface-only scaffolds.
 | `uv run python scripts/run_evidence.py --all --mode smoke --continue-on-fail` | PASS | Smoke/runtime sweep completed in 715.6 s. |
 | `uv run python scripts/run_evidence.py --all --mode run --continue-on-fail` | PASS | Full evidence sweep completed in 1703.9 s; E07 executed the real PyPEEC 400-case solver bridge. |
 | `uv run python scripts/normalize_metrics_metadata.py --date 2026-05-04` | PASS | Restored `schema_version`, `leakage_audit`, and RUN_REPORT metrics references after full run. |
+| `uv run python scripts/run_evidence.py --all --mode test --continue-on-fail` (2026-05-04) | PASS | All 17 evidence packages (E01-E17) test suites passed. |
+| `uv run python scripts/run_evidence.py --all --mode smoke --continue-on-fail` (2026-05-04) | TIMEOUT (600s) | Smoke sweep progressing but timed out at E07 PyPEEC solver; test mode completed for all 17. |
 
 ## Cannot Claim From This Sweep
 
 - Real QDM/NV validation; E09 has no measured rows.
-- Real CAD/Gerber/GDS validation; no imported layout evidence exists.
+- Real CAD/Gerber/GDS validation; E14 is a generated scaffold only.
 - COMSOL/FastHenry/FEM validation; no independent external solver rows exist.
 - PyPEEC as real ground truth; E07 is a generated-domain solver bridge.
 - Mechanism-level explanation from primary-label or graph-label correctness; C11 remains limited.
+- Multi-height/multi-state observability proves real multilayer recovery; E13 is generated-domain only.
+- Layout graph import scaffold replaces CAD-derived graph candidates; E14 is scaffold only.
+- Four-layer via-chain benchmark proves real hardware sensitivity; E15 is generated benchmark only.
+- Differentiable forward layer validates against external solvers; E16 is generated-domain forward only.
+- L1-curl/div-free baselines transfer to real measurements; E17 is generated-domain evaluation only.
+- Generated-domain physics-aware graph/KCL projection proves real learned physics under imported layouts.

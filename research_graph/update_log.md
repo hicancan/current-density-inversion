@@ -1,5 +1,82 @@
 # Update Log
 
+## 2026-05-04 - Next-stage current inversion breakthrough evidence integration
+
+Claim affected:
+- C02_single_plane_identifiability_boundary (+E13, +E15, +E17 in supported_by)
+- C06_graph_hypothesis_system_identification (+E13, +E14, +E15 in supported_by)
+- C10_pdn_kcl_distribution_need (+E14, +E15 in supported_by)
+- C04_inverse_crime_and_operator_gap (+E16 in supported_by via experiments)
+- C03_unet_topology_baseline_boundary (E16 motivates, E17 motivates)
+- D09_cad_gerber_gds_like (missing → partial via E14)
+
+Change type:
+- 5 new evidence packages integrated: E13, E14, E15, E16, E17
+- Safe integration protocol: branch diff audit, clean cherry-pick where contaminated,
+  merge conflict resolution, research graph entry accumulation
+- O08_multi_height and O09_multi_state_excitation status upgraded (proposed/partial → implemented)
+
+Evidence added:
+- E13: Multi-height multi-state observability (27 configs, 40 cases)
+- E14: Layout graph import scaffold (4 example layouts)
+- E15: Four-layer via-chain benchmark (18 cases, 6 stress families, 4 baselines)
+- E16: Differentiable Biot-Savart forward layer (sheet + via forward, 6 acceptance gates)
+- E17: L1-curl divergence-free baseline (144 runs, 4 baselines, 7 acceptance gates)
+
+Metrics:
+- E13: effective rank ~10.1, multi-state margin gain 1.24x, graph prior layer error reduction 1.4x
+- E14: 4 examples validated, all 4 generate H0/H1/H2/H3 candidates
+- E15: 18 cases, 4 layers, 11 output channels, all 8 acceptance gates pass
+- E16: 10/10 unit tests pass (1 skipped: torch not installed), all 6 gates pass
+- E17: Fourier divergence residual 3e-12, Tikhonov current RMSE 1.45, all 7 gates pass
+
+Claim status before:
+- C02: supported (E02, E03 only)
+- C06: supported_generated (E08, E12 only)
+- C10: supported_generated (E10, E11, E12 only)
+- D09: missing
+
+Claim status after:
+- C02: supported (E02, E03, E13, E15, E17) — strengthened with multi-height, via-chain, and regularization evidence
+- C06: supported_generated (E08, E12, E13, E14, E15) — strengthened with multi-state, layout scaffold, and via-chain evidence
+- C10: supported_generated (E10, E11, E12, E14, E15) — strengthened with layout import scaffold and via-chain benchmark
+- C04: supported_generated — E16 strengthens generated-domain operator gap evidence
+- C03: supported_generated — E16/E17 provide boundary constraints and lower bounds
+- D09: partial (was missing)
+- O08, O09: implemented (were proposed/partial)
+
+Cannot claim:
+- real QDM/NV validation
+- real CAD/Gerber/GDS validation (E14 is scaffold only)
+- external FEM/FastHenry validation
+- real multilayer recovery from multi-height observations
+- real hardware via-chain sensitivity
+- that differentiable forward validates against external solvers
+- that regularization baselines transfer to real measurements
+
+Next required evidence:
+- validate multi-height observability with real measurement or external solver rows
+- replace hand-authored layout JSON with real CAD/Gerber/GDS parsing
+- validate differentiable forward against COMSOL/FastHenry/FEM
+- validate regularization baselines against external solver forward fields
+
+Test results:
+- `uv run python scripts/validate_graph.py`: PASS (0 errors, 0 warnings)
+- `uv run python scripts/check_claim_gates.py`: PASS
+- `uv run python scripts/check_metrics_schema.py`: PASS (17 files)
+- `uv run python scripts/check_no_leakage.py`: PASS (17 files)
+- `uv run python scripts/check_evidence_outputs.py`: PASS (17 files)
+- `uv run python -m pytest -q`: PASS (11 tests)
+- `uv run python scripts/run_evidence.py --all --mode test --continue-on-fail`: PASS (all 17)
+- `uv run python scripts/run_evidence.py --all --mode smoke --continue-on-fail`: TIMEOUT (600s at E07 PyPEEC)
+
+Branch integration audit:
+- feat/e14-layout-graph-import-clean: CLEAN merge (fast-forward)
+- feat/e13-multistate-observability: CLEAN merge (conflicts resolved)
+- feat/e16-differentiable-forward: CONTAMINATED (E13/E14/E15/E17 mixed) — clean cherry-pick used
+- feat/e15-four-layer-via-chain: EMPTY (no commits) — extracted from feat/e16
+- feat/e17-l1curl-baseline: EMPTY (no commits) — extracted from feat/e16 + new research graph entries
+
 ## 2026-05-04 - L1-curl and divergence-free regularization baselines
 
 Claim affected:
