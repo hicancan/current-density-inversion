@@ -50,6 +50,19 @@ Agent-native audit commands:
 - `uv run python scripts/normalize_metrics_metadata.py` after full evidence
   runs that rewrite package metrics files
 
+## Compute policy
+
+- Default to CPU for scripts, data processing, fitting, and evidence runs.
+- Only target GPU when the task is explicitly: deep learning, CUDA/PyTorch
+  acceleration, large matrix computation, or GPU-enabled simulation/rendering.
+- Do not assume GPU is faster by default.
+
+## Test entrypoint
+
+- `uv run python -m pytest -q` (cross-platform); avoid bare `uv run pytest -q`.
+
+---
+
 Full run evidence must be recorded as full run only when the package
 `run_command` or all equivalent stage commands completed. Test/smoke runs may
 verify code paths, but must not be written as full-run evidence.

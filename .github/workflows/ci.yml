@@ -26,5 +26,5 @@ jobs:
       - name: Audit old/new experiment coverage
         run: uv run python scripts/audit_old_new_experiment_coverage.py
       - name: Tests
-        run: uv run pytest -q
+        run: uv run python -m pytest -q
 
