@@ -60,6 +60,38 @@ Agent-native audit commands:
   `wsl -d Ubuntu -- bash -lc 'source ~/conda/etc/profile.d/conda.sh && conda activate quantum-dev && python <script.py>'`
 - Never hard-code CUDA; GPU must remain optional with CPU fallback.
 
+## Core algorithm blueprint pool
+
+External high-level algorithm blueprints live under:
+
+- `docs/algorithm_blueprints/`
+
+These documents are design inputs, not evidence. They do not support or upgrade
+claims by themselves.
+
+When a task asks for novel algorithmic progress, especially E18 or later
+physics-constrained inversion work, read:
+
+1. `docs/algorithm_blueprints/README.md`
+2. the relevant phase document.
+
+Current priority order:
+
+1. Phase 1 OBGHI core algorithm
+2. Phase 2 R-MF-CTAS only after OBGHI has runnable evidence
+3. Phase 3 Q-R-MF-CTAS only when real/multi-height/NV observation data or
+   observation-design work is available
+4. Phase 4 EV-FAEDA only for industrial FA/EDA integration planning
+
+Rules:
+
+- Do not treat blueprint text as experimental evidence.
+- Do not update claim status from blueprint text alone.
+- Implement the smallest runnable algorithmic slice first.
+- If blueprint theory conflicts with evidence metrics, evidence metrics win.
+- Any implemented blueprint work must become a normal evidence package with
+  metrics, RUN_REPORT, failure modes, cannot_claim, and research graph updates.
+
 ## Test entrypoint
 
 - `uv run python -m pytest -q` (cross-platform); avoid bare `uv run pytest -q`.
