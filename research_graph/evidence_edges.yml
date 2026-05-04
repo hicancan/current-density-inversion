@@ -573,8 +573,8 @@
   to: C10_pdn_kcl_distribution_need
   relation: motivates
   strength: medium
-  scope: "generated-domain minimal OBGHI posterior topology inference"
-  caveat: "H1_via dominates all families; H2_model_gap posterior collapses to zero; accepted_risk gate fails (0.655 > 0.45). Cannot claim real validation."
+  scope: "generated-domain E19.1 calibrated OBGHI posterior with residual-based evidence"
+  caveat: "E19.1: engineering gates pass (6/6), scientific gates partial (2/7). H3 dominates due to residual-based evidence favoring broad return patterns over via/gap. H2 posterior collapses (7e-29). Identifiability boundary: observation model + current basis set insufficient to disambiguate via/gap/return without multi-height or multi-state data. Cannot claim real validation."
   evidence_files:
     - outputs/by_claim/C10_pdn_kcl_distribution_need/OBGHI_MINIMAL_POSTERIOR_EVIDENCE.md
 

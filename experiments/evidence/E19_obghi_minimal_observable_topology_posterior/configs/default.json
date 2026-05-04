@@ -18,26 +18,36 @@
   ],
   "observable_energy_ratio_threshold": 0.015,
   "prior_variance": {
-    "graph": 1.0,
-    "via": 0.55,
-    "gap": 0.35,
-    "return": 0.65,
-    "residual": 0.15
+    "graph": 0.80,
+    "via_vertical": 1.20,
+    "via_compensation": 0.25,
+    "gap_registration": 1.00,
+    "gap_standoff": 1.00,
+    "gap_drift": 0.40,
+    "return_loop": 1.20,
+    "return_edge": 0.60,
+    "residual": 0.12
   },
   "hypothesis_log_priors": {
-    "H0_no_via": -0.05,
-    "H1_via": -0.15,
-    "H2_model_gap": -0.3,
-    "H3_return_path": -0.25
+    "H0_no_via": 0.0,
+    "H1_via": -0.1,
+    "H2_model_gap": -0.2,
+    "H3_return_path": -0.2
   },
   "decision": {
     "accept_posterior_threshold": 0.62,
-    "reject_posterior_threshold": 0.45,
-    "via_gap_min_angle_deg": 12.0,
-    "via_gap_logbf_epsilon": 0.75
+    "reject_posterior_threshold": 0.40,
+    "via_gap_min_angle_deg": 10.0,
+    "via_gap_logbf_epsilon": 1.5,
+    "logbf_threshold": 1.5,
+    "improvement_threshold": 0.03,
+    "return_competition_threshold": 0.18,
+    "accept_threshold_h0": 0.60,
+    "accept_threshold_h1": 0.75,
+    "accept_threshold_h2": 0.65,
+    "accept_threshold_h3": 0.70
   },
   "baseline": {
-    "ridge_alpha": 0.08,
-    "via_energy_threshold_quantile": 0.82
+    "ridge_alpha": 0.08
   }
 }

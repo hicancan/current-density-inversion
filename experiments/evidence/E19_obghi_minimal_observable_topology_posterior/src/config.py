@@ -58,10 +58,23 @@ def validate_config(cfg: Mapping[str, Any]) -> None:
         raise ValueError("case_count_per_family must be >= 1")
 
     prior = cfg["prior_variance"]
-    for k in ["graph", "via", "gap", "return", "residual"]:
+    for k in ["graph", "residual"]:
         if k not in prior:
             raise ValueError(f"prior_variance missing {k}")
         if float(prior[k]) <= 0:
+            raise ValueError(f"prior_variance.{k} must be positive")
+    deprecated_keys = {"via", "gap", "return"}
+    new_keys = {
+        "via_vertical", "via_compensation",
+        "gap_registration", "gap_standoff", "gap_drift",
+        "return_loop", "return_edge",
+    }
+    allowed = {"graph", "residual"} | new_keys | deprecated_keys
+    for k in prior:
+        if k not in allowed:
+            raise ValueError(f"Unknown prior_variance key: {k}")
+    for k in new_keys:
+        if k in prior and float(prior[k]) <= 0:
             raise ValueError(f"prior_variance.{k} must be positive")
 
     for h in ["H0_no_via", "H1_via", "H2_model_gap", "H3_return_path"]:

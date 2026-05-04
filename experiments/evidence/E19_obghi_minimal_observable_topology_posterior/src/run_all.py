@@ -17,7 +17,7 @@ if str(_SRC) not in sys.path:
 from baselines import run_ridge_baseline
 from config import load_config
 from data import generate_cases
-from metrics import aggregate_baseline, aggregate_obghi, acceptance_gates
+from metrics import aggregate_baseline, aggregate_obghi, engineering_gates, scientific_gates
 from obghi import infer_case
 from operators import build_operator, operator_diagnostics
 from reporting import write_outputs
@@ -52,7 +52,17 @@ def main(argv: list[str] | None = None) -> dict:
 
     obghi_metrics = aggregate_obghi(results)
     baseline_metrics = aggregate_baseline(baseline_rows)
-    gates = acceptance_gates(obghi_metrics, baseline_metrics)
+    eng_gates = engineering_gates(obghi_metrics, op_diag)
+    sci_gates = scientific_gates(obghi_metrics, baseline_metrics)
+    eng_passed = all(eng_gates.values())
+    sci_passed = all(sci_gates.values())
+    if not eng_passed:
+        status = "failed_sanity"
+    elif not sci_passed:
+        status = "passed_with_limitations"
+    else:
+        status = "passed"
+    gates = {**eng_gates, **sci_gates}
     elapsed = time.perf_counter() - t0
 
     metrics = {
@@ -61,8 +71,12 @@ def main(argv: list[str] | None = None) -> dict:
         "claim": PRIMARY_CLAIM,
         "secondary_claims": SECONDARY_CLAIMS,
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
-        "status": "passed" if all(gates.values()) else "passed_with_limitations",
-        "all_acceptance_gates_passed": bool(all(gates.values())),
+        "status": status,
+        "engineering_gates_passed": eng_passed,
+        "scientific_gates_passed": sci_passed,
+        "all_acceptance_gates_passed": eng_passed,
+        "engineering_gates": eng_gates,
+        "scientific_gates": sci_gates,
         "acceptance_gates": gates,
         "config": {
             "grid_size": int(cfg["grid_size"]),

@@ -1,4 +1,15 @@
-# RUN REPORT - E19 OBGHI Minimal Observable Topology Posterior
+# RUN REPORT - E19.1 OBGHI Calibrated Posterior Diagnostics
+
+E19.1 is generated-domain algorithm evidence. It does not constitute real
+QDM/NV, CAD/Gerber/GDS, or external-solver validation.
+
+## Engineering run status
+
+Engineering gates passed: `True`
+
+## Scientific status
+
+Scientific gates passed: `False`
 
 ## Claim affected
 
@@ -7,17 +18,31 @@
 
 ## Evidence added
 
-Generated-domain minimal OBGHI evidence package implementing posterior topology inference over H0/H1/H2/H3 explanations.
+E19.1 calibrated OBGHI posterior evidence with:
+- Split engineering/scientific gates
+- Block-diagonal group priors
+- Per-column observable normalization
+- Expanded H2 gap basis (registration derivatives, standoff laplacians, drift)
+- Split H1 via basis (vertical modes + sheet compensation)
+- Expanded H3 return basis (multi-position loops, edge modes, distributed)
+- Residual-conditioned case-specific via/gap diagnostic
+- Multi-tier decision rule with no-via false-positive guard
 
 ## Metrics
 
 - case_count: 12
 - OBGHI top1_accuracy: 0.2500
-- OBGHI accepted_accuracy: 0.3333
-- OBGHI accepted_risk: 0.6667
+- OBGHI accepted_accuracy: 0.2500
+- OBGHI accepted_risk: 0.7500
 - OBGHI reject_rate: 0.000e+00
-- OBGHI need_next_measurement_rate: 0.5000
+- OBGHI need_next_measurement_rate: 0.000e+00
 - OBGHI via_gap_ambiguous_reject_rate: 0.000e+00
+- OBGHI h0_top1_accuracy: 0.000e+00
+- OBGHI h2_mean_true_posterior: 1.684e-23
+- OBGHI h2_top1_accuracy: 0.000e+00
+- OBGHI h3_top1_accuracy: 1.0000
+- OBGHI h3_mean_true_posterior: 0.9943
+- OBGHI no_via_false_positive_guard_count: 0
 - Ridge-map top1_accuracy: 0.2500
 
 ## Operator diagnostics
@@ -27,27 +52,41 @@ Generated-domain minimal OBGHI evidence package implementing posterior topology 
 - via_column_norm_min: `0.0083`
 - via_column_norm_mean: `0.0137`
 
-## Acceptance gates
+## Engineering Gates
 
 | gate | passed |
 |---|---:|
 | posterior_rows_present | True |
+| operator_via_columns_nonzero | True |
 | topology_posterior_nontrivial | True |
-| accepted_risk_bounded | False |
-| reject_or_need_next_available | True |
-| via_gap_ambiguity_measured | True |
-| obghi_matches_or_beats_ridge_top1 | True |
 | generated_domain_boundaries_recorded | True |
+| leakage_audit_present | True |
+| reports_written | True |
 
-All gates passed: `False`
+## Scientific Gates
 
-## Failure modes
+| gate | passed |
+|---|---:|
+| accepted_risk_le_0_45 | False |
+| reject_rate_ge_0_10_or_need_next_ge_0_20 | False |
+| h0_top1_ge_0_50 | False |
+| h2_true_posterior_ge_0_10_or_h2_reject_rate_ge_0_30 | False |
+| h3_top1_ge_0_20_or_h3_need_next_reject_ge_0_40 | True |
+| obghi_top1_beats_ridge_by_0_05 | False |
+| via_gap_ambiguous_reject_nonzero_on_gap_or_via | False |
 
-See `FAILURE_CASES.md`. Expected first-slice failure modes include accepted wrong topology, correct topology rejected under ambiguity, and need-next-measurement decisions.
+Engineering gates passed: `True`
+Scientific gates passed: `False`
 
 ## Claim status change
 
-None in this ZIP. Do not upgrade any claim until the package is run locally and audited.
+None. Do not upgrade any claim. If scientific gates fail, E19.1 is
+diagnostic/limiting evidence only. If they pass, E19.1 supports/motivates
+the generated-domain claims but does not prove real validation.
+
+## Failure modes
+
+See `FAILURE_CASES.md` and `SCIENTIFIC_GATES.md`.
 
 ## Cannot claim
 
@@ -57,18 +96,23 @@ None in this ZIP. Do not upgrade any claim until the package is run locally and 
 - real-board PDN/KCL robustness
 - mechanism-level explanation on real data
 - universal via detection
+- that generated-domain evidence transfers to real hardware
 
 ## Next required evidence
 
-1. Run E19 locally and audit metrics.
-2. Compare E19 failure slices against E18 physics-constrained inverse failure cases.
-3. If E19 passes, register it in the research graph as generated-domain evidence only.
-4. Add a follow-up multi-height / multi-state OBGHI information-gain evidence package.
+1. Multi-height observation for standoff discrimination
+2. Multi-state excitation for current-path discrimination
+3. Replace generated families with CAD/Gerber/GDS-derived graph candidates
+4. Validate against external solver (COMSOL/FastHenry/FEM) on small subset
 
 ## Tests run
 
-Not run by this ZIP generator. Run locally with `uv run --with-requirements requirements.txt --with pytest python -m pytest -q tests`.
+See repository CI or run locally:
+`uv run --with-requirements requirements.txt --with pytest python -m pytest -q tests`
 
 ## Files changed
 
-This package only adds files under `experiments/evidence/E19_obghi_minimal_observable_topology_posterior/` unless you manually apply research graph snippets.
+- `experiments/evidence/E19_obghi_minimal_observable_topology_posterior/`
+- `research_graph/experiments.yml`
+- `research_graph/evidence_edges.yml`
+- `research_graph/update_log.md`

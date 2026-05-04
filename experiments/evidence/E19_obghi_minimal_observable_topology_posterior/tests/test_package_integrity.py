@@ -50,5 +50,7 @@ def test_single_case_inference_returns_posterior():
         "accept",
         "reject_low_posterior",
         "reject_via_gap_ambiguous",
+        "reject_no_via_false_positive_guard",
+        "reject_return_ambiguous",
         "need_next_measurement",
     }

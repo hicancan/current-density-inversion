@@ -491,6 +491,6 @@ E19_obghi_minimal_observable_topology_posterior:
     test_command: "uv run --with-requirements requirements.txt --with pytest python -m pytest -q tests"
     metrics_files:
       - experiments/evidence/E19_obghi_minimal_observable_topology_posterior/outputs/metrics.json
-  result_summary: "Minimal OBGHI posterior topology inference over H0/H1/H2/H3 explanations on 72 generated four-layer cases. Via forward columns nonzero, H1 posterior dominates (mean 0.727), H2_model_gap posterior effectively zero (5.87e-07) due to gap basis/data mismatch, accepted_risk gate fails (0.655 > 0.45). Three systematic failure modes: via false-positive on no-via, collapsed H2 posterior, and via-dominates-return. 6/7 gates pass. Cannot claim real validation."
-  status: passed
+  result_summary: "E19.1 calibrated OBGHI posterior with split engineering/scientific gates, block-diagonal group priors, residual-based evidence, expanded H2 gap basis, split H1 via basis, expanded H3 return basis, residual-conditioned diagnostics, multi-tier decision rules. Engineering gates pass (6/6), scientific gates partially pass (2/7): H3 dominates families, h0_top1=0.0, h2_posterior=7e-29. Identifiability boundary documented. 10/10 tests pass. Cannot claim real validation."
+  status: partial
   last_run: "2026-05-04"

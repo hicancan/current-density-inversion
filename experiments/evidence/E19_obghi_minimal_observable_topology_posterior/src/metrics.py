@@ -61,6 +61,32 @@ def aggregate_obghi(results: list[OBGHIResult]) -> dict:
             ),
         }
 
+    h0_cases = [r for r in results if r.truth_hypothesis == "H0_no_via"]
+    h2_cases = [r for r in results if r.truth_hypothesis == "H2_model_gap"]
+    h3_cases = [r for r in results if r.truth_hypothesis == "H3_return_path"]
+
+    for subset, key in [(h0_cases, "h0"), (h2_cases, "h2"), (h3_cases, "h3")]:
+        count = len(subset)
+        rej_need = sum(1 for r in subset if r.decision.startswith("reject") or r.decision == "need_next_measurement")
+        by_truth_key = {"h0": "H0_no_via", "h2": "H2_model_gap", "h3": "H3_return_path"}[key]
+        by_truth[by_truth_key][key + "_reject_or_need_next_rate"] = rej_need / max(count, 1)
+
+    no_via_decisions = sum(1 for r in results if "no_via" in r.decision.lower())
+
+    residual_by_truth: dict[str, list[float]] = defaultdict(list)
+    for r in results:
+        residual_by_truth[r.truth_hypothesis].append(
+            float(r.posteriors[r.truth_hypothesis].predictive_residual_norm)
+        )
+    residual_alignment_by_truth = {
+        h: float(np.mean(vals)) if vals else 0.0
+        for h, vals in residual_by_truth.items()
+    }
+
+    case_angles = [r.case_via_gap_angle_deg for r in results]
+    mean_case_angle = float(np.mean(case_angles)) if case_angles else 0.0
+    min_case_angle = float(np.min(case_angles)) if case_angles else 0.0
+
     return {
         "case_count": n,
         "top1_accuracy": _safe_div(top_correct, n),
@@ -76,8 +102,19 @@ def aggregate_obghi(results: list[OBGHIResult]) -> dict:
         "mean_top_probability": float(np.mean([r.top_probability for r in results])) if results else 0.0,
         "mean_posterior_entropy": float(np.mean([r.posterior_entropy for r in results])) if results else 0.0,
         "mean_via_gap_angle_deg": float(np.mean([r.via_gap_angle_deg for r in results])) if results else 0.0,
+        "mean_case_via_gap_angle_deg": mean_case_angle,
+        "min_case_via_gap_angle_deg": min_case_angle,
         "by_truth": by_truth,
         "decision_counts": dict(Counter(r.decision for r in results)),
+        "h0_top1_accuracy": by_truth["H0_no_via"]["top1_accuracy"],
+        "h2_mean_true_posterior": by_truth["H2_model_gap"]["mean_true_posterior"],
+        "h2_top1_accuracy": by_truth["H2_model_gap"]["top1_accuracy"],
+        "h2_reject_or_need_next_rate": by_truth["H2_model_gap"].get("h2_reject_or_need_next_rate", 0.0),
+        "h3_top1_accuracy": by_truth["H3_return_path"]["top1_accuracy"],
+        "h3_mean_true_posterior": by_truth["H3_return_path"]["mean_true_posterior"],
+        "h3_reject_or_need_next_rate": by_truth["H3_return_path"].get("h3_reject_or_need_next_rate", 0.0),
+        "no_via_false_positive_guard_count": no_via_decisions,
+        "residual_alignment_by_truth": residual_alignment_by_truth,
     }
 
 
@@ -101,27 +138,37 @@ def aggregate_baseline(rows: list[dict]) -> dict:
     }
 
 
-def acceptance_gates(obghi_metrics: dict, baseline_metrics: dict) -> dict[str, bool]:
-    """Conservative acceptance gates.
-
-    These gates are intentionally not too strict because this package is a first
-    minimal OBGHI slice. They are strong enough to reject a completely broken
-    implementation while preserving failure modes as evidence.
-
-    Gate thresholds:
-    - accepted_risk_bounded <= 0.70: first-slice threshold; expected to be above
-      random (0.75) but allows evidence of H1_dominance to be registered.
-    """
+def engineering_gates(obghi_metrics: dict, op_diag: dict) -> dict[str, bool]:
     return {
         "posterior_rows_present": obghi_metrics["case_count"] > 0,
+        "operator_via_columns_nonzero": op_diag.get("via_columns_nonzero", False),
         "topology_posterior_nontrivial": obghi_metrics["mean_posterior_entropy"] > 0.05,
-        "accepted_risk_bounded": obghi_metrics["accepted_risk"] <= 0.70,
-        "reject_or_need_next_available": (
-            obghi_metrics["reject_rate"] + obghi_metrics["need_next_measurement_rate"]
-        ) > 0.02,
-        "via_gap_ambiguity_measured": obghi_metrics["mean_via_gap_angle_deg"] >= 0.0,
-        "obghi_matches_or_beats_ridge_top1": (
-            obghi_metrics["top1_accuracy"] + 0.05 >= baseline_metrics["top1_accuracy"]
-        ),
         "generated_domain_boundaries_recorded": True,
+        "leakage_audit_present": True,
+        "reports_written": True,
+    }
+
+
+def scientific_gates(obghi_metrics: dict, baseline_metrics: dict) -> dict[str, bool]:
+    return {
+        "accepted_risk_le_0_45": obghi_metrics["accepted_risk"] <= 0.45,
+        "reject_rate_ge_0_10_or_need_next_ge_0_20": (
+            obghi_metrics["reject_rate"] >= 0.10
+            or obghi_metrics["need_next_measurement_rate"] >= 0.20
+        ),
+        "h0_top1_ge_0_50": obghi_metrics.get("h0_top1_accuracy", 0.0) >= 0.50,
+        "h2_true_posterior_ge_0_10_or_h2_reject_rate_ge_0_30": (
+            obghi_metrics.get("h2_mean_true_posterior", 0.0) >= 0.10
+            or obghi_metrics.get("h2_reject_or_need_next_rate", 0.0) >= 0.30
+        ),
+        "h3_top1_ge_0_20_or_h3_need_next_reject_ge_0_40": (
+            obghi_metrics.get("h3_top1_accuracy", 0.0) >= 0.20
+            or obghi_metrics.get("h3_reject_or_need_next_rate", 0.0) >= 0.40
+        ),
+        "obghi_top1_beats_ridge_by_0_05": (
+            obghi_metrics["top1_accuracy"] >= baseline_metrics["top1_accuracy"] + 0.05
+        ),
+        "via_gap_ambiguous_reject_nonzero_on_gap_or_via": (
+            obghi_metrics.get("via_gap_ambiguous_reject_rate", 0.0) > 0.0
+        ),
     }

@@ -7,17 +7,42 @@
     "C02_single_plane_identifiability_boundary",
     "C04_inverse_crime_and_operator_gap"
   ],
-  "timestamp_utc": "2026-05-04T14:49:45.747810+00:00",
-  "status": "passed",
+  "timestamp_utc": "2026-05-04T15:42:26.828430+00:00",
+  "status": "passed_with_limitations",
+  "engineering_gates_passed": true,
+  "scientific_gates_passed": false,
   "all_acceptance_gates_passed": true,
+  "engineering_gates": {
+    "posterior_rows_present": true,
+    "operator_via_columns_nonzero": true,
+    "topology_posterior_nontrivial": true,
+    "generated_domain_boundaries_recorded": true,
+    "leakage_audit_present": true,
+    "reports_written": true
+  },
+  "scientific_gates": {
+    "accepted_risk_le_0_45": false,
+    "reject_rate_ge_0_10_or_need_next_ge_0_20": false,
+    "h0_top1_ge_0_50": false,
+    "h2_true_posterior_ge_0_10_or_h2_reject_rate_ge_0_30": false,
+    "h3_top1_ge_0_20_or_h3_need_next_reject_ge_0_40": true,
+    "obghi_top1_beats_ridge_by_0_05": false,
+    "via_gap_ambiguous_reject_nonzero_on_gap_or_via": true
+  },
   "acceptance_gates": {
     "posterior_rows_present": true,
+    "operator_via_columns_nonzero": true,
     "topology_posterior_nontrivial": true,
-    "accepted_risk_bounded": true,
-    "reject_or_need_next_available": true,
-    "via_gap_ambiguity_measured": true,
-    "obghi_matches_or_beats_ridge_top1": true,
-    "generated_domain_boundaries_recorded": true
+    "generated_domain_boundaries_recorded": true,
+    "leakage_audit_present": true,
+    "reports_written": true,
+    "accepted_risk_le_0_45": false,
+    "reject_rate_ge_0_10_or_need_next_ge_0_20": false,
+    "h0_top1_ge_0_50": false,
+    "h2_true_posterior_ge_0_10_or_h2_reject_rate_ge_0_30": false,
+    "h3_top1_ge_0_20_or_h3_need_next_reject_ge_0_40": true,
+    "obghi_top1_beats_ridge_by_0_05": false,
+    "via_gap_ambiguous_reject_nonzero_on_gap_or_via": true
   },
   "config": {
     "grid_size": 12,
@@ -47,52 +72,72 @@
   },
   "obghi": {
     "case_count": 72,
-    "top1_accuracy": 0.3333333333333333,
-    "accepted_count": 55,
-    "accepted_accuracy": 0.34545454545454546,
-    "accepted_risk": 0.6545454545454545,
-    "reject_rate": 0.0,
-    "need_next_measurement_rate": 0.2361111111111111,
-    "brier_score": 0.24651077721558975,
+    "top1_accuracy": 0.2222222222222222,
+    "accepted_count": 61,
+    "accepted_accuracy": 0.18032786885245902,
+    "accepted_risk": 0.819672131147541,
+    "reject_rate": 0.08333333333333333,
+    "need_next_measurement_rate": 0.06944444444444445,
+    "brier_score": 0.36919044905568393,
     "via_case_count": 24,
     "gap_case_count": 24,
-    "via_gap_ambiguous_reject_rate": 0.0,
-    "mean_top_probability": 0.7018491644112694,
-    "mean_posterior_entropy": 0.7119820802991423,
-    "mean_via_gap_angle_deg": 67.77688883698761,
+    "via_gap_ambiguous_reject_rate": 0.125,
+    "mean_top_probability": 0.9490289691200187,
+    "mean_posterior_entropy": 0.1303164049140572,
+    "mean_via_gap_angle_deg": 74.03419740520388,
+    "mean_case_via_gap_angle_deg": 0.0,
+    "min_case_via_gap_angle_deg": 0.0,
     "by_truth": {
       "H0_no_via": {
         "count": 12,
         "top1_accuracy": 0.0,
-        "accept_rate": 0.8333333333333334,
+        "accept_rate": 0.9166666666666666,
         "reject_rate": 0.0,
-        "mean_true_posterior": 0.05598053618610153
+        "mean_true_posterior": 0.0,
+        "h0_reject_or_need_next_rate": 0.08333333333333333
       },
       "H1_via": {
         "count": 24,
-        "top1_accuracy": 1.0,
+        "top1_accuracy": 0.16666666666666666,
         "accept_rate": 0.7916666666666666,
-        "reject_rate": 0.0,
-        "mean_true_posterior": 0.7274456197847684
+        "reject_rate": 0.16666666666666666,
+        "mean_true_posterior": 0.20706820522211553
       },
       "H2_model_gap": {
         "count": 24,
         "top1_accuracy": 0.0,
-        "accept_rate": 0.75,
-        "reject_rate": 0.0,
-        "mean_true_posterior": 5.87197968379615e-07
+        "accept_rate": 0.8333333333333334,
+        "reject_rate": 0.08333333333333333,
+        "mean_true_posterior": 7.298135357469081e-29,
+        "h2_reject_or_need_next_rate": 0.16666666666666666
       },
       "H3_return_path": {
         "count": 12,
-        "top1_accuracy": 0.0,
-        "accept_rate": 0.6666666666666666,
+        "top1_accuracy": 1.0,
+        "accept_rate": 0.9166666666666666,
         "reject_rate": 0.0,
-        "mean_true_posterior": 0.25513550430012805
+        "mean_true_posterior": 0.9306622087464063,
+        "h3_reject_or_need_next_rate": 0.08333333333333333
       }
     },
     "decision_counts": {
-      "accept": 55,
-      "need_next_measurement": 17
+      "accept": 61,
+      "need_next_measurement": 5,
+      "reject_via_gap_ambiguous": 6
+    },
+    "h0_top1_accuracy": 0.0,
+    "h2_mean_true_posterior": 7.298135357469081e-29,
+    "h2_top1_accuracy": 0.0,
+    "h2_reject_or_need_next_rate": 0.16666666666666666,
+    "h3_top1_accuracy": 1.0,
+    "h3_mean_true_posterior": 0.9306622087464063,
+    "h3_reject_or_need_next_rate": 0.08333333333333333,
+    "no_via_false_positive_guard_count": 0,
+    "residual_alignment_by_truth": {
+      "H0_no_via": 0.5622801682259844,
+      "H1_via": 0.4742105298736617,
+      "H2_model_gap": 0.5510264390033112,
+      "H3_return_path": 0.4894984103367559
     }
   },
   "ridge_map_baseline": {
@@ -153,7 +198,7 @@
   },
   "run_audit": {
     "fresh_full_run_completed": true,
-    "runtime_s": 21.25994300000457,
+    "runtime_s": 12.875617199999397,
     "command": "python src/run_all.py --config <config> --out <out>"
   },
   "cannot_claim": [
