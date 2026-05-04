@@ -1,0 +1,35 @@
+{
+  "schema": "layout-graph-import-v1",
+  "description": "Return bottleneck: VDD has wide straps but return ground path is narrow, creating return asymmetry",
+  "stackup": [
+    {"layer": "TOP", "z_top_um": 0, "z_bottom_um": 35, "material": "copper", "conductivity_sm": 58000000.0},
+    {"layer": "SIG1", "z_top_um": 100, "z_bottom_um": 135, "material": "copper", "conductivity_sm": 58000000.0},
+    {"layer": "BOT", "z_top_um": 200, "z_bottom_um": 235, "material": "copper", "conductivity_sm": 58000000.0}
+  ],
+  "layers": [
+    {"name": "TOP", "type": "signal", "thickness_um": 35},
+    {"name": "SIG1", "type": "signal", "thickness_um": 35},
+    {"name": "BOT", "type": "plane", "thickness_um": 35}
+  ],
+  "nets": [
+    {"name": "VDD", "voltage": 1.0},
+    {"name": "GND", "voltage": 0.0}
+  ],
+  "ports": [
+    {"name": "src", "layer": "TOP", "position_mm": [0.0, 0.0], "net": "VDD", "role": "source"},
+    {"name": "load", "layer": "SIG1", "position_mm": [20.0, 0.0], "net": "VDD", "role": "load"},
+    {"name": "gnd_src", "layer": "BOT", "position_mm": [0.0, 10.0], "net": "GND", "role": "sink"},
+    {"name": "gnd_load", "layer": "BOT", "position_mm": [20.0, 10.0], "net": "GND", "role": "sink"}
+  ],
+  "traces": [
+    {"name": "VDD_wide", "layer": "TOP", "points_mm": [[0.0, 0.0], [10.0, 0.0]], "width_um": 500, "net": "VDD"},
+    {"name": "VDD_load", "layer": "SIG1", "points_mm": [[10.0, 0.0], [20.0, 0.0]], "width_um": 500, "net": "VDD"},
+    {"name": "GND_narrow", "layer": "BOT", "points_mm": [[0.0, 10.0], [20.0, 10.0]], "width_um": 50, "net": "GND"}
+  ],
+  "vias": [
+    {"name": "V1", "from_layer": "TOP", "to_layer": "SIG1", "position_mm": [10.0, 0.0], "net": "VDD"}
+  ],
+  "return_planes": [
+    {"name": "BOT_GND", "layer": "BOT", "net": "GND", "outline_mm": [[-5.0, 5.0], [25.0, 5.0], [25.0, 15.0], [-5.0, 15.0]]}
+  ]
+}

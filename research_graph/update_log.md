@@ -336,3 +336,56 @@ Next required evidence:
 - add imported CAD/Gerber/GDS graph families and independent external-solver
   held-out rows.
 - add mechanism labels and accepted-row parameter-level audits for C11.
+
+## 2026-05-04 - Layout graph import scaffold
+
+Claim affected:
+- C06_graph_hypothesis_system_identification
+- C10_pdn_kcl_distribution_need
+
+Change type:
+- generated layout graph import scaffold evidence package added
+- D09_cad_gerber_gds_like status moved from missing to partial
+- evidence edges and outputs/by_claim updated
+
+Files changed:
+- `experiments/evidence/E14_layout_graph_import_scaffold/`
+- `outputs/by_claim/C06_graph_hypothesis_system_id/`
+- `outputs/by_claim/C10_pdn_kcl_distribution_need/`
+- `research_graph/`
+
+Evidence:
+- `E14_layout_graph_import_scaffold` parses simplified JSON/YAML layout schemas
+  into route graphs, via candidate graphs, layer stacks, net/port graphs, and
+  return candidates. H0/H1/H2/H3 hypothesis candidates are generated from the
+  extracted graph. Four example layouts demonstrate the scaffold capability.
+
+Metrics:
+- Example count: 4
+- Schema validates all examples: True
+- Total layers found: 6 across all examples
+- All 4 examples generate all 4 hypothesis candidates
+- All acceptance gates passed
+
+Claim status before:
+- `C06_graph_hypothesis_system_identification`: supported_generated.
+- `C10_pdn_kcl_distribution_need`: supported_generated.
+- `D09_cad_gerber_gds_like`: missing.
+
+Claim status after:
+- `C06_graph_hypothesis_system_identification`: remains supported_generated with
+  scaffold-level support from E14.
+- `C10_pdn_kcl_distribution_need`: remains supported_generated with scaffold-level
+  support from E14.
+- `D09_cad_gerber_gds_like`: partial.
+
+Cannot claim:
+- real CAD/Gerber/GDS validation.
+- real QDM/NV validation.
+- external FEM/FastHenry validation.
+- that the generated scaffold replaces CAD-derived graph candidates.
+- that the KCL proxy is a real circuit solve.
+
+Next required evidence:
+- replace hand-authored layout JSON with actual CAD/Gerber/GDS parsing.
+- validate a small generated/CAD-like subset against independent external solvers.

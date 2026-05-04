@@ -1,0 +1,214 @@
+{
+  "schema_version": "research-ssot-metrics-v1",
+  "claim_id": null,
+  "evidence_id": "E14_layout_graph_import_scaffold",
+  "status": "passed",
+  "generated_at": "2026-05-04T00:00:00Z",
+  "all_acceptance_gates_passed": true,
+  "acceptance_gates": {
+    "schema_validates_all_examples": true,
+    "graph_extraction_preserves_layers": true,
+    "via_candidates_extracted": true,
+    "return_candidates_extracted": true,
+    "kcl_graph_export_available": true,
+    "hypothesis_candidates_generated": true,
+    "no_real_cad_claim": true,
+    "all_acceptance_gates_passed": true
+  },
+  "example_count": 4,
+  "example_files": [
+    "four_layer_pdn_like_layout.json",
+    "no_via_hard_negative_layout.json",
+    "return_bottleneck_layout.json",
+    "simple_two_layer_layout.json"
+  ],
+  "total_layers_found": [
+    "BOT",
+    "M1",
+    "M2",
+    "SIG1",
+    "SIG2",
+    "TOP"
+  ],
+  "layer_count_found": 6,
+  "via_counts": [
+    4,
+    0,
+    1,
+    1
+  ],
+  "return_candidate_counts": [
+    3,
+    1,
+    3,
+    2
+  ],
+  "per_example": {
+    "four_layer_pdn_like_layout": {
+      "schema_validates": true,
+      "node_count": 27,
+      "edge_count": 36,
+      "node_kinds": {
+        "layer": 4,
+        "port": 6,
+        "junction": 12,
+        "via": 4,
+        "return_plane": 1
+      },
+      "edge_kinds": {
+        "trace": 6,
+        "via_edge": 8,
+        "return_candidate": 3,
+        "layer_link": 19
+      },
+      "layers_found": [
+        "BOT",
+        "SIG1",
+        "SIG2",
+        "TOP"
+      ],
+      "layer_count": 4,
+      "via_nodes": 4,
+      "return_candidate_edges": 3,
+      "connected": true,
+      "kcl_proxy": 109.94123186378972,
+      "hypothesis_candidates": [
+        "H0_nominal",
+        "H1_via_defect_or_extra_via",
+        "H2_return_bottleneck",
+        "H3_bend_width_artifact"
+      ],
+      "schema_errors": []
+    },
+    "no_via_hard_negative_layout": {
+      "schema_validates": true,
+      "node_count": 11,
+      "edge_count": 15,
+      "node_kinds": {
+        "layer": 2,
+        "port": 2,
+        "junction": 6,
+        "return_plane": 1
+      },
+      "edge_kinds": {
+        "trace": 5,
+        "return_candidate": 1,
+        "layer_link": 9
+      },
+      "layers_found": [
+        "BOT",
+        "TOP"
+      ],
+      "layer_count": 2,
+      "via_nodes": 0,
+      "return_candidate_edges": 1,
+      "connected": false,
+      "kcl_proxy": 49.71999999999999,
+      "hypothesis_candidates": [
+        "H0_nominal",
+        "H1_via_defect_or_extra_via",
+        "H2_return_bottleneck",
+        "H3_bend_width_artifact"
+      ],
+      "schema_errors": []
+    },
+    "return_bottleneck_layout": {
+      "schema_validates": true,
+      "node_count": 15,
+      "edge_count": 19,
+      "node_kinds": {
+        "layer": 3,
+        "port": 4,
+        "junction": 6,
+        "via": 1,
+        "return_plane": 1
+      },
+      "edge_kinds": {
+        "trace": 3,
+        "via_edge": 2,
+        "return_candidate": 3,
+        "layer_link": 11
+      },
+      "layers_found": [
+        "BOT",
+        "SIG1",
+        "TOP"
+      ],
+      "layer_count": 3,
+      "via_nodes": 1,
+      "return_candidate_edges": 3,
+      "connected": false,
+      "kcl_proxy": 102.49999999999999,
+      "hypothesis_candidates": [
+        "H0_nominal",
+        "H1_via_defect_or_extra_via",
+        "H2_return_bottleneck",
+        "H3_bend_width_artifact"
+      ],
+      "schema_errors": []
+    },
+    "simple_two_layer_layout": {
+      "schema_validates": true,
+      "node_count": 10,
+      "edge_count": 13,
+      "node_kinds": {
+        "layer": 2,
+        "port": 2,
+        "junction": 4,
+        "via": 1,
+        "return_plane": 1
+      },
+      "edge_kinds": {
+        "trace": 2,
+        "via_edge": 2,
+        "return_candidate": 2,
+        "layer_link": 7
+      },
+      "layers_found": [
+        "M1",
+        "M2"
+      ],
+      "layer_count": 2,
+      "via_nodes": 1,
+      "return_candidate_edges": 2,
+      "connected": true,
+      "kcl_proxy": 41.599999999999994,
+      "hypothesis_candidates": [
+        "H0_nominal",
+        "H1_via_defect_or_extra_via",
+        "H2_return_bottleneck",
+        "H3_bend_width_artifact"
+      ],
+      "schema_errors": []
+    }
+  },
+  "cannot_claim": [
+    "real CAD/Gerber/GDS validation",
+    "real QDM/NV validation",
+    "external FEM/FastHenry validation",
+    "real layout import (this is generated scaffold only)",
+    "imported layouts are validated against real boards",
+    "hypothesis candidates are derived from real CAD defects"
+  ],
+  "leakage_audit": {
+    "calibration_rows": [],
+    "calibration_source": "No calibration rows used for threshold or model selection.",
+    "heldout_rows": [],
+    "heldout_rows_explicitly_calibration": false,
+    "hidden_rows": [],
+    "model_selection_rows": [],
+    "model_selection_source": "not_applicable",
+    "proxy_fallback_used": false,
+    "pypeec_stress_rows_used_for_training": false,
+    "threshold_selection_rows": [],
+    "thresholds_source": "none"
+  },
+  "run_audit": {
+    "audit_date": "2026-05-04",
+    "claim_boundary": "generated layout-like scaffold only, not real CAD/Gerber/GDS",
+    "fresh_full_run_completed": true,
+    "full_run_command": "uv run python src/run_all.py",
+    "mode": "full_run",
+    "smoke_or_test_only": false
+  }
+}

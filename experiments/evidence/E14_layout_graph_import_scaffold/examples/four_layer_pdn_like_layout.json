@@ -1,0 +1,47 @@
+{
+  "schema": "layout-graph-import-v1",
+  "description": "Four-layer PDN-like layout: two signal layers, power plane, ground plane, with via stacks and multiple ports",
+  "stackup": [
+    {"layer": "TOP", "z_top_um": 0, "z_bottom_um": 35, "material": "copper", "conductivity_sm": 58000000.0},
+    {"layer": "SIG1", "z_top_um": 100, "z_bottom_um": 135, "material": "copper", "conductivity_sm": 58000000.0},
+    {"layer": "SIG2", "z_top_um": 200, "z_bottom_um": 235, "material": "copper", "conductivity_sm": 58000000.0},
+    {"layer": "BOT", "z_top_um": 300, "z_bottom_um": 335, "material": "copper", "conductivity_sm": 58000000.0}
+  ],
+  "layers": [
+    {"name": "TOP", "type": "signal", "thickness_um": 35},
+    {"name": "SIG1", "type": "signal", "thickness_um": 35},
+    {"name": "SIG2", "type": "signal", "thickness_um": 35},
+    {"name": "BOT", "type": "plane", "thickness_um": 35}
+  ],
+  "nets": [
+    {"name": "VDD", "voltage": 1.0},
+    {"name": "GND", "voltage": 0.0},
+    {"name": "SIG_A", "voltage": null},
+    {"name": "SIG_B", "voltage": null}
+  ],
+  "ports": [
+    {"name": "src1", "layer": "TOP", "position_mm": [0.0, 0.0], "net": "VDD", "role": "source"},
+    {"name": "src2", "layer": "TOP", "position_mm": [0.0, 5.0], "net": "VDD", "role": "source"},
+    {"name": "load1", "layer": "SIG1", "position_mm": [15.0, 2.5], "net": "SIG_A", "role": "load"},
+    {"name": "load2", "layer": "SIG2", "position_mm": [15.0, 7.5], "net": "SIG_B", "role": "load"},
+    {"name": "gnd1", "layer": "BOT", "position_mm": [0.0, 10.0], "net": "GND", "role": "sink"},
+    {"name": "gnd2", "layer": "BOT", "position_mm": [15.0, 10.0], "net": "GND", "role": "sink"}
+  ],
+  "traces": [
+    {"name": "T_VDD_A", "layer": "TOP", "points_mm": [[0.0, 0.0], [5.0, 0.0]], "width_um": 200, "net": "VDD"},
+    {"name": "T_VDD_B", "layer": "TOP", "points_mm": [[0.0, 5.0], [5.0, 5.0]], "width_um": 200, "net": "VDD"},
+    {"name": "T_SIG1_A", "layer": "SIG1", "points_mm": [[5.0, 0.0], [15.0, 2.5]], "width_um": 150, "net": "SIG_A"},
+    {"name": "T_SIG2_B", "layer": "SIG2", "points_mm": [[5.0, 5.0], [15.0, 7.5]], "width_um": 150, "net": "SIG_B"},
+    {"name": "T_GND1", "layer": "BOT", "points_mm": [[0.0, 10.0], [5.0, 7.5]], "width_um": 300, "net": "GND"},
+    {"name": "T_GND2", "layer": "BOT", "points_mm": [[15.0, 10.0], [10.0, 5.0]], "width_um": 300, "net": "GND"}
+  ],
+  "vias": [
+    {"name": "V1", "from_layer": "TOP", "to_layer": "SIG1", "position_mm": [5.0, 0.0], "net": "VDD"},
+    {"name": "V2", "from_layer": "TOP", "to_layer": "SIG2", "position_mm": [5.0, 5.0], "net": "VDD"},
+    {"name": "V3", "from_layer": "SIG1", "to_layer": "BOT", "position_mm": [5.0, 2.5], "net": "GND"},
+    {"name": "V4", "from_layer": "SIG2", "to_layer": "BOT", "position_mm": [10.0, 5.0], "net": "GND"}
+  ],
+  "return_planes": [
+    {"name": "BOT_GND", "layer": "BOT", "net": "GND", "outline_mm": [[-5.0, 0.0], [20.0, 0.0], [20.0, 15.0], [-5.0, 15.0]]}
+  ]
+}

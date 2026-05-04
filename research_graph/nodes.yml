@@ -45,7 +45,7 @@ D11_chip_like_generated_pdn_family:
 D09_cad_gerber_gds_like:
   type: data_distribution
   description: "CAD/Gerber/GDS-like layout-derived graph distribution."
-  status: missing
+  status: partial
 D10_real_qdm_nv:
   type: data_distribution
   description: "Measured QDM/NV magnetic-field cases with metadata and sanity gates."

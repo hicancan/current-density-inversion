@@ -126,15 +126,15 @@ C06_graph_hypothesis_system_identification:
   short_name: "graph_hypothesis_system_id"
   status: supported_generated
   scope:
-    data: [D03_no_via_hard_negative, D04_return_path_family, D05_bend_corner_artifact, D06_pypeec_generated_h0_h1_h2_h3, D08_pdn_kcl_circuit_graph, D11_chip_like_generated_pdn_family]
+    data: [D03_no_via_hard_negative, D04_return_path_family, D05_bend_corner_artifact, D06_pypeec_generated_h0_h1_h2_h3, D08_pdn_kcl_circuit_graph, D09_cad_gerber_gds_like, D11_chip_like_generated_pdn_family]
     forward: [F02_centerline_biot_savart, F03_finite_width_surrogate, F04_pypeec]
     observation: [O01_ideal_Bxyz]
     representation: [R04_route_graph, R05_basis_bank, R06_pdn_circuit_graph, R08_hypothesis_set, R09_posterior_candidate_set, R10_multilayer_chip_like_pdn_graph]
     algorithm: [A04_hypothesis_scorer, A12_bayesian_or_glrt_model_evidence, A14_pdn_physics_aware_learner]
     protocol: [S02_variant_heldout, S03_family_heldout, S05_solver_heldout, S06_hidden_stress]
     metrics: [M04_kcl_residual, M06_h0_false_any, M07_h1_recall, M08_accepted_accuracy, M09_accepted_risk, M10_reject_rate, M16_predicted_kcl_residual, M17_predicted_current_closure_error]
-  supported_by: [E08_graph_hypothesis_system_id, E12_pdn_physics_learning]
-  limited_by: [E07_pypeec_solver_bridge, E08_graph_hypothesis_system_id]
+  supported_by: [E08_graph_hypothesis_system_id, E12_pdn_physics_learning, E14_layout_graph_import_scaffold]
+  limited_by: [E07_pypeec_solver_bridge, E08_graph_hypothesis_system_id, E14_layout_graph_import_scaffold]
   contradicted_by: []
   cannot_claim:
     - "real CAD/Gerber system identification"
@@ -231,7 +231,7 @@ C10_pdn_kcl_distribution_need:
     algorithm: [A04_hypothesis_scorer, A14_pdn_physics_aware_learner]
     protocol: [S03_family_heldout, S11_no_leakage_calibration_heldout]
     metrics: [M01_field_l2_or_rmse, M04_kcl_residual, M05_divB_residual, M06_h0_false_any, M07_h1_recall, M13_family_generalization_gap, M16_predicted_kcl_residual, M17_predicted_current_closure_error]
-  supported_by: [E10_pdn_kcl_distribution, E11_chip_like_pdn_distribution, E12_pdn_physics_learning]
+  supported_by: [E10_pdn_kcl_distribution, E11_chip_like_pdn_distribution, E12_pdn_physics_learning, E14_layout_graph_import_scaffold]
   limited_by: []
   contradicted_by: []
   cannot_claim:

@@ -347,3 +347,43 @@
   caveat: "E12 is supervised generated-domain learning, not unlabeled adaptation evidence."
   evidence_files:
     - outputs/by_claim/C11_mechanism_explanation/PHYSICS_LEARNING_BOUNDARY.md
+
+- id: edge_E14_to_C06
+  from: E14_layout_graph_import_scaffold
+  to: C06_graph_hypothesis_system_identification
+  relation: supports
+  strength: medium
+  scope: "generated layout graph import scaffold"
+  caveat: "Scaffold only; does not validate real CAD/Gerber/GDS import or real QDM/NV graph inference."
+  evidence_files:
+    - outputs/by_claim/C06_graph_hypothesis_system_id/LAYOUT_GRAPH_IMPORT_SCAFFOLD.md
+
+- id: edge_E14_limits_C06
+  from: E14_layout_graph_import_scaffold
+  to: C06_graph_hypothesis_system_identification
+  relation: limits
+  strength: strong
+  scope: "generated layout graph scaffold boundary"
+  caveat: "E14 is a generated layout-like scaffold; it does not replace CAD-derived graph candidates or validate real layout import."
+  evidence_files:
+    - outputs/by_claim/C06_graph_hypothesis_system_id/LAYOUT_GRAPH_IMPORT_SCAFFOLD.md
+
+- id: edge_E14_to_C10
+  from: E14_layout_graph_import_scaffold
+  to: C10_pdn_kcl_distribution_need
+  relation: supports
+  strength: medium
+  scope: "generated layout graph import scaffold with return candidates and KCL proxy"
+  caveat: "Scaffold only; not real CAD/Gerber/GDS, external solver, or real QDM/NV validation."
+  evidence_files:
+    - outputs/by_claim/C10_pdn_kcl_distribution_need/LAYOUT_GRAPH_IMPORT_SCAFFOLD.md
+
+- id: edge_E14_limits_C10
+  from: E14_layout_graph_import_scaffold
+  to: C10_pdn_kcl_distribution_need
+  relation: limits
+  strength: strong
+  scope: "generated layout graph scaffold boundary for PDN/KCL"
+  caveat: "E14 is a generated layout-like scaffold; KCL proxy is not a real circuit solve. Does not validate real CAD/Gerber/GDS, external solvers, or real QDM/NV."
+  evidence_files:
+    - outputs/by_claim/C10_pdn_kcl_distribution_need/LAYOUT_GRAPH_IMPORT_SCAFFOLD.md

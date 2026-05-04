@@ -1,0 +1,27 @@
+{
+  "schema": "layout-graph-import-v1",
+  "description": "No-via hard negative: single signal trace with source and load on same layer, no vias present",
+  "stackup": [
+    {"layer": "TOP", "z_top_um": 0, "z_bottom_um": 35, "material": "copper", "conductivity_sm": 58000000.0},
+    {"layer": "BOT", "z_top_um": 135, "z_bottom_um": 170, "material": "copper", "conductivity_sm": 58000000.0}
+  ],
+  "layers": [
+    {"name": "TOP", "type": "signal", "thickness_um": 35},
+    {"name": "BOT", "type": "plane", "thickness_um": 35}
+  ],
+  "nets": [
+    {"name": "VDD", "voltage": 1.0},
+    {"name": "GND", "voltage": 0.0}
+  ],
+  "ports": [
+    {"name": "src", "layer": "TOP", "position_mm": [0.0, 0.0], "net": "VDD", "role": "source"},
+    {"name": "sink", "layer": "TOP", "position_mm": [15.0, 0.0], "net": "VDD", "role": "sink"}
+  ],
+  "traces": [
+    {"name": "T1", "layer": "TOP", "points_mm": [[0.0, 0.0], [5.0, 0.0], [5.0, 5.0], [10.0, 5.0], [10.0, 0.0], [15.0, 0.0]], "width_um": 120, "net": "VDD"}
+  ],
+  "vias": [],
+  "return_planes": [
+    {"name": "BOT_GND", "layer": "BOT", "net": "GND", "outline_mm": [[-5.0, -5.0], [20.0, -5.0], [20.0, 10.0], [-5.0, 10.0]]}
+  ]
+}
