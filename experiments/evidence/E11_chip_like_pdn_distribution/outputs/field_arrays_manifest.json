@@ -1,0 +1,14 @@
+{
+  "dataset_file": "data/e11_dataset.json",
+  "field_array_file": "data/e11_fields.npz",
+  "field_key": "fields",
+  "reason_untracked": "large generated array artifact; reproducible from src/run_all.py and config",
+  "shape": [
+    96,
+    "grid_size",
+    "grid_size",
+    3
+  ],
+  "tracked": false,
+  "units": "centerline Biot-Savart proxy units"
+}

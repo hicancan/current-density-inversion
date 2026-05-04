@@ -1,0 +1,175 @@
+- id: artifact_claim_matrix
+  kind: report
+  path: outputs/by_claim/CLAIM_MATRIX.md
+  claim: C01_forward_sanity
+  evidence: null
+  role: report
+  tracked: true
+  generated_by: "uv run python scripts/render_claim_matrix.py"
+  calibration_allowed: false
+  notes: "Global claim status table; claim field points to the first registered claim only because this is a graph-wide artifact."
+
+- id: artifact_evidence_edge_table
+  kind: report
+  path: outputs/by_claim/EVIDENCE_EDGE_TABLE.md
+  claim: C01_forward_sanity
+  evidence: null
+  role: report
+  tracked: true
+  generated_by: "uv run python scripts/render_claim_matrix.py"
+  calibration_allowed: false
+  notes: "Global evidence edge table; claim field points to the first registered claim only because this is a graph-wide artifact."
+
+- id: artifact_e10_metrics
+  kind: metrics
+  path: experiments/evidence/E10_pdn_kcl_distribution/outputs/metrics.json
+  claim: C10_pdn_kcl_distribution_need
+  evidence: E10_pdn_kcl_distribution
+  role: metrics
+  tracked: true
+  generated_by: "uv run --with-requirements requirements.txt python src/run_all.py --config configs/default.json --out outputs --data data"
+  calibration_allowed: false
+  notes: "Generated-domain PDN/KCL prototype metrics."
+
+- id: artifact_e10_run_report
+  kind: report
+  path: experiments/evidence/E10_pdn_kcl_distribution/outputs/RUN_REPORT.md
+  claim: C10_pdn_kcl_distribution_need
+  evidence: E10_pdn_kcl_distribution
+  role: report
+  tracked: true
+  generated_by: "uv run --with-requirements requirements.txt python src/run_all.py --config configs/default.json --out outputs --data data"
+  calibration_allowed: false
+  notes: "Human-readable generated-domain PDN/KCL prototype report."
+
+- id: artifact_e10_claim_summary
+  kind: report
+  path: outputs/by_claim/C10_pdn_kcl_distribution_need/PDN_KCL_PROTOTYPE_EVIDENCE.md
+  claim: C10_pdn_kcl_distribution_need
+  evidence: E10_pdn_kcl_distribution
+  role: report
+  tracked: true
+  generated_by: "manual claim-scoped summary from E10 metrics"
+  calibration_allowed: false
+  notes: "Claim-scoped summary with cannot-claim boundaries."
+
+- id: artifact_e11_metrics
+  kind: metrics
+  path: experiments/evidence/E11_chip_like_pdn_distribution/outputs/metrics.json
+  claim: C10_pdn_kcl_distribution_need
+  evidence: E11_chip_like_pdn_distribution
+  role: metrics
+  tracked: true
+  generated_by: "uv run --with-requirements requirements.txt python src/run_all.py --config configs/default.json --out outputs --data data"
+  calibration_allowed: false
+  notes: "Generated-domain chip-like multilayer PDN metrics."
+
+- id: artifact_e11_run_report
+  kind: report
+  path: experiments/evidence/E11_chip_like_pdn_distribution/outputs/RUN_REPORT.md
+  claim: C10_pdn_kcl_distribution_need
+  evidence: E11_chip_like_pdn_distribution
+  role: report
+  tracked: true
+  generated_by: "uv run --with-requirements requirements.txt python src/run_all.py --config configs/default.json --out outputs --data data"
+  calibration_allowed: false
+  notes: "Human-readable generated-domain chip-like PDN report."
+
+- id: artifact_e11_claim_summary
+  kind: report
+  path: outputs/by_claim/C10_pdn_kcl_distribution_need/CHIP_LIKE_PDN_EVIDENCE.md
+  claim: C10_pdn_kcl_distribution_need
+  evidence: E11_chip_like_pdn_distribution
+  role: report
+  tracked: true
+  generated_by: "manual claim-scoped summary from E11 metrics"
+  calibration_allowed: false
+  notes: "Claim-scoped E11 summary with generated-domain boundaries."
+
+- id: artifact_e12_metrics
+  kind: metrics
+  path: experiments/evidence/E12_pdn_physics_learning/outputs/metrics.json
+  claim: C10_pdn_kcl_distribution_need
+  evidence: E12_pdn_physics_learning
+  role: metrics
+  tracked: true
+  generated_by: "uv run --with-requirements requirements.txt python src/run_all.py --config configs/default.json --out outputs"
+  calibration_allowed: false
+  notes: "Generated-domain PDN physics-learning closure metrics."
+
+- id: artifact_e12_run_report
+  kind: report
+  path: experiments/evidence/E12_pdn_physics_learning/outputs/RUN_REPORT.md
+  claim: C10_pdn_kcl_distribution_need
+  evidence: E12_pdn_physics_learning
+  role: report
+  tracked: true
+  generated_by: "uv run --with-requirements requirements.txt python src/run_all.py --config configs/default.json --out outputs"
+  calibration_allowed: false
+  notes: "Human-readable generated-domain PDN physics-learning report."
+
+- id: artifact_e12_claim_summary
+  kind: report
+  path: outputs/by_claim/C10_pdn_kcl_distribution_need/PDN_PHYSICS_LEARNING_EVIDENCE.md
+  claim: C10_pdn_kcl_distribution_need
+  evidence: E12_pdn_physics_learning
+  role: report
+  tracked: true
+  generated_by: "manual claim-scoped summary from E12 metrics"
+  calibration_allowed: false
+  notes: "Claim-scoped E12 physics-learning summary."
+
+- id: artifact_e12_c11_boundary
+  kind: report
+  path: outputs/by_claim/C11_mechanism_explanation/PHYSICS_LEARNING_BOUNDARY.md
+  claim: C11_mechanism_level_explanation
+  evidence: E12_pdn_physics_learning
+  role: report
+  tracked: true
+  generated_by: "manual C11 boundary summary from E12 metrics"
+  calibration_allowed: false
+  notes: "C11 boundary showing E12 is not mechanism-level explanation."
+
+- id: artifact_e09_metrics
+  kind: metrics
+  path: experiments/evidence/E09_real_data_intake_gate/outputs/metrics.json
+  claim: C12_real_qdm_nv_validation
+  evidence: E09_real_data_intake_gate
+  role: scaffold
+  tracked: true
+  generated_by: "uv run --with-requirements requirements.txt python src/run_all.py"
+  calibration_allowed: false
+  notes: "Interface-only scaffold metrics; no measured QDM/NV rows."
+
+- id: artifact_e09_run_report
+  kind: report
+  path: experiments/evidence/E09_real_data_intake_gate/outputs/RUN_REPORT.md
+  claim: C12_real_qdm_nv_validation
+  evidence: E09_real_data_intake_gate
+  role: scaffold
+  tracked: true
+  generated_by: "uv run --with-requirements requirements.txt python src/run_all.py"
+  calibration_allowed: false
+  notes: "Human-readable interface-only report; C12 remains blocked."
+
+- id: artifact_migration_coverage_matrix
+  kind: report
+  path: outputs/migration_coverage_matrix.md
+  claim: C01_forward_sanity
+  evidence: null
+  role: report
+  tracked: true
+  generated_by: "uv run python scripts/audit_old_new_experiment_coverage.py"
+  calibration_allowed: false
+  notes: "Global old-to-new exp01-exp09 migration coverage matrix."
+
+- id: artifact_full_run_audit
+  kind: report
+  path: outputs/full_run_audit.md
+  claim: C01_forward_sanity
+  evidence: null
+  role: report
+  tracked: true
+  generated_by: "manual audit from required run commands"
+  calibration_allowed: false
+  notes: "Global command run log and full-run status audit."

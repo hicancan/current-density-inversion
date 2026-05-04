@@ -1,0 +1,15 @@
+{
+  "seed": 20260504,
+  "e11_package_dir": "../E11_chip_like_pdn_distribution",
+  "e11_config": "../E11_chip_like_pdn_distribution/configs/default.json",
+  "e11_dataset_json": "../E11_chip_like_pdn_distribution/data/e11_dataset.json",
+  "ridge_lambda": 0.001,
+  "train_roles": ["train"],
+  "eval_roles": ["heldout", "family_hidden"],
+  "heldout_accuracy_threshold": 0.75,
+  "accuracy_gain_vs_majority_threshold": 0.20,
+  "family_generalization_gap_threshold": 0.35,
+  "kcl_improvement_ratio_threshold": 0.50,
+  "closure_improvement_ratio_threshold": 0.50,
+  "field_reconstruction_rmse_threshold": 0.35
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Research claim",
+  "type": "object",
+  "required": ["title", "short_name", "status", "scope", "supported_by", "cannot_claim", "limitations", "next_required_evidence"],
+  "properties": {
+    "title": {"type": "string"},
+    "short_name": {"type": "string"},
+    "status": {"type": "string"},
+    "scope": {"type": "object"},
+    "supported_by": {"type": "array", "items": {"type": "string"}},
+    "limited_by": {"type": "array", "items": {"type": "string"}},
+    "contradicted_by": {"type": "array", "items": {"type": "string"}},
+    "cannot_claim": {"type": "array", "items": {"type": "string"}},
+    "limitations": {"type": "array", "items": {"type": "string"}},
+    "next_required_evidence": {"type": "array", "items": {"type": "string"}}
+  }
+}
+

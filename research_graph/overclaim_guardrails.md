@@ -18,4 +18,14 @@ Do not claim:
 14. Synthetic multi-state improvement proves hardware-feasible active
     measurement.
 15. Real-data interface scaffolding means real-data validation has been done.
-
+16. The generated PDN/KCL prototype proves real-board PDN robustness.
+17. Matched generated H0/H1/H2/H3 hypothesis scoring proves mechanism-level
+    correctness under real layouts.
+18. The generated chip-like E11 PDN family proves real chip PDN realism.
+19. E12 label accuracy plus KCL/current-closure consistency proves
+    mechanism-level explanation.
+20. Physics-aware generated graph projection proves real learned physics under
+    imported CAD/GDS or real QDM/NV measurements.
+21. A CI smoke/test pass is a fresh full-run experiment.
+22. Metrics metadata normalization is new scientific evidence; it is only an
+    audit-contract repair after evidence commands rewrite outputs.

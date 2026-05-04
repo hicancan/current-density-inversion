@@ -1,0 +1,103 @@
+{
+  "acceptance_gates": {
+    "background_protocol_validation": true,
+    "background_subtraction_stub_callable": true,
+    "claim_boundary_real_data_interface_only": true,
+    "component_order_validation": true,
+    "metadata_template_valid": true,
+    "no_real_rows_present": true,
+    "npz_loader_stub_callable": true,
+    "simple_wire_sanity_stub_callable": true,
+    "strict_paths_default_off": true,
+    "units_validation": true
+  },
+  "all_acceptance_gates_passed": true,
+  "background_summary": {
+    "array_key": "B_subtracted",
+    "background_rms": 0.25,
+    "case_id": "example_wire_coupon_state_001",
+    "claim_boundary": "background utility only; not a physical validation claim",
+    "input_rms": 1.2909944487358056,
+    "output": "C:\\Users\\yunca\\AppData\\Local\\Temp\\tmphg9sy7k2\\subtracted.npz",
+    "subtracted_rms": 1.1086778913041726
+  },
+  "cannot_claim": [
+    "real QDM/NV validation",
+    "real via/no-via diagnosis",
+    "real calibration protocol validation"
+  ],
+  "experiment": "E09_real_data_intake_gate",
+  "full_run_completed": true,
+  "leakage_audit": {
+    "calibration_rows": [],
+    "calibration_source": "No measured rows present; interface scaffold only.",
+    "heldout_rows": [],
+    "heldout_rows_explicitly_calibration": false,
+    "hidden_rows": [],
+    "model_selection_rows": [],
+    "model_selection_source": "not_applicable",
+    "proxy_fallback_used": false,
+    "pypeec_stress_rows_used_for_training": false,
+    "threshold_selection_rows": [],
+    "thresholds_source": "none"
+  },
+  "loader_summary": {
+    "case_id": "example_wire_coupon_state_001",
+    "component_order": [
+      "Bx",
+      "By",
+      "Bz"
+    ],
+    "max": 2.0,
+    "min": 0.0,
+    "rms": 1.2909944487358056,
+    "shape": [
+      4,
+      5,
+      3
+    ],
+    "units": "tesla"
+  },
+  "measured_rows_present": false,
+  "metadata_validation_errors": [],
+  "run_audit": {
+    "audit_date": "2026-05-04",
+    "claim_boundary": "interface scaffold only, no measured rows",
+    "fresh_full_run_completed": false,
+    "full_run_command": "not_applicable",
+    "mode": "interface_scaffold",
+    "smoke_or_test_only": true
+  },
+  "run_mode": "interface",
+  "schema_version": "research-ssot-metrics-v1",
+  "simple_wire_summary": {
+    "bxy_rms_t": 2.0,
+    "bz_over_bxy_rms": 0.5,
+    "bz_rms_t": 1.0,
+    "case_id": "example_wire_coupon_state_001",
+    "claim_boundary": "simple-wire sanity only; inspect units, polarity, centering, and component order before exp08 inference",
+    "component_order": [
+      "Bx",
+      "By",
+      "Bz"
+    ],
+    "mean_over_rms_Bx": 1.0,
+    "mean_over_rms_By": 0.0,
+    "peak_location_rc": [
+      0,
+      0
+    ],
+    "peak_offset_px_from_center": [
+      -1.5,
+      -2.0
+    ],
+    "shape": [
+      4,
+      5,
+      3
+    ]
+  },
+  "strict_path_validation_errors": [
+    "`field.path` does not exist: data/example_wire_coupon_state_001_B_meas.npz"
+  ]
+}

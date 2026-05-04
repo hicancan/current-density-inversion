@@ -1,0 +1,82 @@
+{
+  "acceptance_gates": {
+    "all_acceptance_gates_passed": true,
+    "current_closure_below_threshold": true,
+    "divB_proxy_below_threshold": true,
+    "h0_h1_h2_h3_rows_present": true,
+    "heldout_hypothesis_accuracy_material": true,
+    "kcl_residual_below_threshold": true
+  },
+  "all_acceptance_gates_passed": true,
+  "cannot_claim": [
+    "real CAD/Gerber/GDS validation",
+    "real QDM/NV validation",
+    "external FEM/FastHenry validation",
+    "PDN/KCL robustness under realistic boards"
+  ],
+  "claim_id": "C10_pdn_kcl_distribution_need",
+  "dataset": {
+    "by_hypothesis": {
+      "H0_nominal_pdn": 15,
+      "H1_extra_via": 15,
+      "H2_return_path_shift": 15,
+      "H3_bend_artifact": 15
+    },
+    "by_split_role": {
+      "calibration": 12,
+      "heldout": 36,
+      "train": 12
+    },
+    "case_count": 60,
+    "families": 3,
+    "variants_per_hypothesis": 5
+  },
+  "divB": {
+    "divB_residual_threshold": 2.0,
+    "max_full_divergence_proxy": 0.0038418670051609373
+  },
+  "evidence_id": "E10_pdn_kcl_distribution",
+  "generated_at": "2026-05-04T00:00:00Z",
+  "hypothesis_scoring": {
+    "h0_false_any_rate": 0.0,
+    "h1_recall": 1.0,
+    "heldout_accuracy": 1.0,
+    "median_best_residual": 0.0
+  },
+  "leakage_audit": {
+    "calibration_rows": [],
+    "calibration_source": "No calibration rows used for threshold or model selection.",
+    "heldout_rows": [
+      "test"
+    ],
+    "heldout_rows_explicitly_calibration": false,
+    "hidden_rows": [],
+    "model_selection_rows": [],
+    "model_selection_source": "not_applicable",
+    "proxy_fallback_used": false,
+    "pypeec_stress_rows_used_for_training": false,
+    "threshold_selection_rows": [],
+    "thresholds_source": "none"
+  },
+  "pdn_kcl": {
+    "current_closure_threshold": 1e-10,
+    "kcl_residual_threshold": 1e-10,
+    "max_current_closure_error": 3.1282976209467897e-15,
+    "max_interior_kcl_residual": 7.147060721024445e-16
+  },
+  "run_audit": {
+    "audit_date": "2026-05-04",
+    "claim_boundary": "generated/domain-limited evidence, not real validation",
+    "fresh_full_run_completed": true,
+    "full_run_command": "uv run python scripts/run_evidence.py --all --mode run --continue-on-fail",
+    "mode": "full_run",
+    "smoke_or_test_only": false
+  },
+  "schema_version": "research-ssot-metrics-v1",
+  "split_roles": {
+    "calibration": 12,
+    "heldout": 36,
+    "train": 12
+  },
+  "status": "passed"
+}

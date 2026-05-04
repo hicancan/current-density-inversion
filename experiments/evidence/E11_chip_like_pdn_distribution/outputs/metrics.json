@@ -1,0 +1,132 @@
+{
+  "acceptance_gates": {
+    "all_acceptance_gates_passed": true,
+    "current_closure_below_threshold": true,
+    "divB_proxy_below_threshold": true,
+    "explicit_return_paths_present": true,
+    "family_hidden_accuracy_material": true,
+    "graph_connected": true,
+    "h0_h1_h2_h3_balance": true,
+    "heldout_hypothesis_accuracy_material": true,
+    "kcl_residual_below_threshold": true,
+    "per_family_heldout_coverage": true
+  },
+  "all_acceptance_gates_passed": true,
+  "cannot_claim": [
+    "real chip PDN realism",
+    "real CAD/Gerber/GDS validation",
+    "external FEM/FastHenry validation",
+    "real QDM/NV validation",
+    "inductive or frequency-dependent PDN behavior"
+  ],
+  "case_count": 96,
+  "claim_id": "C10_pdn_kcl_distribution_need",
+  "closure": {
+    "max_error": 7.390705858570286e-15,
+    "threshold": 1e-10
+  },
+  "dataset": {
+    "by_family": {
+      "0": 24,
+      "1": 24,
+      "2": 24,
+      "3": 24
+    },
+    "by_hypothesis": {
+      "H0_nominal": 24,
+      "H1_via_defect_or_extra": 24,
+      "H2_return_bottleneck": 24,
+      "H3_bend_width_artifact": 24
+    },
+    "by_split_role": {
+      "calibration": 12,
+      "family_hidden": 24,
+      "heldout": 24,
+      "train": 36
+    },
+    "case_count": 96,
+    "family_count": 4,
+    "layer_count": 4
+  },
+  "divB": {
+    "max_proxy_residual": 0.002835341632907391,
+    "threshold": 2.0
+  },
+  "edge_count": {
+    "max": 68,
+    "min": 65
+  },
+  "evidence_id": "E11_chip_like_pdn_distribution",
+  "family_count": 4,
+  "generated_at": "2026-05-04T00:00:00Z",
+  "hypothesis": {
+    "balance": {
+      "H0_nominal": 24,
+      "H1_via_defect_or_extra": 24,
+      "H2_return_bottleneck": 24,
+      "H3_bend_width_artifact": 24
+    },
+    "family_hidden_accuracy": 1.0,
+    "heldout_accuracy": 1.0,
+    "per_family_heldout_coverage": {
+      "0": {
+        "H0_nominal": 2,
+        "H1_via_defect_or_extra": 2,
+        "H2_return_bottleneck": 2,
+        "H3_bend_width_artifact": 2
+      },
+      "1": {
+        "H0_nominal": 2,
+        "H1_via_defect_or_extra": 2,
+        "H2_return_bottleneck": 2,
+        "H3_bend_width_artifact": 2
+      },
+      "2": {
+        "H0_nominal": 2,
+        "H1_via_defect_or_extra": 2,
+        "H2_return_bottleneck": 2,
+        "H3_bend_width_artifact": 2
+      }
+    }
+  },
+  "kcl": {
+    "max_residual": 4.912736883966318e-15,
+    "threshold": 1e-10
+  },
+  "layer_count": 4,
+  "leakage_audit": {
+    "calibration_rows": [],
+    "calibration_source": "No calibration rows used for threshold or model selection.",
+    "heldout_rows": [
+      "test"
+    ],
+    "heldout_rows_explicitly_calibration": false,
+    "hidden_rows": [],
+    "model_selection_rows": [],
+    "model_selection_source": "not_applicable",
+    "proxy_fallback_used": false,
+    "pypeec_stress_rows_used_for_training": false,
+    "threshold_selection_rows": [],
+    "thresholds_source": "none"
+  },
+  "node_count": {
+    "max": 37,
+    "min": 35
+  },
+  "run_audit": {
+    "audit_date": "2026-05-04",
+    "claim_boundary": "generated/domain-limited evidence, not real validation",
+    "fresh_full_run_completed": true,
+    "full_run_command": "uv run python scripts/run_evidence.py --all --mode run --continue-on-fail",
+    "mode": "full_run",
+    "smoke_or_test_only": false
+  },
+  "schema_version": "research-ssot-metrics-v1",
+  "split_roles": {
+    "calibration": 12,
+    "family_hidden": 24,
+    "heldout": 24,
+    "train": 36
+  },
+  "status": "passed"
+}

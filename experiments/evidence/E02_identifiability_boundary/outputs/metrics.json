@@ -1,62 +1,86 @@
 {
-  "experiment": "exp02-observability-and-bxy-vs-bz",
-  "units": {
-    "length": "m internally; figures use micrometres",
-    "magnetic_field": "T internally; some figures use microtesla",
-    "sheet_current": "A/m arbitrary scale in examples"
-  },
-  "notes": [
-    "This experiment is a theoretical observability and single-layer Fourier inversion check, not a neural network experiment.",
-    "Bxy and Bz inversions use the ideal thin-sheet free-space spectral model; real QDM sensor effects are intentionally left for later experiments."
-  ],
-  "attenuation_threshold_table": {
-    "z_5_um": {
-      "lambda_at_attenuation_0.1_um": 13.643763538418412,
-      "lambda_at_attenuation_0.01_um": 6.821881769209206,
-      "lambda_at_attenuation_0.001_um": 4.547921179472804
+  "acceptance_gates": {
+    "clean_full_field_bxy_inverse_is_self_consistent": {
+      "pass": true,
+      "threshold": "relative_l2 < 1e-4",
+      "value": 7.636483302599897e-06
     },
-    "z_10_um": {
-      "lambda_at_attenuation_0.1_um": 27.287527076836824,
-      "lambda_at_attenuation_0.01_um": 13.643763538418412,
-      "lambda_at_attenuation_0.001_um": 9.095842358945609
+    "clean_full_field_bz_inverse_is_self_consistent_except_dc": {
+      "pass": true,
+      "threshold": "relative_l2 < 1e-3",
+      "value": 4.5752510309098396e-05
     },
-    "z_25_um": {
-      "lambda_at_attenuation_0.1_um": 68.21881769209207,
-      "lambda_at_attenuation_0.01_um": 34.10940884604604,
-      "lambda_at_attenuation_0.001_um": 22.739605897364022
+    "finite_fov_damages_bz_more_than_bxy": {
+      "pass": true,
+      "threshold": "Bz finite-FOV error > 5x Bxy finite-FOV error",
+      "value": 10.282842479013027
     },
-    "z_50_um": {
-      "lambda_at_attenuation_0.1_um": 136.43763538418415,
-      "lambda_at_attenuation_0.01_um": 68.21881769209207,
-      "lambda_at_attenuation_0.001_um": 45.479211794728045
-    },
-    "z_100_um": {
-      "lambda_at_attenuation_0.1_um": 272.8752707683683,
-      "lambda_at_attenuation_0.01_um": 136.43763538418415,
-      "lambda_at_attenuation_0.001_um": 90.95842358945609
-    },
-    "z_250_um": {
-      "lambda_at_attenuation_0.1_um": 682.1881769209208,
-      "lambda_at_attenuation_0.01_um": 341.0940884604604,
-      "lambda_at_attenuation_0.001_um": 227.39605897364024
-    },
-    "z_500_um": {
-      "lambda_at_attenuation_0.1_um": 1364.3763538418416,
-      "lambda_at_attenuation_0.01_um": 682.1881769209208,
-      "lambda_at_attenuation_0.001_um": 454.7921179472805
+    "two_layer_single_plane_is_rank_deficient": {
+      "pass": true,
+      "threshold": "rank_per_feature all equal 1",
+      "value": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
     }
   },
-  "rel_l2_bxy_clean_full": 7.636483302599897e-06,
-  "rel_l2_bz_clean_full": 4.5752510309098396e-05,
-  "rel_l2_bxy_finite_fov": 0.050634547904487764,
-  "rel_l2_bz_finite_fov": 0.5206670800978869,
-  "standoffs_um": [
-    10,
-    25,
-    50,
-    100,
-    200
-  ],
+  "all_acceptance_gates_passed": true,
+  "attenuation_threshold_table": {
+    "z_100_um": {
+      "lambda_at_attenuation_0.001_um": 90.95842358945609,
+      "lambda_at_attenuation_0.01_um": 136.43763538418415,
+      "lambda_at_attenuation_0.1_um": 272.8752707683683
+    },
+    "z_10_um": {
+      "lambda_at_attenuation_0.001_um": 9.095842358945609,
+      "lambda_at_attenuation_0.01_um": 13.643763538418412,
+      "lambda_at_attenuation_0.1_um": 27.287527076836824
+    },
+    "z_250_um": {
+      "lambda_at_attenuation_0.001_um": 227.39605897364024,
+      "lambda_at_attenuation_0.01_um": 341.0940884604604,
+      "lambda_at_attenuation_0.1_um": 682.1881769209208
+    },
+    "z_25_um": {
+      "lambda_at_attenuation_0.001_um": 22.739605897364022,
+      "lambda_at_attenuation_0.01_um": 34.10940884604604,
+      "lambda_at_attenuation_0.1_um": 68.21881769209207
+    },
+    "z_500_um": {
+      "lambda_at_attenuation_0.001_um": 454.7921179472805,
+      "lambda_at_attenuation_0.01_um": 682.1881769209208,
+      "lambda_at_attenuation_0.1_um": 1364.3763538418416
+    },
+    "z_50_um": {
+      "lambda_at_attenuation_0.001_um": 45.479211794728045,
+      "lambda_at_attenuation_0.01_um": 68.21881769209207,
+      "lambda_at_attenuation_0.1_um": 136.43763538418415
+    },
+    "z_5_um": {
+      "lambda_at_attenuation_0.001_um": 4.547921179472804,
+      "lambda_at_attenuation_0.01_um": 6.821881769209206,
+      "lambda_at_attenuation_0.1_um": 13.643763538418412
+    }
+  },
+  "experiment": "exp02-observability-and-bxy-vs-bz",
+  "leakage_audit": {
+    "calibration_rows": [],
+    "calibration_source": "No calibration rows used for threshold or model selection.",
+    "heldout_rows": [
+      "test"
+    ],
+    "heldout_rows_explicitly_calibration": false,
+    "hidden_rows": [],
+    "model_selection_rows": [],
+    "model_selection_source": "not_applicable",
+    "proxy_fallback_used": false,
+    "pypeec_stress_rows_used_for_training": false,
+    "threshold_selection_rows": [],
+    "thresholds_source": "none"
+  },
   "noise_levels_relative_to_max_field": [
     0.0,
     0.002,
@@ -64,7 +88,13 @@
     0.01,
     0.02
   ],
+  "notes": [
+    "This experiment is a theoretical observability and single-layer Fourier inversion check, not a neural network experiment.",
+    "Bxy and Bz inversions use the ideal thin-sheet free-space spectral model; real QDM sensor effects are intentionally left for later experiments."
+  ],
   "regularized_recovery_min_wavelength_um": 100.0,
+  "rel_l2_bxy_clean_full": 7.636483302599897e-06,
+  "rel_l2_bxy_finite_fov": 0.050634547904487764,
   "rel_l2_bxy_noise_scan": [
     [
       0.0667527432541239,
@@ -102,6 +132,8 @@
       8.248228714855937e+27
     ]
   ],
+  "rel_l2_bz_clean_full": 4.5752510309098396e-05,
+  "rel_l2_bz_finite_fov": 0.5206670800978869,
   "rel_l2_bz_noise_scan": [
     [
       0.06675274325412403,
@@ -139,11 +171,29 @@
       7.695022009480837e+27
     ]
   ],
+  "run_audit": {
+    "audit_date": "2026-05-04",
+    "claim_boundary": "generated/domain-limited evidence, not real validation",
+    "fresh_full_run_completed": true,
+    "full_run_command": "uv run python scripts/run_evidence.py --all --mode run --continue-on-fail",
+    "mode": "full_run",
+    "smoke_or_test_only": false
+  },
+  "schema_version": "research-ssot-metrics-v1",
+  "standoffs_um": [
+    10,
+    25,
+    50,
+    100,
+    200
+  ],
   "two_layer_single_plane_rank_gate": {
-    "standoff_um": 50.0,
-    "layer_depths_um": [
-      50.0,
-      130.0
+    "deep_to_shallow_response_ratio": [
+      3.4873423562089973e-06,
+      0.0018674427317079893,
+      0.04321391826377225,
+      0.20787957635076193,
+      0.4559381277659963
     ],
     "feature_um": [
       40.0,
@@ -152,12 +202,17 @@
       320.0,
       640.0
     ],
-    "deep_to_shallow_response_ratio": [
-      3.4873423562089973e-06,
-      0.0018674427317079893,
-      0.04321391826377225,
-      0.20787957635076193,
-      0.4559381277659963
+    "interpretation": "single-plane Bxyz improves modal SNR but does not by itself identify layer labels without extra priors or measurements",
+    "largest_singular_value_per_feature": [
+      1.5070172753992293e-07,
+      0.0003882038808249142,
+      0.019721261399270714,
+      0.14336774856787796,
+      0.4117600504146001
+    ],
+    "layer_depths_um": [
+      50.0,
+      130.0
     ],
     "rank_per_feature": [
       1,
@@ -166,6 +221,7 @@
       1,
       1
     ],
+    "single_plane_two_layer_rank_deficient": true,
     "smallest_singular_value_per_feature": [
       0.0,
       0.0,
@@ -173,43 +229,11 @@
       0.0,
       0.0
     ],
-    "largest_singular_value_per_feature": [
-      1.5070172753992293e-07,
-      0.0003882038808249142,
-      0.019721261399270714,
-      0.14336774856787796,
-      0.4117600504146001
-    ],
-    "single_plane_two_layer_rank_deficient": true,
-    "interpretation": "single-plane Bxyz improves modal SNR but does not by itself identify layer labels without extra priors or measurements"
+    "standoff_um": 50.0
   },
-  "acceptance_gates": {
-    "clean_full_field_bxy_inverse_is_self_consistent": {
-      "threshold": "relative_l2 < 1e-4",
-      "value": 7.636483302599897e-06,
-      "pass": true
-    },
-    "clean_full_field_bz_inverse_is_self_consistent_except_dc": {
-      "threshold": "relative_l2 < 1e-3",
-      "value": 4.5752510309098396e-05,
-      "pass": true
-    },
-    "finite_fov_damages_bz_more_than_bxy": {
-      "threshold": "Bz finite-FOV error > 5x Bxy finite-FOV error",
-      "value": 10.282842479013027,
-      "pass": true
-    },
-    "two_layer_single_plane_is_rank_deficient": {
-      "threshold": "rank_per_feature all equal 1",
-      "value": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "pass": true
-    }
-  },
-  "all_acceptance_gates_passed": true
+  "units": {
+    "length": "m internally; figures use micrometres",
+    "magnetic_field": "T internally; some figures use microtesla",
+    "sheet_current": "A/m arbitrary scale in examples"
+  }
 }

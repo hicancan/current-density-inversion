@@ -38,6 +38,22 @@ After code work:
 6. Update `update_log.md`.
 7. Run `uv run python scripts/validate_graph.py` and tests where possible.
 
+Agent-native audit commands:
+
+- `uv run python scripts/audit_claim.py <claim-id>`
+- `uv run python scripts/audit_evidence_package.py <evidence-id>`
+- `uv run python scripts/prepare_agent_context.py --claim <claim-id>`
+- `uv run python scripts/check_claim_gates.py`
+- `uv run python scripts/check_metrics_schema.py`
+- `uv run python scripts/check_no_leakage.py`
+- `uv run python scripts/audit_old_new_experiment_coverage.py`
+- `uv run python scripts/normalize_metrics_metadata.py` after full evidence
+  runs that rewrite package metrics files
+
+Full run evidence must be recorded as full run only when the package
+`run_command` or all equivalent stage commands completed. Test/smoke runs may
+verify code paths, but must not be written as full-run evidence.
+
 Final audit response must include:
 
 - Claim affected
@@ -49,4 +65,3 @@ Final audit response must include:
 - Next required evidence
 - Tests run
 - Files changed
-

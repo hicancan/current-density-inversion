@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Research artifact",
+  "type": "object",
+  "required": ["id", "kind", "path", "claim", "evidence", "role", "tracked", "generated_by", "calibration_allowed", "notes"],
+  "properties": {
+    "id": {"type": "string"},
+    "kind": {"type": "string"},
+    "path": {"type": "string"},
+    "claim": {"type": "string"},
+    "evidence": {"type": "string"},
+    "role": {"type": "string"},
+    "tracked": {"type": "boolean"},
+    "generated_by": {"type": "string"},
+    "calibration_allowed": {"type": "boolean"},
+    "notes": {"type": "string"}
+  }
+}
+

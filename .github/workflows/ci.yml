@@ -1,0 +1,30 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  research-graph:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - name: Sync
+        run: uv sync
+      - name: Validate graph
+        run: uv run python scripts/validate_graph.py
+      - name: Check claim gates
+        run: uv run python scripts/check_claim_gates.py
+      - name: Check metrics schema
+        run: uv run python scripts/check_metrics_schema.py
+      - name: Check no leakage
+        run: uv run python scripts/check_no_leakage.py
+      - name: Check evidence outputs
+        run: uv run python scripts/check_evidence_outputs.py
+      - name: Audit old/new experiment coverage
+        run: uv run python scripts/audit_old_new_experiment_coverage.py
+      - name: Tests
+        run: uv run pytest -q
+

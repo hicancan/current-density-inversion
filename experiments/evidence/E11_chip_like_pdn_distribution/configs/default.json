@@ -1,0 +1,15 @@
+{
+  "seed": 20260504,
+  "families": 4,
+  "variants_per_hypothesis": 6,
+  "grid_size": 18,
+  "sensor_z": 0.42,
+  "source_voltage": 1.0,
+  "ground_voltage": 0.0,
+  "kcl_residual_threshold": 1e-10,
+  "current_closure_threshold": 1e-10,
+  "divB_residual_threshold": 2.0,
+  "heldout_accuracy_threshold": 0.95,
+  "family_hidden_accuracy_threshold": 0.90,
+  "min_family_heldout_rows_per_hypothesis": 1
+}

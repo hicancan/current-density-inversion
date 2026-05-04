@@ -7,7 +7,7 @@
 
 ## Selected Gate
 
-- score threshold: `0.179`
+- score threshold: `0.272`
 - artifact radius px: `0.000`
 - return radius px: `2.000`
 - artifact physical override: `0.000`
@@ -16,8 +16,8 @@
 
 | split | precision | recall | F1 | no-via FP | pred present | TP | FP |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| `before` | 1.000 | 0.902 | 0.948 | 0.000 | n/a | n/a | n/a |
-| `after` | 1.000 | 0.863 | 0.926 | 0.000 | 554 | 554 | 0 |
+| `before` | 1.000 | 0.913 | 0.954 | 0.000 | n/a | n/a | n/a |
+| `after` | 1.000 | 0.846 | 0.916 | 0.000 | 543 | 543 | 0 |
 
 ## Family Rows
 
@@ -29,11 +29,11 @@
 | `synthetic_null_via_operator_gap_stress` | 21 | 0.182 | 1.000 | 0.000 | 0.000 | 0.000 | 0.000 | 0.000 |
 | `synthetic_null_via_return_path_stress` | 21 | 0.155 | 1.000 | 0.000 | 0.000 | 0.000 | 0.000 | 0.000 |
 | `synthetic_null_via_strong_local_b_gap_stress` | 21 | 0.165 | 1.000 | 0.000 | 0.000 | 0.000 | 0.000 | 0.000 |
-| `true_via_bend_corner_stress` | 107 | 0.063 | 0.000 | 0.000 | 0.953 | 0.944 | 0.976 | 0.971 |
-| `true_via_clean` | 107 | 0.000 | 0.000 | 0.000 | 0.963 | 0.953 | 0.981 | 0.976 |
-| `true_via_layer_allocation_stress` | 107 | 0.335 | 0.000 | 0.000 | 0.654 | 0.449 | 0.791 | 0.619 |
-| `true_via_near_bend_corner_strong_stress` | 107 | 0.091 | 0.000 | 0.000 | 0.925 | 0.916 | 0.961 | 0.956 |
-| `true_via_operator_gap_stress` | 107 | 0.197 | 0.000 | 0.000 | 0.944 | 0.944 | 0.971 | 0.971 |
-| `true_via_return_path_stress` | 107 | 0.167 | 0.000 | 0.000 | 0.972 | 0.972 | 0.986 | 0.986 |
+| `true_via_bend_corner_stress` | 107 | 0.063 | 0.000 | 0.000 | 0.972 | 0.953 | 0.986 | 0.976 |
+| `true_via_clean` | 107 | 0.000 | 0.000 | 0.000 | 0.981 | 0.963 | 0.991 | 0.981 |
+| `true_via_layer_allocation_stress` | 107 | 0.335 | 0.000 | 0.000 | 0.692 | 0.421 | 0.818 | 0.592 |
+| `true_via_near_bend_corner_strong_stress` | 107 | 0.091 | 0.000 | 0.000 | 0.953 | 0.935 | 0.976 | 0.966 |
+| `true_via_operator_gap_stress` | 107 | 0.197 | 0.000 | 0.000 | 0.916 | 0.879 | 0.956 | 0.935 |
+| `true_via_return_path_stress` | 107 | 0.167 | 0.000 | 0.000 | 0.963 | 0.925 | 0.981 | 0.961 |
 
 Interpretation: this table is the only place where the null-via gate parameters are selected. It uses synthetic validation stress, not PyPEEC test cases.

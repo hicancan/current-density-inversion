@@ -108,6 +108,26 @@
   evidence_files:
     - outputs/by_claim/C05_solver_bridge/PYPEEC_SOLVER_BRIDGE_EVIDENCE.md
 
+- id: edge_E07_limits_C05
+  from: E07_pypeec_solver_bridge
+  to: C05_pypeec_solver_bridge
+  relation: limits
+  strength: strong
+  scope: "generated PyPEEC solver bridge boundary"
+  caveat: "PyPEEC bridge is useful generated-domain evidence but is not real CAD/FEM/FastHenry/QDM validation."
+  evidence_files:
+    - outputs/by_claim/C05_solver_bridge/PYPEEC_SOLVER_BRIDGE_EVIDENCE.md
+
+- id: edge_E07_limits_C06
+  from: E07_pypeec_solver_bridge
+  to: C06_graph_hypothesis_system_identification
+  relation: limits
+  strength: medium
+  scope: "PyPEEC operator gap against graph hypothesis scoring"
+  caveat: "The generated solver bridge exposes operator gap and limits graph-system claims until real layout/external solver evidence exists."
+  evidence_files:
+    - outputs/by_claim/C05_solver_bridge/PYPEEC_SOLVER_BRIDGE_EVIDENCE.md
+
 - id: edge_E08_to_C06
   from: E08_graph_hypothesis_system_id
   to: C06_graph_hypothesis_system_identification
@@ -115,6 +135,16 @@
   strength: strong
   scope: "generated graph and generated PyPEEC-domain H0/H1/H2/H3"
   caveat: "No real CAD/Gerber/GDS graph import."
+  evidence_files:
+    - outputs/by_claim/C06_graph_hypothesis_system_id/GRAPH_HYPOTHESIS_EVIDENCE.md
+
+- id: edge_E08_limits_C06
+  from: E08_graph_hypothesis_system_id
+  to: C06_graph_hypothesis_system_identification
+  relation: limits
+  strength: strong
+  scope: "generated graph and PyPEEC-domain limits"
+  caveat: "E08 supports the generated-domain framing but does not validate real CAD/Gerber/GDS or real QDM/NV graph inference."
   evidence_files:
     - outputs/by_claim/C06_graph_hypothesis_system_id/GRAPH_HYPOTHESIS_EVIDENCE.md
 
@@ -128,6 +158,16 @@
   evidence_files:
     - outputs/by_claim/C07_stacked_evidence_calibration/STACKED_EVIDENCE_CALIBRATION.md
 
+- id: edge_E08_limits_C07
+  from: E08_graph_hypothesis_system_id
+  to: C07_stacked_evidence_calibration
+  relation: limits
+  strength: strong
+  scope: "generated PyPEEC calibration/held-out folds"
+  caveat: "Stacked evidence calibration is generated-domain and does not prove no-calibration or real deployment transfer."
+  evidence_files:
+    - outputs/by_claim/C07_stacked_evidence_calibration/STACKED_EVIDENCE_CALIBRATION.md
+
 - id: edge_E08_to_C08
   from: E08_graph_hypothesis_system_id
   to: C08_ood_refusal_safety
@@ -138,6 +178,16 @@
   evidence_files:
     - outputs/by_claim/C08_ood_refusal_safety/OOD_REFUSAL_EVIDENCE.md
 
+- id: edge_E08_limits_C08
+  from: E08_graph_hypothesis_system_id
+  to: C08_ood_refusal_safety
+  relation: limits
+  strength: strong
+  scope: "generated hidden and near-hidden stress"
+  caveat: "Feature-distance refusal screens generated hidden stress but does not prove real unknown-safe deployment."
+  evidence_files:
+    - outputs/by_claim/C08_ood_refusal_safety/OOD_REFUSAL_EVIDENCE.md
+
 - id: edge_E08_to_C09
   from: E08_graph_hypothesis_system_id
   to: C09_fewshot_family_adaptation
@@ -145,6 +195,16 @@
   strength: medium
   scope: "generated family few-shot adaptation"
   caveat: "Calibration label source is not yet realistic."
+  evidence_files:
+    - outputs/by_claim/C09_fewshot_family_adaptation/FEWSHOT_FAMILY_ADAPTATION.md
+
+- id: edge_E08_limits_C09
+  from: E08_graph_hypothesis_system_id
+  to: C09_fewshot_family_adaptation
+  relation: limits
+  strength: strong
+  scope: "generated few-shot family adaptation"
+  caveat: "Few-shot generated-family adaptation does not establish realistic calibration sample availability or external CAD/FEM/QDM transfer."
   evidence_files:
     - outputs/by_claim/C09_fewshot_family_adaptation/FEWSHOT_FAMILY_ADAPTATION.md
 
@@ -178,6 +238,16 @@
   evidence_files:
     - outputs/by_claim/C12_real_qdm_nv_validation/REAL_DATA_INTAKE_GATE.md
 
+- id: edge_E09_limits_C12
+  from: E09_real_data_intake_gate
+  to: C12_real_qdm_nv_validation
+  relation: limits
+  strength: strong
+  scope: "real-data interface scaffold without measured rows"
+  caveat: "Interface gates pass, but no measured QDM/NV rows are present; C12 remains blocked."
+  evidence_files:
+    - outputs/by_claim/C12_real_qdm_nv_validation/REAL_DATA_INTAKE_GATE.md
+
 - id: edge_E09_to_C13
   from: E09_real_data_intake_gate
   to: C13_calibration_protocol_reality
@@ -188,3 +258,92 @@
   evidence_files:
     - outputs/by_claim/C13_calibration_protocol_reality/REAL_CALIBRATION_BOUNDARY.md
 
+- id: edge_E09_limits_C13
+  from: E09_real_data_intake_gate
+  to: C13_calibration_protocol_reality
+  relation: limits
+  strength: medium
+  scope: "real calibration interface without measured calibration rows"
+  caveat: "E09 defines interface gates but does not validate real calibration sample sources."
+  evidence_files:
+    - outputs/by_claim/C13_calibration_protocol_reality/REAL_CALIBRATION_BOUNDARY.md
+
+- id: edge_E10_to_C10
+  from: E10_pdn_kcl_distribution
+  to: C10_pdn_kcl_distribution_need
+  relation: supports
+  strength: medium
+  scope: "generated resistive PDN/KCL graph prototype"
+  caveat: "Runnable KCL/current-closure evidence only; not real CAD/Gerber/GDS, external solver, or real QDM/NV validation."
+  evidence_files:
+    - outputs/by_claim/C10_pdn_kcl_distribution_need/PDN_KCL_PROTOTYPE_EVIDENCE.md
+
+- id: edge_E10_to_C06
+  from: E10_pdn_kcl_distribution
+  to: C06_graph_hypothesis_system_identification
+  relation: motivates
+  strength: medium
+  scope: "PDN/KCL-generated H0/H1/H2/H3 hypothesis rows"
+  caveat: "The scorer is matched to generated candidates and does not replace CAD-derived graph candidates."
+  evidence_files:
+    - outputs/by_claim/C10_pdn_kcl_distribution_need/PDN_KCL_PROTOTYPE_EVIDENCE.md
+
+- id: edge_E11_to_C10
+  from: E11_chip_like_pdn_distribution
+  to: C10_pdn_kcl_distribution_need
+  relation: supports
+  strength: strong
+  scope: "generated chip-like four-layer PDN graph distribution with KCL, current closure, return paths, and Bxyz fields"
+  caveat: "Artificial micro-PDN only; not real chip, CAD/Gerber/GDS, external solver, or real QDM/NV validation."
+  evidence_files:
+    - outputs/by_claim/C10_pdn_kcl_distribution_need/CHIP_LIKE_PDN_EVIDENCE.md
+
+- id: edge_E11_to_C06
+  from: E11_chip_like_pdn_distribution
+  to: C06_graph_hypothesis_system_identification
+  relation: motivates
+  strength: medium
+  scope: "generated chip-like H0/H1/H2/H3 PDN hypothesis rows"
+  caveat: "Rows are generated from a hand-designed family and do not replace CAD-derived graph candidates."
+  evidence_files:
+    - outputs/by_claim/C10_pdn_kcl_distribution_need/CHIP_LIKE_PDN_EVIDENCE.md
+
+- id: edge_E12_to_C10
+  from: E12_pdn_physics_learning
+  to: C10_pdn_kcl_distribution_need
+  relation: supports
+  strength: medium
+  scope: "generated E11 physics-learning closure with held-out label learning and predicted-current KCL/current-closure improvement"
+  caveat: "Physics-aware projection is generated-domain evidence and cannot be claimed as real learned physics under real layouts."
+  evidence_files:
+    - outputs/by_claim/C10_pdn_kcl_distribution_need/PDN_PHYSICS_LEARNING_EVIDENCE.md
+
+- id: edge_E12_to_C06
+  from: E12_pdn_physics_learning
+  to: C06_graph_hypothesis_system_identification
+  relation: supports
+  strength: medium
+  scope: "Bxyz-to-hypothesis learning plus graph/KCL projected current consistency on generated E11 rows"
+  caveat: "It still depends on generated graph families and matched graph projection."
+  evidence_files:
+    - outputs/by_claim/C10_pdn_kcl_distribution_need/PDN_PHYSICS_LEARNING_EVIDENCE.md
+
+- id: edge_E12_to_C11
+  from: E12_pdn_physics_learning
+  to: C11_mechanism_level_explanation
+  relation: limits
+  strength: strong
+  scope: "separation of label learning, KCL/current-closure consistency, and mechanism-level explanation"
+  caveat: "E12 does not add mechanism labels or accepted-row mechanism audits; label correctness remains insufficient."
+  evidence_files:
+    - outputs/by_claim/C11_mechanism_explanation/PHYSICS_LEARNING_BOUNDARY.md
+
+- id: edge_E12_to_C14
+  from: E12_pdn_physics_learning
+  to: C14_unlabeled_family_adaptation
+  relation: motivates
+  strength: medium
+  scope: "generated E11 family-hidden rows expose a next target for label-free adaptation"
+  caveat: "E12 is supervised generated-domain learning, not unlabeled adaptation evidence."
+  evidence_files:
+    - outputs/by_claim/C11_mechanism_explanation/PHYSICS_LEARNING_BOUNDARY.md

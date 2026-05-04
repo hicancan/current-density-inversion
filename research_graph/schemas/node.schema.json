@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Research graph node",
+  "type": "object",
+  "required": ["type", "description", "status"],
+  "properties": {
+    "type": {"type": "string"},
+    "description": {"type": "string"},
+    "status": {"type": "string"},
+    "required_physics": {"type": "array", "items": {"type": "string"}},
+    "required_metrics": {"type": "array", "items": {"type": "string"}}
+  }
+}
+

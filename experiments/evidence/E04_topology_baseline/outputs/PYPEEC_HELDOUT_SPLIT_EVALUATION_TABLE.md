@@ -8,11 +8,11 @@
 
 | future role | model | cases | overall L2 | topology MSE | via recall | via F1 | no-via FP | physical B PyPEEC |
 |---|---|---:|---:|---:|---:|---:|---:|---:|
-| `future_calibration_candidate` | `unet_no_topology` | 115 | 0.838 | 1.340 | 0.905 | 0.671 | 0.962 | 0.957 |
-| `future_calibration_candidate` | `unet_topology_soft_loss` | 115 | 0.799 | 0.831 | 0.952 | 0.694 | 0.962 | 0.839 |
-| `future_calibration_candidate` | `unet_topology_two_stage_refined` | 115 | 0.796 | 0.775 | 0.794 | 0.654 | 0.769 | 0.837 |
-| `future_heldout_test` | `unet_no_topology` | 285 | 0.803 | 1.263 | 0.818 | 0.582 | 0.919 | 0.949 |
-| `future_heldout_test` | `unet_topology_soft_loss` | 285 | 0.797 | 0.806 | 0.891 | 0.615 | 0.932 | 0.844 |
-| `future_heldout_test` | `unet_topology_two_stage_refined` | 285 | 0.794 | 0.758 | 0.650 | 0.539 | 0.703 | 0.842 |
+| `future_calibration_candidate` | `unet_no_topology` | 115 | 0.828 | 1.369 | 0.921 | 0.674 | 0.981 | 0.982 |
+| `future_calibration_candidate` | `unet_topology_soft_loss` | 115 | 0.832 | 0.811 | 0.952 | 0.698 | 0.942 | 0.821 |
+| `future_calibration_candidate` | `unet_topology_two_stage_refined` | 115 | 0.829 | 0.775 | 0.683 | 0.597 | 0.731 | 0.817 |
+| `future_heldout_test` | `unet_no_topology` | 285 | 0.797 | 1.291 | 0.825 | 0.587 | 0.912 | 0.962 |
+| `future_heldout_test` | `unet_topology_soft_loss` | 285 | 0.808 | 0.769 | 0.854 | 0.591 | 0.959 | 0.791 |
+| `future_heldout_test` | `unet_topology_two_stage_refined` | 285 | 0.806 | 0.727 | 0.672 | 0.549 | 0.716 | 0.788 |
 
 Interpretation: these are frozen metrics stratified by the reserved future split. They do not perform PyPEEC calibration in the current run.

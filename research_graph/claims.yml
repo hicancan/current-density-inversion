@@ -126,14 +126,14 @@ C06_graph_hypothesis_system_identification:
   short_name: "graph_hypothesis_system_id"
   status: supported_generated
   scope:
-    data: [D03_no_via_hard_negative, D04_return_path_family, D05_bend_corner_artifact, D06_pypeec_generated_h0_h1_h2_h3]
+    data: [D03_no_via_hard_negative, D04_return_path_family, D05_bend_corner_artifact, D06_pypeec_generated_h0_h1_h2_h3, D08_pdn_kcl_circuit_graph, D11_chip_like_generated_pdn_family]
     forward: [F02_centerline_biot_savart, F03_finite_width_surrogate, F04_pypeec]
     observation: [O01_ideal_Bxyz]
-    representation: [R04_route_graph, R05_basis_bank, R08_hypothesis_set, R09_posterior_candidate_set]
-    algorithm: [A04_hypothesis_scorer, A12_bayesian_or_glrt_model_evidence]
+    representation: [R04_route_graph, R05_basis_bank, R06_pdn_circuit_graph, R08_hypothesis_set, R09_posterior_candidate_set, R10_multilayer_chip_like_pdn_graph]
+    algorithm: [A04_hypothesis_scorer, A12_bayesian_or_glrt_model_evidence, A14_pdn_physics_aware_learner]
     protocol: [S02_variant_heldout, S03_family_heldout, S05_solver_heldout, S06_hidden_stress]
-    metrics: [M06_h0_false_any, M07_h1_recall, M08_accepted_accuracy, M09_accepted_risk, M10_reject_rate]
-  supported_by: [E08_graph_hypothesis_system_id]
+    metrics: [M04_kcl_residual, M06_h0_false_any, M07_h1_recall, M08_accepted_accuracy, M09_accepted_risk, M10_reject_rate, M16_predicted_kcl_residual, M17_predicted_current_closure_error]
+  supported_by: [E08_graph_hypothesis_system_id, E12_pdn_physics_learning]
   limited_by: [E07_pypeec_solver_bridge, E08_graph_hypothesis_system_id]
   contradicted_by: []
   cannot_claim:
@@ -141,9 +141,10 @@ C06_graph_hypothesis_system_identification:
     - "real QDM/NV via diagnosis"
   limitations:
     - "Graph candidates are generated or approximated; real layout import is not validated."
+    - "E12 strengthens generated-domain physics-aware graph scoring but still uses generated E11 graph families."
   next_required_evidence:
     - "Replace generated graph families with CAD/Gerber/GDS-derived graph candidates."
-  last_updated: "2026-05-03"
+  last_updated: "2026-05-04"
 
 C07_stacked_evidence_calibration:
   title: "Stacked evidence fusion can substantially improve generated PyPEEC-domain H0/H1/H2/H3 diagnosis under legal calibration/held-out splits."
@@ -219,28 +220,37 @@ C09_fewshot_family_adaptation:
   last_updated: "2026-05-03"
 
 C10_pdn_kcl_distribution_need:
-  title: "A PDN/KCL-constrained circuit-graph distribution is the highest-priority missing data node."
+  title: "Generated PDN/KCL-constrained circuit graphs now include chip-like multilayer and physics-learning closure, but not real validation."
   short_name: "pdn_kcl_distribution_need"
-  status: active
+  status: supported_generated
   scope:
-    data: [D08_pdn_kcl_circuit_graph]
-    forward: [F02_centerline_biot_savart, F04_pypeec]
+    data: [D08_pdn_kcl_circuit_graph, D11_chip_like_generated_pdn_family]
+    forward: [F02_centerline_biot_savart]
     observation: [O01_ideal_Bxyz]
-    representation: [R06_pdn_circuit_graph, R08_hypothesis_set]
-    algorithm: [A04_hypothesis_scorer, A05_stacked_evidence_calibrator, A09_gnn_on_graph]
-    protocol: [S03_family_heldout, S08_fewshot_family_calibration]
-    metrics: [M04_kcl_residual, M05_divB_residual, M06_h0_false_any, M07_h1_recall]
-  supported_by: []
+    representation: [R06_pdn_circuit_graph, R08_hypothesis_set, R10_multilayer_chip_like_pdn_graph]
+    algorithm: [A04_hypothesis_scorer, A14_pdn_physics_aware_learner]
+    protocol: [S03_family_heldout, S11_no_leakage_calibration_heldout]
+    metrics: [M01_field_l2_or_rmse, M04_kcl_residual, M05_divB_residual, M06_h0_false_any, M07_h1_recall, M13_family_generalization_gap, M16_predicted_kcl_residual, M17_predicted_current_closure_error]
+  supported_by: [E10_pdn_kcl_distribution, E11_chip_like_pdn_distribution, E12_pdn_physics_learning]
   limited_by: []
   contradicted_by: []
   cannot_claim:
-    - "PDN/KCL robustness"
+    - "real-board PDN/KCL robustness"
     - "current closure under realistic return networks"
+    - "real CAD/Gerber/GDS validation"
+    - "external FEM/FastHenry validation"
+    - "real QDM/NV validation"
+    - "mechanism-level explanation from label correctness"
+    - "that generated physics-aware projection proves real learned physics"
   limitations:
-    - "The node is specified but not yet implemented or validated."
+    - "The first runnable loop is a small generated resistive graph prototype with matched generated hypotheses."
+    - "E11 adds a richer artificial multilayer chip-like PDN generator, but the topology remains hand designed and generated."
+    - "E12 shows generated-domain learning closure and KCL/closure improvement over an unconstrained current regressor, but does not validate real CAD/GDS, external solvers, or real QDM/NV measurements."
+    - "It does not include imported layouts, broad return-plane physics, inductive effects, frequency dependence, or external solver validation."
   next_required_evidence:
-    - "Implement the generator with KCL, current closure, return path, and edge resistance."
-  last_updated: "2026-05-03"
+    - "Import CAD/Gerber/GDS-like graph families and preserve no-leakage family/held-out splits."
+    - "Validate a small E11-like subset against an independent FEM/FastHenry-style solver."
+  last_updated: "2026-05-04"
 
 C11_mechanism_level_explanation:
   title: "Mechanism-level explanation must be separated from primary-label correctness."
@@ -255,16 +265,17 @@ C11_mechanism_level_explanation:
     protocol: [S04_mechanism_heldout, S06_hidden_stress, S07_near_hidden_severity]
     metrics: [M11_mechanism_level_correctness, M14_hidden_accept_risk]
   supported_by: [E04_topology_baseline_and_failures, E08_graph_hypothesis_system_id]
-  limited_by: [E08_graph_hypothesis_system_id]
+  limited_by: [E08_graph_hypothesis_system_id, E12_pdn_physics_learning]
   contradicted_by: []
   cannot_claim:
     - "accepted hidden rows are mechanism-correct"
     - "primary label correctness is sufficient explanation"
   limitations:
     - "Mechanism-level evaluation is only partially defined."
+    - "E12 separates label accuracy from KCL/current-closure consistency, but it still does not provide mechanism labels or accepted-row mechanism audits."
   next_required_evidence:
     - "Add mechanism labels and parameter-level audits for accepted hidden cases."
-  last_updated: "2026-05-03"
+  last_updated: "2026-05-04"
 
 C12_real_qdm_nv_validation:
   title: "Real QDM/NV validation requires measured data, metadata, calibration, and sanity gates."
@@ -285,10 +296,10 @@ C12_real_qdm_nv_validation:
     - "real data has been validated"
     - "real via/no-via diagnosis"
   limitations:
-    - "Only interface and sanity-gate design exists; measured rows are not present."
+    - "E09 interface and sanity-gate scaffold passes, but measured rows are not present."
   next_required_evidence:
     - "Load measured simple-wire or known-via data and pass sanity gates."
-  last_updated: "2026-05-03"
+  last_updated: "2026-05-04"
 
 C13_calibration_protocol_reality:
   title: "Calibration protocols must specify realistic sources and preserve calibration/held-out separation."
@@ -334,7 +345,7 @@ C14_unlabeled_family_adaptation:
     - "label-free adaptation replaces calibration"
   limitations:
     - "No evidence loop has been implemented."
+    - "E12 reports generated family-hidden performance, but it is supervised generated-domain learning, not unlabeled adaptation."
   next_required_evidence:
-    - "Prototype label-free manifold alignment on held-out generated families, then stress against hidden mechanisms."
-  last_updated: "2026-05-03"
-
+    - "Prototype label-free manifold alignment on E11 family-hidden generated families, then stress against hidden mechanisms."
+  last_updated: "2026-05-04"

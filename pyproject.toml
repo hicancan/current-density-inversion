@@ -19,3 +19,7 @@ package = false
 pythonpath = ["src"]
 testpaths = ["tests"]
 
+[tool.research_ssot]
+metrics_schema_version = "research-ssot-metrics-v1"
+evidence_root = "experiments/evidence"
+graph_root = "research_graph"

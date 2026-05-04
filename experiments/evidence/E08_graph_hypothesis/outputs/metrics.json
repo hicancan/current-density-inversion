@@ -1375,6 +1375,34 @@
       }
     }
   },
+  "leakage_audit": {
+    "calibration_rows": [
+      "validation",
+      "fewshot_calibration"
+    ],
+    "calibration_source": "Validation and explicitly marked few-shot calibration rows only; hidden/out-of-library rows are evaluation only.",
+    "heldout_rows": [
+      "test",
+      "ood",
+      "solver_heldout"
+    ],
+    "heldout_rows_explicitly_calibration": false,
+    "hidden_rows": [
+      "hidden",
+      "near_hidden",
+      "out_of_library"
+    ],
+    "model_selection_rows": [
+      "validation"
+    ],
+    "model_selection_source": "validation-only protocol with separate held-out/hidden evaluation",
+    "proxy_fallback_used": false,
+    "pypeec_stress_rows_used_for_training": false,
+    "threshold_selection_rows": [
+      "validation"
+    ],
+    "thresholds_source": "validation-only protocol; hidden/out-of-library rows excluded"
+  },
   "multistate_identification": {
     "active_constraint_rows": [
       [
@@ -2882,7 +2910,7 @@
         "primary_label_correct_but_artifact_unexplained"
       ]
     ],
-    "npz_path": "D:\\code\\github\\hicancan\\magnetic-system-identification-ssot\\experiments\\evidence\\E07_solver_bridge\\data\\pypeec_exp03_like_mini_dataset.npz",
+    "npz_path": "D:\\code\\github\\hicancan\\current-density-inversion\\experiments\\evidence\\E07_solver_bridge\\data\\pypeec_exp03_like_mini_dataset.npz",
     "pypeec_class_specific_selective_rows": [
       [
         "class_specific_margin_refusal",
@@ -7191,6 +7219,15 @@
       }
     }
   },
+  "run_audit": {
+    "audit_date": "2026-05-04",
+    "claim_boundary": "generated/domain-limited evidence, not real validation",
+    "fresh_full_run_completed": true,
+    "full_run_command": "uv run python scripts/run_evidence.py --all --mode run --continue-on-fail",
+    "mode": "full_run",
+    "smoke_or_test_only": false
+  },
+  "schema_version": "research-ssot-metrics-v1",
   "seed": 20260430,
   "selected_complexity_penalty": 0.0005,
   "selected_thresholds": {

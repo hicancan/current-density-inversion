@@ -13,7 +13,7 @@ xy-pitch refinement sweep.
 ```json
 {
   "python_module_available": true,
-  "python_module_origin": "D:\\Dev\\uv-cache\\archive-v0\\Zzl01taRLTUbouW5KV4qm\\Lib\\site-packages\\pypeec\\__init__.py",
+  "python_module_origin": "D:\\Dev\\uv-cache\\archive-v0\\LZaUGY6XHG6AF_x2NzsVG\\Lib\\site-packages\\pypeec\\__init__.py",
   "python_package_version": "5.8.0",
   "api_functions_checked": [
     "run_mesher_data",
@@ -115,3 +115,12 @@ exp03-like route subset. It is still a solver-level cross-validation gate: it
 does not claim FastHenry/FEM/QDM, CAD-scale convergence, or real-chip agreement,
 and it does not validate the inverse neural model until these fields are
 explicitly fed back into exp04.
+
+## Agent Audit Metadata
+
+- Metrics file: `outputs/metrics.json`
+- Schema version: `research-ssot-metrics-v1`
+- Calibration source: No threshold/model calibration; PyPEEC cases are solver bridge evaluation rows.
+- Threshold source: not_applicable
+- Model-selection source: not_applicable
+- Audit date: 2026-05-04

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Evidence edge",
+  "type": "object",
+  "required": ["id", "from", "to", "relation", "strength", "scope", "caveat", "evidence_files"],
+  "properties": {
+    "id": {"type": "string"},
+    "from": {"type": "string"},
+    "to": {"type": "string"},
+    "relation": {"type": "string"},
+    "strength": {"type": "string"},
+    "scope": {"type": "string"},
+    "caveat": {"type": "string"},
+    "evidence_files": {"type": "array", "items": {"type": "string"}}
+  }
+}
+

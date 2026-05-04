@@ -15,12 +15,12 @@ E01_canonical_forward_sanity:
   runtime:
     package_dir: experiments/evidence/E01_forward_sanity
     run_command: "uv run --with-requirements requirements.txt python src/experiments/run_all.py --out outputs"
-    test_command: "uv run --with-requirements requirements.txt --with pytest pytest -q tests"
+    test_command: "uv run --with-requirements requirements.txt --with pytest python -m pytest -q tests"
     metrics_files:
       - experiments/evidence/E01_forward_sanity/outputs/metrics.json
   result_summary: "Canonical wire, loop, and via cases support sign, linearity, standoff, and via-field sanity within ideal free-space assumptions."
   status: passed
-  last_run: "2026-05-03"
+  last_run: "2026-05-04"
 
 E02_observability_bxy_bz:
   title: "Single-plane observability and Bxy/Bz inversion boundary"
@@ -39,12 +39,12 @@ E02_observability_bxy_bz:
   runtime:
     package_dir: experiments/evidence/E02_identifiability_boundary
     run_command: "uv run --with-requirements requirements.txt python src/experiments/run_all.py"
-    test_command: "uv run --with-requirements requirements.txt --with pytest pytest -q tests"
+    test_command: "uv run --with-requirements requirements.txt --with pytest python -m pytest -q tests"
     metrics_files:
       - experiments/evidence/E02_identifiability_boundary/outputs/metrics.json
   result_summary: "Standoff suppresses high-frequency information, inverse amplification is visible, Bxy and Bz have different finite-FOV failure modes, and single-plane multilayer inversion remains rank-limited."
   status: passed
-  last_run: "2026-05-03"
+  last_run: "2026-05-04"
 
 E03_two_layer_via_topology:
   title: "Two-layer via topology and benchmark distribution evidence"
@@ -64,12 +64,12 @@ E03_two_layer_via_topology:
   runtime:
     package_dir: experiments/evidence/E03_two_layer_via_topology
     run_command: "uv run --with-requirements requirements.txt python src/experiments/run_all.py --config configs/default.json"
-    test_command: "uv run --with-requirements requirements.txt --with pytest pytest -q tests"
+    test_command: "uv run --with-requirements requirements.txt --with pytest python -m pytest -q tests"
     metrics_files:
       - experiments/evidence/E03_two_layer_via_topology/outputs/metrics.json
   result_summary: "Two-layer source/sink topology can be generated and checked, but the route-like distribution is still synthetic and does not include PDN/KCL realism."
   status: passed
-  last_run: "2026-05-03"
+  last_run: "2026-05-04"
 
 E04_topology_baseline_and_failures:
   title: "Topology-aware inverse baseline and no-via/return failure diagnostics"
@@ -90,13 +90,13 @@ E04_topology_baseline_and_failures:
   runtime:
     package_dir: experiments/evidence/E04_topology_baseline
     run_command: "uv run --with-requirements requirements.txt python src/run_all.py --config configs/default.json"
-    smoke_command: "uv run --with-requirements requirements.txt --with pytest pytest -q tests"
-    test_command: "uv run --with-requirements requirements.txt --with pytest pytest -q tests"
+    smoke_command: "uv run --with-requirements requirements.txt --with pytest python -m pytest -q tests"
+    test_command: "uv run --with-requirements requirements.txt --with pytest python -m pytest -q tests"
     metrics_files:
       - experiments/evidence/E04_topology_baseline/outputs/metrics.json
   result_summary: "Topology-aware image inverse methods reduce topology residuals but no-via false positives, return-current mismatch, and mechanism ambiguity remain material."
-  status: partial
-  last_run: "2026-05-03"
+  status: passed
+  last_run: "2026-05-04"
 
 E05_qdm_like_observation_stress:
   title: "QDM-like observation stress and calibration-risk evidence"
@@ -115,12 +115,12 @@ E05_qdm_like_observation_stress:
   runtime:
     package_dir: experiments/evidence/E05_qdm_like_observation_stress
     run_command: "uv run --with-requirements requirements.txt python src/run_all.py"
-    test_command: "uv run --with-requirements requirements.txt --with pytest pytest -q tests"
+    test_command: "uv run --with-requirements requirements.txt --with pytest python -m pytest -q tests"
     metrics_files:
       - experiments/evidence/E05_qdm_like_observation_stress/outputs/metrics.json
   result_summary: "PSF, correlated noise, confidence, standoff tilt, and NV projection risks are quantifiable observation stressors but not real ODMR-level validation."
   status: passed
-  last_run: "2026-05-03"
+  last_run: "2026-05-04"
 
 E06_multifidelity_operator_gap:
   title: "Multi-fidelity anti-inverse-crime operator-gap evidence"
@@ -139,12 +139,12 @@ E06_multifidelity_operator_gap:
   runtime:
     package_dir: experiments/evidence/E06_operator_gap
     run_command: "uv run --with-requirements requirements.txt python src/run_all.py"
-    test_command: "uv run --with-requirements requirements.txt --with pytest pytest -q tests"
+    test_command: "uv run --with-requirements requirements.txt --with pytest python -m pytest -q tests"
     metrics_files:
       - experiments/evidence/E06_operator_gap/outputs/metrics.json
   result_summary: "Low-to-medium-to-high operator gaps show that same-operator inverse tests are over-optimistic and calibration/held-out separation is necessary."
   status: passed
-  last_run: "2026-05-03"
+  last_run: "2026-05-04"
 
 E07_pypeec_solver_bridge:
   title: "PyPEEC solver bridge and generated H0/H1/H2/H3 distribution evidence"
@@ -164,12 +164,12 @@ E07_pypeec_solver_bridge:
     package_dir: experiments/evidence/E07_solver_bridge
     run_command: "uv run --with numpy --with pypeec python src/run_all.py"
     smoke_command: "uv run --with numpy --with pypeec python src/run_all.py --quick --config configs/default.json --out-dir quick_runtime"
-    test_command: "uv run --with numpy --with pypeec --with pytest pytest -q tests"
+    test_command: "uv run --with numpy --with pypeec --with pytest python -m pytest -q tests"
     metrics_files:
       - experiments/evidence/E07_solver_bridge/outputs/metrics.json
   result_summary: "PyPEEC runs form a higher-fidelity generated solver bridge and expose centerline/finite-width/PyPEEC field gaps."
   status: passed
-  last_run: "2026-05-03"
+  last_run: "2026-05-04"
 
 E08_graph_hypothesis_system_id:
   title: "Graph hypothesis identification, stacked evidence, refusal, and adaptation evidence"
@@ -192,12 +192,12 @@ E08_graph_hypothesis_system_id:
   runtime:
     package_dir: experiments/evidence/E08_graph_hypothesis
     run_command: "uv run --with-requirements requirements.txt python src/run_all.py"
-    test_command: "uv run --with-requirements requirements.txt --with pytest pytest -q tests"
+    test_command: "uv run --with-requirements requirements.txt --with pytest python -m pytest -q tests"
     metrics_files:
       - experiments/evidence/E08_graph_hypothesis/outputs/metrics.json
   result_summary: "Graph hypothesis scoring, stacked evidence fusion, feature-distance refusal, and few-shot generated-family adaptation support the system-identification direction with explicit generated-domain boundaries."
-  status: partial
-  last_run: "2026-05-03"
+  status: passed
+  last_run: "2026-05-04"
 
 E09_real_data_intake_gate:
   title: "Real QDM/NV data intake and simple-wire sanity gate design"
@@ -216,8 +216,87 @@ E09_real_data_intake_gate:
     - outputs/by_claim/C13_calibration_protocol_reality/REAL_CALIBRATION_BOUNDARY.md
   runtime:
     package_dir: experiments/evidence/E09_real_data_intake_gate
+    run_command: "uv run --with-requirements requirements.txt python src/run_all.py"
     smoke_command: "uv run --with-requirements requirements.txt python src/validate_real_case_metadata.py examples/example_case_template.json"
-    test_command: "uv run --with-requirements requirements.txt --with pytest pytest -q tests"
-  result_summary: "Metadata, array loading, background subtraction, plotting, and simple-wire sanity gates are specified before any real-data diagnosis claim."
-  status: planned
-  last_run: "2026-05-03"
+    test_command: "uv run --with-requirements requirements.txt --with pytest python -m pytest -q tests"
+    metrics_files:
+      - experiments/evidence/E09_real_data_intake_gate/outputs/metrics.json
+  result_summary: "Metadata, array loading, background subtraction, plotting, and simple-wire sanity gates pass as an interface scaffold before any real-data diagnosis claim."
+  status: passed_interface
+  last_run: "2026-05-04"
+
+E10_pdn_kcl_distribution:
+  title: "Generated PDN/KCL resistive circuit-graph prototype evidence"
+  claim: C10_pdn_kcl_distribution_need
+  secondary_claims: [C06_graph_hypothesis_system_identification, C14_unlabeled_family_adaptation]
+  data: [D08_pdn_kcl_circuit_graph]
+  physics: [P01_biot_savart_maxwell_forward, P02_divB_zero, P05_kcl_node_conservation, P06_kvl_or_resistive_network_consistency, P07_current_closure_loop, P08_return_path_completeness]
+  forward: [F02_centerline_biot_savart]
+  observation: [O01_ideal_Bxyz]
+  representation: [R06_pdn_circuit_graph, R08_hypothesis_set]
+  algorithm: [A04_hypothesis_scorer]
+  protocol: [S03_family_heldout, S11_no_leakage_calibration_heldout]
+  metrics: [M04_kcl_residual, M05_divB_residual, M06_h0_false_any, M07_h1_recall]
+  outputs:
+    - outputs/by_claim/C10_pdn_kcl_distribution_need/PDN_KCL_PROTOTYPE_EVIDENCE.md
+  runtime:
+    package_dir: experiments/evidence/E10_pdn_kcl_distribution
+    run_command: "uv run --with-requirements requirements.txt python src/run_all.py --config configs/default.json --out outputs --data data"
+    smoke_command: "uv run --with-requirements requirements.txt python src/run_all.py --config configs/default.json --out outputs --data data"
+    test_command: "uv run --with-requirements requirements.txt --with pytest python -m pytest -q tests"
+    metrics_files:
+      - experiments/evidence/E10_pdn_kcl_distribution/outputs/metrics.json
+  result_summary: "A generated resistive PDN/KCL graph loop now solves edge currents with KCL, reports current closure, forwards Bxyz, and evaluates matched generated H0/H1/H2/H3 hypothesis rows."
+  status: passed
+  last_run: "2026-05-04"
+
+E11_chip_like_pdn_distribution:
+  title: "Generated chip-like multilayer PDN distribution evidence"
+  claim: C10_pdn_kcl_distribution_need
+  secondary_claims: [C06_graph_hypothesis_system_identification, C14_unlabeled_family_adaptation]
+  data: [D08_pdn_kcl_circuit_graph, D11_chip_like_generated_pdn_family]
+  physics: [P01_biot_savart_maxwell_forward, P02_divB_zero, P05_kcl_node_conservation, P06_kvl_or_resistive_network_consistency, P07_current_closure_loop, P08_return_path_completeness]
+  forward: [F02_centerline_biot_savart]
+  observation: [O01_ideal_Bxyz]
+  representation: [R06_pdn_circuit_graph, R08_hypothesis_set, R10_multilayer_chip_like_pdn_graph]
+  algorithm: [A04_hypothesis_scorer]
+  protocol: [S03_family_heldout, S11_no_leakage_calibration_heldout]
+  metrics: [M04_kcl_residual, M05_divB_residual, M06_h0_false_any, M07_h1_recall]
+  outputs:
+    - outputs/by_claim/C10_pdn_kcl_distribution_need/CHIP_LIKE_PDN_EVIDENCE.md
+  runtime:
+    package_dir: experiments/evidence/E11_chip_like_pdn_distribution
+    run_command: "uv run --with-requirements requirements.txt python src/run_all.py --config configs/default.json --out outputs --data data"
+    smoke_command: "uv run --with-requirements requirements.txt python src/run_all.py --config configs/default.json --out outputs --data data"
+    test_command: "uv run --with-requirements requirements.txt --with pytest python -m pytest -q tests"
+    metrics_files:
+      - experiments/evidence/E11_chip_like_pdn_distribution/outputs/metrics.json
+  result_summary: "A four-layer artificial micro-PDN generator now creates top straps, mesh layers, return grid, via stacks, distributed loads, KCL-solved currents, current closure, divB proxy, and balanced generated H0/H1/H2/H3 rows."
+  status: passed
+  last_run: "2026-05-04"
+
+E12_pdn_physics_learning:
+  title: "Generated PDN physics-learning closure evidence"
+  claim: C10_pdn_kcl_distribution_need
+  secondary_claims: [C06_graph_hypothesis_system_identification, C11_mechanism_level_explanation, C14_unlabeled_family_adaptation]
+  data: [D08_pdn_kcl_circuit_graph, D11_chip_like_generated_pdn_family]
+  physics: [P01_biot_savart_maxwell_forward, P02_divB_zero, P05_kcl_node_conservation, P06_kvl_or_resistive_network_consistency, P07_current_closure_loop, P08_return_path_completeness]
+  forward: [F02_centerline_biot_savart]
+  observation: [O01_ideal_Bxyz]
+  representation: [R06_pdn_circuit_graph, R08_hypothesis_set, R10_multilayer_chip_like_pdn_graph]
+  algorithm: [A04_hypothesis_scorer, A14_pdn_physics_aware_learner]
+  protocol: [S03_family_heldout, S11_no_leakage_calibration_heldout]
+  metrics: [M01_field_l2_or_rmse, M04_kcl_residual, M13_family_generalization_gap, M16_predicted_kcl_residual, M17_predicted_current_closure_error]
+  outputs:
+    - outputs/by_claim/C10_pdn_kcl_distribution_need/PDN_PHYSICS_LEARNING_EVIDENCE.md
+    - outputs/by_claim/C11_mechanism_explanation/PHYSICS_LEARNING_BOUNDARY.md
+  runtime:
+    package_dir: experiments/evidence/E12_pdn_physics_learning
+    run_command: "uv run --with-requirements requirements.txt python src/run_all.py --config configs/default.json --out outputs"
+    smoke_command: "uv run --with-requirements requirements.txt python src/run_all.py --config configs/default.json --out outputs"
+    test_command: "uv run --with-requirements requirements.txt --with pytest python -m pytest -q tests"
+    metrics_files:
+      - experiments/evidence/E12_pdn_physics_learning/outputs/metrics.json
+  result_summary: "CPU baselines on E11 generated rows show held-out label learning above majority baseline and physics-aware graph/KCL projection improves predicted-current KCL and current closure over unconstrained edge-current regression."
+  status: passed
+  last_run: "2026-05-04"

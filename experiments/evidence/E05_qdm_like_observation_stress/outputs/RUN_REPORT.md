@@ -35,3 +35,12 @@ This is still a proxy, not an ODMR or NV-Hamiltonian simulator. The four-axis
 NV projection check verifies vector-field observability under ideal calibrated
 axes, and the axis-gain mismatch check quantifies one calibration risk. The
 residual detector still uses oracle sheet-background subtraction.
+
+## Agent Audit Metadata
+
+- Metrics file: `outputs/metrics.json`
+- Schema version: `research-ssot-metrics-v1`
+- Calibration source: No calibration rows used for threshold or model selection.
+- Threshold source: none
+- Model-selection source: not_applicable
+- Audit date: 2026-05-04

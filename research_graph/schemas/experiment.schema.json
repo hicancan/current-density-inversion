@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Evidence package",
+  "type": "object",
+  "required": ["title", "claim", "data", "physics", "forward", "observation", "representation", "algorithm", "protocol", "metrics", "outputs", "runtime", "result_summary", "status"],
+  "properties": {
+    "title": {"type": "string"},
+    "claim": {"type": "string"},
+    "secondary_claims": {"type": "array", "items": {"type": "string"}},
+    "runtime": {"type": "object"},
+    "status": {"type": "string"},
+    "outputs": {"type": "array", "items": {"type": "string"}}
+  }
+}
+

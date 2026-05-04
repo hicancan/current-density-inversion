@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Agent queue item",
+  "type": "object",
+  "required": ["id", "priority", "status", "affected_claim", "required_nodes", "recommended_evidence_id", "blocked_by", "acceptance_gates", "cannot_claim"],
+  "properties": {
+    "id": {"type": "string"},
+    "priority": {"type": "integer"},
+    "status": {"type": "string"},
+    "affected_claim": {"type": "string"},
+    "required_nodes": {"type": "array", "items": {"type": "string"}},
+    "recommended_evidence_id": {"type": "string"},
+    "blocked_by": {"type": "array", "items": {"type": "string"}},
+    "acceptance_gates": {"type": "array", "items": {"type": "string"}},
+    "cannot_claim": {"type": "array", "items": {"type": "string"}}
+  }
+}
+

@@ -1,0 +1,107 @@
+{
+  "acceptance_gates": {
+    "accuracy_above_majority_baseline": true,
+    "all_acceptance_gates_passed": true,
+    "family_generalization_gap_below_threshold": true,
+    "field_reconstruction_not_degraded": true,
+    "heldout_accuracy_material": true,
+    "predicted_closure_improves_over_unconstrained": true,
+    "predicted_kcl_improves_over_unconstrained": true
+  },
+  "all_acceptance_gates_passed": true,
+  "cannot_claim": [
+    "real chip PDN validation",
+    "real CAD/Gerber/GDS validation",
+    "external FEM/FastHenry validation",
+    "real QDM/NV validation",
+    "mechanism-level explanation",
+    "that label correctness alone proves learned physics"
+  ],
+  "claim_id": "C10_pdn_kcl_distribution_need",
+  "dataset": {
+    "case_count": 96,
+    "feature_source": "Bxyz summary features fit with train-only scaling",
+    "heldout_not_used_for_tuning": true,
+    "hypotheses": [
+      "H0_nominal",
+      "H1_via_defect_or_extra",
+      "H2_return_bottleneck",
+      "H3_bend_width_artifact"
+    ],
+    "source_evidence": "E11_chip_like_pdn_distribution"
+  },
+  "evidence_id": "E12_pdn_physics_learning",
+  "family_generalization_gap": 0.25,
+  "field_reconstruction_rmse": 2.166159321424547e-06,
+  "generated_at": "2026-05-04T00:00:00Z",
+  "heldout_accuracy": 1.0,
+  "leakage_audit": {
+    "calibration_rows": [],
+    "calibration_source": "No calibration rows used for threshold or model selection.",
+    "heldout_rows": [
+      "test"
+    ],
+    "heldout_rows_explicitly_calibration": false,
+    "hidden_rows": [],
+    "model_selection_rows": [],
+    "model_selection_source": "not_applicable",
+    "proxy_fallback_used": false,
+    "pypeec_stress_rows_used_for_training": false,
+    "threshold_selection_rows": [],
+    "thresholds_source": "none"
+  },
+  "models": {
+    "graph_agnostic": {
+      "eval_accuracy": 0.875,
+      "family_hidden_accuracy": 0.75,
+      "field_reconstruction_rmse": 0.0035920702349914596,
+      "heldout_accuracy": 1.0,
+      "max_predicted_current_closure_error": 1.138348721897182e-13,
+      "max_predicted_kcl_residual": 0.015669590282448992,
+      "type": "ridge classifier Bxyz features -> H0/H1/H2/H3 plus unconstrained edge-current ridge"
+    },
+    "majority_baseline": {
+      "eval_accuracy": 0.25,
+      "heldout_accuracy": 0.25
+    },
+    "physics_aware": {
+      "family_hidden_accuracy": 0.75,
+      "field_reconstruction_rmse": 2.166159321424547e-06,
+      "heldout_accuracy": 1.0,
+      "max_predicted_current_closure_error": 7.046098175723645e-15,
+      "max_predicted_kcl_residual": 3.83026943495679e-15,
+      "type": "ridge hypothesis classifier with generated graph/KCL projection for currents"
+    },
+    "scorer": {
+      "eval_accuracy": 0.4583333333333333,
+      "heldout_accuracy": 0.5416666666666666,
+      "type": "nearest centroid residual scorer over E11 Bxyz features"
+    }
+  },
+  "physics_learning_gain_vs_unconstrained": {
+    "closure_error_reduction_ratio": 0.9381024633296856,
+    "kcl_residual_reduction_ratio": 0.9999999999997555,
+    "physics_aware_max_current_closure_error": 7.046098175723645e-15,
+    "physics_aware_max_kcl_residual": 3.83026943495679e-15,
+    "unconstrained_max_current_closure_error": 1.138348721897182e-13,
+    "unconstrained_max_kcl_residual": 0.015669590282448992
+  },
+  "predicted_current_closure_error": 7.046098175723645e-15,
+  "predicted_kcl_residual": 3.83026943495679e-15,
+  "run_audit": {
+    "audit_date": "2026-05-04",
+    "claim_boundary": "generated/domain-limited evidence, not real validation",
+    "fresh_full_run_completed": true,
+    "full_run_command": "uv run python scripts/run_evidence.py --all --mode run --continue-on-fail",
+    "mode": "full_run",
+    "smoke_or_test_only": false
+  },
+  "schema_version": "research-ssot-metrics-v1",
+  "split_roles": {
+    "calibration": 12,
+    "family_hidden": 24,
+    "heldout": 24,
+    "train": 36
+  },
+  "status": "passed"
+}

@@ -1307,3 +1307,12 @@ The stressed observation field is generated from transformed graph geometry whil
 - The constrained active-design table applies first-order feasibility screens to the label-free active policies.
 - The registration stress curve measures how synthetic graph-to-field misregistration, standoff shift, and sensor tilt degrade identification and whether the fixed global search can recover geometric parts of the mismatch.
 - A pass means the graph-identification framing is promising enough to replace further U-Net/pixel-output tuning as the next research direction. It does not mean no-via/return-path ambiguity is solved in real data.
+
+## Agent Audit Metadata
+
+- Metrics file: `outputs/metrics.json`
+- Schema version: `research-ssot-metrics-v1`
+- Calibration source: Validation and explicitly marked few-shot calibration rows only; hidden/out-of-library rows are evaluation only.
+- Threshold source: validation-only protocol; hidden/out-of-library rows excluded
+- Model-selection source: validation-only protocol with separate held-out/hidden evaluation
+- Audit date: 2026-05-04

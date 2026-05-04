@@ -1,0 +1,99 @@
+- id: AQ01_expand_pdn_kcl_distribution
+  priority: 1
+  status: done
+  affected_claim: C10_pdn_kcl_distribution_need
+  required_nodes:
+    - D08_pdn_kcl_circuit_graph
+    - D11_chip_like_generated_pdn_family
+    - D09_cad_gerber_gds_like
+    - P05_kcl_node_conservation
+    - P07_current_closure_loop
+    - P08_return_path_completeness
+    - R06_pdn_circuit_graph
+    - R10_multilayer_chip_like_pdn_graph
+    - M04_kcl_residual
+    - M05_divB_residual
+    - M16_predicted_kcl_residual
+    - M17_predicted_current_closure_error
+  recommended_evidence_id: E12_pdn_physics_learning
+  blocked_by: []
+  acceptance_gates:
+    - all_acceptance_gates_passed
+    - kcl_residual_below_threshold
+    - current_closure_below_threshold
+    - divB_proxy_below_threshold
+    - heldout_hypothesis_accuracy_material
+    - predicted_kcl_improves_over_unconstrained
+    - predicted_closure_improves_over_unconstrained
+  cannot_claim:
+    - real CAD/Gerber/GDS validation
+    - external FEM/FastHenry validation
+    - real QDM/NV validation
+    - real-board PDN/KCL robustness
+    - mechanism-level explanation from label correctness
+
+- id: AQ04_external_pdn_layout_bridge
+  priority: 1
+  status: blocked
+  affected_claim: C10_pdn_kcl_distribution_need
+  required_nodes:
+    - D09_cad_gerber_gds_like
+    - F05_comsol_fem
+    - F06_fasthenry
+    - R06_pdn_circuit_graph
+    - R10_multilayer_chip_like_pdn_graph
+    - S03_family_heldout
+    - S11_no_leakage_calibration_heldout
+    - M04_kcl_residual
+    - M05_divB_residual
+  recommended_evidence_id: null
+  blocked_by:
+    - imported CAD/Gerber/GDS-like layout graph or externally solved PDN subset
+  acceptance_gates:
+    - imported_layout_graph_schema_passed
+    - external_solver_subset_available
+    - kcl_residual_below_threshold
+    - current_closure_below_threshold
+    - generated_vs_external_field_gap_reported
+  cannot_claim:
+    - real CAD/Gerber/GDS validation is complete
+    - external FEM/FastHenry validation is complete
+    - real QDM/NV validation
+
+- id: AQ02_real_calibration_sources
+  priority: 2
+  status: active
+  affected_claim: C13_calibration_protocol_reality
+  required_nodes:
+    - D10_real_qdm_nv
+    - S10_real_heldout
+    - S11_no_leakage_calibration_heldout
+    - M12_calibration_cost
+  recommended_evidence_id: E09_real_data_intake_gate
+  blocked_by:
+    - measured calibration coupon or known-good/known-via rows
+  acceptance_gates:
+    - real_metadata_schema_passed
+    - calibration_source_declared
+    - heldout_rows_not_used_for_tuning
+  cannot_claim:
+    - real calibration protocol is validated
+    - few-shot samples are available in real deployment
+
+- id: AQ03_mechanism_level_audit
+  priority: 3
+  status: proposed
+  affected_claim: C11_mechanism_level_explanation
+  required_nodes:
+    - D07_hidden_near_boundary
+    - S04_mechanism_heldout
+    - M11_mechanism_level_correctness
+  recommended_evidence_id: E08_graph_hypothesis_system_id
+  blocked_by: []
+  acceptance_gates:
+    - mechanism_labels_present
+    - accepted_hidden_rows_audited
+    - primary_label_separated_from_mechanism_correctness
+  cannot_claim:
+    - accepted hidden rows are mechanism-correct
+    - primary-label correctness is sufficient explanation

@@ -35,7 +35,13 @@ D08_pdn_kcl_circuit_graph:
   description: "PDN/KCL-constrained circuit graph with VDD, GND, load, vias, junctions, return paths, edge resistance, and current closure."
   required_physics: [P05_kcl_node_conservation, P06_kvl_or_resistive_network_consistency, P07_current_closure_loop, P08_return_path_completeness]
   required_metrics: [M04_kcl_residual, M05_divB_residual]
-  status: missing
+  status: partial
+D11_chip_like_generated_pdn_family:
+  type: data_distribution
+  description: "Generated chip-like multilayer PDN family with top power straps, intermediate mesh layers, via stacks, distributed loads, lower return grid, VDD/GND ports, KCL, current closure, and Bxyz fields."
+  required_physics: [P05_kcl_node_conservation, P06_kvl_or_resistive_network_consistency, P07_current_closure_loop, P08_return_path_completeness]
+  required_metrics: [M04_kcl_residual, M05_divB_residual, M16_predicted_kcl_residual, M17_predicted_current_closure_error]
+  status: implemented
 D09_cad_gerber_gds_like:
   type: data_distribution
   description: "CAD/Gerber/GDS-like layout-derived graph distribution."
@@ -64,19 +70,19 @@ P04_divJ_source_sink_consistency:
 P05_kcl_node_conservation:
   type: physics_constraint
   description: "Circuit node current conservation."
-  status: missing
+  status: implemented
 P06_kvl_or_resistive_network_consistency:
   type: physics_constraint
   description: "Voltage-loop or resistive-network consistency."
-  status: missing
+  status: partial
 P07_current_closure_loop:
   type: physics_constraint
   description: "Injected current must close through return paths."
-  status: missing
+  status: implemented
 P08_return_path_completeness:
   type: physics_constraint
   description: "Return path must be represented rather than treated as unexplained residual."
-  status: missing
+  status: partial
 P09_finite_width_material_thickness:
   type: physics_constraint
   description: "Finite conductor width, thickness, and material effects."
@@ -179,7 +185,7 @@ R05_basis_bank:
 R06_pdn_circuit_graph:
   type: representation
   description: "PDN/circuit graph with KCL and edge resistance."
-  status: missing
+  status: partial
 R07_proxy_graph_from_measurement:
   type: representation
   description: "Proxy graph derived from measurement metadata or coarse layout knowledge."
@@ -192,6 +198,10 @@ R09_posterior_candidate_set:
   type: representation
   description: "Candidate set with posterior/evidence scores and refusal state."
   status: partial
+R10_multilayer_chip_like_pdn_graph:
+  type: representation
+  description: "Multilayer chip-like PDN graph with layer ids, node roles, edge roles, resistance, loads, via stacks, boundary ports, solved currents, and generated Bxyz fields."
+  status: implemented
 
 A01_unet:
   type: algorithm
@@ -245,6 +255,10 @@ A13_quantum_or_cim_search_accelerator:
   type: algorithm
   description: "Future search accelerator for large graph candidate spaces."
   status: proposed
+A14_pdn_physics_aware_learner:
+  type: algorithm
+  description: "CPU baseline that learns generated PDN hypotheses from Bxyz features and derives predicted currents through graph/KCL projection instead of unconstrained edge-current regression."
+  status: implemented
 
 S01_random_split:
   type: protocol
@@ -310,7 +324,7 @@ M03_topology_residual:
 M04_kcl_residual:
   type: metric
   description: "Circuit KCL residual."
-  status: missing
+  status: implemented
 M05_divB_residual:
   type: metric
   description: "Magnetic divergence residual."
@@ -355,4 +369,11 @@ M15_real_sanity_pass_fail:
   type: metric
   description: "Real-data sanity gate pass/fail."
   status: proposed
-
+M16_predicted_kcl_residual:
+  type: metric
+  description: "KCL residual computed on model-predicted or projected PDN edge currents."
+  status: implemented
+M17_predicted_current_closure_error:
+  type: metric
+  description: "Current entering VDD plus current leaving GND error computed on model-predicted or projected PDN edge currents."
+  status: implemented
