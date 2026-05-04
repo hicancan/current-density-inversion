@@ -63,6 +63,7 @@ C02_single_plane_identifiability_boundary:
   - E03_two_layer_via_topology
   - E13_multi_height_multistate_observability
   - E15_four_layer_via_chain_benchmark
+  - E17_l1_curl_divergence_free_baseline
   limited_by: []
   contradicted_by: []
   cannot_claim:

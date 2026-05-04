@@ -497,3 +497,33 @@
   caveat: "Generated-domain forward only; needs real CAD/GDS layout import and external solver validation."
   evidence_files:
     - outputs/by_claim/C10_pdn_kcl_distribution_need/DIFFERENTIABLE_FORWARD_LAYER.md
+
+- id: edge_E17_to_C02
+  from: E17_l1_curl_divergence_free_baseline
+  to: C02_single_plane_identifiability_boundary
+  relation: supports
+  strength: medium
+  scope: "generated-domain L1-curl and div-free regularization baselines"
+  caveat: "Generated-domain evaluation on E03 split only; not real CAD/QDM/NV validation."
+  evidence_files:
+    - outputs/by_claim/C02_identifiability_boundary/L1_CURL_DIVFREE_EVIDENCE.md
+
+- id: edge_E17_to_C03
+  from: E17_l1_curl_divergence_free_baseline
+  to: C03_unet_topology_baseline_boundary
+  relation: motivates
+  strength: medium
+  scope: "physics-regularized baselines as pre-neural comparison targets"
+  caveat: "Regularized linear baselines provide a lower bound; U-Net topologies are not evaluated here."
+  evidence_files:
+    - outputs/by_claim/C02_identifiability_boundary/L1_CURL_DIVFREE_EVIDENCE.md
+
+- id: edge_E17_limits_C02
+  from: E17_l1_curl_divergence_free_baseline
+  to: C02_single_plane_identifiability_boundary
+  relation: limits
+  strength: strong
+  scope: "generated-domain regularization baseline boundary"
+  caveat: "Optimal regularization parameters are tuned on the same generated distribution; not validated against external solvers or real measurements."
+  evidence_files:
+    - outputs/by_claim/C02_identifiability_boundary/L1_CURL_DIVFREE_EVIDENCE.md

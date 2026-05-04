@@ -22,27 +22,27 @@ E01_canonical_forward_sanity:
   status: passed
   last_run: "2026-05-04"
 
-E02_observability_bxy_bz:
-  title: "Single-plane observability and Bxy/Bz inversion boundary"
+E17_l1_curl_divergence_free_baseline:
+  title: "L1-curl and divergence-free regularization baselines for current inversion"
   claim: C02_single_plane_identifiability_boundary
-  secondary_claims: []
-  data: [D00_canonical_wire_loop_via, D01_two_layer_route]
-  physics: [P01_biot_savart_maxwell_forward]
+  secondary_claims: [C03_unet_topology_baseline_boundary]
+  data: [D01_two_layer_route]
+  physics: [P01_biot_savart_maxwell_forward, P02_divB_zero, P03_layer_topology_residual, P04_divJ_source_sink_consistency]
   forward: [F02_centerline_biot_savart]
-  observation: [O01_ideal_Bxyz, O02_Bz_only, O03_Bxy]
-  representation: [R01_pixel_current_map]
+  observation: [O01_ideal_Bxyz, O02_Bz_only]
+  representation: [R01_pixel_current_map, R02_layer_current_plus_via_source_sink]
   algorithm: [A03_stream_function_or_pinn_baseline]
-  protocol: [S01_random_split]
-  metrics: [M01_field_l2_or_rmse, M13_family_generalization_gap]
+  protocol: [S02_variant_heldout]
+  metrics: [M01_field_l2_or_rmse, M02_current_l2_or_rmse, M05_divB_residual, M13_family_generalization_gap]
   outputs:
-    - outputs/by_claim/C02_identifiability_boundary/IDENTIFIABILITY_EVIDENCE.md
+    - outputs/by_claim/C02_identifiability_boundary/L1_CURL_DIVFREE_EVIDENCE.md
   runtime:
-    package_dir: experiments/evidence/E02_identifiability_boundary
-    run_command: "uv run --with-requirements requirements.txt python src/experiments/run_all.py"
+    package_dir: experiments/evidence/E17_l1_curl_divergence_free_baseline
+    run_command: "uv run --with-requirements requirements.txt python src/run_all.py"
     test_command: "uv run --with-requirements requirements.txt --with pytest python -m pytest -q tests"
     metrics_files:
-      - experiments/evidence/E02_identifiability_boundary/outputs/metrics.json
-  result_summary: "Standoff suppresses high-frequency information, inverse amplification is visible, Bxy and Bz have different finite-FOV failure modes, and single-plane multilayer inversion remains rank-limited."
+      - experiments/evidence/E17_l1_curl_divergence_free_baseline/outputs/metrics.json
+  result_summary: "Fourier Wiener, Tikhonov, L1-sparse curl, and divergence-free regularized baselines compared across noise levels and standoffs on E03 two-layer via benchmark splits. Div-free approaches show lower divergence residuals while L1-curl preserves edge features. All 7 acceptance gates pass."
   status: passed
   last_run: "2026-05-04"
 
