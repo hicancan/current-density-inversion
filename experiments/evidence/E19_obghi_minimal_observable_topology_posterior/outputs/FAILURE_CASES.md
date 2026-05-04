@@ -1,0 +1,59 @@
+# E19 Failure Cases
+
+| case | truth | top | p_top | decision | failure_mode |
+|---|---|---|---:|---|---|
+| E19_no_via_clean_000 | H0_no_via | H1_via | 0.7126 | accept | accepted_wrong_topology |
+| E19_no_via_clean_001 | H0_no_via | H1_via | 0.6494 | accept | accepted_wrong_topology |
+| E19_no_via_clean_002 | H0_no_via | H1_via | 0.7212 | accept | accepted_wrong_topology |
+| E19_no_via_clean_003 | H0_no_via | H1_via | 0.5586 | need_next_measurement | insufficient_posterior_separation |
+| E19_no_via_clean_004 | H0_no_via | H1_via | 0.6735 | accept | accepted_wrong_topology |
+| E19_no_via_clean_005 | H0_no_via | H1_via | 0.7441 | accept | accepted_wrong_topology |
+| E19_no_via_clean_006 | H0_no_via | H1_via | 0.6665 | accept | accepted_wrong_topology |
+| E19_no_via_clean_007 | H0_no_via | H1_via | 0.5856 | need_next_measurement | insufficient_posterior_separation |
+| E19_no_via_clean_008 | H0_no_via | H1_via | 0.7000 | accept | accepted_wrong_topology |
+| E19_no_via_clean_009 | H0_no_via | H1_via | 0.6433 | accept | accepted_wrong_topology |
+| E19_no_via_clean_010 | H0_no_via | H1_via | 0.7819 | accept | accepted_wrong_topology |
+| E19_no_via_clean_011 | H0_no_via | H1_via | 0.6756 | accept | accepted_wrong_topology |
+| E19_single_via_observable_005 | H1_via | H1_via | 0.5966 | need_next_measurement | insufficient_posterior_separation |
+| E19_single_via_observable_007 | H1_via | H1_via | 0.5705 | need_next_measurement | insufficient_posterior_separation |
+| E19_single_via_observable_009 | H1_via | H1_via | 0.4852 | need_next_measurement | insufficient_posterior_separation |
+| E19_single_via_observable_010 | H1_via | H1_via | 0.5852 | need_next_measurement | insufficient_posterior_separation |
+| E19_dense_via_cluster_008 | H1_via | H1_via | 0.6180 | need_next_measurement | insufficient_posterior_separation |
+| E19_model_gap_registration_000 | H2_model_gap | H1_via | 0.6783 | accept | accepted_wrong_topology |
+| E19_model_gap_registration_001 | H2_model_gap | H1_via | 0.7886 | accept | accepted_wrong_topology |
+| E19_model_gap_registration_002 | H2_model_gap | H1_via | 0.7596 | accept | accepted_wrong_topology |
+| E19_model_gap_registration_003 | H2_model_gap | H1_via | 0.6048 | need_next_measurement | insufficient_posterior_separation |
+| E19_model_gap_registration_004 | H2_model_gap | H1_via | 0.6943 | accept | accepted_wrong_topology |
+| E19_model_gap_registration_005 | H2_model_gap | H1_via | 0.5783 | need_next_measurement | insufficient_posterior_separation |
+| E19_model_gap_registration_006 | H2_model_gap | H1_via | 0.5735 | need_next_measurement | insufficient_posterior_separation |
+| E19_model_gap_registration_007 | H2_model_gap | H1_via | 0.7313 | accept | accepted_wrong_topology |
+| E19_model_gap_registration_008 | H2_model_gap | H1_via | 0.7180 | accept | accepted_wrong_topology |
+| E19_model_gap_registration_009 | H2_model_gap | H1_via | 0.5712 | need_next_measurement | insufficient_posterior_separation |
+| E19_model_gap_registration_010 | H2_model_gap | H1_via | 0.7526 | accept | accepted_wrong_topology |
+| E19_model_gap_registration_011 | H2_model_gap | H1_via | 0.6266 | accept | accepted_wrong_topology |
+| E19_model_gap_standoff_000 | H2_model_gap | H1_via | 0.7506 | accept | accepted_wrong_topology |
+| E19_model_gap_standoff_001 | H2_model_gap | H1_via | 0.7015 | accept | accepted_wrong_topology |
+| E19_model_gap_standoff_002 | H2_model_gap | H1_via | 0.7492 | accept | accepted_wrong_topology |
+| E19_model_gap_standoff_003 | H2_model_gap | H1_via | 0.5097 | need_next_measurement | insufficient_posterior_separation |
+| E19_model_gap_standoff_004 | H2_model_gap | H1_via | 0.7350 | accept | accepted_wrong_topology |
+| E19_model_gap_standoff_005 | H2_model_gap | H1_via | 0.8221 | accept | accepted_wrong_topology |
+| E19_model_gap_standoff_006 | H2_model_gap | H1_via | 0.7257 | accept | accepted_wrong_topology |
+| E19_model_gap_standoff_007 | H2_model_gap | H1_via | 0.7627 | accept | accepted_wrong_topology |
+| E19_model_gap_standoff_008 | H2_model_gap | H3_return_path | 0.5676 | need_next_measurement | insufficient_posterior_separation |
+| E19_model_gap_standoff_009 | H2_model_gap | H1_via | 0.7308 | accept | accepted_wrong_topology |
+| E19_model_gap_standoff_010 | H2_model_gap | H1_via | 0.7960 | accept | accepted_wrong_topology |
+| E19_model_gap_standoff_011 | H2_model_gap | H1_via | 0.6666 | accept | accepted_wrong_topology |
+| E19_return_path_deep_loop_000 | H3_return_path | H1_via | 0.6830 | accept | accepted_wrong_topology |
+| E19_return_path_deep_loop_001 | H3_return_path | H1_via | 0.5708 | need_next_measurement | insufficient_posterior_separation |
+| E19_return_path_deep_loop_002 | H3_return_path | H1_via | 0.6264 | accept | accepted_wrong_topology |
+| E19_return_path_deep_loop_003 | H3_return_path | H1_via | 0.6004 | need_next_measurement | insufficient_posterior_separation |
+| E19_return_path_deep_loop_004 | H3_return_path | H1_via | 0.7267 | accept | accepted_wrong_topology |
+| E19_return_path_deep_loop_005 | H3_return_path | H1_via | 0.8247 | accept | accepted_wrong_topology |
+| E19_return_path_deep_loop_006 | H3_return_path | H1_via | 0.5785 | need_next_measurement | insufficient_posterior_separation |
+| E19_return_path_deep_loop_007 | H3_return_path | H1_via | 0.7875 | accept | accepted_wrong_topology |
+| E19_return_path_deep_loop_008 | H3_return_path | H1_via | 0.6006 | need_next_measurement | insufficient_posterior_separation |
+| E19_return_path_deep_loop_009 | H3_return_path | H1_via | 0.6971 | accept | accepted_wrong_topology |
+| E19_return_path_deep_loop_010 | H3_return_path | H1_via | 0.8582 | accept | accepted_wrong_topology |
+| E19_return_path_deep_loop_011 | H3_return_path | H1_via | 0.8135 | accept | accepted_wrong_topology |
+
+Failures are preserved as generated-domain evidence boundaries.

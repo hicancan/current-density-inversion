@@ -1,0 +1,43 @@
+{
+  "schema_version": "e19-obghi-config-v1",
+  "random_seed": 19019,
+  "grid_size": 12,
+  "layer_count": 4,
+  "pixel_pitch_um": 1.0,
+  "layer_spacing_um": 1.2,
+  "sensor_height_um": 3.2,
+  "noise_sigma": 0.018,
+  "case_count_per_family": 12,
+  "families": [
+    "no_via_clean",
+    "single_via_observable",
+    "dense_via_cluster",
+    "model_gap_registration",
+    "model_gap_standoff",
+    "return_path_deep_loop"
+  ],
+  "observable_energy_ratio_threshold": 0.015,
+  "prior_variance": {
+    "graph": 1.0,
+    "via": 0.55,
+    "gap": 0.35,
+    "return": 0.65,
+    "residual": 0.15
+  },
+  "hypothesis_log_priors": {
+    "H0_no_via": -0.05,
+    "H1_via": -0.15,
+    "H2_model_gap": -0.3,
+    "H3_return_path": -0.25
+  },
+  "decision": {
+    "accept_posterior_threshold": 0.62,
+    "reject_posterior_threshold": 0.45,
+    "via_gap_min_angle_deg": 12.0,
+    "via_gap_logbf_epsilon": 0.75
+  },
+  "baseline": {
+    "ridge_alpha": 0.08,
+    "via_energy_threshold_quantile": 0.82
+  }
+}

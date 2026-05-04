@@ -1,5 +1,91 @@
 # Update Log
 
+## 2026-05-04 - E19 OBGHI minimal observable topology posterior evidence
+
+Claim affected:
+- C10_pdn_kcl_distribution_need (E19 motivates+limits)
+- C06_graph_hypothesis_system_identification (E19 motivates+limits)
+- C02_single_plane_identifiability_boundary (secondary claim)
+- C04_inverse_crime_and_operator_gap (secondary claim)
+
+Change type:
+- new evidence package E19 added with minimal OBGHI posterior topology inference
+- closed-form Gaussian Bayesian evidence for H0/H1/H2/H3 explanations
+- 72 generated four-layer cases across 6 families
+- operator diagnostics confirm via columns nonzero
+- evidence edges registered (motivates+limits for C10 and C06)
+
+Evidence:
+- E19 implements deterministic four-layer sheet/via forward operator, graph-Hodge-inspired low-dimensional current bases, observable compression via singular-value energy filtering, closed-form Gaussian Bayesian evidence, posterior topology probabilities, via-vs-gap principal-angle ambiguity diagnostic, and accept/reject/need-next-measurement decision rule.
+
+Metrics:
+- case_count: 72 (smoke: 12)
+- OBGHI top1_accuracy: 0.333 (matches ridge baseline)
+- OBGHI accepted_accuracy: 0.345
+- OBGHI accepted_risk: 0.655 (GATE FAILS: >0.45)
+- OBGHI reject_rate: 0.0
+- OBGHI need_next_measurement_rate: 0.236
+- OBGHI brier_score: 0.247
+- OBGHI via_gap_angle_deg: 67.8
+- Ridge-map top1_accuracy: 0.333
+
+By truth:
+- H0_no_via (12 cases): top1=0.0, mean_true_posterior=0.056
+- H1_via (24 cases): top1=1.0, mean_true_posterior=0.727
+- H2_model_gap (24 cases): top1=0.0, mean_true_posterior=5.87e-07
+- H3_return_path (12 cases): top1=0.0, mean_true_posterior=0.255
+
+Debugging priority audit:
+1. Via forward columns nonzero: PASS (min norm 0.0103)
+2. H1/H2/H3 posterior differs: PARTIALLY PASS (H1 vs H3 differ; H2 collapses to zero due to gap basis/data mismatch)
+3. Accept/reject/need-next decisions present: PASS (55 accept, 17 need_next, 0 reject)
+4. OBGHI vs ridge baseline: PASS (both top1=0.333)
+5. Failures preserved: PASS (57 failure cases documented)
+
+Failure modes:
+1. H1_via dominates H0_no_via (no-via false-positive): via basis flexibility captures no-via background fields
+2. H2_model_gap posterior collapses to zero: gap basis uses Gaussian field patterns that don't match gradient/Laplacian data generation; uniform prior variance penalizes H2 relative to H0
+3. H1_via dominates H3_return_path: return-path basis (4 modes) too small vs via basis
+
+Claim status before:
+- C10: supported_generated (E10, E11, E12, E14, E15, E18)
+- C06: supported_generated (E08, E12, E13, E14, E15, E18)
+- C02: supported (E02, E03, E13, E15, E17, E18)
+- C04: supported_generated (E04, E06, E07, E16, E18)
+
+Claim status after:
+- No status change. E19 adds generated-domain evidence with explicit limitations.
+  Claims remain bounded by existing cannot-claim lists.
+
+Cannot claim:
+- real QDM/NV validation
+- real CAD/Gerber/GDS validation
+- external FEM/FastHenry/COMSOL validation
+- real-board PDN/KCL robustness
+- mechanism-level explanation on real data
+- universal via detection
+- that H2_model_gap is resolved
+- that the via-gap ambiguity is quantified sufficiently for deployment
+
+Next required evidence:
+- replace simple Gaussian gap basis with gradient/Laplacian/registration-matched patterns
+- add multi-height observation support for standoff discrimination
+- add multi-state excitation support for current injection pattern discrimination
+- add per-block prior variances instead of uniform per-hypothesis prior variance
+- compare E19 failure slices against E18 physics-constrained inverse failure cases
+
+Tests run:
+- `uv run --with-requirements requirements.txt --with pytest python -m pytest -q tests`: 5 passed (1.61s)
+- Smoke config: passed_with_limitations (1.14s, 12 cases)
+- Full default config: passed_with_limitations (20.26s, 72 cases)
+- `uv run python scripts/validate_graph.py`: PASS
+
+Files changed:
+- `experiments/evidence/E19_obghi_minimal_observable_topology_posterior/`
+- `research_graph/experiments.yml`
+- `research_graph/evidence_edges.yml`
+- `research_graph/update_log.md`
+
 ## 2026-05-04 - E18.1 physics/numerical fix for constrained inverse
 
 Root causes fixed:

@@ -567,3 +567,43 @@
   caveat: "Dense-via recall is 0, deep-layer misallocation >0.3, KCL-RMSE tradeoff documented. Prototype scale (18 cases). Cannot claim real board PDN robustness."
   evidence_files:
     - outputs/by_claim/C10_pdn_kcl_distribution_need/PHYSICS_CONSTRAINED_PDN_INVERSE_EVIDENCE.md
+
+- id: edge_E19_to_C10
+  from: E19_obghi_minimal_observable_topology_posterior
+  to: C10_pdn_kcl_distribution_need
+  relation: motivates
+  strength: medium
+  scope: "generated-domain minimal OBGHI posterior topology inference"
+  caveat: "H1_via dominates all families; H2_model_gap posterior collapses to zero; accepted_risk gate fails (0.655 > 0.45). Cannot claim real validation."
+  evidence_files:
+    - outputs/by_claim/C10_pdn_kcl_distribution_need/OBGHI_MINIMAL_POSTERIOR_EVIDENCE.md
+
+- id: edge_E19_limits_C10
+  from: E19_obghi_minimal_observable_topology_posterior
+  to: C10_pdn_kcl_distribution_need
+  relation: limits
+  strength: strong
+  scope: "generated-domain OBGHI posterior boundary"
+  caveat: "Via false-positive on no-via, collapsed H2 posterior, via-dominates-return. Gap basis mismatched to model-gap data generation. Cannot claim real board PDN robustness."
+  evidence_files:
+    - outputs/by_claim/C10_pdn_kcl_distribution_need/OBGHI_MINIMAL_POSTERIOR_EVIDENCE.md
+
+- id: edge_E19_to_C06
+  from: E19_obghi_minimal_observable_topology_posterior
+  to: C06_graph_hypothesis_system_identification
+  relation: motivates
+  strength: medium
+  scope: "generated-domain posterior hypothesis scoring over H0/H1/H2/H3"
+  caveat: "Hypothesis set is small (4 hypotheses); generated observation model only; no real CAD/Gerber/GDS graph candidates."
+  evidence_files:
+    - outputs/by_claim/C06_graph_hypothesis_system_id/OBGHI_MINIMAL_POSTERIOR_EVIDENCE.md
+
+- id: edge_E19_limits_C06
+  from: E19_obghi_minimal_observable_topology_posterior
+  to: C06_graph_hypothesis_system_identification
+  relation: limits
+  strength: strong
+  scope: "generated-domain hypothesis scoring boundary"
+  caveat: "Minimal 4-hypothesis set; generated domain only. Does not validate real CAD/Gerber/GDS graph inference or real QDM/NV."
+  evidence_files:
+    - outputs/by_claim/C06_graph_hypothesis_system_id/OBGHI_MINIMAL_POSTERIOR_EVIDENCE.md

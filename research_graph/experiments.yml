@@ -453,3 +453,44 @@ E18_physics_constrained_pdn_inverse:
   result_summary: "E18.1 fixes via-forward, KCL-coupling, and scale sanity. ridge_scaled ranks first. New method matches graph_kcl_aware_scaled, reduces KCL to 1e-15, but does not beat ridge_scaled. Honest limitations documented."
   status: passed
   last_run: "2026-05-04"
+
+E19_obghi_minimal_observable_topology_posterior:
+  title: "OBGHI minimal observable topology posterior evidence"
+  claim: C10_pdn_kcl_distribution_need
+  secondary_claims:
+    - C06_graph_hypothesis_system_identification
+    - C02_single_plane_identifiability_boundary
+    - C04_inverse_crime_and_operator_gap
+  data: []
+  physics:
+    - P01_biot_savart_maxwell_forward
+  forward:
+    - F02_centerline_biot_savart
+  observation:
+    - O01_ideal_Bxyz
+  representation:
+    - R08_hypothesis_set
+    - R09_posterior_candidate_set
+  algorithm:
+    - A04_hypothesis_scorer
+    - A12_bayesian_or_glrt_model_evidence
+  protocol:
+    - S11_no_leakage_calibration_heldout
+    - S12_conformal_or_selective_risk_protocol
+  metrics:
+    - M08_accepted_accuracy
+    - M09_accepted_risk
+    - M10_reject_rate
+  outputs:
+    - outputs/by_claim/C10_pdn_kcl_distribution_need/OBGHI_MINIMAL_POSTERIOR_EVIDENCE.md
+    - outputs/by_claim/C06_graph_hypothesis_system_id/OBGHI_MINIMAL_POSTERIOR_EVIDENCE.md
+  runtime:
+    package_dir: experiments/evidence/E19_obghi_minimal_observable_topology_posterior
+    run_command: "uv run --with-requirements requirements.txt python src/run_all.py --config configs/default.json --out outputs"
+    smoke_command: "uv run --with-requirements requirements.txt python src/run_all.py --config configs/smoke.json --out outputs_smoke"
+    test_command: "uv run --with-requirements requirements.txt --with pytest python -m pytest -q tests"
+    metrics_files:
+      - experiments/evidence/E19_obghi_minimal_observable_topology_posterior/outputs/metrics.json
+  result_summary: "Minimal OBGHI posterior topology inference over H0/H1/H2/H3 explanations on 72 generated four-layer cases. Via forward columns nonzero, H1 posterior dominates (mean 0.727), H2_model_gap posterior effectively zero (5.87e-07) due to gap basis/data mismatch, accepted_risk gate fails (0.655 > 0.45). Three systematic failure modes: via false-positive on no-via, collapsed H2 posterior, and via-dominates-return. 6/7 gates pass. Cannot claim real validation."
+  status: passed
+  last_run: "2026-05-04"

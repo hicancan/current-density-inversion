@@ -1,0 +1,167 @@
+{
+  "schema_version": "research-ssot-metrics-v1",
+  "evidence_id": "E19_obghi_minimal_observable_topology_posterior",
+  "claim": "C10_pdn_kcl_distribution_need",
+  "secondary_claims": [
+    "C06_graph_hypothesis_system_identification",
+    "C02_single_plane_identifiability_boundary",
+    "C04_inverse_crime_and_operator_gap"
+  ],
+  "timestamp_utc": "2026-05-04T14:49:45.747810+00:00",
+  "status": "passed",
+  "all_acceptance_gates_passed": true,
+  "acceptance_gates": {
+    "posterior_rows_present": true,
+    "topology_posterior_nontrivial": true,
+    "accepted_risk_bounded": true,
+    "reject_or_need_next_available": true,
+    "via_gap_ambiguity_measured": true,
+    "obghi_matches_or_beats_ridge_top1": true,
+    "generated_domain_boundaries_recorded": true
+  },
+  "config": {
+    "grid_size": 12,
+    "layer_count": 4,
+    "noise_sigma": 0.018,
+    "case_count_per_family": 12,
+    "families": [
+      "no_via_clean",
+      "single_via_observable",
+      "dense_via_cluster",
+      "model_gap_registration",
+      "model_gap_standoff",
+      "return_path_deep_loop"
+    ],
+    "observable_energy_ratio_threshold": 0.015
+  },
+  "operator_diagnostics": {
+    "shape": [
+      432,
+      1584
+    ],
+    "via_columns_nonzero": true,
+    "via_column_norm_min": 0.010296054529557556,
+    "via_column_norm_mean": 0.017851314805704,
+    "sheet_column_norm_mean": 0.024540719811735882,
+    "condition_proxy": 94.48994327061455
+  },
+  "obghi": {
+    "case_count": 72,
+    "top1_accuracy": 0.3333333333333333,
+    "accepted_count": 55,
+    "accepted_accuracy": 0.34545454545454546,
+    "accepted_risk": 0.6545454545454545,
+    "reject_rate": 0.0,
+    "need_next_measurement_rate": 0.2361111111111111,
+    "brier_score": 0.24651077721558975,
+    "via_case_count": 24,
+    "gap_case_count": 24,
+    "via_gap_ambiguous_reject_rate": 0.0,
+    "mean_top_probability": 0.7018491644112694,
+    "mean_posterior_entropy": 0.7119820802991423,
+    "mean_via_gap_angle_deg": 67.77688883698761,
+    "by_truth": {
+      "H0_no_via": {
+        "count": 12,
+        "top1_accuracy": 0.0,
+        "accept_rate": 0.8333333333333334,
+        "reject_rate": 0.0,
+        "mean_true_posterior": 0.05598053618610153
+      },
+      "H1_via": {
+        "count": 24,
+        "top1_accuracy": 1.0,
+        "accept_rate": 0.7916666666666666,
+        "reject_rate": 0.0,
+        "mean_true_posterior": 0.7274456197847684
+      },
+      "H2_model_gap": {
+        "count": 24,
+        "top1_accuracy": 0.0,
+        "accept_rate": 0.75,
+        "reject_rate": 0.0,
+        "mean_true_posterior": 5.87197968379615e-07
+      },
+      "H3_return_path": {
+        "count": 12,
+        "top1_accuracy": 0.0,
+        "accept_rate": 0.6666666666666666,
+        "reject_rate": 0.0,
+        "mean_true_posterior": 0.25513550430012805
+      }
+    },
+    "decision_counts": {
+      "accept": 55,
+      "need_next_measurement": 17
+    }
+  },
+  "ridge_map_baseline": {
+    "case_count": 72,
+    "top1_accuracy": 0.3333333333333333,
+    "by_truth": {
+      "H0_no_via": {
+        "count": 12,
+        "accuracy": 0.0
+      },
+      "H1_via": {
+        "count": 24,
+        "accuracy": 1.0
+      },
+      "H2_model_gap": {
+        "count": 24,
+        "accuracy": 0.0
+      },
+      "H3_return_path": {
+        "count": 12,
+        "accuracy": 0.0
+      }
+    },
+    "confusion": {
+      "H0_no_via": {
+        "H0_no_via": 0,
+        "H1_via": 12,
+        "H2_model_gap": 0,
+        "H3_return_path": 0
+      },
+      "H1_via": {
+        "H0_no_via": 0,
+        "H1_via": 24,
+        "H2_model_gap": 0,
+        "H3_return_path": 0
+      },
+      "H2_model_gap": {
+        "H0_no_via": 0,
+        "H1_via": 24,
+        "H2_model_gap": 0,
+        "H3_return_path": 0
+      },
+      "H3_return_path": {
+        "H0_no_via": 0,
+        "H1_via": 12,
+        "H2_model_gap": 0,
+        "H3_return_path": 0
+      }
+    }
+  },
+  "leakage_audit": {
+    "generated_domain_only": true,
+    "heldout_rows_used_for_tuning": false,
+    "hidden_rows_used_for_tuning": false,
+    "external_or_real_rows_used": false,
+    "truth_visible_to_inference": false,
+    "blueprint_text_used_as_evidence": false
+  },
+  "run_audit": {
+    "fresh_full_run_completed": true,
+    "runtime_s": 21.25994300000457,
+    "command": "python src/run_all.py --config <config> --out <out>"
+  },
+  "cannot_claim": [
+    "real QDM/NV validation",
+    "real CAD/Gerber/GDS validation",
+    "external FEM/FastHenry/COMSOL validation",
+    "real-board PDN/KCL robustness",
+    "mechanism-level explanation on real data",
+    "universal via detection"
+  ]
+}
