@@ -387,3 +387,33 @@
   caveat: "E14 is a generated layout-like scaffold; KCL proxy is not a real circuit solve. Does not validate real CAD/Gerber/GDS, external solvers, or real QDM/NV."
   evidence_files:
     - outputs/by_claim/C10_pdn_kcl_distribution_need/LAYOUT_GRAPH_IMPORT_SCAFFOLD.md
+
+- id: edge_E16_to_C04
+  from: E16_differentiable_forward_layer
+  to: C04_inverse_crime_and_operator_gap
+  relation: supports
+  strength: strong
+  scope: "FFT-domain differentiable Biot-Savart forward for sheet and via currents"
+  caveat: "Generated-domain evidence only; not real CAD/FEM/QDM validation."
+  evidence_files:
+    - outputs/by_claim/C04_inverse_crime_operator_gap/DIFFERENTIABLE_FORWARD_LAYER.md
+
+- id: edge_E16_to_C03
+  from: E16_differentiable_forward_layer
+  to: C03_unet_topology_baseline_boundary
+  relation: motivates
+  strength: medium
+  scope: "differentiable forward constrains what U-Net models can learn"
+  caveat: "The forward operator linearity and standoff-dependent transfer functions set theoretical boundaries."
+  evidence_files:
+    - outputs/by_claim/C03_topology_baseline_boundary/DIFFERENTIABLE_FORWARD_LAYER.md
+
+- id: edge_E16_to_C10
+  from: E16_differentiable_forward_layer
+  to: C10_pdn_kcl_distribution_need
+  relation: supports
+  strength: medium
+  scope: "differentiable sheet + via forward enables multilayer PDN forward"
+  caveat: "Generated-domain forward only; needs real CAD/GDS layout import and external solver validation."
+  evidence_files:
+    - outputs/by_claim/C10_pdn_kcl_distribution_need/DIFFERENTIABLE_FORWARD_LAYER.md

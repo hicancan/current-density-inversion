@@ -1,0 +1,51 @@
+{
+  "seed": 20260429,
+  "dataset_path": "../E03_two_layer_via_topology/data/two_layer_via_benchmark.npz",
+  "physical_forward": {
+    "layer1_z_m": -5e-05,
+    "layer2_z_m": -0.00013,
+    "sensor_z_m": 0.0
+  },
+  "fourier_baseline": {
+    "enabled": true,
+    "wiener_eps": [
+      0.01,
+      0.001
+    ]
+  },
+  "tikhonov_baseline": {
+    "enabled": true,
+    "tikhonov_lambda": 1e-24,
+    "landweber_iterations": 50,
+    "step_scale": 0.8
+  },
+  "l1_curl_baseline": {
+    "enabled": true,
+    "l1_curl_lambda": [
+      0.01,
+      0.1
+    ],
+    "ista_iterations": 50,
+    "step_scale": 0.8
+  },
+  "div_free_baseline": {
+    "enabled": true,
+    "landweber_iterations": 50,
+    "step_scale": 0.8
+  },
+  "stress": {
+    "noise_levels": [
+      0.0,
+      0.01,
+      0.02
+    ],
+    "standoff_distances_m": [
+      0.0,
+      0.0001
+    ],
+    "finite_fov_trim_fraction": [
+      0.0
+    ],
+    "n_fov_samples": 16
+  }
+}

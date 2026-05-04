@@ -29,3 +29,7 @@ Do not claim:
 21. A CI smoke/test pass is a fresh full-run experiment.
 22. Metrics metadata normalization is new scientific evidence; it is only an
     audit-contract repair after evidence commands rewrite outputs.
+23. The generated-domain differentiable forward layer validates against real
+    devices, real CAD/GDS layouts, or external solvers.
+24. The differentiable forward being a linear FFT operator guarantees correct
+    gradient-based optimization under real measurement noise.

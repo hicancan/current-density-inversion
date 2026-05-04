@@ -1,5 +1,14 @@
 # Open Questions
 
+## OQ07: Can the differentiable Biot-Savart forward layer be validated against independent external solvers?
+
+Status: active, E16 numpy/torch forward passes generated-domain sanity gates.
+
+`E16_differentiable_forward_layer` provides an FFT-domain differentiable
+Biot-Savart forward with all 6 acceptance gates passing. The open question is
+whether this forward agrees with COMSOL, FastHenry, or FEM on a small auditable
+subset.
+
 ## OQ01: Can the system-identification framework survive PDN/KCL-constrained circuit-graph distributions?
 
 Status: active, generated chip-like and physics-learning closure passed.

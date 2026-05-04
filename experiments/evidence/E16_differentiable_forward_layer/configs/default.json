@@ -1,0 +1,30 @@
+{
+  "description": "Differentiable Biot-Savart forward layer evidence configuration",
+  "units": "SI",
+  "grid": {
+    "nx": 64, "ny": 64,
+    "dx_m": 1.0e-5, "dy_m": 1.0e-5,
+    "fov_x_m": 6.4e-4, "fov_y_m": 6.4e-4
+  },
+  "physics": {
+    "mu0": 1.2566370614359172e-6,
+    "current_density_Am": 100.0,
+    "via_current_A": 0.001
+  },
+  "sheet_tests": {
+    "source_z_m": -5.0e-5,
+    "observation_z_m": 1.0e-4,
+    "standoff_scan_zs_m": [2.0e-5, 5.0e-5, 1.0e-4, 2.0e-4, 5.0e-4, 1.0e-3]
+  },
+  "via_tests": {
+    "z_bottom_m": -1.0e-4,
+    "z_top_m": -3.0e-5,
+    "observation_z_m": 1.0e-4
+  },
+  "multilayer_tests": {
+    "layer1_z_m": -5.0e-5,
+    "layer2_z_m": -1.0e-4,
+    "layer3_z_m": -1.5e-4,
+    "obs_z_m": 1.0e-4
+  }
+}
