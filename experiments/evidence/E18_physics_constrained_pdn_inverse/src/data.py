@@ -1,12 +1,11 @@
-"""Data generation for E18 physics-constrained PDN inverse.
+"""Data generation for E18.1 physics-constrained PDN inverse.
 
-Reuses E15 four-layer via-chain benchmark generation with identical families
-and channel layout (11 channels: J1x,J1y,J2x,J2y,J3x,J3y,J4x,J4y,s12,s23,s34).
+E18.1 FIX: Supports kcl_consistent_truth mode that projects generated
+currents to satisfy layer-via KCL consistency.
 """
 from __future__ import annotations
 import json
 from pathlib import Path
-from typing import Any
 import numpy as np
 
 LAYER_IDS = ["L1", "L2", "L3", "L4"]
@@ -14,6 +13,7 @@ CHANNEL_NAMES = [
     "J1x", "J1y", "J2x", "J2y", "J3x", "J3y", "J4x", "J4y",
     "s12", "s23", "s34",
 ]
+
 
 def load_config(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
@@ -55,6 +55,18 @@ def _ss(n, xs, ys, cx, cy, sigma, amp):
         g[n // 2, n // 2] -= t
     sc = amp / max(np.sqrt(np.mean(g ** 2)), 1e-30)
     return g * sc
+
+
+def _kcl_project(flat: np.ndarray, n: int, lam: float, cfg: dict = None) -> np.ndarray:
+    """Project truth to satisfy KCL: min ||x - x0||^2 + lam * ||D x||^2.
+
+    Solve: (I + lam D^T D) x = x0
+    """
+    from src.forward_adapter import build_kcl_matrix
+    D = build_kcl_matrix(n, cfg)
+    DtD = D.T @ D
+    M = np.eye(len(flat)) + lam * DtD
+    return np.linalg.solve(M, flat)
 
 
 def generate_case(family: str, variant: int, cfg: dict, rng, A_op: np.ndarray):
@@ -115,15 +127,47 @@ def generate_case(family: str, variant: int, cfg: dict, rng, A_op: np.ndarray):
         ch[10] = 0.0
 
     flat = ch.reshape(-1)
+
+    # KCL-consistent truth projection
+    kcl_info = {}
+    if cfg.get("kcl_consistent_truth", True):
+        from src.forward_adapter import build_kcl_matrix
+        D = build_kcl_matrix(n, cfg)
+        kcl_before = float(np.sqrt(np.mean((D @ flat) ** 2)))
+        via_energy_before = float(np.sum(flat[8 * n * n:] ** 2))
+
+        lam = float(cfg.get("truth_kcl_projection_weight", 5.0))
+        flat_proj = _kcl_project(flat, n, lam, cfg)
+
+        kcl_after = float(np.sqrt(np.mean((D @ flat_proj) ** 2)))
+        via_energy_after = float(np.sum(flat_proj[8 * n * n:] ** 2))
+
+        # If projection kills vias too much, reduce lambda
+        if via_energy_before > 1e-20 and via_energy_after < 0.1 * via_energy_before:
+            lam_reduced = lam * 0.1
+            flat_proj = _kcl_project(flat, n, lam_reduced, cfg)
+            kcl_after = float(np.sqrt(np.mean((D @ flat_proj) ** 2)))
+            via_energy_after = float(np.sum(flat_proj[8 * n * n:] ** 2))
+
+        flat = flat_proj
+        kcl_info = {
+            "truth_kcl_residual_before": kcl_before,
+            "truth_kcl_residual_after": kcl_after,
+            "truth_via_energy_before": via_energy_before,
+            "truth_via_energy_after": via_energy_after,
+        }
+
     m = int(cfg["sensor_grid_size"])
     bf = A_op @ flat
-    return {
+    result = {
         "family": family,
         "variant": int(variant),
-        "channels": ch,
+        "channels": flat.reshape(11, n, n),
         "field": bf.reshape(m, m, 3),
         "flat_ground_truth": flat,
     }
+    result.update(kcl_info)
+    return result
 
 
 def generate_all_cases(cfg: dict, A_op: np.ndarray) -> list[dict]:

@@ -1,5 +1,24 @@
 # Update Log
 
+## 2026-05-04 - E18.1 physics/numerical fix for constrained inverse
+
+Root causes fixed:
+1. Via columns in A were all zeros → added vertical-current kernel
+2. KCL matrix D did not couple via → added source/sink terms
+3. Fixed ridge_alpha with SI-scale A caused near-zero → column-normalized solvers
+4. Metrics did not distinguish methods → now b_res_rel spans 0.003–1.0
+5. Leaderboard mixed runtime → separated scientific/runtime tables
+
+Key results:
+- oracle b_res_rel=0.0, zero=1.0 (sanity confirmed)
+- ridge_scaled ranks #1 (b_res_rel=0.003, via_f1=0.41)
+- New method matches graph_kcl_aware_scaled, KCL residual 1e-15
+- New method does NOT beat ridge_scaled on b_residual or via_f1
+- KCL constraint overpowers data fidelity in constrained solvers
+
+Status: passed (all gates pass, limitations documented)
+Tests: 11 unit tests pass, full run 18 cases 11 methods
+
 ## 2026-05-04 - Physics-constrained multilayer PDN inverse evidence (E18)
 
 Claim affected:

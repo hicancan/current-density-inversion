@@ -1,4 +1,8 @@
-"""Metrics computation for E18 physics-constrained PDN inverse."""
+"""Metrics computation for E18.1 physics-constrained PDN inverse.
+
+E18.1: Adds x_norm, Ax_norm, b_norm, b_residual_rel, via_energy,
+via_threshold diagnostics, via_collapse detection.
+"""
 from __future__ import annotations
 import sys
 from pathlib import Path
@@ -8,7 +12,7 @@ _SRC_DIR = Path(__file__).resolve().parent
 if str(_SRC_DIR.parent) not in sys.path:
     sys.path.insert(0, str(_SRC_DIR.parent))
 
-from src.forward_adapter import build_div_matrix
+from src.forward_adapter import build_kcl_matrix
 
 LAYER_IDS = ["L1", "L2", "L3", "L4"]
 
@@ -34,7 +38,6 @@ def current_relative_l2(pred: np.ndarray, truth: np.ndarray) -> float:
 
 
 def layer_wise_rmse(pred: np.ndarray, truth: np.ndarray, n: int) -> dict:
-    """RMSE per layer (relative L2)."""
     pl = n * n
     result = {}
     for li in range(4):
@@ -47,7 +50,6 @@ def layer_wise_rmse(pred: np.ndarray, truth: np.ndarray, n: int) -> dict:
 
 
 def layer_misallocation(pred: np.ndarray, truth: np.ndarray, n: int) -> float:
-    """Mean absolute difference in layer energy fraction."""
     pl = n * n
     fracs_p = []
     fracs_t = []
@@ -63,14 +65,28 @@ def layer_misallocation(pred: np.ndarray, truth: np.ndarray, n: int) -> float:
     return float(np.mean(np.abs(np.array(fracs_p) - np.array(fracs_t))))
 
 
-def via_precision_recall_f1(
-    pred: np.ndarray, truth: np.ndarray, n: int
-) -> dict:
+def via_precision_recall_f1(pred: np.ndarray, truth: np.ndarray, n: int, cfg: dict = None) -> dict:
     """Via detection precision, recall, F1."""
     pl = n * n
     vb = 8 * pl
     vmax = float(np.max(np.abs(truth[vb:])))
-    vth = 0.1 * vmax if vmax > 1e-6 else 0.005
+
+    # Threshold mode
+    mode = "relative_truth"
+    if cfg:
+        mode = cfg.get("via_threshold_mode", "relative_truth")
+
+    if mode == "relative_truth":
+        vth = 0.05 * vmax if vmax > 1e-8 else 1e-8
+    elif mode == "absolute_config":
+        vth = float(cfg.get("via_absolute_threshold", 0.005))
+    else:
+        vth = 0.05 * vmax if vmax > 1e-8 else 1e-8
+
+    via_energy_truth = float(np.sum(truth[vb:] ** 2))
+    via_energy_pred = float(np.sum(pred[vb:] ** 2))
+    truth_has_vias = vmax > 1e-8
+    via_collapse = truth_has_vias and via_energy_pred < 1e-12
 
     all_pb = []
     all_tb = []
@@ -86,8 +102,8 @@ def via_precision_recall_f1(
         all_tb.append(tb)
         per_via[f"{nm}_rmse"] = rel_l2(p, t)
 
-    pa = np.concatenate([p.ravel() for p in all_pb])
-    ta = np.concatenate([t.ravel() for t in all_tb])
+    pa = np.concatenate([pb.ravel() for pb in all_pb])
+    ta = np.concatenate([tb.ravel() for tb in all_tb])
     tp = float(np.sum((pa > 0.5) & (ta > 0.5)))
     fp = float(np.sum((pa > 0.5) & (ta <= 0.5)))
     fn = float(np.sum((pa <= 0.5) & (ta > 0.5)))
@@ -102,42 +118,45 @@ def via_precision_recall_f1(
         "via_fp": int(fp),
         "via_fn": int(fn),
         "via_tp": int(tp),
+        "via_threshold": float(vth),
+        "via_energy_truth": via_energy_truth,
+        "via_energy_pred": via_energy_pred,
+        "truth_has_vias": truth_has_vias,
+        "via_collapse_to_zero": via_collapse,
         **per_via,
     }
 
 
-def no_via_false_positive(
-    pred: np.ndarray, truth: np.ndarray, n: int
-) -> float:
-    """Count false positive via detections on no-via ground truth."""
+def no_via_false_positive(pred: np.ndarray, truth: np.ndarray, n: int) -> float:
     pl = n * n
     vb = 8 * pl
     t_via = truth[vb:]
     p_via = pred[vb:]
-    # If ground truth has no vias, count any detection as FP
-    if np.max(np.abs(t_via)) < 1e-6:
+    if np.max(np.abs(t_via)) < 1e-8:
         return float(np.sum(np.abs(p_via) > 0.005))
     return 0.0
 
 
-def physical_b_residual(
-    pred: np.ndarray, b_obs: np.ndarray, A: np.ndarray
-) -> float:
+def physical_b_residual(pred: np.ndarray, b_obs: np.ndarray, A: np.ndarray) -> float:
     b_pred = A @ pred
     return float(np.sqrt(np.mean((b_pred - b_obs) ** 2)))
 
 
-def kcl_residual(pred: np.ndarray, n: int) -> float:
-    D = build_div_matrix(n)
+def b_residual_rel(pred: np.ndarray, field: np.ndarray, A: np.ndarray) -> float:
+    b_pred = A @ pred
+    return rel_l2(b_pred, field.ravel())
+
+
+def kcl_residual(pred: np.ndarray, n: int, cfg: dict = None) -> float:
+    D = build_kcl_matrix(n, cfg)
     return float(np.sqrt(np.mean((D @ pred) ** 2)))
 
 
-def topology_residual(pred: np.ndarray, n: int) -> float:
-    return kcl_residual(pred, n)
+def topology_residual(pred: np.ndarray, n: int, cfg: dict = None) -> float:
+    return kcl_residual(pred, n, cfg)
 
 
 def current_closure_error(pred: np.ndarray, n: int) -> float:
-    """Total current magnitude imbalance across layers."""
     pl = n * n
     layer_totals = []
     for li in range(4):
@@ -147,16 +166,7 @@ def current_closure_error(pred: np.ndarray, n: int) -> float:
     for vi in range(3):
         s = 8 * pl + vi * pl
         via_totals.append(float(np.sum(pred[s:s + pl])))
-    # Closure: sum of all currents should approach zero for physical consistency
     return float(abs(sum(layer_totals) + sum(via_totals)))
-
-
-def b_residual_rel(
-    pred: np.ndarray, field: np.ndarray, A: np.ndarray
-) -> float:
-    """Relative B residual."""
-    b_pred = A @ pred
-    return rel_l2(b_pred, field.ravel())
 
 
 def compute_all_metrics(
@@ -165,18 +175,28 @@ def compute_all_metrics(
     field: np.ndarray,
     A: np.ndarray,
     n: int,
+    cfg: dict = None,
 ) -> dict:
     """Compute all metrics for a single case."""
+    b_obs = field.ravel()
+    x_norm = float(np.linalg.norm(pred))
+    Ax_norm = float(np.linalg.norm(A @ pred))
+    b_norm = float(np.linalg.norm(b_obs))
+
     return {
+        "x_norm": x_norm,
+        "Ax_norm": Ax_norm,
+        "b_norm": b_norm,
+        "residual_norm": float(np.linalg.norm(A @ pred - b_obs)),
         "current_rmse": current_rmse(pred, truth),
         "current_relative_l2": current_relative_l2(pred, truth),
         "layer_wise_rmse": layer_wise_rmse(pred, truth, n),
         "layer_misallocation": layer_misallocation(pred, truth, n),
-        "via_metrics": via_precision_recall_f1(pred, truth, n),
+        "via_metrics": via_precision_recall_f1(pred, truth, n, cfg),
         "no_via_fp": no_via_false_positive(pred, truth, n),
-        "physical_b_residual": physical_b_residual(pred, field.ravel(), A),
-        "kcl_residual": kcl_residual(pred, n),
-        "topology_residual": topology_residual(pred, n),
+        "physical_b_residual": physical_b_residual(pred, b_obs, A),
+        "kcl_residual": kcl_residual(pred, n, cfg),
+        "topology_residual": topology_residual(pred, n, cfg),
         "current_closure_error": current_closure_error(pred, n),
         "b_residual_rel": b_residual_rel(pred, field, A),
     }
