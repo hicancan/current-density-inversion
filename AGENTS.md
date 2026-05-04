@@ -56,6 +56,9 @@ Agent-native audit commands:
 - Only target GPU when the task is explicitly: deep learning, CUDA/PyTorch
   acceleration, large matrix computation, or GPU-enabled simulation/rendering.
 - Do not assume GPU is faster by default.
+- GPU tasks use the WSL `quantum-dev` conda environment; entrypoint:
+  `wsl -d Ubuntu -- bash -lc 'source ~/conda/etc/profile.d/conda.sh && conda activate quantum-dev && python <script.py>'`
+- Never hard-code CUDA; GPU must remain optional with CPU fallback.
 
 ## Test entrypoint
 
