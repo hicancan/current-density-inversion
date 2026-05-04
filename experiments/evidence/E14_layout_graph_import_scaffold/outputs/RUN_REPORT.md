@@ -56,7 +56,7 @@ the example layouts are hand-authored for scaffold verification.
 
 - Metrics file: `outputs/metrics.json`
 - Schema version: `research-ssot-metrics-v1`
-- Calibration source: No calibration rows used.
+- Calibration source: No calibration rows used for threshold or model selection.
 - Threshold source: none
 - Model-selection source: not_applicable
 - Audit date: 2026-05-04

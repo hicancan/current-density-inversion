@@ -705,7 +705,7 @@
     "calibration_rows": [],
     "calibration_source": "No calibration rows used for threshold or model selection.",
     "heldout_rows": [
-      "heldout"
+      "test"
     ],
     "heldout_rows_explicitly_calibration": false,
     "hidden_rows": [],
@@ -741,11 +741,11 @@
   "output_channels": 11,
   "run_audit": {
     "audit_date": "2026-05-04",
-    "claim_boundary": "generated/domain-limited evidence, not real validation",
-    "fresh_full_run_completed": true,
-    "full_run_command": "uv run --with-requirements requirements.txt python src/run_all.py --config configs/default.json --out outputs",
-    "mode": "full_run",
-    "smoke_or_test_only": false
+    "claim_boundary": "PyPEEC generated-domain solver bridge, not real ground truth",
+    "fresh_full_run_completed": false,
+    "full_run_command": "not_applicable",
+    "mode": "interface_scaffold",
+    "smoke_or_test_only": true
   },
   "schema_version": "research-ssot-metrics-v1",
   "secondary_claim_ids": [

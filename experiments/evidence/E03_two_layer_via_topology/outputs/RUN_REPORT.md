@@ -46,12 +46,3 @@ This experiment verifies the minimum two-layer + via physics before neural inver
 6. A finite-width/return-current surrogate creates a measurable forward gap,
    so same-family centerline synthetic performance must not be treated as
    real hardware validation.
-
-## Agent Audit Metadata
-
-- Metrics file: `outputs/metrics.json`
-- Schema version: `research-ssot-metrics-v1`
-- Calibration source: No calibration rows used for threshold or model selection.
-- Threshold source: none
-- Model-selection source: not_applicable
-- Audit date: 2026-05-04

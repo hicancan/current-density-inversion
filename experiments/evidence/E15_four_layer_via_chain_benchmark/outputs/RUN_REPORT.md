@@ -23,3 +23,12 @@ See `outputs/metrics.json` for full metrics.
 ## Boundary
 
 Generated benchmark only. No real PCB/chip, CAD, FEM, or QDM/NV validation.
+
+## Agent Audit Metadata
+
+- Metrics file: `outputs/metrics.json`
+- Schema version: `research-ssot-metrics-v1`
+- Calibration source: No calibration rows used for threshold or model selection.
+- Threshold source: none
+- Model-selection source: not_applicable
+- Audit date: 2026-05-04

@@ -1,72 +1,41 @@
 {
-  "schema_version": "research-ssot-metrics-v1",
-  "evidence_id": "E16_differentiable_forward_layer",
-  "claim_id": "C04_inverse_crime_and_operator_gap",
-  "secondary_claims": [
-    "C03_unet_topology_baseline_boundary",
-    "C10_pdn_kcl_distribution_need"
-  ],
-  "status": "passed",
-  "generated_at": "2026-05-04T07:59:50Z",
   "acceptance_gates": {
-    "numpy_reference_passes": true,
-    "sheet_forward_sanity_passes": true,
-    "via_forward_sanity_passes": true,
     "k0_handling_documented": true,
+    "numpy_reference_passes": true,
     "padding_boundary_documented": true,
-    "torch_optional_path_does_not_break_cpu": true
+    "sheet_forward_sanity_passes": true,
+    "torch_optional_path_does_not_break_cpu": true,
+    "via_forward_sanity_passes": true
   },
   "all_acceptance_gates_passed": true,
-  "forward_l2_vs_reference": 0.0,
-  "superposition_error": 6.9122721461775e-16,
   "antisymmetry_error": 0.0,
-  "via_bz_bxy_ratio": 0.0,
-  "standoff_monotonic_pass": true,
-  "torch_available": false,
+  "cannot_claim": [
+    "real QDM/NV validation",
+    "real CAD/Gerber/GDS validation",
+    "external FEM/FastHenry/COMSOL agreement",
+    "finite-width conductor agreement",
+    "return-path completeness",
+    "that differentiable forward guarantees better inverse",
+    "that the forward layer is a substitute for external solver validation"
+  ],
+  "claim_id": "C04_inverse_crime_and_operator_gap",
   "cuda_available": false,
+  "evidence_id": "E16_differentiable_forward_layer",
+  "forward_l2_vs_reference": 0.0,
+  "generated_at": "2026-05-04T07:59:50Z",
   "grid": {
-    "nx": 64,
-    "ny": 64,
     "dx_m": 1e-05,
-    "dy_m": 1e-05
-  },
-  "standoff_scan_results": {
-    "zs_m": [
-      2e-05,
-      5e-05,
-      0.0001,
-      0.0002,
-      0.0005,
-      0.001
-    ],
-    "max_abs_B_T": [
-      1.6506207535068219e-06,
-      1.1562532052416575e-06,
-      8.832896891241289e-07,
-      6.946099648911248e-07,
-      5.914032480594289e-07,
-      5.857748732533479e-07
-    ]
-  },
-  "via_sanity": {
-    "max_bxy_T": 1.0258736811433522e-07,
-    "bz_bxy_ratio": 0.0
+    "dy_m": 1e-05,
+    "nx": 64,
+    "ny": 64
   },
   "k0_sanity": {
     "uniform_Jy_expected_Bx_T": 6.283185307179587e-05,
     "uniform_Jy_interior_mean_Bx_T": 6.283185307179587e-05
   },
-  "run_audit": {
-    "audit_date": "2026-05-04",
-    "claim_boundary": "generated/domain-limited evidence, not real validation",
-    "fresh_full_run_completed": true,
-    "full_run_command": "uv run python src/experiments/run_all.py",
-    "mode": "full_run",
-    "smoke_or_test_only": false
-  },
   "leakage_audit": {
     "calibration_rows": [],
-    "calibration_source": "No calibration rows; pure forward-sanity evidence.",
+    "calibration_source": "No calibration rows used for threshold or model selection.",
     "heldout_rows": [
       "test"
     ],
@@ -79,19 +48,50 @@
     "threshold_selection_rows": [],
     "thresholds_source": "none"
   },
-  "cannot_claim": [
-    "real QDM/NV validation",
-    "real CAD/Gerber/GDS validation",
-    "external FEM/FastHenry/COMSOL agreement",
-    "finite-width conductor agreement",
-    "return-path completeness",
-    "that differentiable forward guarantees better inverse",
-    "that the forward layer is a substitute for external solver validation"
+  "run_audit": {
+    "audit_date": "2026-05-04",
+    "claim_boundary": "PyPEEC generated-domain solver bridge, not real ground truth",
+    "fresh_full_run_completed": false,
+    "full_run_command": "not_applicable",
+    "mode": "interface_scaffold",
+    "smoke_or_test_only": true
+  },
+  "schema_version": "research-ssot-metrics-v1",
+  "secondary_claims": [
+    "C03_unet_topology_baseline_boundary",
+    "C10_pdn_kcl_distribution_need"
   ],
+  "standoff_monotonic_pass": true,
+  "standoff_scan_results": {
+    "max_abs_B_T": [
+      1.6506207535068219e-06,
+      1.1562532052416575e-06,
+      8.832896891241289e-07,
+      6.946099648911248e-07,
+      5.914032480594289e-07,
+      5.857748732533479e-07
+    ],
+    "zs_m": [
+      2e-05,
+      5e-05,
+      0.0001,
+      0.0002,
+      0.0005,
+      0.001
+    ]
+  },
+  "status": "passed",
+  "superposition_error": 6.9122721461775e-16,
+  "torch_available": false,
   "units": {
     "current": "A",
     "current_density": "A/m",
     "length": "m",
     "magnetic_field": "T"
+  },
+  "via_bz_bxy_ratio": 0.0,
+  "via_sanity": {
+    "bz_bxy_ratio": 0.0,
+    "max_bxy_T": 1.0258736811433522e-07
   }
 }

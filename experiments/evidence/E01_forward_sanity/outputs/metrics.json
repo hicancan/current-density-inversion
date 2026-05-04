@@ -1,82 +1,35 @@
 {
-  "acceptance_gates": {
-    "current_reversal_is_antisymmetric": {
-      "pass": true,
-      "threshold": "max_abs_ratio < 1e-12",
-      "value": 0.0
-    },
-    "finite_wire_matches_infinite_reference": {
-      "pass": true,
-      "threshold": "relative_l2 < 2e-3",
-      "value": 0.000905331408941824
-    },
-    "rect_loop_superposition_is_exact": {
-      "pass": true,
-      "threshold": "relative_l2 < 1e-12",
-      "value": 0.0
-    },
-    "standoff_reduces_field_strength": {
-      "pass": true,
-      "threshold": "max |B| strictly decreases with h",
-      "value": true
-    },
-    "vertical_via_has_no_bz": {
-      "pass": true,
-      "threshold": "Bz/Bxy < 1e-10",
-      "value": 0.0
-    }
+  "units": {
+    "length": "m",
+    "current": "A",
+    "magnetic_field": "T"
   },
-  "all_acceptance_gates_passed": true,
-  "current_A": 0.001,
   "grid": {
-    "dx_m": 1.2499999999999924e-05,
-    "dy_m": 1.2499999999999924e-05,
     "fov_m": 0.002,
     "nx": 161,
     "ny": 161,
-    "z_m": 0.0001
+    "z_m": 0.0001,
+    "dx_m": 1.2499999999999924e-05,
+    "dy_m": 1.2499999999999924e-05
   },
-  "leakage_audit": {
-    "calibration_rows": [],
-    "calibration_source": "No calibration rows used for threshold or model selection.",
-    "heldout_rows": [
-      "test"
-    ],
-    "heldout_rows_explicitly_calibration": false,
-    "hidden_rows": [],
-    "model_selection_rows": [],
-    "model_selection_source": "not_applicable",
-    "proxy_fallback_used": false,
-    "pypeec_stress_rows_used_for_training": false,
-    "threshold_selection_rows": [],
-    "thresholds_source": "none"
-  },
-  "rect_loop": {
-    "height_m": 0.0006,
-    "max_abs_B_T": 1.920226188453874e-06,
-    "superposition_rel_l2_error": 0.0,
-    "width_m": 0.0009
-  },
-  "run_audit": {
-    "audit_date": "2026-05-04",
-    "claim_boundary": "generated/domain-limited evidence, not real validation",
-    "fresh_full_run_completed": true,
-    "full_run_command": "uv run python scripts/run_evidence.py --all --mode run --continue-on-fail",
-    "mode": "full_run",
-    "smoke_or_test_only": false
-  },
-  "schema_version": "research-ssot-metrics-v1",
-  "single_via": {
-    "Bz_over_Bxy_max_ratio": 0.0,
-    "max_abs_Bxy_T": 4.842544442506687e-07,
-    "max_abs_Bz_T": 0.0,
-    "z0_m": -5e-05,
-    "z1_m": 5e-05
-  },
+  "current_A": 0.001,
   "single_wire": {
     "finite_length_m": 0.02,
     "infinite_wire_rel_l2_error_central_mask": 0.000905331408941824,
     "sign_reversal_max_abs_ratio": 0.0
+  },
+  "rect_loop": {
+    "width_m": 0.0009,
+    "height_m": 0.0006,
+    "superposition_rel_l2_error": 0.0,
+    "max_abs_B_T": 1.920226188453874e-06
+  },
+  "single_via": {
+    "z0_m": -5e-05,
+    "z1_m": 5e-05,
+    "max_abs_Bxy_T": 4.842544442506687e-07,
+    "max_abs_Bz_T": 0.0,
+    "Bz_over_Bxy_max_ratio": 0.0
   },
   "standoff_scan": {
     "h_m": [
@@ -95,7 +48,6 @@
       7.997501171264983e-07,
       3.995009355511379e-07
     ],
-    "max_abs_B_monotonic_decreasing": true,
     "mean_abs_B_T": [
       1.0552516070452226e-06,
       8.717247820669799e-07,
@@ -103,11 +55,35 @@
       5.966297848119163e-07,
       4.169558997354144e-07,
       2.872973786423918e-07
-    ]
+    ],
+    "max_abs_B_monotonic_decreasing": true
   },
-  "units": {
-    "current": "A",
-    "length": "m",
-    "magnetic_field": "T"
-  }
+  "acceptance_gates": {
+    "finite_wire_matches_infinite_reference": {
+      "threshold": "relative_l2 < 2e-3",
+      "value": 0.000905331408941824,
+      "pass": true
+    },
+    "current_reversal_is_antisymmetric": {
+      "threshold": "max_abs_ratio < 1e-12",
+      "value": 0.0,
+      "pass": true
+    },
+    "rect_loop_superposition_is_exact": {
+      "threshold": "relative_l2 < 1e-12",
+      "value": 0.0,
+      "pass": true
+    },
+    "vertical_via_has_no_bz": {
+      "threshold": "Bz/Bxy < 1e-10",
+      "value": 0.0,
+      "pass": true
+    },
+    "standoff_reduces_field_strength": {
+      "threshold": "max |B| strictly decreases with h",
+      "value": true,
+      "pass": true
+    }
+  },
+  "all_acceptance_gates_passed": true
 }

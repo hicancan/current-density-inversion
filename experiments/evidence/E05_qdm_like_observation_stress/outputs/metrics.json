@@ -1,141 +1,22 @@
 {
-  "acceptance_gates": {
-    "correlated_noise_matches_target_covariance": {
-      "pass": true,
-      "threshold": "mean absolute correlation error < 0.05",
-      "value": 0.017124789480940206
-    },
-    "hard_case_residual_still_localizes_reasonably": {
-      "pass": true,
-      "threshold": "hard-full residual loc error < 100 um",
-      "value": 81.08404256841936
-    },
-    "nv_axis_gain_mismatch_is_measurable": {
-      "pass": true,
-      "threshold": "gain-mismatch reconstruction relative L2 > 1%",
-      "value": 0.018257854857061807
-    },
-    "nv_four_axis_projection_is_well_conditioned": {
-      "pass": true,
-      "threshold": "four-axis rank is 3, condition number < 2, reconstruction error < 1e-10",
-      "value": [
-        3,
-        1.0,
-        2.0962044950314923e-16
-      ]
-    },
-    "psf_removes_high_frequency_energy": {
-      "pass": true,
-      "threshold": "full-case Bz high-frequency ratio < 0.25",
-      "value": 0.13518745971250534
-    },
-    "residual_detection_beats_raw_total_field": {
-      "pass": true,
-      "threshold": "full residual/raw peak ratio > 2 and residual loc error < raw loc error",
-      "value": [
-        2.6062046057082138,
-        692.7823633900667,
-        36.26188621469471
-      ]
-    },
-    "single_nv_axis_is_rank_deficient": {
-      "pass": true,
-      "threshold": "single-axis rank < 3",
-      "value": 1
-    },
-    "tilt_creates_measurable_forward_mismatch": {
-      "pass": true,
-      "threshold": "tilt range > 10 um and field mismatch > 1%",
-      "value": [
-        20.00000000000001,
-        0.025910848788833846
-      ]
-    }
-  },
-  "all_acceptance_gates_passed": true,
-  "case_metrics": [
-    {
-      "constant_template_residual_peak": 52.793392499225725,
-      "constant_vs_tilted_field_rel_l2": 0.0,
-      "dog_loc_error_um": 36.26188621469348,
-      "dog_peak": 55.656379778341815,
-      "label": "ideal-ish",
-      "psf_high_frequency_energy_ratio_Bz": 1.0,
-      "raw_loc_error_um": 692.7823633900667,
-      "raw_peak": 11.895403822995695,
-      "residual_loc_error_um": 36.26188621469348,
-      "residual_peak": 52.793392499225725,
-      "tilt_range_um": 0.0,
-      "via_to_sheet_Bxy_energy_ratio": 0.09799142428019454
-    },
-    {
-      "constant_template_residual_peak": 52.94867855339557,
-      "constant_vs_tilted_field_rel_l2": 0.025910848788833846,
-      "dog_loc_error_um": 36.26188621469348,
-      "dog_peak": 56.48139023273362,
-      "label": "tilt-only",
-      "psf_high_frequency_energy_ratio_Bz": 1.0,
-      "raw_loc_error_um": 692.7823633900667,
-      "raw_peak": 12.06656349756994,
-      "residual_loc_error_um": 36.26188621469348,
-      "residual_peak": 52.94947094020264,
-      "tilt_range_um": 20.00000000000001,
-      "via_to_sheet_Bxy_energy_ratio": 0.09652466860607198
-    },
-    {
-      "constant_template_residual_peak": 31.667177283266394,
-      "constant_vs_tilted_field_rel_l2": 0.0,
-      "dog_loc_error_um": 36.26188621469348,
-      "dog_peak": 30.57366642763135,
-      "label": "psf+noise",
-      "psf_high_frequency_energy_ratio_Bz": 0.13897643198432938,
-      "raw_loc_error_um": 692.7823633900667,
-      "raw_peak": 11.82993480798716,
-      "residual_loc_error_um": 36.26188621469348,
-      "residual_peak": 31.667177283266394,
-      "tilt_range_um": 0.0,
-      "via_to_sheet_Bxy_energy_ratio": 0.09799142428019454
-    },
-    {
-      "constant_template_residual_peak": 30.320175591988548,
-      "constant_vs_tilted_field_rel_l2": 0.025910848788833846,
-      "dog_loc_error_um": 36.26188621469348,
-      "dog_peak": 29.796897372503963,
-      "label": "full",
-      "noise_corr_mean_abs_error_before_spatial_filter": 0.017124789480940206,
-      "psf_high_frequency_energy_ratio_Bz": 0.13518745971250534,
-      "raw_loc_error_um": 692.7823633900667,
-      "raw_peak": 11.643819974283016,
-      "residual_loc_error_um": 36.26188621469471,
-      "residual_peak": 30.346177245013692,
-      "tilt_range_um": 20.00000000000001,
-      "via_to_sheet_Bxy_energy_ratio": 0.09652466860607198
-    },
-    {
-      "constant_template_residual_peak": 25.699026873944074,
-      "constant_vs_tilted_field_rel_l2": 0.03955241161267108,
-      "dog_loc_error_um": 81.08404256841881,
-      "dog_peak": 22.751757675134442,
-      "label": "hard-full",
-      "psf_high_frequency_energy_ratio_Bz": 0.0682323291614374,
-      "raw_loc_error_um": 692.7823633900667,
-      "raw_peak": 12.138200886753147,
-      "residual_loc_error_um": 81.08404256841936,
-      "residual_peak": 25.695588408663653,
-      "tilt_range_um": 30.00000000000001,
-      "via_to_sheet_Bxy_energy_ratio": 0.09578019390753394
-    }
-  ],
+  "experiment": "exp05-realistic-noise-and-standoff-tilt",
   "config": {
-    "confidence_floor": 0.35,
-    "confidence_percentile": 90,
-    "current_A": 0.005,
-    "dog_sigma_large_px": 3.0,
-    "dog_sigma_small_px": 1.0,
+    "seed": 20260429,
     "fov_m": 0.002,
     "grid_n": 40,
+    "current_A": 0.005,
     "layer1_depth_m": 2e-05,
     "layer2_depth_m": 9e-05,
+    "standoff_m": 5e-05,
+    "tilt_alpha": 0.006,
+    "tilt_beta": -0.004,
+    "segment_subdivisions": 16,
+    "psf_sigma_px": 1.25,
+    "noise_sigma_uT": [
+      0.12,
+      0.16,
+      0.1
+    ],
     "noise_corr": [
       [
         1.0,
@@ -153,42 +34,92 @@
         1.0
       ]
     ],
-    "noise_sigma_uT": [
-      0.12,
-      0.16,
-      0.1
-    ],
     "nv_axis_gain_mismatch": [
       1.03,
       0.97,
       1.015,
       0.985
     ],
-    "psf_sigma_px": 1.25,
-    "seed": 20260429,
-    "segment_subdivisions": 16,
     "spatial_corr_sigma_px": 1.2,
-    "standoff_m": 5e-05,
-    "tilt_alpha": 0.006,
-    "tilt_beta": -0.004,
-    "via_patch_radius_px": 6
+    "confidence_floor": 0.35,
+    "confidence_percentile": 90,
+    "via_patch_radius_px": 6,
+    "dog_sigma_small_px": 1.0,
+    "dog_sigma_large_px": 3.0
   },
-  "experiment": "exp05-realistic-noise-and-standoff-tilt",
-  "leakage_audit": {
-    "calibration_rows": [],
-    "calibration_source": "No calibration rows used for threshold or model selection.",
-    "heldout_rows": [
-      "test"
-    ],
-    "heldout_rows_explicitly_calibration": false,
-    "hidden_rows": [],
-    "model_selection_rows": [],
-    "model_selection_source": "not_applicable",
-    "proxy_fallback_used": false,
-    "pypeec_stress_rows_used_for_training": false,
-    "threshold_selection_rows": [],
-    "thresholds_source": "none"
-  },
+  "case_metrics": [
+    {
+      "label": "ideal-ish",
+      "tilt_range_um": 0.0,
+      "constant_vs_tilted_field_rel_l2": 0.0,
+      "psf_high_frequency_energy_ratio_Bz": 1.0,
+      "via_to_sheet_Bxy_energy_ratio": 0.09799142428019454,
+      "raw_peak": 11.895403822995695,
+      "residual_peak": 52.793392499225725,
+      "dog_peak": 55.656379778341815,
+      "constant_template_residual_peak": 52.793392499225725,
+      "raw_loc_error_um": 692.7823633900667,
+      "residual_loc_error_um": 36.26188621469348,
+      "dog_loc_error_um": 36.26188621469348
+    },
+    {
+      "label": "tilt-only",
+      "tilt_range_um": 20.00000000000001,
+      "constant_vs_tilted_field_rel_l2": 0.025910848788833846,
+      "psf_high_frequency_energy_ratio_Bz": 1.0,
+      "via_to_sheet_Bxy_energy_ratio": 0.09652466860607198,
+      "raw_peak": 12.06656349756994,
+      "residual_peak": 52.94947094020264,
+      "dog_peak": 56.48139023273362,
+      "constant_template_residual_peak": 52.94867855339557,
+      "raw_loc_error_um": 692.7823633900667,
+      "residual_loc_error_um": 36.26188621469348,
+      "dog_loc_error_um": 36.26188621469348
+    },
+    {
+      "label": "psf+noise",
+      "tilt_range_um": 0.0,
+      "constant_vs_tilted_field_rel_l2": 0.0,
+      "psf_high_frequency_energy_ratio_Bz": 0.13897643198432938,
+      "via_to_sheet_Bxy_energy_ratio": 0.09799142428019454,
+      "raw_peak": 11.82993480798716,
+      "residual_peak": 31.667177283266394,
+      "dog_peak": 30.57366642763135,
+      "constant_template_residual_peak": 31.667177283266394,
+      "raw_loc_error_um": 692.7823633900667,
+      "residual_loc_error_um": 36.26188621469348,
+      "dog_loc_error_um": 36.26188621469348
+    },
+    {
+      "label": "full",
+      "tilt_range_um": 20.00000000000001,
+      "constant_vs_tilted_field_rel_l2": 0.025910848788833846,
+      "psf_high_frequency_energy_ratio_Bz": 0.13518745971250534,
+      "via_to_sheet_Bxy_energy_ratio": 0.09652466860607198,
+      "raw_peak": 11.643819974283016,
+      "residual_peak": 30.346177245013692,
+      "dog_peak": 29.796897372503963,
+      "constant_template_residual_peak": 30.320175591988548,
+      "raw_loc_error_um": 692.7823633900667,
+      "residual_loc_error_um": 36.26188621469471,
+      "dog_loc_error_um": 36.26188621469348,
+      "noise_corr_mean_abs_error_before_spatial_filter": 0.017124789480940206
+    },
+    {
+      "label": "hard-full",
+      "tilt_range_um": 30.00000000000001,
+      "constant_vs_tilted_field_rel_l2": 0.03955241161267108,
+      "psf_high_frequency_energy_ratio_Bz": 0.0682323291614374,
+      "via_to_sheet_Bxy_energy_ratio": 0.09578019390753394,
+      "raw_peak": 12.138200886753147,
+      "residual_peak": 25.695588408663653,
+      "dog_peak": 22.751757675134442,
+      "constant_template_residual_peak": 25.699026873944074,
+      "raw_loc_error_um": 692.7823633900667,
+      "residual_loc_error_um": 81.08404256841936,
+      "dog_loc_error_um": 81.08404256841881
+    }
+  ],
   "nv_projection": {
     "axes": [
       [
@@ -212,6 +143,15 @@
         0.5773502691896258
       ]
     ],
+    "projection_shape": [
+      40,
+      40,
+      4
+    ],
+    "four_axis_rank": 3,
+    "single_axis_rank": 1,
+    "four_axis_condition_number": 1.0,
+    "four_axis_reconstruction_rel_l2": 2.0962044950314923e-16,
     "axis_gain_mismatch": [
       1.03,
       0.97,
@@ -219,33 +159,69 @@
       0.985
     ],
     "axis_gain_mismatch_reconstruction_rel_l2": 0.018257854857061807,
-    "four_axis_condition_number": 1.0,
-    "four_axis_rank": 3,
-    "four_axis_reconstruction_rel_l2": 2.0962044950314923e-16,
-    "projection_shape": [
-      40,
-      40,
-      4
-    ],
-    "single_axis_rank": 1,
     "single_axis_rank_deficient": true
   },
-  "run_audit": {
-    "audit_date": "2026-05-04",
-    "claim_boundary": "generated/domain-limited evidence, not real validation",
-    "fresh_full_run_completed": true,
-    "full_run_command": "uv run python scripts/run_evidence.py --all --mode run --continue-on-fail",
-    "mode": "full_run",
-    "smoke_or_test_only": false
-  },
-  "schema_version": "research-ssot-metrics-v1",
   "summary": {
-    "full_case_constant_template_peak_ratio": 0.999143165453256,
-    "full_case_constant_vs_tilted_field_rel_l2": 0.025910848788833846,
-    "full_case_dog_vs_residual_peak_ratio": 0.9818995365355291,
     "full_case_noise_corr_mean_abs_error_before_spatial_filter": 0.017124789480940206,
-    "full_case_psf_high_frequency_energy_ratio_Bz": 0.13518745971250534,
     "full_case_residual_vs_raw_peak_ratio": 2.6062046057082138,
-    "full_case_tilt_range_um": 20.00000000000001
-  }
+    "full_case_dog_vs_residual_peak_ratio": 0.9818995365355291,
+    "full_case_constant_template_peak_ratio": 0.999143165453256,
+    "full_case_tilt_range_um": 20.00000000000001,
+    "full_case_constant_vs_tilted_field_rel_l2": 0.025910848788833846,
+    "full_case_psf_high_frequency_energy_ratio_Bz": 0.13518745971250534
+  },
+  "acceptance_gates": {
+    "correlated_noise_matches_target_covariance": {
+      "threshold": "mean absolute correlation error < 0.05",
+      "value": 0.017124789480940206,
+      "pass": true
+    },
+    "psf_removes_high_frequency_energy": {
+      "threshold": "full-case Bz high-frequency ratio < 0.25",
+      "value": 0.13518745971250534,
+      "pass": true
+    },
+    "tilt_creates_measurable_forward_mismatch": {
+      "threshold": "tilt range > 10 um and field mismatch > 1%",
+      "value": [
+        20.00000000000001,
+        0.025910848788833846
+      ],
+      "pass": true
+    },
+    "residual_detection_beats_raw_total_field": {
+      "threshold": "full residual/raw peak ratio > 2 and residual loc error < raw loc error",
+      "value": [
+        2.6062046057082138,
+        692.7823633900667,
+        36.26188621469471
+      ],
+      "pass": true
+    },
+    "hard_case_residual_still_localizes_reasonably": {
+      "threshold": "hard-full residual loc error < 100 um",
+      "value": 81.08404256841936,
+      "pass": true
+    },
+    "nv_four_axis_projection_is_well_conditioned": {
+      "threshold": "four-axis rank is 3, condition number < 2, reconstruction error < 1e-10",
+      "value": [
+        3,
+        1.0,
+        2.0962044950314923e-16
+      ],
+      "pass": true
+    },
+    "single_nv_axis_is_rank_deficient": {
+      "threshold": "single-axis rank < 3",
+      "value": 1,
+      "pass": true
+    },
+    "nv_axis_gain_mismatch_is_measurable": {
+      "threshold": "gain-mismatch reconstruction relative L2 > 1%",
+      "value": 0.018257854857061807,
+      "pass": true
+    }
+  },
+  "all_acceptance_gates_passed": true
 }

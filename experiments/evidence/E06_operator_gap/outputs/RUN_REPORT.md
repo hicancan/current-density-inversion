@@ -37,12 +37,3 @@ The medium and high-fidelity operators are still surrogates, not
 COMSOL/FastHenry/QDM data. The PyPEEC bridge imports a real-solver exp07 artifact
 as a read-only fidelity level; it does not calibrate or train on PyPEEC samples.
 Passing this gate only justifies moving to real multi-fidelity stress tests.
-
-## Agent Audit Metadata
-
-- Metrics file: `outputs/metrics.json`
-- Schema version: `research-ssot-metrics-v1`
-- Calibration source: No calibration rows used for threshold or model selection.
-- Threshold source: none
-- Model-selection source: not_applicable
-- Audit date: 2026-05-04

@@ -34,7 +34,7 @@ This is generated-domain observability evidence. It cannot claim:
 
 - Metrics file: `outputs/metrics.json`
 - Schema version: `research-ssot-metrics-v1`
-- Calibration source: none (all generated)
-- Threshold source: config_only
+- Calibration source: No calibration rows used for threshold or model selection.
+- Threshold source: none
 - Model-selection source: not_applicable
-- Audit date: 2026-05-04T00:00:00Z
+- Audit date: 2026-05-04

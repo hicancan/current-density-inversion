@@ -1,184 +1,166 @@
 {
-  "acceptance_gates": {
-    "benchmark_reports_recoverability_health": {
-      "pass": true,
-      "threshold": "test has via/no-via diversity and OOD has background stress",
-      "value": {
-        "ood": {
-          "background_stress_fraction": 1.0,
-          "median_observation_snr_proxy": 15.546403884887695,
-          "min_observation_snr_proxy": 11.297666549682617,
-          "multi_or_dense_via_fraction": 0.3359375,
-          "n": 128,
-          "no_via_fraction": 0.328125,
-          "via_present_fraction": 0.671875
-        },
-        "test": {
-          "background_stress_fraction": 0.0,
-          "median_observation_snr_proxy": 55.23963165283203,
-          "min_observation_snr_proxy": 36.49273681640625,
-          "multi_or_dense_via_fraction": 0.1640625,
-          "n": 128,
-          "no_via_fraction": 0.1640625,
-          "via_present_fraction": 0.8359375
-        },
-        "train": {
-          "background_stress_fraction": 0.0,
-          "median_observation_snr_proxy": 57.4359016418457,
-          "min_observation_snr_proxy": 37.54959487915039,
-          "multi_or_dense_via_fraction": 0.166015625,
-          "n": 512,
-          "no_via_fraction": 0.166015625,
-          "via_present_fraction": 0.833984375
-        },
-        "val": {
-          "background_stress_fraction": 0.0,
-          "median_observation_snr_proxy": 59.95231246948242,
-          "min_observation_snr_proxy": 38.7739372253418,
-          "multi_or_dense_via_fraction": 0.1640625,
-          "n": 128,
-          "no_via_fraction": 0.1640625,
-          "via_present_fraction": 0.8359375
-        }
-      }
+  "experiment": "exp03-two-layer-via-toy-benchmark",
+  "stage": "MVP-2: two-layer + via toy benchmark before neural topology loss",
+  "units": {
+    "length": "m internally",
+    "current": "A",
+    "magnetic_field": "T"
+  },
+  "config_summary": {
+    "units": "SI",
+    "grid": {
+      "fov_m": 0.002,
+      "n": 129,
+      "sensor_z_m": 0.0
     },
-    "field_superposition_is_linear": {
-      "pass": true,
-      "threshold": "relative_l2 < 1e-12",
-      "value": 4.068155483659732e-17
+    "physics": {
+      "current_A": 0.001,
+      "layer1_z_m": -5e-05,
+      "layer2_z_m": -0.00013,
+      "via_x_m": 0.0,
+      "via_y_m": 0.0,
+      "left_port_x_m": -0.00075,
+      "right_port_x_m": 0.00075,
+      "route_y_m": 0.0,
+      "n_quad": 180
     },
-    "finite_volume_topology_cancels_internal_via": {
-      "pass": true,
-      "threshold": "both residual ratios < 1e-12",
-      "value": [
-        0.0,
-        0.0
-      ]
+    "template": {
+      "scan_stride_px": 1,
+      "n_quad": 120
     },
-    "finite_width_return_surrogate_gap_is_quantified": {
-      "pass": true,
-      "threshold": "median surrogate gap is finite and > 1%",
-      "value": 0.10630371449143175
+    "dataset": {
+      "n_samples": 48,
+      "n": 65,
+      "fov_m": 0.002,
+      "seed": 1234,
+      "n_quad": 80
     },
-    "formal_benchmark_has_directional_current_diversity": {
-      "pass": true,
-      "threshold": "train/test J1y and J2y truth norms are nonzero",
-      "value": {
-        "test": {
-          "J1y": 518.7255859375,
-          "J2y": 519.7576904296875
-        },
-        "train": {
-          "J1y": 1045.15478515625,
-          "J2y": 1036.4327392578125
-        }
-      }
-    },
-    "formal_benchmark_has_full_truth_maps": {
-      "pass": true,
-      "threshold": "truth channels are [J1x,J1y,J2x,J2y,s1]",
-      "value": [
-        896,
-        5,
-        49,
-        49
-      ]
-    },
-    "formal_benchmark_has_required_splits": {
-      "pass": true,
-      "threshold": "train/val/test/ood are all present",
-      "value": {
-        "ood": 128,
-        "test": 128,
+    "benchmark_dataset": {
+      "n": 49,
+      "fov_m": 0.002,
+      "seed": 20260429,
+      "n_quad": 32,
+      "splits": {
         "train": 512,
-        "val": 128
+        "val": 128,
+        "test": 128,
+        "ood": 128
+      },
+      "noise_relative_to_max_abs_B": {
+        "train": 0.002,
+        "val": 0.002,
+        "test": 0.002,
+        "ood": 0.01
       }
     },
-    "formal_benchmark_has_route_kind_diversity": {
-      "pass": true,
-      "threshold": "ID train/test include straight, l1_jog, l2_jog, both_jog, multi_via, no_via; OOD includes background stress variants",
-      "value": {
-        "ood": {
-          "both_jog_background": 43,
-          "dense_via_background": 43,
-          "no_via_background": 42
-        },
-        "test": {
-          "both_jog": 21,
-          "l1_jog": 22,
-          "l2_jog": 21,
-          "multi_via": 21,
-          "no_via": 21,
-          "straight": 22
-        },
-        "train": {
-          "both_jog": 85,
-          "l1_jog": 86,
-          "l2_jog": 85,
-          "multi_via": 85,
-          "no_via": 85,
-          "straight": 86
-        },
-        "val": {
-          "both_jog": 21,
-          "l1_jog": 22,
-          "l2_jog": 21,
-          "multi_via": 21,
-          "no_via": 21,
-          "straight": 22
-        }
-      }
-    },
-    "stress_raw_total_field_is_misleading": {
-      "pass": true,
-      "threshold": "raw localization error > residual localization error",
-      "value": 249.0138481123574
-    },
-    "stress_residual_filter_localizes_via": {
-      "pass": true,
-      "threshold": "residual localization error <= 2 pixels",
-      "value": 4.759858191164941e-06
-    },
-    "vertical_via_has_no_bz": {
-      "pass": true,
-      "threshold": "Bz/Bxy < 1e-10",
-      "value": 0.0
+    "layer_mixing": {
+      "shallow_z_m": -5e-05,
+      "depth_offsets_um": [
+        10,
+        20,
+        40,
+        80,
+        160,
+        320
+      ]
     }
   },
-  "all_acceptance_gates_passed": true,
-  "background_swamping_stress": {
-    "raw_localization_error_m": 0.0011852706046511067,
-    "raw_peak": {
-      "ix": 5,
-      "iy": 71,
-      "score": 0.16685541195546724,
-      "x_m": -0.0009218750000000001,
-      "y_m": 0.0001093750000000001
-    },
-    "raw_peak_score": 0.16685541195546724,
-    "raw_to_residual_localization_error_ratio": 249.0138481123574,
-    "residual_localization_error_m": 4.759858191164941e-06,
-    "residual_peak": {
-      "ix": 79,
-      "iy": 53,
-      "score": 0.9966034322618077,
-      "x_m": 0.000234375,
-      "y_m": -0.00017187500000000004
-    },
-    "residual_peak_score": 0.9966034322618077,
+  "superposition_rel_l2_error": 4.068155483659732e-17,
+  "via": {
+    "max_abs_Bxy_T": 4.5227134459473144e-07,
+    "max_abs_Bz_T": 0.0,
+    "Bz_over_Bxy_max_ratio": 0.0,
+    "via_to_sheet_Bxy_max_ratio": 0.11089662820574384,
+    "via_to_sheet_Bxy_energy_ratio": 0.10734402130033799
+  },
+  "matched_filter": {
     "true_via_xy_m": [
-      0.00023,
-      -0.00017
+      0.0,
+      0.0
     ],
-    "via_to_sheet_Bxy_energy_ratio": 0.017226381088693034
+    "residual_peak": {
+      "iy": 64,
+      "ix": 64,
+      "x_m": 0.0,
+      "y_m": 0.0,
+      "score": 0.9999999999910145
+    },
+    "raw_peak": {
+      "iy": 64,
+      "ix": 64,
+      "x_m": 0.0,
+      "y_m": 0.0,
+      "score": 0.4580825246077966
+    },
+    "residual_localization_error_m": 0.0,
+    "raw_localization_error_m": 0.0,
+    "residual_peak_score": 0.9999999999910145,
+    "raw_peak_score": 0.4580825246077966
+  },
+  "topology": {
+    "res1_inner_l2": 0.0,
+    "res2_inner_l2": 0.0,
+    "div1_inner_l2_before_topology": 63.99999999999994,
+    "div2_inner_l2_before_topology": 63.99999999999994,
+    "residual_to_div_norm_ratio_layer1": 0.0,
+    "residual_to_div_norm_ratio_layer2": 0.0
+  },
+  "layer_mixing": {
+    "depth_offsets_um": [
+      10.0,
+      20.0,
+      40.0,
+      80.0,
+      160.0,
+      320.0
+    ],
+    "template_cosine_similarity": [
+      0.9957100104044742,
+      0.9854797405615414,
+      0.9565770081326147,
+      0.8909062528580929,
+      0.7767423968105306,
+      0.6255974069926412
+    ],
+    "deep_to_shallow_max_abs_B_ratio": [
+      0.8325142060376078,
+      0.7122731952888842,
+      0.5509788628099784,
+      0.3753422585679225,
+      0.22142979832628096,
+      0.10959030263922372
+    ]
+  },
+  "toy_dataset": {
+    "n_samples": 48,
+    "shape_B": [
+      48,
+      65,
+      65,
+      3
+    ],
+    "file": "data/toy_dataset_small.npz"
   },
   "benchmark_dataset": {
+    "file": "data/two_layer_via_benchmark.npz",
     "B_obs_shape": [
       896,
       49,
       49,
       3
     ],
+    "truth_shape": [
+      896,
+      5,
+      49,
+      49
+    ],
+    "split_counts": {
+      "ood": 128,
+      "test": 128,
+      "train": 512,
+      "val": 128
+    },
     "channels": [
       "J1x",
       "J1y",
@@ -186,83 +168,6 @@
       "J2y",
       "s1"
     ],
-    "file": "data/two_layer_via_benchmark.npz",
-    "label_note": "truth maps are raster labels for current support and via amplitude; finite-volume topology is validated separately in the topology gate",
-    "recoverability_summary": {
-      "ood": {
-        "background_stress_fraction": 1.0,
-        "median_observation_snr_proxy": 15.546403884887695,
-        "min_observation_snr_proxy": 11.297666549682617,
-        "multi_or_dense_via_fraction": 0.3359375,
-        "n": 128,
-        "no_via_fraction": 0.328125,
-        "via_present_fraction": 0.671875
-      },
-      "test": {
-        "background_stress_fraction": 0.0,
-        "median_observation_snr_proxy": 55.23963165283203,
-        "min_observation_snr_proxy": 36.49273681640625,
-        "multi_or_dense_via_fraction": 0.1640625,
-        "n": 128,
-        "no_via_fraction": 0.1640625,
-        "via_present_fraction": 0.8359375
-      },
-      "train": {
-        "background_stress_fraction": 0.0,
-        "median_observation_snr_proxy": 57.4359016418457,
-        "min_observation_snr_proxy": 37.54959487915039,
-        "multi_or_dense_via_fraction": 0.166015625,
-        "n": 512,
-        "no_via_fraction": 0.166015625,
-        "via_present_fraction": 0.833984375
-      },
-      "val": {
-        "background_stress_fraction": 0.0,
-        "median_observation_snr_proxy": 59.95231246948242,
-        "min_observation_snr_proxy": 38.7739372253418,
-        "multi_or_dense_via_fraction": 0.1640625,
-        "n": 128,
-        "no_via_fraction": 0.1640625,
-        "via_present_fraction": 0.8359375
-      }
-    },
-    "route_kind_counts": {
-      "ood": {
-        "both_jog_background": 43,
-        "dense_via_background": 43,
-        "no_via_background": 42
-      },
-      "test": {
-        "both_jog": 21,
-        "l1_jog": 22,
-        "l2_jog": 21,
-        "multi_via": 21,
-        "no_via": 21,
-        "straight": 22
-      },
-      "train": {
-        "both_jog": 85,
-        "l1_jog": 86,
-        "l2_jog": 85,
-        "multi_via": 85,
-        "no_via": 85,
-        "straight": 86
-      },
-      "val": {
-        "both_jog": 21,
-        "l1_jog": 22,
-        "l2_jog": 21,
-        "multi_via": 21,
-        "no_via": 21,
-        "straight": 22
-      }
-    },
-    "split_counts": {
-      "ood": 128,
-      "test": 128,
-      "train": 512,
-      "val": 128
-    },
     "truth_channel_l2_norms_by_split": {
       "ood": {
         "J1x": 1218.6644287109375,
@@ -293,123 +198,112 @@
         "s1": 256.1455078125
       }
     },
-    "truth_shape": [
-      896,
-      5,
-      49,
-      49
-    ]
-  },
-  "config_summary": {
-    "benchmark_dataset": {
-      "fov_m": 0.002,
-      "n": 49,
-      "n_quad": 32,
-      "noise_relative_to_max_abs_B": {
-        "ood": 0.01,
-        "test": 0.002,
-        "train": 0.002,
-        "val": 0.002
+    "route_kind_counts": {
+      "train": {
+        "straight": 86,
+        "l1_jog": 86,
+        "l2_jog": 85,
+        "both_jog": 85,
+        "multi_via": 85,
+        "no_via": 85
       },
-      "seed": 20260429,
-      "splits": {
-        "ood": 128,
-        "test": 128,
-        "train": 512,
-        "val": 128
+      "val": {
+        "straight": 22,
+        "l1_jog": 22,
+        "l2_jog": 21,
+        "both_jog": 21,
+        "multi_via": 21,
+        "no_via": 21
+      },
+      "test": {
+        "straight": 22,
+        "l1_jog": 22,
+        "l2_jog": 21,
+        "both_jog": 21,
+        "multi_via": 21,
+        "no_via": 21
+      },
+      "ood": {
+        "both_jog_background": 43,
+        "dense_via_background": 43,
+        "no_via_background": 42
       }
     },
-    "dataset": {
-      "fov_m": 0.002,
-      "n": 65,
-      "n_quad": 80,
-      "n_samples": 48,
-      "seed": 1234
+    "recoverability_summary": {
+      "ood": {
+        "n": 128,
+        "via_present_fraction": 0.671875,
+        "no_via_fraction": 0.328125,
+        "multi_or_dense_via_fraction": 0.3359375,
+        "background_stress_fraction": 1.0,
+        "median_observation_snr_proxy": 15.546403884887695,
+        "min_observation_snr_proxy": 11.297666549682617
+      },
+      "test": {
+        "n": 128,
+        "via_present_fraction": 0.8359375,
+        "no_via_fraction": 0.1640625,
+        "multi_or_dense_via_fraction": 0.1640625,
+        "background_stress_fraction": 0.0,
+        "median_observation_snr_proxy": 55.23963165283203,
+        "min_observation_snr_proxy": 36.49273681640625
+      },
+      "train": {
+        "n": 512,
+        "via_present_fraction": 0.833984375,
+        "no_via_fraction": 0.166015625,
+        "multi_or_dense_via_fraction": 0.166015625,
+        "background_stress_fraction": 0.0,
+        "median_observation_snr_proxy": 57.4359016418457,
+        "min_observation_snr_proxy": 37.54959487915039
+      },
+      "val": {
+        "n": 128,
+        "via_present_fraction": 0.8359375,
+        "no_via_fraction": 0.1640625,
+        "multi_or_dense_via_fraction": 0.1640625,
+        "background_stress_fraction": 0.0,
+        "median_observation_snr_proxy": 59.95231246948242,
+        "min_observation_snr_proxy": 38.7739372253418
+      }
     },
-    "grid": {
-      "fov_m": 0.002,
-      "n": 129,
-      "sensor_z_m": 0.0
-    },
-    "layer_mixing": {
-      "depth_offsets_um": [
-        10,
-        20,
-        40,
-        80,
-        160,
-        320
-      ],
-      "shallow_z_m": -5e-05
-    },
-    "physics": {
-      "current_A": 0.001,
-      "layer1_z_m": -5e-05,
-      "layer2_z_m": -0.00013,
-      "left_port_x_m": -0.00075,
-      "n_quad": 180,
-      "right_port_x_m": 0.00075,
-      "route_y_m": 0.0,
-      "via_x_m": 0.0,
-      "via_y_m": 0.0
-    },
-    "template": {
-      "n_quad": 120,
-      "scan_stride_px": 1
-    },
-    "units": "SI"
+    "label_note": "truth maps are raster labels for current support and via amplitude; finite-volume topology is validated separately in the topology gate"
   },
-  "experiment": "exp03-two-layer-via-toy-benchmark",
   "forward_realism_probe": {
-    "boundary": "diagnostic only; dataset labels remain centerline line-current truth",
+    "model": "finite-width filaments + weak ground-return surrogate",
+    "n_samples": 18,
+    "median_rel_l2_gap": 0.10630371449143175,
+    "max_rel_l2_gap": 0.1355959022975258,
     "by_split_median_rel_l2_gap": {
       "test": 0.10630371449143175
     },
-    "max_rel_l2_gap": 0.1355959022975258,
-    "median_rel_l2_gap": 0.10630371449143175,
-    "model": "finite-width filaments + weak ground-return surrogate",
-    "n_samples": 18
+    "boundary": "diagnostic only; dataset labels remain centerline line-current truth"
   },
-  "layer_mixing": {
-    "deep_to_shallow_max_abs_B_ratio": [
-      0.8325142060376078,
-      0.7122731952888842,
-      0.5509788628099784,
-      0.3753422585679225,
-      0.22142979832628096,
-      0.10959030263922372
+  "background_swamping_stress": {
+    "true_via_xy_m": [
+      0.00023,
+      -0.00017
     ],
-    "depth_offsets_um": [
-      10.0,
-      20.0,
-      40.0,
-      80.0,
-      160.0,
-      320.0
-    ],
-    "template_cosine_similarity": [
-      0.9957100104044742,
-      0.9854797405615414,
-      0.9565770081326147,
-      0.8909062528580929,
-      0.7767423968105306,
-      0.6255974069926412
-    ]
-  },
-  "leakage_audit": {
-    "calibration_rows": [],
-    "calibration_source": "No calibration rows used for threshold or model selection.",
-    "heldout_rows": [
-      "test"
-    ],
-    "heldout_rows_explicitly_calibration": false,
-    "hidden_rows": [],
-    "model_selection_rows": [],
-    "model_selection_source": "not_applicable",
-    "proxy_fallback_used": false,
-    "pypeec_stress_rows_used_for_training": false,
-    "threshold_selection_rows": [],
-    "thresholds_source": "none"
+    "raw_peak": {
+      "iy": 71,
+      "ix": 5,
+      "x_m": -0.0009218750000000001,
+      "y_m": 0.0001093750000000001,
+      "score": 0.16685541195546724
+    },
+    "residual_peak": {
+      "iy": 53,
+      "ix": 79,
+      "x_m": 0.000234375,
+      "y_m": -0.00017187500000000004,
+      "score": 0.9966034322618077
+    },
+    "raw_localization_error_m": 0.0011852706046511067,
+    "residual_localization_error_m": 4.759858191164941e-06,
+    "raw_peak_score": 0.16685541195546724,
+    "residual_peak_score": 0.9966034322618077,
+    "raw_to_residual_localization_error_ratio": 249.0138481123574,
+    "via_to_sheet_Bxy_energy_ratio": 0.017226381088693034
   },
   "limitations": [
     "Ideal free-space finite-line Biot-Savart only.",
@@ -417,69 +311,151 @@
     "No QDM PSF, NV projection noise, standoff tilt, or FEM validation yet.",
     "Matched filtering uses an oracle sheet-background subtraction to show an upper bound of via detectability; raw score is also reported to expose background swamping."
   ],
-  "matched_filter": {
-    "raw_localization_error_m": 0.0,
-    "raw_peak": {
-      "ix": 64,
-      "iy": 64,
-      "score": 0.4580825246077966,
-      "x_m": 0.0,
-      "y_m": 0.0
+  "acceptance_gates": {
+    "field_superposition_is_linear": {
+      "threshold": "relative_l2 < 1e-12",
+      "value": 4.068155483659732e-17,
+      "pass": true
     },
-    "raw_peak_score": 0.4580825246077966,
-    "residual_localization_error_m": 0.0,
-    "residual_peak": {
-      "ix": 64,
-      "iy": 64,
-      "score": 0.9999999999910145,
-      "x_m": 0.0,
-      "y_m": 0.0
+    "vertical_via_has_no_bz": {
+      "threshold": "Bz/Bxy < 1e-10",
+      "value": 0.0,
+      "pass": true
     },
-    "residual_peak_score": 0.9999999999910145,
-    "true_via_xy_m": [
-      0.0,
-      0.0
-    ]
+    "finite_volume_topology_cancels_internal_via": {
+      "threshold": "both residual ratios < 1e-12",
+      "value": [
+        0.0,
+        0.0
+      ],
+      "pass": true
+    },
+    "stress_residual_filter_localizes_via": {
+      "threshold": "residual localization error <= 2 pixels",
+      "value": 4.759858191164941e-06,
+      "pass": true
+    },
+    "stress_raw_total_field_is_misleading": {
+      "threshold": "raw localization error > residual localization error",
+      "value": 249.0138481123574,
+      "pass": true
+    },
+    "formal_benchmark_has_required_splits": {
+      "threshold": "train/val/test/ood are all present",
+      "value": {
+        "ood": 128,
+        "test": 128,
+        "train": 512,
+        "val": 128
+      },
+      "pass": true
+    },
+    "formal_benchmark_has_full_truth_maps": {
+      "threshold": "truth channels are [J1x,J1y,J2x,J2y,s1]",
+      "value": [
+        896,
+        5,
+        49,
+        49
+      ],
+      "pass": true
+    },
+    "formal_benchmark_has_directional_current_diversity": {
+      "threshold": "train/test J1y and J2y truth norms are nonzero",
+      "value": {
+        "train": {
+          "J1y": 1045.15478515625,
+          "J2y": 1036.4327392578125
+        },
+        "test": {
+          "J1y": 518.7255859375,
+          "J2y": 519.7576904296875
+        }
+      },
+      "pass": true
+    },
+    "formal_benchmark_has_route_kind_diversity": {
+      "threshold": "ID train/test include straight, l1_jog, l2_jog, both_jog, multi_via, no_via; OOD includes background stress variants",
+      "value": {
+        "train": {
+          "straight": 86,
+          "l1_jog": 86,
+          "l2_jog": 85,
+          "both_jog": 85,
+          "multi_via": 85,
+          "no_via": 85
+        },
+        "val": {
+          "straight": 22,
+          "l1_jog": 22,
+          "l2_jog": 21,
+          "both_jog": 21,
+          "multi_via": 21,
+          "no_via": 21
+        },
+        "test": {
+          "straight": 22,
+          "l1_jog": 22,
+          "l2_jog": 21,
+          "both_jog": 21,
+          "multi_via": 21,
+          "no_via": 21
+        },
+        "ood": {
+          "both_jog_background": 43,
+          "dense_via_background": 43,
+          "no_via_background": 42
+        }
+      },
+      "pass": true
+    },
+    "benchmark_reports_recoverability_health": {
+      "threshold": "test has via/no-via diversity and OOD has background stress",
+      "value": {
+        "ood": {
+          "n": 128,
+          "via_present_fraction": 0.671875,
+          "no_via_fraction": 0.328125,
+          "multi_or_dense_via_fraction": 0.3359375,
+          "background_stress_fraction": 1.0,
+          "median_observation_snr_proxy": 15.546403884887695,
+          "min_observation_snr_proxy": 11.297666549682617
+        },
+        "test": {
+          "n": 128,
+          "via_present_fraction": 0.8359375,
+          "no_via_fraction": 0.1640625,
+          "multi_or_dense_via_fraction": 0.1640625,
+          "background_stress_fraction": 0.0,
+          "median_observation_snr_proxy": 55.23963165283203,
+          "min_observation_snr_proxy": 36.49273681640625
+        },
+        "train": {
+          "n": 512,
+          "via_present_fraction": 0.833984375,
+          "no_via_fraction": 0.166015625,
+          "multi_or_dense_via_fraction": 0.166015625,
+          "background_stress_fraction": 0.0,
+          "median_observation_snr_proxy": 57.4359016418457,
+          "min_observation_snr_proxy": 37.54959487915039
+        },
+        "val": {
+          "n": 128,
+          "via_present_fraction": 0.8359375,
+          "no_via_fraction": 0.1640625,
+          "multi_or_dense_via_fraction": 0.1640625,
+          "background_stress_fraction": 0.0,
+          "median_observation_snr_proxy": 59.95231246948242,
+          "min_observation_snr_proxy": 38.7739372253418
+        }
+      },
+      "pass": true
+    },
+    "finite_width_return_surrogate_gap_is_quantified": {
+      "threshold": "median surrogate gap is finite and > 1%",
+      "value": 0.10630371449143175,
+      "pass": true
+    }
   },
-  "run_audit": {
-    "audit_date": "2026-05-04",
-    "claim_boundary": "generated/domain-limited evidence, not real validation",
-    "fresh_full_run_completed": true,
-    "full_run_command": "uv run python scripts/run_evidence.py --all --mode run --continue-on-fail",
-    "mode": "full_run",
-    "smoke_or_test_only": false
-  },
-  "schema_version": "research-ssot-metrics-v1",
-  "stage": "MVP-2: two-layer + via toy benchmark before neural topology loss",
-  "superposition_rel_l2_error": 4.068155483659732e-17,
-  "topology": {
-    "div1_inner_l2_before_topology": 63.99999999999994,
-    "div2_inner_l2_before_topology": 63.99999999999994,
-    "res1_inner_l2": 0.0,
-    "res2_inner_l2": 0.0,
-    "residual_to_div_norm_ratio_layer1": 0.0,
-    "residual_to_div_norm_ratio_layer2": 0.0
-  },
-  "toy_dataset": {
-    "file": "data/toy_dataset_small.npz",
-    "n_samples": 48,
-    "shape_B": [
-      48,
-      65,
-      65,
-      3
-    ]
-  },
-  "units": {
-    "current": "A",
-    "length": "m internally",
-    "magnetic_field": "T"
-  },
-  "via": {
-    "Bz_over_Bxy_max_ratio": 0.0,
-    "max_abs_Bxy_T": 4.5227134459473144e-07,
-    "max_abs_Bz_T": 0.0,
-    "via_to_sheet_Bxy_energy_ratio": 0.10734402130033799,
-    "via_to_sheet_Bxy_max_ratio": 0.11089662820574384
-  }
+  "all_acceptance_gates_passed": true
 }

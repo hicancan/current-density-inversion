@@ -36,3 +36,12 @@
 - that the forward layer is a substitute for external solver validation
 
 Full results in `outputs/metrics.json`.
+
+## Agent Audit Metadata
+
+- Metrics file: `outputs/metrics.json`
+- Schema version: `research-ssot-metrics-v1`
+- Calibration source: No calibration rows used for threshold or model selection.
+- Threshold source: none
+- Model-selection source: not_applicable
+- Audit date: 2026-05-04

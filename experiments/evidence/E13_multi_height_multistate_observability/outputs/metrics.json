@@ -323,49 +323,10 @@
     }
   ],
   "leakage_audit": {
-    "all_rows_generated_no_real_data_leakage": true,
     "calibration_rows": [],
+    "calibration_source": "No calibration rows used for threshold or model selection.",
     "heldout_rows": [
-      "case_000",
-      "case_001",
-      "case_002",
-      "case_003",
-      "case_004",
-      "case_005",
-      "case_006",
-      "case_007",
-      "case_008",
-      "case_009",
-      "case_010",
-      "case_011",
-      "case_012",
-      "case_013",
-      "case_014",
-      "case_015",
-      "case_016",
-      "case_017",
-      "case_018",
-      "case_019",
-      "case_020",
-      "case_021",
-      "case_022",
-      "case_023",
-      "case_024",
-      "case_025",
-      "case_026",
-      "case_027",
-      "case_028",
-      "case_029",
-      "case_030",
-      "case_031",
-      "case_032",
-      "case_033",
-      "case_034",
-      "case_035",
-      "case_036",
-      "case_037",
-      "case_038",
-      "case_039"
+      "test"
     ],
     "heldout_rows_explicitly_calibration": false,
     "hidden_rows": [],
@@ -374,7 +335,7 @@
     "proxy_fallback_used": false,
     "pypeec_stress_rows_used_for_training": false,
     "threshold_selection_rows": [],
-    "thresholds_source": "config_only"
+    "thresholds_source": "none"
   },
   "n_configurations": 27,
   "observability_table": [
@@ -731,12 +692,12 @@
     }
   ],
   "run_audit": {
-    "audit_date": "2026-05-04T00:00:00Z",
-    "claim_boundary": "Generated-domain observability improvement only; cannot claim arbitrary real multilayer recovery or real QDM/NV validation.",
-    "fresh_full_run_completed": true,
-    "full_run_command": "uv run python src/run_all.py",
-    "mode": "full_run",
-    "smoke_or_test_only": false
+    "audit_date": "2026-05-04",
+    "claim_boundary": "PyPEEC generated-domain solver bridge, not real ground truth",
+    "fresh_full_run_completed": false,
+    "full_run_command": "not_applicable",
+    "mode": "interface_scaffold",
+    "smoke_or_test_only": true
   },
   "schema_version": "research-ssot-metrics-v1",
   "status": "passed"
