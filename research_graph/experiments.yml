@@ -300,3 +300,28 @@ E12_pdn_physics_learning:
   result_summary: "CPU baselines on E11 generated rows show held-out label learning above majority baseline and physics-aware graph/KCL projection improves predicted-current KCL and current closure over unconstrained edge-current regression."
   status: passed
   last_run: "2026-05-04"
+
+E13_multi_height_multistate_observability:
+  title: "Multi-height multi-state observability evidence for multilayer current inversion"
+  claim: C02_single_plane_identifiability_boundary
+  secondary_claims: [C06_graph_hypothesis_system_identification]
+  data: []
+  physics: [P01_biot_savart_maxwell_forward]
+  forward: [F02_centerline_biot_savart]
+  observation: [O01_ideal_Bxyz, O02_Bz_only, O03_Bxy, O08_multi_height, O09_multi_state_excitation]
+  representation: [R01_pixel_current_map, R02_layer_current_plus_via_source_sink]
+  algorithm: []
+  protocol: [S11_no_leakage_calibration_heldout]
+  metrics: [M01_field_l2_or_rmse, M13_family_generalization_gap]
+  outputs:
+    - outputs/by_claim/C02_identifiability_boundary/MULTI_HEIGHT_MULTISTATE_EVIDENCE.md
+    - outputs/by_claim/C06_graph_hypothesis_system_id/MULTI_HEIGHT_MULTISTATE_EVIDENCE.md
+  runtime:
+    package_dir: experiments/evidence/E13_multi_height_multistate_observability
+    run_command: "uv run python src/run_all.py"
+    test_command: "uv run --with pytest python -m pytest -q tests"
+    metrics_files:
+      - experiments/evidence/E13_multi_height_multistate_observability/outputs/metrics.json
+  result_summary: "Generated-domain multi-height/multi-state observability evidence shows effective rank stable across heights (~10), multi-state excitation improves hypothesis margin (~24% from 1 to 4 states), Bxyz matches Bz, and graph prior reduces layer misallocation (~1.4x). Cannot claim real multilayer recovery or real QDM/NV validation."
+  status: passed
+  last_run: "2026-05-04"

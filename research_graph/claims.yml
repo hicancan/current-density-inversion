@@ -1,351 +1,638 @@
 C01_forward_sanity:
-  title: "Biot-Savart forward sanity holds on canonical wire, loop, and via cases."
-  short_name: "forward_sanity"
+  title: Biot-Savart forward sanity holds on canonical wire, loop, and via cases.
+  short_name: forward_sanity
   status: supported
   scope:
-    data: [D00_canonical_wire_loop_via]
-    forward: [F01_analytic_reference, F02_centerline_biot_savart]
-    observation: [O01_ideal_Bxyz]
-    representation: [R01_pixel_current_map]
+    data:
+    - D00_canonical_wire_loop_via
+    forward:
+    - F01_analytic_reference
+    - F02_centerline_biot_savart
+    observation:
+    - O01_ideal_Bxyz
+    representation:
+    - R01_pixel_current_map
     algorithm: []
-    protocol: [S01_random_split]
-    metrics: [M01_field_l2_or_rmse, M05_divB_residual, M15_real_sanity_pass_fail]
-  supported_by: [E01_canonical_forward_sanity]
+    protocol:
+    - S01_random_split
+    metrics:
+    - M01_field_l2_or_rmse
+    - M05_divB_residual
+    - M15_real_sanity_pass_fail
+  supported_by:
+  - E01_canonical_forward_sanity
   limited_by: []
   contradicted_by: []
   cannot_claim:
-    - "finite-width conductor agreement"
-    - "return-path completeness"
-    - "FEM/FastHenry/COMSOL agreement"
-    - "real QDM/NV validation"
+  - finite-width conductor agreement
+  - return-path completeness
+  - FEM/FastHenry/COMSOL agreement
+  - real QDM/NV validation
   limitations:
-    - "Canonical SI-unit sanity only; it does not validate layout realism."
+  - Canonical SI-unit sanity only; it does not validate layout realism.
   next_required_evidence:
-    - "Cross-check finite-width and return-path cases against external solvers."
-  last_updated: "2026-05-03"
-
+  - Cross-check finite-width and return-path cases against external solvers.
+  last_updated: '2026-05-03'
 C02_single_plane_identifiability_boundary:
-  title: "Single-plane magnetic observations expose an identifiability boundary for multilayer current inversion."
-  short_name: "identifiability_boundary"
+  title: Single-plane magnetic observations expose an identifiability boundary for
+    multilayer current inversion.
+  short_name: identifiability_boundary
   status: supported
   scope:
-    data: [D00_canonical_wire_loop_via, D01_two_layer_route]
-    forward: [F02_centerline_biot_savart]
-    observation: [O01_ideal_Bxyz, O02_Bz_only, O03_Bxy]
-    representation: [R01_pixel_current_map, R02_layer_current_plus_via_source_sink]
-    algorithm: [A03_stream_function_or_pinn_baseline]
-    protocol: [S01_random_split]
-    metrics: [M01_field_l2_or_rmse, M13_family_generalization_gap]
-  supported_by: [E02_observability_bxy_bz, E03_two_layer_via_topology]
+    data:
+    - D00_canonical_wire_loop_via
+    - D01_two_layer_route
+    forward:
+    - F02_centerline_biot_savart
+    observation:
+    - O01_ideal_Bxyz
+    - O02_Bz_only
+    - O03_Bxy
+    representation:
+    - R01_pixel_current_map
+    - R02_layer_current_plus_via_source_sink
+    algorithm:
+    - A03_stream_function_or_pinn_baseline
+    protocol:
+    - S01_random_split
+    metrics:
+    - M01_field_l2_or_rmse
+    - M13_family_generalization_gap
+  supported_by:
+  - E02_observability_bxy_bz
+  - E03_two_layer_via_topology
+  - E13_multi_height_multistate_observability
   limited_by: []
   contradicted_by: []
   cannot_claim:
-    - "arbitrary multilayer recovery from one magnetic plane"
-    - "layer-disambiguated recovery without priors or extra observations"
+  - arbitrary multilayer recovery from one magnetic plane
+  - layer-disambiguated recovery without priors or extra observations
   limitations:
-    - "Thin-sheet and centerline assumptions remain idealized."
+  - Thin-sheet and centerline assumptions remain idealized.
   next_required_evidence:
-    - "Add multi-height, multi-state, CAD/graph, or KCL priors to reduce ambiguity."
-  last_updated: "2026-05-03"
-
+  - Validate multi-height observability with real measurement or external solver held-out
+    rows.
+  last_updated: '2026-05-04'
 C03_unet_topology_baseline_boundary:
-  title: "Topology-aware image inverse models are useful baselines but not final via detectors."
-  short_name: "topology_baseline_boundary"
+  title: Topology-aware image inverse models are useful baselines but not final via
+    detectors.
+  short_name: topology_baseline_boundary
   status: supported_generated
   scope:
-    data: [D01_two_layer_route, D02_dense_via, D03_no_via_hard_negative, D05_bend_corner_artifact]
-    forward: [F02_centerline_biot_savart, F03_finite_width_surrogate]
-    observation: [O01_ideal_Bxyz, O05_psf_blur, O06_noise_background, O07_standoff_tilt_registration]
-    representation: [R01_pixel_current_map, R02_layer_current_plus_via_source_sink]
-    algorithm: [A01_unet, A02_topology_aware_unet]
-    protocol: [S01_random_split, S02_variant_heldout, S06_hidden_stress, S11_no_leakage_calibration_heldout]
-    metrics: [M02_current_l2_or_rmse, M03_topology_residual, M06_h0_false_any, M07_h1_recall]
-  supported_by: [E03_two_layer_via_topology, E04_topology_baseline_and_failures]
-  limited_by: [E04_topology_baseline_and_failures]
+    data:
+    - D01_two_layer_route
+    - D02_dense_via
+    - D03_no_via_hard_negative
+    - D05_bend_corner_artifact
+    forward:
+    - F02_centerline_biot_savart
+    - F03_finite_width_surrogate
+    observation:
+    - O01_ideal_Bxyz
+    - O05_psf_blur
+    - O06_noise_background
+    - O07_standoff_tilt_registration
+    representation:
+    - R01_pixel_current_map
+    - R02_layer_current_plus_via_source_sink
+    algorithm:
+    - A01_unet
+    - A02_topology_aware_unet
+    protocol:
+    - S01_random_split
+    - S02_variant_heldout
+    - S06_hidden_stress
+    - S11_no_leakage_calibration_heldout
+    metrics:
+    - M02_current_l2_or_rmse
+    - M03_topology_residual
+    - M06_h0_false_any
+    - M07_h1_recall
+  supported_by:
+  - E03_two_layer_via_topology
+  - E04_topology_baseline_and_failures
+  limited_by:
+  - E04_topology_baseline_and_failures
   contradicted_by: []
   cannot_claim:
-    - "reliable real via detection"
-    - "no-via false positives solved"
-    - "return-current inference solved"
+  - reliable real via detection
+  - no-via false positives solved
+  - return-current inference solved
   limitations:
-    - "Topology loss reduces nonphysical residuals but does not remove physics/operator ambiguity."
+  - Topology loss reduces nonphysical residuals but does not remove physics/operator
+    ambiguity.
   next_required_evidence:
-    - "Move via diagnosis into hypothesis evidence and refusal protocols."
-  last_updated: "2026-05-03"
-
+  - Move via diagnosis into hypothesis evidence and refusal protocols.
+  last_updated: '2026-05-03'
 C04_inverse_crime_and_operator_gap:
-  title: "Same-operator inverse tests are over-optimistic and operator gaps must be stress-tested."
-  short_name: "operator_gap"
+  title: Same-operator inverse tests are over-optimistic and operator gaps must be
+    stress-tested.
+  short_name: operator_gap
   status: supported_generated
   scope:
-    data: [D01_two_layer_route, D04_return_path_family, D06_pypeec_generated_h0_h1_h2_h3]
-    forward: [F02_centerline_biot_savart, F03_finite_width_surrogate, F04_pypeec]
-    observation: [O01_ideal_Bxyz, O05_psf_blur, O06_noise_background]
-    representation: [R01_pixel_current_map, R02_layer_current_plus_via_source_sink]
-    algorithm: [A01_unet, A02_topology_aware_unet, A08_differentiable_forward_optimization]
-    protocol: [S05_solver_heldout, S11_no_leakage_calibration_heldout]
-    metrics: [M01_field_l2_or_rmse, M02_current_l2_or_rmse, M13_family_generalization_gap]
-  supported_by: [E04_topology_baseline_and_failures, E06_multifidelity_operator_gap]
-  limited_by: [E07_pypeec_solver_bridge]
+    data:
+    - D01_two_layer_route
+    - D04_return_path_family
+    - D06_pypeec_generated_h0_h1_h2_h3
+    forward:
+    - F02_centerline_biot_savart
+    - F03_finite_width_surrogate
+    - F04_pypeec
+    observation:
+    - O01_ideal_Bxyz
+    - O05_psf_blur
+    - O06_noise_background
+    representation:
+    - R01_pixel_current_map
+    - R02_layer_current_plus_via_source_sink
+    algorithm:
+    - A01_unet
+    - A02_topology_aware_unet
+    - A08_differentiable_forward_optimization
+    protocol:
+    - S05_solver_heldout
+    - S11_no_leakage_calibration_heldout
+    metrics:
+    - M01_field_l2_or_rmse
+    - M02_current_l2_or_rmse
+    - M13_family_generalization_gap
+  supported_by:
+  - E04_topology_baseline_and_failures
+  - E06_multifidelity_operator_gap
+  limited_by:
+  - E07_pypeec_solver_bridge
   contradicted_by: []
   cannot_claim:
-    - "same-operator performance transfers to external physics"
-    - "surrogate high-fidelity stress is equivalent to real FEM/QDM"
+  - same-operator performance transfers to external physics
+  - surrogate high-fidelity stress is equivalent to real FEM/QDM
   limitations:
-    - "The strongest non-PyPEEC high-fidelity branch remains a surrogate."
+  - The strongest non-PyPEEC high-fidelity branch remains a surrogate.
   next_required_evidence:
-    - "Add COMSOL/FastHenry/FEM held-out rows or real measured rows."
-  last_updated: "2026-05-03"
-
+  - Add COMSOL/FastHenry/FEM held-out rows or real measured rows.
+  last_updated: '2026-05-03'
 C05_pypeec_solver_bridge:
-  title: "PyPEEC can serve as a higher-fidelity solver bridge for generated conductor cases."
-  short_name: "pypeec_bridge"
+  title: PyPEEC can serve as a higher-fidelity solver bridge for generated conductor
+    cases.
+  short_name: pypeec_bridge
   status: supported_generated
   scope:
-    data: [D06_pypeec_generated_h0_h1_h2_h3]
-    forward: [F02_centerline_biot_savart, F03_finite_width_surrogate, F04_pypeec]
-    observation: [O01_ideal_Bxyz]
-    representation: [R01_pixel_current_map, R04_route_graph]
-    algorithm: [A04_hypothesis_scorer]
-    protocol: [S05_solver_heldout, S11_no_leakage_calibration_heldout]
-    metrics: [M01_field_l2_or_rmse, M06_h0_false_any, M07_h1_recall]
-  supported_by: [E07_pypeec_solver_bridge]
-  limited_by: [E07_pypeec_solver_bridge]
+    data:
+    - D06_pypeec_generated_h0_h1_h2_h3
+    forward:
+    - F02_centerline_biot_savart
+    - F03_finite_width_surrogate
+    - F04_pypeec
+    observation:
+    - O01_ideal_Bxyz
+    representation:
+    - R01_pixel_current_map
+    - R04_route_graph
+    algorithm:
+    - A04_hypothesis_scorer
+    protocol:
+    - S05_solver_heldout
+    - S11_no_leakage_calibration_heldout
+    metrics:
+    - M01_field_l2_or_rmse
+    - M06_h0_false_any
+    - M07_h1_recall
+  supported_by:
+  - E07_pypeec_solver_bridge
+  limited_by:
+  - E07_pypeec_solver_bridge
   contradicted_by: []
   cannot_claim:
-    - "PyPEEC is real ground truth"
-    - "broad CAD/FEM/QDM validation"
+  - PyPEEC is real ground truth
+  - broad CAD/FEM/QDM validation
   limitations:
-    - "Generated toy conductor geometries only; no imported layout evidence."
+  - Generated toy conductor geometries only; no imported layout evidence.
   next_required_evidence:
-    - "Validate a small CAD-like subset with an independent external solver."
-  last_updated: "2026-05-03"
-
+  - Validate a small CAD-like subset with an independent external solver.
+  last_updated: '2026-05-03'
 C06_graph_hypothesis_system_identification:
-  title: "Graph/hypothesis scoring is a better research frame than pure pixel-map reconstruction for via/return/artifact ambiguity."
-  short_name: "graph_hypothesis_system_id"
+  title: Graph/hypothesis scoring is a better research frame than pure pixel-map reconstruction
+    for via/return/artifact ambiguity.
+  short_name: graph_hypothesis_system_id
   status: supported_generated
   scope:
-    data: [D03_no_via_hard_negative, D04_return_path_family, D05_bend_corner_artifact, D06_pypeec_generated_h0_h1_h2_h3, D08_pdn_kcl_circuit_graph, D11_chip_like_generated_pdn_family]
-    forward: [F02_centerline_biot_savart, F03_finite_width_surrogate, F04_pypeec]
-    observation: [O01_ideal_Bxyz]
-    representation: [R04_route_graph, R05_basis_bank, R06_pdn_circuit_graph, R08_hypothesis_set, R09_posterior_candidate_set, R10_multilayer_chip_like_pdn_graph]
-    algorithm: [A04_hypothesis_scorer, A12_bayesian_or_glrt_model_evidence, A14_pdn_physics_aware_learner]
-    protocol: [S02_variant_heldout, S03_family_heldout, S05_solver_heldout, S06_hidden_stress]
-    metrics: [M04_kcl_residual, M06_h0_false_any, M07_h1_recall, M08_accepted_accuracy, M09_accepted_risk, M10_reject_rate, M16_predicted_kcl_residual, M17_predicted_current_closure_error]
-  supported_by: [E08_graph_hypothesis_system_id, E12_pdn_physics_learning]
-  limited_by: [E07_pypeec_solver_bridge, E08_graph_hypothesis_system_id]
+    data:
+    - D03_no_via_hard_negative
+    - D04_return_path_family
+    - D05_bend_corner_artifact
+    - D06_pypeec_generated_h0_h1_h2_h3
+    - D08_pdn_kcl_circuit_graph
+    - D11_chip_like_generated_pdn_family
+    forward:
+    - F02_centerline_biot_savart
+    - F03_finite_width_surrogate
+    - F04_pypeec
+    observation:
+    - O01_ideal_Bxyz
+    representation:
+    - R04_route_graph
+    - R05_basis_bank
+    - R06_pdn_circuit_graph
+    - R08_hypothesis_set
+    - R09_posterior_candidate_set
+    - R10_multilayer_chip_like_pdn_graph
+    algorithm:
+    - A04_hypothesis_scorer
+    - A12_bayesian_or_glrt_model_evidence
+    - A14_pdn_physics_aware_learner
+    protocol:
+    - S02_variant_heldout
+    - S03_family_heldout
+    - S05_solver_heldout
+    - S06_hidden_stress
+    metrics:
+    - M04_kcl_residual
+    - M06_h0_false_any
+    - M07_h1_recall
+    - M08_accepted_accuracy
+    - M09_accepted_risk
+    - M10_reject_rate
+    - M16_predicted_kcl_residual
+    - M17_predicted_current_closure_error
+  supported_by:
+  - E08_graph_hypothesis_system_id
+  - E12_pdn_physics_learning
+  - E13_multi_height_multistate_observability
+  limited_by:
+  - E07_pypeec_solver_bridge
+  - E08_graph_hypothesis_system_id
   contradicted_by: []
   cannot_claim:
-    - "real CAD/Gerber system identification"
-    - "real QDM/NV via diagnosis"
+  - real CAD/Gerber system identification
+  - real QDM/NV via diagnosis
   limitations:
-    - "Graph candidates are generated or approximated; real layout import is not validated."
-    - "E12 strengthens generated-domain physics-aware graph scoring but still uses generated E11 graph families."
+  - Graph candidates are generated or approximated; real layout import is not validated.
+  - E12 strengthens generated-domain physics-aware graph scoring but still uses generated
+    E11 graph families.
   next_required_evidence:
-    - "Replace generated graph families with CAD/Gerber/GDS-derived graph candidates."
-  last_updated: "2026-05-04"
-
+  - Replace generated graph families with CAD/Gerber/GDS-derived graph candidates.
+  - Validate multi-height/multi-state observability gains with real measurement or
+    external solver rows.
+  last_updated: '2026-05-04'
 C07_stacked_evidence_calibration:
-  title: "Stacked evidence fusion can substantially improve generated PyPEEC-domain H0/H1/H2/H3 diagnosis under legal calibration/held-out splits."
-  short_name: "stacked_evidence_calibration"
+  title: Stacked evidence fusion can substantially improve generated PyPEEC-domain
+    H0/H1/H2/H3 diagnosis under legal calibration/held-out splits.
+  short_name: stacked_evidence_calibration
   status: supported_generated
   scope:
-    data: [D06_pypeec_generated_h0_h1_h2_h3]
-    forward: [F04_pypeec]
-    observation: [O01_ideal_Bxyz]
-    representation: [R05_basis_bank, R08_hypothesis_set, R09_posterior_candidate_set]
-    algorithm: [A05_stacked_evidence_calibrator, A11_conformal_prediction, A12_bayesian_or_glrt_model_evidence]
-    protocol: [S03_family_heldout, S08_fewshot_family_calibration, S11_no_leakage_calibration_heldout, S12_conformal_or_selective_risk_protocol]
-    metrics: [M06_h0_false_any, M07_h1_recall, M08_accepted_accuracy, M09_accepted_risk, M10_reject_rate, M12_calibration_cost]
-  supported_by: [E08_graph_hypothesis_system_id]
-  limited_by: [E08_graph_hypothesis_system_id]
+    data:
+    - D06_pypeec_generated_h0_h1_h2_h3
+    forward:
+    - F04_pypeec
+    observation:
+    - O01_ideal_Bxyz
+    representation:
+    - R05_basis_bank
+    - R08_hypothesis_set
+    - R09_posterior_candidate_set
+    algorithm:
+    - A05_stacked_evidence_calibrator
+    - A11_conformal_prediction
+    - A12_bayesian_or_glrt_model_evidence
+    protocol:
+    - S03_family_heldout
+    - S08_fewshot_family_calibration
+    - S11_no_leakage_calibration_heldout
+    - S12_conformal_or_selective_risk_protocol
+    metrics:
+    - M06_h0_false_any
+    - M07_h1_recall
+    - M08_accepted_accuracy
+    - M09_accepted_risk
+    - M10_reject_rate
+    - M12_calibration_cost
+  supported_by:
+  - E08_graph_hypothesis_system_id
+  limited_by:
+  - E08_graph_hypothesis_system_id
   contradicted_by: []
   cannot_claim:
-    - "no-calibration deployment"
-    - "real-world calibration transfer"
+  - no-calibration deployment
+  - real-world calibration transfer
   limitations:
-    - "Pure family leaveout remains weak without calibration or refusal."
+  - Pure family leaveout remains weak without calibration or refusal.
   next_required_evidence:
-    - "Define realistic calibration samples and test external solver/CAD families."
-  last_updated: "2026-05-03"
-
+  - Define realistic calibration samples and test external solver/CAD families.
+  last_updated: '2026-05-03'
 C08_ood_refusal_safety:
-  title: "Feature-distance refusal can screen generated hidden/out-of-library stress but does not prove real unknown safety."
-  short_name: "ood_refusal_safety"
+  title: Feature-distance refusal can screen generated hidden/out-of-library stress
+    but does not prove real unknown safety.
+  short_name: ood_refusal_safety
   status: supported_generated
   scope:
-    data: [D06_pypeec_generated_h0_h1_h2_h3, D07_hidden_near_boundary]
-    forward: [F04_pypeec]
-    observation: [O01_ideal_Bxyz]
-    representation: [R08_hypothesis_set, R09_posterior_candidate_set]
-    algorithm: [A06_feature_distance_ood_refusal, A11_conformal_prediction]
-    protocol: [S06_hidden_stress, S07_near_hidden_severity, S12_conformal_or_selective_risk_protocol]
-    metrics: [M08_accepted_accuracy, M09_accepted_risk, M10_reject_rate, M14_hidden_accept_risk]
-  supported_by: [E08_graph_hypothesis_system_id]
-  limited_by: [E08_graph_hypothesis_system_id]
+    data:
+    - D06_pypeec_generated_h0_h1_h2_h3
+    - D07_hidden_near_boundary
+    forward:
+    - F04_pypeec
+    observation:
+    - O01_ideal_Bxyz
+    representation:
+    - R08_hypothesis_set
+    - R09_posterior_candidate_set
+    algorithm:
+    - A06_feature_distance_ood_refusal
+    - A11_conformal_prediction
+    protocol:
+    - S06_hidden_stress
+    - S07_near_hidden_severity
+    - S12_conformal_or_selective_risk_protocol
+    metrics:
+    - M08_accepted_accuracy
+    - M09_accepted_risk
+    - M10_reject_rate
+    - M14_hidden_accept_risk
+  supported_by:
+  - E08_graph_hypothesis_system_id
+  limited_by:
+  - E08_graph_hypothesis_system_id
   contradicted_by: []
   cannot_claim:
-    - "deployment-safe unknown detection"
-    - "mechanism-level correctness for accepted hidden rows"
+  - deployment-safe unknown detection
+  - mechanism-level correctness for accepted hidden rows
   limitations:
-    - "Near-boundary hidden rows are harder; accepted hidden rows still need mechanism audits."
+  - Near-boundary hidden rows are harder; accepted hidden rows still need mechanism
+    audits.
   next_required_evidence:
-    - "Evaluate accepted hidden rows at mechanism and parameter level."
-  last_updated: "2026-05-03"
-
+  - Evaluate accepted hidden rows at mechanism and parameter level.
+  last_updated: '2026-05-03'
 C09_fewshot_family_adaptation:
-  title: "Few-shot family calibration can convert unseen-family refusal into useful generated-domain diagnosis."
-  short_name: "fewshot_family_adaptation"
+  title: Few-shot family calibration can convert unseen-family refusal into useful
+    generated-domain diagnosis.
+  short_name: fewshot_family_adaptation
   status: supported_generated
   scope:
-    data: [D06_pypeec_generated_h0_h1_h2_h3]
-    forward: [F04_pypeec]
-    observation: [O01_ideal_Bxyz]
-    representation: [R08_hypothesis_set, R09_posterior_candidate_set]
-    algorithm: [A05_stacked_evidence_calibrator, A07_fewshot_family_adaptation]
-    protocol: [S03_family_heldout, S08_fewshot_family_calibration, S11_no_leakage_calibration_heldout]
-    metrics: [M08_accepted_accuracy, M09_accepted_risk, M12_calibration_cost, M13_family_generalization_gap]
-  supported_by: [E08_graph_hypothesis_system_id]
-  limited_by: [E08_graph_hypothesis_system_id]
+    data:
+    - D06_pypeec_generated_h0_h1_h2_h3
+    forward:
+    - F04_pypeec
+    observation:
+    - O01_ideal_Bxyz
+    representation:
+    - R08_hypothesis_set
+    - R09_posterior_candidate_set
+    algorithm:
+    - A05_stacked_evidence_calibrator
+    - A07_fewshot_family_adaptation
+    protocol:
+    - S03_family_heldout
+    - S08_fewshot_family_calibration
+    - S11_no_leakage_calibration_heldout
+    metrics:
+    - M08_accepted_accuracy
+    - M09_accepted_risk
+    - M12_calibration_cost
+    - M13_family_generalization_gap
+  supported_by:
+  - E08_graph_hypothesis_system_id
+  limited_by:
+  - E08_graph_hypothesis_system_id
   contradicted_by: []
   cannot_claim:
-    - "unlabeled adaptation"
-    - "real calibration sample availability"
-    - "external CAD/FEM/QDM family adaptation"
+  - unlabeled adaptation
+  - real calibration sample availability
+  - external CAD/FEM/QDM family adaptation
   limitations:
-    - "Calibration labels are available by construction in generated families."
+  - Calibration labels are available by construction in generated families.
   next_required_evidence:
-    - "Tie calibration samples to coupons, known-good regions, known-via cases, or trusted external solves."
-  last_updated: "2026-05-03"
-
+  - Tie calibration samples to coupons, known-good regions, known-via cases, or trusted
+    external solves.
+  last_updated: '2026-05-03'
 C10_pdn_kcl_distribution_need:
-  title: "Generated PDN/KCL-constrained circuit graphs now include chip-like multilayer and physics-learning closure, but not real validation."
-  short_name: "pdn_kcl_distribution_need"
+  title: Generated PDN/KCL-constrained circuit graphs now include chip-like multilayer
+    and physics-learning closure, but not real validation.
+  short_name: pdn_kcl_distribution_need
   status: supported_generated
   scope:
-    data: [D08_pdn_kcl_circuit_graph, D11_chip_like_generated_pdn_family]
-    forward: [F02_centerline_biot_savart]
-    observation: [O01_ideal_Bxyz]
-    representation: [R06_pdn_circuit_graph, R08_hypothesis_set, R10_multilayer_chip_like_pdn_graph]
-    algorithm: [A04_hypothesis_scorer, A14_pdn_physics_aware_learner]
-    protocol: [S03_family_heldout, S11_no_leakage_calibration_heldout]
-    metrics: [M01_field_l2_or_rmse, M04_kcl_residual, M05_divB_residual, M06_h0_false_any, M07_h1_recall, M13_family_generalization_gap, M16_predicted_kcl_residual, M17_predicted_current_closure_error]
-  supported_by: [E10_pdn_kcl_distribution, E11_chip_like_pdn_distribution, E12_pdn_physics_learning]
+    data:
+    - D08_pdn_kcl_circuit_graph
+    - D11_chip_like_generated_pdn_family
+    forward:
+    - F02_centerline_biot_savart
+    observation:
+    - O01_ideal_Bxyz
+    representation:
+    - R06_pdn_circuit_graph
+    - R08_hypothesis_set
+    - R10_multilayer_chip_like_pdn_graph
+    algorithm:
+    - A04_hypothesis_scorer
+    - A14_pdn_physics_aware_learner
+    protocol:
+    - S03_family_heldout
+    - S11_no_leakage_calibration_heldout
+    metrics:
+    - M01_field_l2_or_rmse
+    - M04_kcl_residual
+    - M05_divB_residual
+    - M06_h0_false_any
+    - M07_h1_recall
+    - M13_family_generalization_gap
+    - M16_predicted_kcl_residual
+    - M17_predicted_current_closure_error
+  supported_by:
+  - E10_pdn_kcl_distribution
+  - E11_chip_like_pdn_distribution
+  - E12_pdn_physics_learning
   limited_by: []
   contradicted_by: []
   cannot_claim:
-    - "real-board PDN/KCL robustness"
-    - "current closure under realistic return networks"
-    - "real CAD/Gerber/GDS validation"
-    - "external FEM/FastHenry validation"
-    - "real QDM/NV validation"
-    - "mechanism-level explanation from label correctness"
-    - "that generated physics-aware projection proves real learned physics"
+  - real-board PDN/KCL robustness
+  - current closure under realistic return networks
+  - real CAD/Gerber/GDS validation
+  - external FEM/FastHenry validation
+  - real QDM/NV validation
+  - mechanism-level explanation from label correctness
+  - that generated physics-aware projection proves real learned physics
   limitations:
-    - "The first runnable loop is a small generated resistive graph prototype with matched generated hypotheses."
-    - "E11 adds a richer artificial multilayer chip-like PDN generator, but the topology remains hand designed and generated."
-    - "E12 shows generated-domain learning closure and KCL/closure improvement over an unconstrained current regressor, but does not validate real CAD/GDS, external solvers, or real QDM/NV measurements."
-    - "It does not include imported layouts, broad return-plane physics, inductive effects, frequency dependence, or external solver validation."
+  - The first runnable loop is a small generated resistive graph prototype with matched
+    generated hypotheses.
+  - E11 adds a richer artificial multilayer chip-like PDN generator, but the topology
+    remains hand designed and generated.
+  - E12 shows generated-domain learning closure and KCL/closure improvement over an
+    unconstrained current regressor, but does not validate real CAD/GDS, external
+    solvers, or real QDM/NV measurements.
+  - It does not include imported layouts, broad return-plane physics, inductive effects,
+    frequency dependence, or external solver validation.
   next_required_evidence:
-    - "Import CAD/Gerber/GDS-like graph families and preserve no-leakage family/held-out splits."
-    - "Validate a small E11-like subset against an independent FEM/FastHenry-style solver."
-  last_updated: "2026-05-04"
-
+  - Import CAD/Gerber/GDS-like graph families and preserve no-leakage family/held-out
+    splits.
+  - Validate a small E11-like subset against an independent FEM/FastHenry-style solver.
+  last_updated: '2026-05-04'
 C11_mechanism_level_explanation:
-  title: "Mechanism-level explanation must be separated from primary-label correctness."
-  short_name: "mechanism_explanation"
+  title: Mechanism-level explanation must be separated from primary-label correctness.
+  short_name: mechanism_explanation
   status: limited
   scope:
-    data: [D05_bend_corner_artifact, D07_hidden_near_boundary]
-    forward: [F02_centerline_biot_savart, F03_finite_width_surrogate, F04_pypeec]
-    observation: [O01_ideal_Bxyz]
-    representation: [R05_basis_bank, R08_hypothesis_set, R09_posterior_candidate_set]
-    algorithm: [A04_hypothesis_scorer, A12_bayesian_or_glrt_model_evidence]
-    protocol: [S04_mechanism_heldout, S06_hidden_stress, S07_near_hidden_severity]
-    metrics: [M11_mechanism_level_correctness, M14_hidden_accept_risk]
-  supported_by: [E04_topology_baseline_and_failures, E08_graph_hypothesis_system_id]
-  limited_by: [E08_graph_hypothesis_system_id, E12_pdn_physics_learning]
+    data:
+    - D05_bend_corner_artifact
+    - D07_hidden_near_boundary
+    forward:
+    - F02_centerline_biot_savart
+    - F03_finite_width_surrogate
+    - F04_pypeec
+    observation:
+    - O01_ideal_Bxyz
+    representation:
+    - R05_basis_bank
+    - R08_hypothesis_set
+    - R09_posterior_candidate_set
+    algorithm:
+    - A04_hypothesis_scorer
+    - A12_bayesian_or_glrt_model_evidence
+    protocol:
+    - S04_mechanism_heldout
+    - S06_hidden_stress
+    - S07_near_hidden_severity
+    metrics:
+    - M11_mechanism_level_correctness
+    - M14_hidden_accept_risk
+  supported_by:
+  - E04_topology_baseline_and_failures
+  - E08_graph_hypothesis_system_id
+  limited_by:
+  - E08_graph_hypothesis_system_id
+  - E12_pdn_physics_learning
   contradicted_by: []
   cannot_claim:
-    - "accepted hidden rows are mechanism-correct"
-    - "primary label correctness is sufficient explanation"
+  - accepted hidden rows are mechanism-correct
+  - primary label correctness is sufficient explanation
   limitations:
-    - "Mechanism-level evaluation is only partially defined."
-    - "E12 separates label accuracy from KCL/current-closure consistency, but it still does not provide mechanism labels or accepted-row mechanism audits."
+  - Mechanism-level evaluation is only partially defined.
+  - E12 separates label accuracy from KCL/current-closure consistency, but it still
+    does not provide mechanism labels or accepted-row mechanism audits.
   next_required_evidence:
-    - "Add mechanism labels and parameter-level audits for accepted hidden cases."
-  last_updated: "2026-05-04"
-
+  - Add mechanism labels and parameter-level audits for accepted hidden cases.
+  last_updated: '2026-05-04'
 C12_real_qdm_nv_validation:
-  title: "Real QDM/NV validation requires measured data, metadata, calibration, and sanity gates."
-  short_name: "real_qdm_nv_validation"
+  title: Real QDM/NV validation requires measured data, metadata, calibration, and
+    sanity gates.
+  short_name: real_qdm_nv_validation
   status: blocked
   scope:
-    data: [D10_real_qdm_nv]
-    forward: [F07_real_measurement]
-    observation: [O04_qdm_nv_projection, O05_psf_blur, O06_noise_background, O07_standoff_tilt_registration]
-    representation: [R07_proxy_graph_from_measurement, R08_hypothesis_set]
-    algorithm: [A04_hypothesis_scorer]
-    protocol: [S10_real_heldout]
-    metrics: [M15_real_sanity_pass_fail]
-  supported_by: [E09_real_data_intake_gate]
-  limited_by: [E09_real_data_intake_gate]
+    data:
+    - D10_real_qdm_nv
+    forward:
+    - F07_real_measurement
+    observation:
+    - O04_qdm_nv_projection
+    - O05_psf_blur
+    - O06_noise_background
+    - O07_standoff_tilt_registration
+    representation:
+    - R07_proxy_graph_from_measurement
+    - R08_hypothesis_set
+    algorithm:
+    - A04_hypothesis_scorer
+    protocol:
+    - S10_real_heldout
+    metrics:
+    - M15_real_sanity_pass_fail
+  supported_by:
+  - E09_real_data_intake_gate
+  limited_by:
+  - E09_real_data_intake_gate
   contradicted_by: []
   cannot_claim:
-    - "real data has been validated"
-    - "real via/no-via diagnosis"
+  - real data has been validated
+  - real via/no-via diagnosis
   limitations:
-    - "E09 interface and sanity-gate scaffold passes, but measured rows are not present."
+  - E09 interface and sanity-gate scaffold passes, but measured rows are not present.
   next_required_evidence:
-    - "Load measured simple-wire or known-via data and pass sanity gates."
-  last_updated: "2026-05-04"
-
+  - Load measured simple-wire or known-via data and pass sanity gates.
+  last_updated: '2026-05-04'
 C13_calibration_protocol_reality:
-  title: "Calibration protocols must specify realistic sources and preserve calibration/held-out separation."
-  short_name: "calibration_protocol_reality"
+  title: Calibration protocols must specify realistic sources and preserve calibration/held-out
+    separation.
+  short_name: calibration_protocol_reality
   status: active
   scope:
-    data: [D06_pypeec_generated_h0_h1_h2_h3, D10_real_qdm_nv]
-    forward: [F04_pypeec, F07_real_measurement]
-    observation: [O04_qdm_nv_projection, O07_standoff_tilt_registration]
-    representation: [R08_hypothesis_set, R09_posterior_candidate_set]
-    algorithm: [A05_stacked_evidence_calibrator, A07_fewshot_family_adaptation, A11_conformal_prediction]
-    protocol: [S08_fewshot_family_calibration, S10_real_heldout, S11_no_leakage_calibration_heldout, S12_conformal_or_selective_risk_protocol]
-    metrics: [M08_accepted_accuracy, M09_accepted_risk, M10_reject_rate, M12_calibration_cost]
-  supported_by: [E05_qdm_like_observation_stress, E08_graph_hypothesis_system_id, E09_real_data_intake_gate]
-  limited_by: [E09_real_data_intake_gate]
+    data:
+    - D06_pypeec_generated_h0_h1_h2_h3
+    - D10_real_qdm_nv
+    forward:
+    - F04_pypeec
+    - F07_real_measurement
+    observation:
+    - O04_qdm_nv_projection
+    - O07_standoff_tilt_registration
+    representation:
+    - R08_hypothesis_set
+    - R09_posterior_candidate_set
+    algorithm:
+    - A05_stacked_evidence_calibrator
+    - A07_fewshot_family_adaptation
+    - A11_conformal_prediction
+    protocol:
+    - S08_fewshot_family_calibration
+    - S10_real_heldout
+    - S11_no_leakage_calibration_heldout
+    - S12_conformal_or_selective_risk_protocol
+    metrics:
+    - M08_accepted_accuracy
+    - M09_accepted_risk
+    - M10_reject_rate
+    - M12_calibration_cost
+  supported_by:
+  - E05_qdm_like_observation_stress
+  - E08_graph_hypothesis_system_id
+  - E09_real_data_intake_gate
+  limited_by:
+  - E09_real_data_intake_gate
   contradicted_by: []
   cannot_claim:
-    - "few-shot samples are available in real deployment"
-    - "real calibration protocol is validated"
+  - few-shot samples are available in real deployment
+  - real calibration protocol is validated
   limitations:
-    - "Real calibration sample sources remain proposals until measured or externally solved cases exist."
+  - Real calibration sample sources remain proposals until measured or externally
+    solved cases exist.
   next_required_evidence:
-    - "Define coupon, known-good, known-via, known-return, or known-artifact calibration sources."
-  last_updated: "2026-05-03"
-
+  - Define coupon, known-good, known-via, known-return, or known-artifact calibration
+    sources.
+  last_updated: '2026-05-03'
 C14_unlabeled_family_adaptation:
-  title: "Unlabeled family adaptation is a proposed route to reduce labeled calibration dependence."
-  short_name: "unlabeled_family_adaptation"
+  title: Unlabeled family adaptation is a proposed route to reduce labeled calibration
+    dependence.
+  short_name: unlabeled_family_adaptation
   status: proposed
   scope:
-    data: [D06_pypeec_generated_h0_h1_h2_h3, D08_pdn_kcl_circuit_graph]
-    forward: [F04_pypeec]
-    observation: [O01_ideal_Bxyz]
-    representation: [R08_hypothesis_set, R09_posterior_candidate_set]
-    algorithm: [A06_feature_distance_ood_refusal, A07_fewshot_family_adaptation, A11_conformal_prediction]
-    protocol: [S09_unlabeled_family_adaptation, S12_conformal_or_selective_risk_protocol]
-    metrics: [M08_accepted_accuracy, M09_accepted_risk, M10_reject_rate, M13_family_generalization_gap]
+    data:
+    - D06_pypeec_generated_h0_h1_h2_h3
+    - D08_pdn_kcl_circuit_graph
+    forward:
+    - F04_pypeec
+    observation:
+    - O01_ideal_Bxyz
+    representation:
+    - R08_hypothesis_set
+    - R09_posterior_candidate_set
+    algorithm:
+    - A06_feature_distance_ood_refusal
+    - A07_fewshot_family_adaptation
+    - A11_conformal_prediction
+    protocol:
+    - S09_unlabeled_family_adaptation
+    - S12_conformal_or_selective_risk_protocol
+    metrics:
+    - M08_accepted_accuracy
+    - M09_accepted_risk
+    - M10_reject_rate
+    - M13_family_generalization_gap
   supported_by: []
   limited_by: []
   contradicted_by: []
   cannot_claim:
-    - "unlabeled adaptation works"
-    - "label-free adaptation replaces calibration"
+  - unlabeled adaptation works
+  - label-free adaptation replaces calibration
   limitations:
-    - "No evidence loop has been implemented."
-    - "E12 reports generated family-hidden performance, but it is supervised generated-domain learning, not unlabeled adaptation."
+  - No evidence loop has been implemented.
+  - E12 reports generated family-hidden performance, but it is supervised generated-domain
+    learning, not unlabeled adaptation.
   next_required_evidence:
-    - "Prototype label-free manifold alignment on E11 family-hidden generated families, then stress against hidden mechanisms."
-  last_updated: "2026-05-04"
+  - Prototype label-free manifold alignment on E11 family-hidden generated families,
+    then stress against hidden mechanisms.
+  last_updated: '2026-05-04'

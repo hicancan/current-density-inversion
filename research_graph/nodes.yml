@@ -1,379 +1,396 @@
 D00_canonical_wire_loop_via:
   type: data_distribution
-  description: "Canonical wire, loop, and vertical via sanity cases."
+  description: Canonical wire, loop, and vertical via sanity cases.
   status: validated
 D01_two_layer_route:
   type: data_distribution
-  description: "Two-layer routed traces with source/sink via labels."
+  description: Two-layer routed traces with source/sink via labels.
   status: implemented
 D02_dense_via:
   type: data_distribution
-  description: "Dense or multi-via stress cases."
+  description: Dense or multi-via stress cases.
   status: partial
 D03_no_via_hard_negative:
   type: data_distribution
-  description: "No-via hard negatives where residuals can look via-like."
+  description: No-via hard negatives where residuals can look via-like.
   status: partial
 D04_return_path_family:
   type: data_distribution
-  description: "Return-current and return-path mismatch families."
+  description: Return-current and return-path mismatch families.
   status: partial
 D05_bend_corner_artifact:
   type: data_distribution
-  description: "Bend, corner, finite-width, and artifact nuisance families."
+  description: Bend, corner, finite-width, and artifact nuisance families.
   status: partial
 D06_pypeec_generated_h0_h1_h2_h3:
   type: data_distribution
-  description: "Generated H0/H1/H2/H3 PyPEEC-domain solver bridge distribution."
+  description: Generated H0/H1/H2/H3 PyPEEC-domain solver bridge distribution.
   status: implemented
 D07_hidden_near_boundary:
   type: data_distribution
-  description: "Hidden and near-boundary out-of-library mechanism stress."
+  description: Hidden and near-boundary out-of-library mechanism stress.
   status: implemented
 D08_pdn_kcl_circuit_graph:
   type: data_distribution
-  description: "PDN/KCL-constrained circuit graph with VDD, GND, load, vias, junctions, return paths, edge resistance, and current closure."
-  required_physics: [P05_kcl_node_conservation, P06_kvl_or_resistive_network_consistency, P07_current_closure_loop, P08_return_path_completeness]
-  required_metrics: [M04_kcl_residual, M05_divB_residual]
+  description: PDN/KCL-constrained circuit graph with VDD, GND, load, vias, junctions,
+    return paths, edge resistance, and current closure.
+  required_physics:
+  - P05_kcl_node_conservation
+  - P06_kvl_or_resistive_network_consistency
+  - P07_current_closure_loop
+  - P08_return_path_completeness
+  required_metrics:
+  - M04_kcl_residual
+  - M05_divB_residual
   status: partial
 D11_chip_like_generated_pdn_family:
   type: data_distribution
-  description: "Generated chip-like multilayer PDN family with top power straps, intermediate mesh layers, via stacks, distributed loads, lower return grid, VDD/GND ports, KCL, current closure, and Bxyz fields."
-  required_physics: [P05_kcl_node_conservation, P06_kvl_or_resistive_network_consistency, P07_current_closure_loop, P08_return_path_completeness]
-  required_metrics: [M04_kcl_residual, M05_divB_residual, M16_predicted_kcl_residual, M17_predicted_current_closure_error]
+  description: Generated chip-like multilayer PDN family with top power straps, intermediate
+    mesh layers, via stacks, distributed loads, lower return grid, VDD/GND ports,
+    KCL, current closure, and Bxyz fields.
+  required_physics:
+  - P05_kcl_node_conservation
+  - P06_kvl_or_resistive_network_consistency
+  - P07_current_closure_loop
+  - P08_return_path_completeness
+  required_metrics:
+  - M04_kcl_residual
+  - M05_divB_residual
+  - M16_predicted_kcl_residual
+  - M17_predicted_current_closure_error
   status: implemented
 D09_cad_gerber_gds_like:
   type: data_distribution
-  description: "CAD/Gerber/GDS-like layout-derived graph distribution."
+  description: CAD/Gerber/GDS-like layout-derived graph distribution.
   status: missing
 D10_real_qdm_nv:
   type: data_distribution
-  description: "Measured QDM/NV magnetic-field cases with metadata and sanity gates."
+  description: Measured QDM/NV magnetic-field cases with metadata and sanity gates.
   status: missing
-
 P01_biot_savart_maxwell_forward:
   type: physics_constraint
-  description: "Free-space magnetic forward relation used by analytic and centerline solvers."
+  description: Free-space magnetic forward relation used by analytic and centerline
+    solvers.
   status: implemented
 P02_divB_zero:
   type: physics_constraint
-  description: "Magnetic divergence consistency."
+  description: Magnetic divergence consistency.
   status: partial
 P03_layer_topology_residual:
   type: physics_constraint
-  description: "Layer current plus via source/sink topology residual."
+  description: Layer current plus via source/sink topology residual.
   status: implemented
 P04_divJ_source_sink_consistency:
   type: physics_constraint
-  description: "Divergence of sheet current must match source/sink allocation."
+  description: Divergence of sheet current must match source/sink allocation.
   status: implemented
 P05_kcl_node_conservation:
   type: physics_constraint
-  description: "Circuit node current conservation."
+  description: Circuit node current conservation.
   status: implemented
 P06_kvl_or_resistive_network_consistency:
   type: physics_constraint
-  description: "Voltage-loop or resistive-network consistency."
+  description: Voltage-loop or resistive-network consistency.
   status: partial
 P07_current_closure_loop:
   type: physics_constraint
-  description: "Injected current must close through return paths."
+  description: Injected current must close through return paths.
   status: implemented
 P08_return_path_completeness:
   type: physics_constraint
-  description: "Return path must be represented rather than treated as unexplained residual."
+  description: Return path must be represented rather than treated as unexplained
+    residual.
   status: partial
 P09_finite_width_material_thickness:
   type: physics_constraint
-  description: "Finite conductor width, thickness, and material effects."
+  description: Finite conductor width, thickness, and material effects.
   status: partial
-
 F01_analytic_reference:
   type: forward_solver
-  description: "Analytic reference cases for canonical geometries."
+  description: Analytic reference cases for canonical geometries.
   status: validated
 F02_centerline_biot_savart:
   type: forward_solver
-  description: "Centerline Biot-Savart forward operator."
+  description: Centerline Biot-Savart forward operator.
   status: implemented
 F03_finite_width_surrogate:
   type: forward_solver
-  description: "Finite-width and weak-return surrogate forward operator."
+  description: Finite-width and weak-return surrogate forward operator.
   status: partial
 F04_pypeec:
   type: forward_solver
-  description: "PyPEEC solver bridge for generated conductor cases."
+  description: PyPEEC solver bridge for generated conductor cases.
   status: implemented
 F05_comsol_fem:
   type: forward_solver
-  description: "COMSOL/FEM external validation solver."
+  description: COMSOL/FEM external validation solver.
   status: missing
 F06_fasthenry:
   type: forward_solver
-  description: "FastHenry or equivalent inductive/current solver."
+  description: FastHenry or equivalent inductive/current solver.
   status: missing
 F07_real_measurement:
   type: forward_solver
-  description: "Real measured QDM/NV field source."
+  description: Real measured QDM/NV field source.
   status: missing
-
 O01_ideal_Bxyz:
   type: observation_model
-  description: "Ideal Bx, By, Bz magnetic field map."
+  description: Ideal Bx, By, Bz magnetic field map.
   status: implemented
 O02_Bz_only:
   type: observation_model
-  description: "Bz-only observation."
+  description: Bz-only observation.
   status: implemented
 O03_Bxy:
   type: observation_model
-  description: "Bx, By observation."
+  description: Bx, By observation.
   status: implemented
 O04_qdm_nv_projection:
   type: observation_model
-  description: "QDM/NV axis projection and reconstruction model."
+  description: QDM/NV axis projection and reconstruction model.
   status: partial
 O05_psf_blur:
   type: observation_model
-  description: "Optical/sensor PSF blur."
+  description: Optical/sensor PSF blur.
   status: partial
 O06_noise_background:
   type: observation_model
-  description: "Noise, correlated background, and background subtraction."
+  description: Noise, correlated background, and background subtraction.
   status: partial
 O07_standoff_tilt_registration:
   type: observation_model
-  description: "Standoff, tilt, and registration nuisance."
+  description: Standoff, tilt, and registration nuisance.
   status: partial
 O08_multi_height:
   type: observation_model
-  description: "Multiple sensor heights."
-  status: proposed
+  description: Multiple sensor heights.
+  status: implemented
 O09_multi_state_excitation:
   type: observation_model
-  description: "Multiple current injection or excitation states."
-  status: partial
+  description: Multiple current injection or excitation states.
+  status: implemented
 O10_magneto_thermal:
   type: observation_model
-  description: "Magneto-thermal joint observation."
+  description: Magneto-thermal joint observation.
   status: proposed
 O11_ac_frequency_dependent:
   type: observation_model
-  description: "AC and frequency-dependent magnetic response."
+  description: AC and frequency-dependent magnetic response.
   status: proposed
-
 R01_pixel_current_map:
   type: representation
-  description: "Dense pixel current map."
+  description: Dense pixel current map.
   status: implemented
 R02_layer_current_plus_via_source_sink:
   type: representation
-  description: "Layer currents plus via/source-sink raster labels."
+  description: Layer currents plus via/source-sink raster labels.
   status: implemented
 R03_stream_function:
   type: representation
-  description: "Stream-function representation for divergence-free current."
+  description: Stream-function representation for divergence-free current.
   status: proposed
 R04_route_graph:
   type: representation
-  description: "Route graph representation."
+  description: Route graph representation.
   status: implemented
 R05_basis_bank:
   type: representation
-  description: "Basis bank for sheet, via, return, artifact, and nuisance hypotheses."
+  description: Basis bank for sheet, via, return, artifact, and nuisance hypotheses.
   status: implemented
 R06_pdn_circuit_graph:
   type: representation
-  description: "PDN/circuit graph with KCL and edge resistance."
+  description: PDN/circuit graph with KCL and edge resistance.
   status: partial
 R07_proxy_graph_from_measurement:
   type: representation
-  description: "Proxy graph derived from measurement metadata or coarse layout knowledge."
+  description: Proxy graph derived from measurement metadata or coarse layout knowledge.
   status: proposed
 R08_hypothesis_set:
   type: representation
-  description: "H0/H1/H2/H3 hypothesis set."
+  description: H0/H1/H2/H3 hypothesis set.
   status: implemented
 R09_posterior_candidate_set:
   type: representation
-  description: "Candidate set with posterior/evidence scores and refusal state."
+  description: Candidate set with posterior/evidence scores and refusal state.
   status: partial
 R10_multilayer_chip_like_pdn_graph:
   type: representation
-  description: "Multilayer chip-like PDN graph with layer ids, node roles, edge roles, resistance, loads, via stacks, boundary ports, solved currents, and generated Bxyz fields."
+  description: Multilayer chip-like PDN graph with layer ids, node roles, edge roles,
+    resistance, loads, via stacks, boundary ports, solved currents, and generated
+    Bxyz fields.
   status: implemented
-
 A01_unet:
   type: algorithm
-  description: "Image-to-image U-Net baseline."
+  description: Image-to-image U-Net baseline.
   status: implemented
 A02_topology_aware_unet:
   type: algorithm
-  description: "U-Net baseline with topology-aware objective or post-processing."
+  description: U-Net baseline with topology-aware objective or post-processing.
   status: implemented
 A03_stream_function_or_pinn_baseline:
   type: algorithm
-  description: "Stream-function or PINN-style physics baseline."
+  description: Stream-function or PINN-style physics baseline.
   status: proposed
 A04_hypothesis_scorer:
   type: algorithm
-  description: "Graph-level hypothesis scorer."
+  description: Graph-level hypothesis scorer.
   status: implemented
 A05_stacked_evidence_calibrator:
   type: algorithm
-  description: "Stacked evidence fusion calibrator."
+  description: Stacked evidence fusion calibrator.
   status: implemented
 A06_feature_distance_ood_refusal:
   type: algorithm
-  description: "Feature-distance out-of-distribution refusal."
+  description: Feature-distance out-of-distribution refusal.
   status: implemented
 A07_fewshot_family_adaptation:
   type: algorithm
-  description: "Few-shot family adaptation over evidence features."
+  description: Few-shot family adaptation over evidence features.
   status: implemented
 A08_differentiable_forward_optimization:
   type: algorithm
-  description: "White-box differentiable forward optimization for local parameter estimation."
+  description: White-box differentiable forward optimization for local parameter estimation.
   status: proposed
 A09_gnn_on_graph:
   type: algorithm
-  description: "GNN over CAD/PDN/circuit graph representations."
+  description: GNN over CAD/PDN/circuit graph representations.
   status: proposed
 A10_diffusion_or_gflownet_candidate_generator:
   type: algorithm
-  description: "Candidate generator for posterior hypothesis sets."
+  description: Candidate generator for posterior hypothesis sets.
   status: proposed
 A11_conformal_prediction:
   type: algorithm
-  description: "Conformal or selective prediction layer."
+  description: Conformal or selective prediction layer.
   status: proposed
 A12_bayesian_or_glrt_model_evidence:
   type: algorithm
-  description: "Bayesian, GLRT, or model-evidence hypothesis comparison."
+  description: Bayesian, GLRT, or model-evidence hypothesis comparison.
   status: partial
 A13_quantum_or_cim_search_accelerator:
   type: algorithm
-  description: "Future search accelerator for large graph candidate spaces."
+  description: Future search accelerator for large graph candidate spaces.
   status: proposed
 A14_pdn_physics_aware_learner:
   type: algorithm
-  description: "CPU baseline that learns generated PDN hypotheses from Bxyz features and derives predicted currents through graph/KCL projection instead of unconstrained edge-current regression."
+  description: CPU baseline that learns generated PDN hypotheses from Bxyz features
+    and derives predicted currents through graph/KCL projection instead of unconstrained
+    edge-current regression.
   status: implemented
-
 S01_random_split:
   type: protocol
-  description: "Random or simple train/validation/test split."
+  description: Random or simple train/validation/test split.
   status: implemented
 S02_variant_heldout:
   type: protocol
-  description: "Variant-level held-out protocol."
+  description: Variant-level held-out protocol.
   status: implemented
 S03_family_heldout:
   type: protocol
-  description: "Family-level held-out protocol."
+  description: Family-level held-out protocol.
   status: partial
 S04_mechanism_heldout:
   type: protocol
-  description: "Mechanism-level held-out protocol."
+  description: Mechanism-level held-out protocol.
   status: partial
 S05_solver_heldout:
   type: protocol
-  description: "Forward-solver held-out protocol."
+  description: Forward-solver held-out protocol.
   status: implemented
 S06_hidden_stress:
   type: protocol
-  description: "Hidden/out-of-library stress protocol."
+  description: Hidden/out-of-library stress protocol.
   status: implemented
 S07_near_hidden_severity:
   type: protocol
-  description: "Near-hidden severity sweep."
+  description: Near-hidden severity sweep.
   status: implemented
 S08_fewshot_family_calibration:
   type: protocol
-  description: "Few-shot family calibration protocol."
+  description: Few-shot family calibration protocol.
   status: implemented
 S09_unlabeled_family_adaptation:
   type: protocol
-  description: "Unlabeled family adaptation protocol."
+  description: Unlabeled family adaptation protocol.
   status: proposed
 S10_real_heldout:
   type: protocol
-  description: "Real-data held-out protocol."
+  description: Real-data held-out protocol.
   status: missing
 S11_no_leakage_calibration_heldout:
   type: protocol
-  description: "Calibration/held-out separation and no-leakage protocol."
+  description: Calibration/held-out separation and no-leakage protocol.
   status: implemented
 S12_conformal_or_selective_risk_protocol:
   type: protocol
-  description: "Selective-risk, refusal, or conformal-style reporting."
+  description: Selective-risk, refusal, or conformal-style reporting.
   status: partial
-
 M01_field_l2_or_rmse:
   type: metric
-  description: "Magnetic field L2 or RMSE."
+  description: Magnetic field L2 or RMSE.
   status: implemented
 M02_current_l2_or_rmse:
   type: metric
-  description: "Current L2 or RMSE."
+  description: Current L2 or RMSE.
   status: implemented
 M03_topology_residual:
   type: metric
-  description: "Layer topology residual."
+  description: Layer topology residual.
   status: implemented
 M04_kcl_residual:
   type: metric
-  description: "Circuit KCL residual."
+  description: Circuit KCL residual.
   status: implemented
 M05_divB_residual:
   type: metric
-  description: "Magnetic divergence residual."
+  description: Magnetic divergence residual.
   status: partial
 M06_h0_false_any:
   type: metric
-  description: "H0 no-via false-any rate."
+  description: H0 no-via false-any rate.
   status: implemented
 M07_h1_recall:
   type: metric
-  description: "H1 true-via recall."
+  description: H1 true-via recall.
   status: implemented
 M08_accepted_accuracy:
   type: metric
-  description: "Accuracy among accepted/refusal-passed rows."
+  description: Accuracy among accepted/refusal-passed rows.
   status: implemented
 M09_accepted_risk:
   type: metric
-  description: "Risk among accepted/refusal-passed rows."
+  description: Risk among accepted/refusal-passed rows.
   status: implemented
 M10_reject_rate:
   type: metric
-  description: "Reject/refusal rate."
+  description: Reject/refusal rate.
   status: implemented
 M11_mechanism_level_correctness:
   type: metric
-  description: "Mechanism-level correctness beyond primary label."
+  description: Mechanism-level correctness beyond primary label.
   status: missing
 M12_calibration_cost:
   type: metric
-  description: "Number and type of calibration samples required."
+  description: Number and type of calibration samples required.
   status: partial
 M13_family_generalization_gap:
   type: metric
-  description: "Family held-out generalization gap."
+  description: Family held-out generalization gap.
   status: implemented
 M14_hidden_accept_risk:
   type: metric
-  description: "Accepted hidden/out-of-library risk."
+  description: Accepted hidden/out-of-library risk.
   status: implemented
 M15_real_sanity_pass_fail:
   type: metric
-  description: "Real-data sanity gate pass/fail."
+  description: Real-data sanity gate pass/fail.
   status: proposed
 M16_predicted_kcl_residual:
   type: metric
-  description: "KCL residual computed on model-predicted or projected PDN edge currents."
+  description: KCL residual computed on model-predicted or projected PDN edge currents.
   status: implemented
 M17_predicted_current_closure_error:
   type: metric
-  description: "Current entering VDD plus current leaving GND error computed on model-predicted or projected PDN edge currents."
+  description: Current entering VDD plus current leaving GND error computed on model-predicted
+    or projected PDN edge currents.
   status: implemented
