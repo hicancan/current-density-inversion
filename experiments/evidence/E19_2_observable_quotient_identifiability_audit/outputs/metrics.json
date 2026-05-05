@@ -7,11 +7,11 @@
     "C04_inverse_crime_and_operator_gap",
     "C06_graph_hypothesis_system_identification"
   ],
-  "timestamp_utc": "2026-05-05T05:44:21.560919+00:00",
+  "timestamp_utc": "2026-05-05T06:38:12.797771+00:00",
   "status": "passed_with_limitations",
   "engineering_gates_passed": true,
   "scientific_gates_passed": false,
-  "all_acceptance_gates_passed": true,
+  "all_acceptance_gates_passed": false,
   "engineering_gates": {
     "consistent_set_nonempty": true,
     "pairwise_distances_computed": true,
@@ -1743,6 +1743,62 @@
         "non_consistent_hypotheses": []
       }
     ],
+    "epsilon_sweep": {
+      "sigma": 0.018,
+      "obs_dim": 432,
+      "multipliers": [
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0
+      ],
+      "results": [
+        {
+          "multiplier": 0.5,
+          "epsilon": 0.18706148721743873,
+          "consistent_set_nonempty_rate": 0.0,
+          "ambiguity_rate": 0.0,
+          "empty_set_rate": 1.0
+        },
+        {
+          "multiplier": 1.0,
+          "epsilon": 0.37412297443487746,
+          "consistent_set_nonempty_rate": 0.8472222222222222,
+          "ambiguity_rate": 0.7083333333333334,
+          "empty_set_rate": 0.1527777777777778
+        },
+        {
+          "multiplier": 1.5,
+          "epsilon": 0.5611844616523162,
+          "consistent_set_nonempty_rate": 1.0,
+          "ambiguity_rate": 1.0,
+          "empty_set_rate": 0.0
+        },
+        {
+          "multiplier": 2.0,
+          "epsilon": 0.7482459488697549,
+          "consistent_set_nonempty_rate": 1.0,
+          "ambiguity_rate": 1.0,
+          "empty_set_rate": 0.0
+        },
+        {
+          "multiplier": 2.5,
+          "epsilon": 0.9353074360871937,
+          "consistent_set_nonempty_rate": 1.0,
+          "ambiguity_rate": 1.0,
+          "empty_set_rate": 0.0
+        },
+        {
+          "multiplier": 3.0,
+          "epsilon": 1.1223689233046323,
+          "consistent_set_nonempty_rate": 1.0,
+          "ambiguity_rate": 1.0,
+          "empty_set_rate": 0.0
+        }
+      ]
+    },
     "near_null_count": 50,
     "effective_rank": 27,
     "oracle_test": {
@@ -2008,61 +2064,162 @@
   },
   "pairwise_distances": {
     "epsilon": 0.9353074360871937,
-    "distinguishable_pairs": [
+    "epsilon_scaled_for_claim_activated": 0.09353074360871938,
+    "distinguishable_pairs": [],
+    "indistinguishable_pairs": [
       "H0_no_via__H1_via",
       "H0_no_via__H2_model_gap",
-      "H0_no_via__H3_return_path"
-    ],
-    "indistinguishable_pairs": [
+      "H0_no_via__H3_return_path",
       "H1_via__H2_model_gap",
       "H1_via__H3_return_path",
       "H2_model_gap__H3_return_path"
     ],
-    "distinguishable_count": 3,
-    "indistinguishable_count": 3,
+    "distinguishable_count": 0,
+    "indistinguishable_count": 6,
     "pair_details": {
       "H0_no_via__H1_via": {
-        "full_distance": 1.7906543764341878e-18,
-        "extra_distance": 3.278822353760027,
+        "full_subspace_raw_distance": 0.0,
+        "unit_energy_distance": 0.0,
+        "unit_energy_extra_distance": 0.0,
+        "claim_activated_distance": 0.0,
+        "claim_activated_method": "claim_activated_fallback_to_unit_energy",
         "principal_angle_deg": 0.0,
         "dim_i": 12,
-        "dim_j": 42
+        "dim_j": 42,
+        "specific_dim_i": 0,
+        "specific_dim_j": 0,
+        "per_case_fitted": {
+          "mean": 0.2407344516981701,
+          "median": 0.2319470725209841,
+          "min": 0.14836442826372193,
+          "max": 0.40599577312206625,
+          "p25": 0.2130199793425589,
+          "p75": 0.24950099943778398,
+          "n_cases": 72,
+          "method": "per_case_fitted"
+        }
       },
       "H0_no_via__H2_model_gap": {
-        "full_distance": 1.3119442361236251e-17,
-        "extra_distance": 4.522159499920365,
+        "full_subspace_raw_distance": 0.0,
+        "unit_energy_distance": 0.0,
+        "unit_energy_extra_distance": 0.0,
+        "claim_activated_distance": 0.0,
+        "claim_activated_method": "claim_activated_fallback_to_unit_energy",
         "principal_angle_deg": 0.0,
         "dim_i": 12,
-        "dim_j": 39
+        "dim_j": 39,
+        "specific_dim_i": 0,
+        "specific_dim_j": 0,
+        "per_case_fitted": {
+          "mean": 0.16824894975336496,
+          "median": 0.16180968672092333,
+          "min": 0.0987452676456795,
+          "max": 0.24716051111313944,
+          "p25": 0.14387456663304893,
+          "p75": 0.19235671786029104,
+          "n_cases": 72,
+          "method": "per_case_fitted"
+        }
       },
       "H0_no_via__H3_return_path": {
-        "full_distance": 3.192443619244587e-19,
-        "extra_distance": 2.0411965800274365,
+        "full_subspace_raw_distance": 0.0,
+        "unit_energy_distance": 0.0,
+        "unit_energy_extra_distance": 0.0,
+        "claim_activated_distance": 0.0,
+        "claim_activated_method": "claim_activated_fallback_to_unit_energy",
         "principal_angle_deg": 0.0,
         "dim_i": 12,
-        "dim_j": 34
+        "dim_j": 34,
+        "specific_dim_i": 0,
+        "specific_dim_j": 0,
+        "per_case_fitted": {
+          "mean": 0.22509277772377156,
+          "median": 0.2136473477988836,
+          "min": 0.13780014512994881,
+          "max": 0.39104288923967545,
+          "p25": 0.19430866789664109,
+          "p75": 0.23635351257338966,
+          "n_cases": 72,
+          "method": "per_case_fitted"
+        }
       },
       "H1_via__H2_model_gap": {
-        "full_distance": 8.743916212777954e-19,
-        "extra_distance": 1.0811719293803468e-19,
+        "full_subspace_raw_distance": 0.0,
+        "unit_energy_distance": 0.0,
+        "unit_energy_extra_distance": 0.0,
+        "claim_activated_distance": 0.013740599055869369,
+        "claim_activated_method": "claim_activated",
         "principal_angle_deg": 0.0,
         "dim_i": 42,
-        "dim_j": 39
+        "dim_j": 39,
+        "specific_dim_i": 30,
+        "specific_dim_j": 27,
+        "per_case_fitted": {
+          "mean": 0.22205031288325153,
+          "median": 0.2109323840998551,
+          "min": 0.14599140067401584,
+          "max": 0.36133497230359296,
+          "p25": 0.19510258273720243,
+          "p75": 0.24680196849380126,
+          "n_cases": 72,
+          "method": "per_case_fitted"
+        }
       },
       "H1_via__H3_return_path": {
-        "full_distance": 6.17654379578376e-19,
-        "extra_distance": 4.514033923560951e-21,
+        "full_subspace_raw_distance": 0.0,
+        "unit_energy_distance": 0.0,
+        "unit_energy_extra_distance": 0.0,
+        "claim_activated_distance": 0.0007599025292795477,
+        "claim_activated_method": "claim_activated",
         "principal_angle_deg": 0.0,
         "dim_i": 42,
-        "dim_j": 34
+        "dim_j": 34,
+        "specific_dim_i": 30,
+        "specific_dim_j": 22,
+        "per_case_fitted": {
+          "mean": 0.09541278016854503,
+          "median": 0.09398172822919672,
+          "min": 0.06616358074917845,
+          "max": 0.13132708715782182,
+          "p25": 0.08408942155813104,
+          "p75": 0.10440128778197384,
+          "n_cases": 72,
+          "method": "per_case_fitted"
+        }
       },
       "H2_model_gap__H3_return_path": {
-        "full_distance": 6.851590151555751e-20,
-        "extra_distance": 3.238022230144653e-20,
+        "full_subspace_raw_distance": 0.0,
+        "unit_energy_distance": 0.0,
+        "unit_energy_extra_distance": 0.0,
+        "claim_activated_distance": 0.01684006697605425,
+        "claim_activated_method": "claim_activated",
         "principal_angle_deg": 0.0,
         "dim_i": 39,
-        "dim_j": 34
+        "dim_j": 34,
+        "specific_dim_i": 27,
+        "specific_dim_j": 22,
+        "per_case_fitted": {
+          "mean": 0.21064198591545472,
+          "median": 0.20440346027710726,
+          "min": 0.13979941555685366,
+          "max": 0.3390561573253165,
+          "p25": 0.184956506093161,
+          "p75": 0.2388790586467454,
+          "n_cases": 72,
+          "method": "per_case_fitted"
+        }
       }
+    },
+    "summary": {
+      "total_pairs": 6,
+      "distinguishable_by_unit_energy": 0,
+      "distinguishable_by_claim_activated": 2,
+      "indistinguishable_pairs": [
+        "H0_no_via__H1_via",
+        "H0_no_via__H2_model_gap",
+        "H0_no_via__H3_return_path",
+        "H1_via__H3_return_path"
+      ]
     }
   },
   "nullspace": {
@@ -3107,6 +3264,7 @@
     "count": 6,
     "ambiguous_count": 6
   },
+  "multi_height_sweep": null,
   "ridge_baseline": {
     "case_count": 72,
     "top1_accuracy": 0.3333333333333333
@@ -3121,7 +3279,7 @@
   },
   "run_audit": {
     "fresh_full_run_completed": true,
-    "runtime_s": 13.145955200001481,
+    "runtime_s": 13.994157799999812,
     "command": "python src/run_all.py --config <config> --out <out>"
   },
   "cannot_claim": [

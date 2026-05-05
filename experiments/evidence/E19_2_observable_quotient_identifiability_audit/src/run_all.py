@@ -87,11 +87,36 @@ def main(argv: list[str] | None = None) -> dict:
     oqci = run_consistent_set_analysis(cases, bundle, bases, cfg)
     oqci["per_case"] = per_case
 
+    # ── 4b. Epsilon sensitivity sweep ─────────────────────────────────────
+    eps_multipliers = [0.5, 1.0, 1.5, 2.0, 2.5, 3.0]
+    sigma_noise = float(cfg["noise_sigma"])
+    M_obs = bundle.A.shape[0]
+    eps_sweep = []
+    for mult in eps_multipliers:
+        eps_val = mult * sigma_noise * np.sqrt(M_obs)
+        sweep_results = [consistent_set_for_case(case, bundle, bases, eps_val) for case in cases]
+        nonempty = sum(1 for r in sweep_results if len(r.consistent_hypotheses) > 0)
+        ambiguous = sum(1 for r in sweep_results if len(r.consistent_hypotheses) > 1)
+        empty = sum(1 for r in sweep_results if len(r.consistent_hypotheses) == 0)
+        eps_sweep.append({
+            "multiplier": mult,
+            "epsilon": float(eps_val),
+            "consistent_set_nonempty_rate": nonempty / max(len(cases), 1),
+            "ambiguity_rate": ambiguous / max(len(cases), 1),
+            "empty_set_rate": empty / max(len(cases), 1),
+        })
+    oqci["epsilon_sweep"] = {
+        "sigma": sigma_noise,
+        "obs_dim": M_obs,
+        "multipliers": eps_multipliers,
+        "results": eps_sweep,
+    }
+
     # ── 5. Claim intervals ───────────────────────────────────────────────
     intervals = aggregate_claim_intervals(all_consistent_sets)
 
-    # ── 6. Pairwise distinguishability ───────────────────────────────────
-    pairwise = pairwise_distinguishability(bases, bundle)
+    # ── 6. Pairwise distinguishability (non-degenerate metrics) ────────────
+    pairwise = pairwise_distinguishability(bases, bundle, cases)
     dist_report = distinguishability_report(pairwise, primary_eps)
 
     # ── 7. Near-null modes ───────────────────────────────────────────────
@@ -138,7 +163,37 @@ def main(argv: list[str] | None = None) -> dict:
         "results": oracle_results,
     }
 
-    # ── 12. Ridge baseline ───────────────────────────────────────────────
+    # ── 12. Multi-height sweep ──────────────────────────────────────────────
+    multi_height_sweep = None
+    if cfg.get("run_multi_height_sweep", False):
+        height_combos = cfg.get("multi_height_combos", [[2.0, 3.2], [3.2, 5.0], [3.2, 6.4], [3.2, 10.0], [2.0, 3.2, 6.4]])
+        mh_results = []
+        for combo in height_combos:
+            mh_cfg = dict(cfg)
+            mh_cfg["sensor_heights_um"] = combo
+            mh_bundle = multi_height_operator_stack(mh_cfg)
+            mh_bases = build_all_hypothesis_bases(mh_bundle, mh_cfg)
+            mh_null = near_null_modes(mh_bundle, mh_bases, float(mh_cfg["nullspace_threshold"]))
+            mh_pairwise = pairwise_distinguishability(mh_bases, mh_bundle)
+            mh_results.append({
+                "heights_um": combo,
+                "obs_dim": mh_bundle.A.shape[0],
+                "near_null_count": mh_null["near_null_count"],
+                "effective_rank": mh_null["effective_rank"],
+                "total_rank": mh_null["total_rank"],
+                "unit_energy_extra_distance_H1_H2": mh_pairwise["pairs"]["H1_via__H2_model_gap"]["unit_energy_extra_distance"],
+                "unit_energy_extra_distance_H1_H3": mh_pairwise["pairs"]["H1_via__H3_return_path"]["unit_energy_extra_distance"],
+                "unit_energy_extra_distance_H2_H3": mh_pairwise["pairs"]["H2_model_gap__H3_return_path"]["unit_energy_extra_distance"],
+                "claim_activated_distance_H1_H2": mh_pairwise["pairs"]["H1_via__H2_model_gap"]["claim_activated_distance"],
+                "claim_activated_distance_H1_H3": mh_pairwise["pairs"]["H1_via__H3_return_path"]["claim_activated_distance"],
+                "claim_activated_distance_H2_H3": mh_pairwise["pairs"]["H2_model_gap__H3_return_path"]["claim_activated_distance"],
+            })
+        multi_height_sweep = {
+            "combos_tested": height_combos,
+            "results": mh_results,
+        }
+
+    # ── 13. Ridge baseline ───────────────────────────────────────────────
     ridge_rows = [run_ridge_classify(case, bundle, cfg) for case in cases]
     ridge_metrics = aggregate_ridge_baseline(ridge_rows)
 
@@ -166,7 +221,7 @@ def main(argv: list[str] | None = None) -> dict:
         "status": status,
         "engineering_gates_passed": eng_passed,
         "scientific_gates_passed": sci_passed,
-        "all_acceptance_gates_passed": eng_passed,
+        "all_acceptance_gates_passed": eng_passed and sci_passed,
         "engineering_gates": eng_gates,
         "scientific_gates": sci_gates,
         "acceptance_gates": {**eng_gates, **sci_gates},
@@ -178,6 +233,7 @@ def main(argv: list[str] | None = None) -> dict:
         "resolution": resolution,
         "next_measurement": next_meas,
         "adversarial_pairs": adv_metrics,
+        "multi_height_sweep": multi_height_sweep,
         "ridge_baseline": ridge_metrics,
         "leakage_audit": {
             "generated_domain_only": True,

@@ -32,16 +32,17 @@ def test_all_6_pairs_computed():
     ]
     for ep in expected_pairs:
         assert ep in pairs
-        assert pairs[ep]["extra_distance"] >= 0
+        assert pairs[ep]["unit_energy_distance"] >= 0
+        assert pairs[ep]["claim_activated_distance"] >= 0
         assert 0 <= pairs[ep]["principal_angle_deg"] <= 90
 
 
 def test_subspace_distance_non_negative():
     import sys
     sys.path.insert(0, SRC)
-    from distances import subspace_min_distance
+    from distances import unit_energy_principal_angle_distance
     rng = np.random.default_rng(42)
     B1 = rng.normal(0, 1, (50, 5))
     B2 = rng.normal(0, 1, (50, 3))
-    dist = subspace_min_distance(B1, B2)
+    dist = unit_energy_principal_angle_distance(B1, B2)
     assert dist >= 0

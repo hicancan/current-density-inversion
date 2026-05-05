@@ -519,6 +519,6 @@ E19_2_observable_quotient_identifiability_audit:
     test_command: "uv run --with-requirements requirements.txt --with pytest python -m pytest -q tests"
     metrics_files:
       - experiments/evidence/E19_2_observable_quotient_identifiability_audit/outputs/metrics.json
-  result_summary: "OQCI consistent set analysis on 72 generated cases: ambiguity_rate=1.0 (ALL 72 cases have all 4 hypotheses consistent), pairwise extra_distance=0 for H1/H2/H3 (hypothesis-specific bases share subspace beyond H0), effective_rank=27 of 100 basis dimensions observable, 50 near-null modes. Single-height magnetic observations cannot disambiguate via/gap/return topology claims. Engineering gates pass (7/7). 15/15 tests pass."
-  status: passed
+  result_summary: "OQCI with non-degenerate pairwise distances (unit-energy, claim-activated, per-case fitted) and epsilon sensitivity sweep (0.5-3.0 sigma). At tight epsilon (0.5sigma) all consistent sets empty; at 1.0sigma partial discriminating power emerges; at 1.5sigma+ all cases fully ambiguous. H1_vs_H3 claim-activated distance near-zero (0.001). Engineering gates pass (7/7), scientific gates fail as expected for single-height protocol. 15/15 tests pass."
+  status: partial
   last_run: "2026-05-05"

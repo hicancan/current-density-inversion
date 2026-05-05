@@ -64,16 +64,24 @@ def write_pairwise_distances(dist_metrics: dict, epsilon: float, out_dir: Path) 
     lines = ["# Pairwise Distinguishability Distances", ""]
     lines.append(f"Epsilon threshold: {epsilon:.4f}")
     lines.append("")
-    lines.append("| pair | full_dist | extra_dist | angle_deg | dim_i | dim_j | distinguishable |")
-    lines.append("|---|---:|---:|---:|---:|---:|")
+    lines.append("| pair | unit_energy_dist | claim_activated_dist | extra_ue_dist | angle_deg | dim_i | dim_j | distinguishable |")
+    lines.append("|---|---:|---:|---:|---:|---:|---:|")
     for pair_key, stats in dist_metrics.get("pairs", {}).items():
-        ed = stats.get("extra_distance", stats.get("distance", 0))
-        d = ed > epsilon
+        ue = stats.get("unit_energy_distance", 0)
+        ca = stats.get("claim_activated_distance", 0)
+        extra_ue = stats.get("unit_energy_extra_distance", 0)
+        d = ca > epsilon * 0.1
         lines.append(
-            f"| {pair_key} | {stats.get('full_distance', stats.get('distance', 0)):.6f} | "
-            f"{ed:.6f} | {stats['principal_angle_deg']:.2f} | "
+            f"| {pair_key} | {ue:.6f} | {ca:.6f} | {extra_ue:.6f} | "
+            f"{stats['principal_angle_deg']:.2f} | "
             f"{stats['dim_i']} | {stats['dim_j']} | {'yes' if d else 'no'} |"
         )
+    # Per-case fitted distances
+    for pair_key, stats in dist_metrics.get("pairs", {}).items():
+        fitted = stats.get("per_case_fitted")
+        if fitted:
+            lines.append(f"\n### {pair_key} per-case fitted")
+            lines.append(f"mean={fitted['mean']:.6f} median={fitted['median']:.6f} min={fitted['min']:.6f} max={fitted['max']:.6f} p25={fitted['p25']:.6f} p75={fitted['p75']:.6f}")
     (out_dir / "PAIRWISE_DISTANCES.md").write_text("\n".join(lines), encoding="utf-8")
 
 
@@ -178,16 +186,51 @@ def write_run_report(metrics: dict, out_dir: Path) -> None:
     oqci = metrics.get("oqci", {})
     lines.extend([
         "",
-        "## OQCI Metrics",
+        "## OQCI Metrics (scoped to generated-domain admissible basis family)",
         "",
         f"- case_count: {oqci.get('case_count', 0)}",
-        f"- epsilon: {oqci.get('epsilon_primary', 0.0):.4f}",
+        f"- primary epsilon: {oqci.get('epsilon_primary', 0.0):.4f}",
         f"- consistent_set_nonempty_rate: {oqci.get('consistent_set_nonempty_rate', 0.0):.4f}",
         f"- ambiguity_rate: {oqci.get('ambiguity_rate', 0.0):.4f}",
         f"- mean_interval_width: {oqci.get('mean_interval_width', 0.0):.4f}",
         f"- near_null_count: {oqci.get('near_null_count', 0)}",
         f"- effective_rank: {oqci.get('effective_rank', 0)}",
         "",
+        "## Epsilon Sensitivity Sweep",
+        "",
+    ])
+    eps_sweep = oqci.get("epsilon_sweep", {})
+    if eps_sweep:
+        lines.append("| multiplier | epsilon | nonempty_rate | ambiguity_rate | empty_rate |")
+        lines.append("|---|---:|---:|---:|---:|")
+        for row in eps_sweep.get("results", []):
+            lines.append(
+                f"| {row['multiplier']:.1f} | {row['epsilon']:.4f} | "
+                f"{row['consistent_set_nonempty_rate']:.4f} | {row['ambiguity_rate']:.4f} | "
+                f"{row['empty_set_rate']:.4f} |"
+            )
+    lines.append("")
+
+    # Multi-height sweep
+    mh_sweep = metrics.get("multi_height_sweep")
+    if mh_sweep:
+        lines.extend([
+            "## Multi-Height Sweep",
+            "",
+            "| heights_um | obs_dim | near_null | eff_rank | H1-H2_ca | H1-H3_ca | H2-H3_ca |",
+            "|---|---:|---:|---:|---:|---:|---:|",
+        ])
+        for row in mh_sweep.get("results", []):
+            lines.append(
+                f"| {row['heights_um']} | {row['obs_dim']} | "
+                f"{row['near_null_count']} | {row['effective_rank']} | "
+                f"{row['claim_activated_distance_H1_H2']:.6f} | "
+                f"{row['claim_activated_distance_H1_H3']:.6f} | "
+                f"{row['claim_activated_distance_H2_H3']:.6f} |"
+            )
+        lines.append("")
+
+    lines.extend([
         "## Decision Distribution",
         "",
     ])
@@ -196,6 +239,15 @@ def write_run_report(metrics: dict, out_dir: Path) -> None:
 
     lines.extend([
         "",
+        "## Scope & Limitations",
+        "",
+        "This evidence is scoped to the generated-domain admissible basis family",
+        "(E19.2 basis: graph + residual + via/gap/return blocks) under ideal",
+        "free-space Biot-Savart forward. The ambiguity findings do not constitute",
+        "an absolute physical theorem about all possible observation protocols.",
+        "They demonstrate that under the CURRENT experiment family and basis",
+        "construction, H0/H1/H2/H3 topology claims are not forced by the data.",
+        "",
         "## Cannot Claim",
         "",
         "- Real QDM/NV validation",
@@ -203,7 +255,8 @@ def write_run_report(metrics: dict, out_dir: Path) -> None:
         "- External FEM/FastHenry/COMSOL validation",
         "- Universal via detection",
         "- Real-board PDN robustness",
-        "- That generated-domain ambiguity holds for all real hardware",
+        "- That this generated-domain ambiguity holds for ALL real hardware",
+        "- An absolute physical identifiability theorem (this is a basis-family audit)",
     ])
 
     (out_dir / "RUN_REPORT.md").write_text("\n".join(lines), encoding="utf-8")

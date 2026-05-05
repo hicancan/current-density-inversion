@@ -35,7 +35,7 @@ def test_imports():
     from src.data import generate_cases, generate_adversarial_pairs
     from src.quotient import consistent_set_for_case, fit_hypothesis
     from src.intervals import binary_claim_interval, aggregate_claim_intervals
-    from src.distances import subspace_min_distance, pairwise_distinguishability
+    from src.distances import unit_energy_principal_angle_distance, pairwise_distinguishability
     from src.nullspace import near_null_modes
     from src.resolution import resolution_diagnostics
     from src.metrics import engineering_gates, scientific_gates

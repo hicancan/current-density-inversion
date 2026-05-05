@@ -393,10 +393,16 @@ def validate_graph(graph: ResearchGraph) -> list[GraphIssue]:
         for rel_path in metrics_files:
             status_info = metrics_gate_status(graph.root / rel_path)
             if not status_info.ok:
-                error(
-                    f"experiments.yml:{evidence_id}.runtime.metrics_files",
-                    f"metrics gate failed for {rel_path}: {status_info.gate} {status_info.message}".strip(),
-                )
+                if status == "partial":
+                    warn(
+                        f"experiments.yml:{evidence_id}.runtime.metrics_files",
+                        f"metrics gate failed for {rel_path}: {status_info.gate} {status_info.message} (expected for partial evidence)".strip(),
+                    )
+                else:
+                    error(
+                        f"experiments.yml:{evidence_id}.runtime.metrics_files",
+                        f"metrics gate failed for {rel_path}: {status_info.gate} {status_info.message}".strip(),
+                    )
 
     edge_ids: set[str] = set()
     edge_evidence_files = {
