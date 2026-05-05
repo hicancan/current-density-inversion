@@ -1,0 +1,41 @@
+{
+  "schema_version": "e19_2-oqci-config-v1",
+  "random_seed": 19020,
+  "grid_size": 12,
+  "layer_count": 4,
+  "pixel_pitch_um": 1.0,
+  "layer_spacing_um": 1.2,
+  "sensor_height_um": 3.2,
+  "sensor_heights_um": [3.2],
+  "noise_sigma": 0.018,
+  "case_count_per_family": 1,
+  "families": [
+    "no_via_clean",
+    "single_via_observable",
+    "dense_via_cluster",
+    "model_gap_registration",
+    "model_gap_standoff",
+    "return_path_deep_loop"
+  ],
+  "observable_energy_ratio_threshold": 0.015,
+  "epsilon_policy": {
+    "mode": "known_noise",
+    "c": 1.5
+  },
+  "prior_variance": {
+    "graph": 0.80,
+    "via_vertical": 1.20,
+    "via_compensation": 0.25,
+    "gap_registration": 1.00,
+    "gap_standoff": 1.00,
+    "gap_drift": 0.40,
+    "return_loop": 1.20,
+    "return_edge": 0.60,
+    "residual": 0.12
+  },
+  "nullspace_threshold": 0.01,
+  "baseline": {
+    "ridge_alpha": 0.08
+  },
+  "adversarial_pair_count": 2
+}

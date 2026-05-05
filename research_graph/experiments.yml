@@ -494,3 +494,31 @@ E19_obghi_minimal_observable_topology_posterior:
   result_summary: "E19.1 calibrated OBGHI posterior with split engineering/scientific gates, block-diagonal group priors, residual-based evidence, expanded H2 gap basis, split H1 via basis, expanded H3 return basis, residual-conditioned diagnostics, multi-tier decision rules. Engineering gates pass (6/6), scientific gates partially pass (2/7): H3 dominates families, h0_top1=0.0, h2_posterior=7e-29. Identifiability boundary documented. 10/10 tests pass. Cannot claim real validation."
   status: partial
   last_run: "2026-05-04"
+
+E19_2_observable_quotient_identifiability_audit:
+  title: "OQCI identifiability audit: consistent sets and claim intervals for H0/H1/H2/H3"
+  claim: C10_pdn_kcl_distribution_need
+  secondary_claims:
+    - C06_graph_hypothesis_system_identification
+    - C02_single_plane_identifiability_boundary
+    - C04_inverse_crime_and_operator_gap
+  data: [D11_chip_like_generated_pdn_family]
+  physics: [P01_biot_savart_maxwell_forward]
+  forward: [F02_centerline_biot_savart]
+  observation: [O01_ideal_Bxyz, O08_multi_height]
+  representation: [R08_hypothesis_set]
+  algorithm: [A04_hypothesis_scorer]
+  protocol: [S11_no_leakage_calibration_heldout]
+  metrics: [M08_accepted_accuracy, M09_accepted_risk, M10_reject_rate]
+  outputs:
+    - outputs/by_claim/C10_pdn_kcl_distribution_need/OQCI_E19_2_EVIDENCE.md
+  runtime:
+    package_dir: experiments/evidence/E19_2_observable_quotient_identifiability_audit
+    run_command: "uv run --with-requirements requirements.txt python src/run_all.py --config configs/default.json --out outputs"
+    smoke_command: "uv run --with-requirements requirements.txt python src/run_all.py --config configs/smoke.json --out outputs_smoke"
+    test_command: "uv run --with-requirements requirements.txt --with pytest python -m pytest -q tests"
+    metrics_files:
+      - experiments/evidence/E19_2_observable_quotient_identifiability_audit/outputs/metrics.json
+  result_summary: "OQCI consistent set analysis on 72 generated cases: ambiguity_rate=1.0 (ALL 72 cases have all 4 hypotheses consistent), pairwise extra_distance=0 for H1/H2/H3 (hypothesis-specific bases share subspace beyond H0), effective_rank=27 of 100 basis dimensions observable, 50 near-null modes. Single-height magnetic observations cannot disambiguate via/gap/return topology claims. Engineering gates pass (7/7). 15/15 tests pass."
+  status: passed
+  last_run: "2026-05-05"

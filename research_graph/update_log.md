@@ -1,5 +1,17 @@
 # Update Log
 
+## 2026-05-05 - E19.2 OQCI identifiability audit
+
+- E19.2_observable_quotient_identifiability_audit implemented as new evidence package
+- Paradigm shift: from winner-take-all Bayesian posterior to OQCI consistent-set analysis
+- 72 generated cases: ambiguity_rate=1.0, all 4 hypotheses consistent in every case
+- Pairwise extra_distance=0 for H1/H2/H3: via/gap/return bases share subspace even beyond H0
+- Effective rank=27 of 100 basis dimensions observable; 50 near-null modes
+- Multi-height (3.2um+6.4um) does not reduce ambiguity or near-null count
+- Engineering gates: 7/7 passed. 15/15 tests pass.
+- Evidence edges added: limits C10, supports C02, limits C06
+- Status: passed_with_limitations
+
 ## 2026-05-04 - E19 OBGHI minimal observable topology posterior evidence
 
 Claim affected:

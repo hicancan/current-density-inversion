@@ -607,3 +607,33 @@
   caveat: "Minimal 4-hypothesis set; generated domain only. Does not validate real CAD/Gerber/GDS graph inference or real QDM/NV."
   evidence_files:
     - outputs/by_claim/C06_graph_hypothesis_system_id/OBGHI_MINIMAL_POSTERIOR_EVIDENCE.md
+
+- id: edge_E19_2_to_C10
+  from: E19_2_observable_quotient_identifiability_audit
+  to: C10_pdn_kcl_distribution_need
+  relation: limits
+  strength: strong
+  scope: "generated-domain OQCI consistent-set identifiability audit"
+  caveat: "OQCI ambiguity_rate=1.0 confirms that single-height observations cannot disambiguate H0/H1/H2/H3 topology claims. All 72 cases have all 4 hypotheses consistent. H1/H2/H3 extra-column subspaces share common modes beyond H0."
+  evidence_files:
+    - outputs/by_claim/C10_pdn_kcl_distribution_need/OQCI_E19_2_EVIDENCE.md
+
+- id: edge_E19_2_to_C02
+  from: E19_2_observable_quotient_identifiability_audit
+  to: C02_single_plane_identifiability_boundary
+  relation: supports
+  strength: strong
+  scope: "generated-domain identifiability boundary audit"
+  caveat: "OQCI provides direct evidence for single-plane identifiability boundary: effective_rank=27/100, 50 near-null modes, all H0/H1/H2/H3 indistinguishable under single-height data."
+  evidence_files:
+    - outputs/by_claim/C10_pdn_kcl_distribution_need/OQCI_E19_2_EVIDENCE.md
+
+- id: edge_E19_2_to_C06
+  from: E19_2_observable_quotient_identifiability_audit
+  to: C06_graph_hypothesis_system_identification
+  relation: limits
+  strength: strong
+  scope: "generated-domain hypothesis distinguishability boundaries"
+  caveat: "Pairwise extra_distance=0 for H1/H2/H3 confirms that graph hypothesis scoring cannot distinguish via/gap/return under single-height data without external constraints."
+  evidence_files:
+    - outputs/by_claim/C10_pdn_kcl_distribution_need/OQCI_E19_2_EVIDENCE.md
