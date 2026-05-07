@@ -1,5 +1,7 @@
 # E31 RUN REPORT - Pad-Schur Reachability Certificate
 
+- Metrics file: `outputs/metrics.json`
+
 Generated: 2026-05-06T15:25:22.981182+00:00
 
 E31 is generated-domain evidence. It does not constitute real QDM/NV,

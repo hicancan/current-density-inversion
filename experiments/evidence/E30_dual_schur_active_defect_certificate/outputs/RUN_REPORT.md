@@ -1,5 +1,7 @@
 # E30 RUN REPORT - Dual-Schur Active Defect Certificate
 
+- Metrics file: `outputs/metrics.json`
+
 Generated: 2026-05-06T15:09:22.368114+00:00
 
 E30 is generated-domain evidence. It does not constitute real QDM/NV,

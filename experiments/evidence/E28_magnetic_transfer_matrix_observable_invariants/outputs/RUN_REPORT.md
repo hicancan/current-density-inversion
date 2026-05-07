@@ -1,5 +1,7 @@
 # RUN REPORT - E28 Magnetic Transfer-Matrix Observable Invariants
 
+- Metrics file: `outputs/metrics.json`
+
 Status: **passed**
 Engineering gates passed: **True**
 Scientific gates passed: **True**

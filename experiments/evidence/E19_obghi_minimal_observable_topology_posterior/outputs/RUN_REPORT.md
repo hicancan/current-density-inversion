@@ -1,5 +1,7 @@
 # RUN REPORT - E19.1 OBGHI Calibrated Posterior Diagnostics
 
+- Metrics file: `outputs/metrics.json`
+
 E19.1 is generated-domain algorithm evidence. It does not constitute real
 QDM/NV, CAD/Gerber/GDS, or external-solver validation.
 
