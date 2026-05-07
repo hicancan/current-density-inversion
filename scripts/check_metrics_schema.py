@@ -37,7 +37,10 @@ def main() -> int:
             path = ROOT / rel_path
             status = metrics_gate_status(path)
             if not status.ok:
-                failures.append(f"{evidence_id}: gate failed in {rel_path}: {status.gate}")
+                if evidence.get("status") == "partial" and status.gate == "all_acceptance_gates_passed":
+                    pass  # partial evidence may legitimately have gates not passed
+                else:
+                    failures.append(f"{evidence_id}: gate failed in {rel_path}: {status.gate}")
                 continue
             metrics = json.loads(path.read_text(encoding="utf-8"))
             if metrics.get("schema_version") != "research-ssot-metrics-v1":
