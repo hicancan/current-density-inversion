@@ -1,0 +1,142 @@
+{
+  "evidence_id": "E25_calibrated_volume_forward_rho_tightening",
+  "generated_at": "2026-05-06T10:25:30.867941+00:00",
+  "rho_decomposition_by_family": {
+    "straight_strip": {
+      "components": {
+        "rho_finite_width_centerline_to_volume": {
+          "absolute_radius": 0.002495214466395836,
+          "relative_radius": 0.2796578263924765
+        },
+        "rho_multifilament_to_volume": {
+          "absolute_radius": 0.0024345103891252368,
+          "relative_radius": 0.272854254783188
+        },
+        "rho_centerline_to_multifilament": {
+          "absolute_radius": 0.00028403315852449366,
+          "relative_radius": 0.03183377493441826
+        },
+        "rho_combined_conservative": {
+          "absolute_radius": 0.0052137580140455666,
+          "relative_radius": 0.5843458561100827
+        },
+        "rho_combined_rss": {
+          "absolute_radius": 0.0034976579168368035,
+          "relative_radius": 0.3920093537690505
+        }
+      },
+      "signal_scale": 0.008922383823773307
+    },
+    "parallel_strips": {
+      "components": {
+        "rho_finite_width_centerline_to_volume": {
+          "absolute_radius": 0.002434625680590812,
+          "relative_radius": 0.2427693394106408
+        },
+        "rho_multifilament_to_volume": {
+          "absolute_radius": 0.002393622187554126,
+          "relative_radius": 0.2386806653292808
+        },
+        "rho_centerline_to_multifilament": {
+          "absolute_radius": 0.0002700381397201261,
+          "relative_radius": 0.026926924051677868
+        },
+        "rho_combined_conservative": {
+          "absolute_radius": 0.005098286007865064,
+          "relative_radius": 0.5083769287915995
+        },
+        "rho_combined_rss": {
+          "absolute_radius": 0.003424872257215907,
+          "relative_radius": 0.34151203697496796
+        }
+      },
+      "signal_scale": 0.01002855503294293
+    }
+  },
+  "nuisance_jacobian_radii": {
+    "rho_sensor_z": {
+      "absolute_radius": 0.0008156204903287206,
+      "relative_radius": 0.09141284509141323,
+      "bound": 1e-05
+    },
+    "rho_sensor_dx": {
+      "absolute_radius": 0.0010339522046343974,
+      "relative_radius": 0.11588295516714674,
+      "bound": 1e-05
+    },
+    "rho_sensor_dy": {
+      "absolute_radius": 0.0008912605922735407,
+      "relative_radius": 0.09989041156230191,
+      "bound": 1e-05
+    },
+    "rho_layer_z": {
+      "absolute_radius": 0.0004078102451643603,
+      "relative_radius": 0.045706422545706615,
+      "bound": 5e-06
+    },
+    "rho_width": {
+      "absolute_radius": 1.278754849166596e-05,
+      "relative_radius": 0.001433198654556206,
+      "bound": 2e-06
+    },
+    "rho_thickness": {
+      "absolute_radius": 8.918214747549874e-07,
+      "relative_radius": 9.995327396460659e-05,
+      "bound": 1e-06
+    },
+    "rho_nuisance_combined_box": {
+      "absolute_radius": 0.00316232290236744,
+      "relative_radius": 0.35442578629508936,
+      "bound": null
+    },
+    "rho_nuisance_combined_rss": {
+      "absolute_radius": 0.0016416799023729204,
+      "relative_radius": 0.18399566021792685,
+      "bound": null
+    }
+  },
+  "comparison_summary": {
+    "straight_strip": {
+      "operator_frobenius": {
+        "centerline_vs_volume": 0.2796578263924765,
+        "multifilament_vs_volume": 0.272854254783188,
+        "centerline_vs_multifilament": 0.03185864781638016
+      },
+      "rho_current_family": {
+        "centerline_vs_volume": {
+          "absolute": 2.4952144663958363e-06,
+          "relative": 0.27965782639247655
+        },
+        "multifilament_vs_volume": {
+          "absolute": 2.4345103891252373e-06,
+          "relative": 0.2728542547831881
+        },
+        "centerline_vs_multifilament": {
+          "absolute": 2.8403315852449366e-07,
+          "relative": 0.03183377493441827
+        }
+      }
+    },
+    "parallel_strips": {
+      "operator_frobenius": {
+        "centerline_vs_volume": 0.2723928323667394,
+        "multifilament_vs_volume": 0.2673529577188216,
+        "centerline_vs_multifilament": 0.029937353148055883
+      },
+      "rho_current_family": {
+        "centerline_vs_volume": {
+          "absolute": 3.393707193795851e-06,
+          "relative": 0.31983320191183223
+        },
+        "multifilament_vs_volume": {
+          "absolute": 3.3249285268588318e-06,
+          "relative": 0.3133512928921298
+        },
+        "centerline_vs_multifilament": {
+          "absolute": 3.819068282757576e-07,
+          "relative": 0.03599205138932665
+        }
+      }
+    }
+  }
+}

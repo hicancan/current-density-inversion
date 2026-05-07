@@ -51,30 +51,76 @@ C02_single_plane_identifiability_boundary:
     representation:
     - R01_pixel_current_map
     - R02_layer_current_plus_via_source_sink
+    - R15_certified_observable_current_subspace
     algorithm:
     - A03_stream_function_or_pinn_baseline
+    - A19_certified_current_projection_inverse
     protocol:
     - S01_random_split
     metrics:
     - M01_field_l2_or_rmse
     - M13_family_generalization_gap
+    - M24_observable_current_subspace_fraction
+    - M25_dark_current_hallucination_norm
   supported_by:
   - E02_observability_bxy_bz
   - E03_two_layer_via_topology
   - E13_multi_height_multistate_observability
   - E15_four_layer_via_chain_benchmark
   - E17_l1_curl_divergence_free_baseline
+  - E28_magnetic_transfer_matrix_observable_invariants
+  - E30_dual_schur_active_defect_certificate
+  - E31_pad_schur_reachability_certificate
+  - E32_pad_pitch_schur_phase_diagram
+  - E33_certified_observable_current_subspace_inversion
   limited_by: []
   contradicted_by: []
   cannot_claim:
   - arbitrary multilayer recovery from one magnetic plane
   - layer-disambiguated recovery without priors or extra observations
+  - full H0/H1/H2/H3 transfer-matrix separability under the current E28 generator
   limitations:
   - Thin-sheet and centerline assumptions remain idealized.
+  - E28 supports only a generated-domain observable quotient Q0={H0}, Q12={H1,H2},
+    Q3={H3}; H1_via and H2_model_gap remain unresolved.
+  - E28 H1/H2 phase-diagram audit found 0/32 positive Gram Gamma rows under
+    the phase nuisance budget; the default row has Gamma -0.0948871365 and
+    would require eps+rho <= 0.0028658462 versus observed 0.0977529827.
+  - E28 directional statistical Gram certificate tightens the quotient min Gamma
+    from 0.4511206603 to 0.5323884196, but H1/H2 remains unresolved with
+    directional Gram Gamma -0.0560703448.
+  - E30 shows that the same generated graph has a sharp active-measurement
+    boundary where ordinary boundary ports fail for central via-open localization,
+    an 87-state top/bottom perimeter-boundary basis also fails, and local dual
+    Schur endpoint excitation yields positive pairwise Gamma. This is a
+    generated-domain local-access upper bound, not pad-feasible real validation.
+  - E31 gives an exact pad-Schur reachability theorem and a positive generated
+    pad-synthesis certificate. Perimeter pads have near-zero reachability, but
+    top candidate-projection surface pads plus a reference pad synthesize enough
+    Schur voltage drop for positive finite-difference magnetic Gamma.
+  - E32 turns the E31 pad assumption into a generated pad-pitch/locality
+    boundary; exact candidate top pads keep min reachability 0.4767196129,
+    top+bottom candidate pads reach 0.9534392258, perimeter pads remain
+    2.48821324e-09, and sparse grid offsets can collapse to 3.37239662e-04
+    at stride 2 or 4.75424120e-10 at stride 5+.
+  - E33 gives a strict current-inversion version of the boundary; under the
+    generated thin-sheet Fourier observation, single-height current inversion
+    has only 8/144 Fisher-stable modes, while full naive inversion hallucinates
+    dark current with total RMSE 720.7362501 and the certified stable projection
+    has stable-mode RMSE 0.1164511532.
   next_required_evidence:
   - Validate multi-height observability with real measurement or external solver held-out
     rows.
-  last_updated: '2026-05-04'
+  - Stress the E28 Gram quotient on broader layout ensembles, external-solver held-out
+    transfer matrices, and real-calibrated gain/standoff nuisance models.
+  - Convert E30 dual Schur endpoint excitations into pad-feasible boundary
+    active measurement designs and test whether the positive margin survives.
+  - Convert the E32 pad-pitch/locality boundary into a contact/package/current
+    limited active design and test the selected designs with magnetic Gamma,
+    broader layouts, and external solver rho.
+  - Move E33 observable-current projection from diagonal Fourier modes to
+    graph/Hodge/CAD-like current bases and validate against external solvers.
+  last_updated: '2026-05-06'
 C03_unet_topology_baseline_boundary:
   title: Topology-aware image inverse models are useful baselines but not final via
     detectors.
@@ -163,15 +209,29 @@ C04_inverse_crime_and_operator_gap:
   - E06_multifidelity_operator_gap
   limited_by:
   - E07_pypeec_solver_bridge
+  - E30_dual_schur_active_defect_certificate
+  - E31_pad_schur_reachability_certificate
+  - E32_pad_pitch_schur_phase_diagram
+  - E33_certified_observable_current_subspace_inversion
   contradicted_by: []
   cannot_claim:
   - same-operator performance transfers to external physics
   - surrogate high-fidelity stress is equivalent to real FEM/QDM
   limitations:
   - The strongest non-PyPEEC high-fidelity branch remains a surrogate.
+  - E30 is a same-forward generated certificate; it does not close finite-width,
+    external solver, or real measurement operator gaps.
+  - E31 is also same-forward generated evidence and does not include real pad
+    parasitics or external-solver operator gaps.
+  - E32 is a same-forward generated reachability phase diagram; it sharpens
+    pad-geometry limits but still excludes finite-width, contact/package
+    parasitics, external solvers, and real measurements.
+  - E33 is a same-forward generated Fourier/thin-sheet current-subspace audit;
+    it does not include finite-width, external-solver, or real-measurement
+    operator gaps.
   next_required_evidence:
   - Add COMSOL/FastHenry/FEM held-out rows or real measured rows.
-  last_updated: '2026-05-03'
+  last_updated: '2026-05-06'
 C05_pypeec_solver_bridge:
   title: PyPEEC can serve as a higher-fidelity solver bridge for generated conductor
     cases.
@@ -220,11 +280,11 @@ C06_graph_hypothesis_system_identification:
     data: [D03_no_via_hard_negative, D04_return_path_family, D05_bend_corner_artifact, D06_pypeec_generated_h0_h1_h2_h3, D08_pdn_kcl_circuit_graph, D09_cad_gerber_gds_like, D11_chip_like_generated_pdn_family]
     forward: [F02_centerline_biot_savart, F03_finite_width_surrogate, F04_pypeec]
     observation: [O01_ideal_Bxyz]
-    representation: [R04_route_graph, R05_basis_bank, R06_pdn_circuit_graph, R08_hypothesis_set, R09_posterior_candidate_set, R10_multilayer_chip_like_pdn_graph]
-    algorithm: [A04_hypothesis_scorer, A12_bayesian_or_glrt_model_evidence, A14_pdn_physics_aware_learner]
+    representation: [R04_route_graph, R05_basis_bank, R06_pdn_circuit_graph, R08_hypothesis_set, R09_posterior_candidate_set, R10_multilayer_chip_like_pdn_graph, R12_dual_schur_defect_signature, R13_pad_schur_reachability, R14_pad_pitch_schur_phase_diagram, R15_certified_observable_current_subspace]
+    algorithm: [A04_hypothesis_scorer, A12_bayesian_or_glrt_model_evidence, A14_pdn_physics_aware_learner, A16_dual_schur_active_defect_certificate, A17_pad_schur_mode_synthesis, A18_pad_pitch_reachability_audit, A19_certified_current_projection_inverse]
     protocol: [S02_variant_heldout, S03_family_heldout, S05_solver_heldout, S06_hidden_stress]
-    metrics: [M04_kcl_residual, M06_h0_false_any, M07_h1_recall, M08_accepted_accuracy, M09_accepted_risk, M10_reject_rate, M16_predicted_kcl_residual, M17_predicted_current_closure_error]
-  supported_by: [E08_graph_hypothesis_system_id, E12_pdn_physics_learning, E13_multi_height_multistate_observability, E14_layout_graph_import_scaffold, E15_four_layer_via_chain_benchmark]
+    metrics: [M04_kcl_residual, M06_h0_false_any, M07_h1_recall, M08_accepted_accuracy, M09_accepted_risk, M10_reject_rate, M16_predicted_kcl_residual, M17_predicted_current_closure_error, M21_dual_schur_defect_gamma, M22_pad_schur_reachability_ratio, M23_pad_pitch_reachability_floor, M24_observable_current_subspace_fraction, M25_dark_current_hallucination_norm]
+  supported_by: [E08_graph_hypothesis_system_id, E12_pdn_physics_learning, E13_multi_height_multistate_observability, E14_layout_graph_import_scaffold, E15_four_layer_via_chain_benchmark, E30_dual_schur_active_defect_certificate, E31_pad_schur_reachability_certificate, E32_pad_pitch_schur_phase_diagram, E33_certified_observable_current_subspace_inversion]
   limited_by: [E07_pypeec_solver_bridge, E08_graph_hypothesis_system_id, E14_layout_graph_import_scaffold]
   contradicted_by: []
   cannot_claim:
@@ -234,11 +294,34 @@ C06_graph_hypothesis_system_identification:
   - Graph candidates are generated or approximated; real layout import is not validated.
   - E12 strengthens generated-domain physics-aware graph scoring but still uses generated
     E11 graph families.
+  - E30 supports a generated-domain central via-open local-defect certificate
+    only under local dual Schur endpoint excitation; ordinary and perimeter
+    boundary controls remain negative in E30, and pad-feasible active probing
+    is not established.
+  - E31 supports a generated-domain candidate-projection surface-pad synthesis
+    certificate, but it assumes those pads are available and does not validate
+    real pad pitch, contact resistance, package parasitics, CAD/GDS graphs, or
+    real measurements.
+  - E32 shows that the E31 assumption is sharply local in the configured
+    generated graph; candidate top pads preserve min reachability 0.4767196129,
+    top+bottom candidate pads reach 0.9534392258, while sparse grid offsets can
+    collapse by orders of magnitude. It is still a generated reachability audit,
+    not a real pad or package validation.
+  - E33 supports the broader system-identification framing by showing that
+    current-map inversion should output a certified observable projection plus
+    dark-mode refusal rather than unsupported full-map current. It is still a
+    generated Fourier/thin-sheet audit, not graph/CAD or real validation.
   next_required_evidence:
   - Replace generated graph families with CAD/Gerber/GDS-derived graph candidates.
   - Validate multi-height/multi-state observability gains with real measurement or
     external solver rows.
-  last_updated: '2026-05-04'
+  - Turn the E30 local-access dual certificate into a constrained pad-accessible
+    design or prove the remaining boundary-port gap.
+  - Convert the E32-selected local pad designs into magnetic Gamma certificates
+    with contact/package/current limits, then external-solver validation.
+  - Combine E33 current-subspace certification with graph/Hodge/CAD-like bases
+    and active reachability before making full current-state claims.
+  last_updated: '2026-05-06'
 C07_stacked_evidence_calibration:
   title: Stacked evidence fusion can substantially improve generated PyPEEC-domain
     H0/H1/H2/H3 diagnosis under legal calibration/held-out splits.
@@ -381,7 +464,7 @@ C10_pdn_kcl_distribution_need:
     algorithm: [A04_hypothesis_scorer, A14_pdn_physics_aware_learner]
     protocol: [S03_family_heldout, S11_no_leakage_calibration_heldout]
     metrics: [M01_field_l2_or_rmse, M04_kcl_residual, M05_divB_residual, M06_h0_false_any, M07_h1_recall, M13_family_generalization_gap, M16_predicted_kcl_residual, M17_predicted_current_closure_error]
-  supported_by: [E10_pdn_kcl_distribution, E11_chip_like_pdn_distribution, E12_pdn_physics_learning, E14_layout_graph_import_scaffold, E15_four_layer_via_chain_benchmark]
+  supported_by: [E10_pdn_kcl_distribution, E11_chip_like_pdn_distribution, E12_pdn_physics_learning, E14_layout_graph_import_scaffold, E15_four_layer_via_chain_benchmark, E30_dual_schur_active_defect_certificate, E31_pad_schur_reachability_certificate, E32_pad_pitch_schur_phase_diagram]
   limited_by: []
   contradicted_by: []
   cannot_claim:
@@ -402,11 +485,17 @@ C10_pdn_kcl_distribution_need:
     solvers, or real QDM/NV measurements.
   - It does not include imported layouts, broad return-plane physics, inductive effects,
     frequency dependence, or external solver validation.
+  - E30 adds a generated KCL/transfer-matrix local-defect certificate but only
+    for central via-open candidates and local-access dual excitation.
+  - E31 adds generated pad-Schur synthesis but still relies on generated KCL
+    topology and candidate-projection pad availability.
+  - E32 adds a generated pad-pitch reachability boundary showing sparse pad
+    geometry can make the E31 Schur mode effectively unreachable.
   next_required_evidence:
   - Import CAD/Gerber/GDS-like graph families and preserve no-leakage family/held-out
     splits.
   - Validate a small E11-like subset against an independent FEM/FastHenry-style solver.
-  last_updated: '2026-05-04'
+  last_updated: '2026-05-06'
 C11_mechanism_level_explanation:
   title: Mechanism-level explanation must be separated from primary-label correctness.
   short_name: mechanism_explanation
@@ -441,6 +530,7 @@ C11_mechanism_level_explanation:
   limited_by:
   - E08_graph_hypothesis_system_id
   - E12_pdn_physics_learning
+  - E30_dual_schur_active_defect_certificate
   contradicted_by: []
   cannot_claim:
   - accepted hidden rows are mechanism-correct
@@ -449,9 +539,11 @@ C11_mechanism_level_explanation:
   - Mechanism-level evaluation is only partially defined.
   - E12 separates label accuracy from KCL/current-closure consistency, but it still
     does not provide mechanism labels or accepted-row mechanism audits.
+  - E30 provides pairwise signature localization for generated via-open
+    candidates, not mechanism-level real failure analysis.
   next_required_evidence:
   - Add mechanism labels and parameter-level audits for accepted hidden cases.
-  last_updated: '2026-05-04'
+  last_updated: '2026-05-06'
 C12_real_qdm_nv_validation:
   title: Real QDM/NV validation requires measured data, metadata, calibration, and
     sanity gates.

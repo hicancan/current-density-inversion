@@ -1,0 +1,17 @@
+{
+  "seed": 42,
+  "n_edges": 12,
+  "current_samples": 20,
+  "calibration_fraction": 0.5,
+  "noise_sigma": 1e-12,
+  "tau_multiplier": 2.5,
+  "delta_z_m": 1e-5,
+  "delta_xy_m": 1e-6,
+  "delta_layer_z_m": 5e-6,
+  "background_fraction": 1e-4,
+  "volume_quadrature": {
+    "n_seg": 8,
+    "n_w": 5,
+    "n_t": 3
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": "e20-active-oqci-config-v2",
+  "random_seed": 20010,
+  "grid_size": 10,
+  "layer_count": 4,
+  "pixel_pitch_um": 1.0,
+  "layer_spacing_um": 1.2,
+  "sensor_height_um": 3.2,
+  "sensor_heights_um": [3.2],
+  "noise_sigma": 0.018,
+  "case_count_per_family": 3,
+  "families": [
+    "no_via_clean",
+    "single_via_observable",
+    "dense_via_cluster",
+    "model_gap_registration",
+    "model_gap_standoff",
+    "return_path_deep_loop"
+  ],
+  "observable_energy_ratio_threshold": 0.015,
+  "epsilon_policy": {
+    "mode": "known_noise",
+    "c": 2.5
+  },
+  "epsilon_multipliers": [0.5, 1.0, 1.5, 2.0, 2.5, 3.0],
+  "prior_variance": {
+    "graph": 0.80,
+    "via_vertical": 1.20,
+    "via_compensation": 0.25,
+    "gap_registration": 1.00,
+    "gap_standoff": 1.00,
+    "gap_drift": 0.40,
+    "return_loop": 1.20,
+    "return_edge": 0.60,
+    "residual": 0.12
+  },
+  "nullspace_threshold": 0.01,
+  "baseline": {
+    "ridge_alpha": 0.08
+  },
+  "adversarial_pair_count": 6,
+  "candidate_pool": [
+    {"id": "add_h1.6_Bxyz",      "height_um": 1.6,  "components": ["Bx", "By", "Bz"], "description": "Additional 1.6um full Bxyz",   "cost": 1.0},
+    {"id": "add_h1.6_Bz",        "height_um": 1.6,  "components": ["Bz"],             "description": "Additional 1.6um Bz only",    "cost": 0.4},
+    {"id": "add_h6.4_Bxyz",      "height_um": 6.4,  "components": ["Bx", "By", "Bz"], "description": "Additional 6.4um full Bxyz",   "cost": 1.0},
+    {"id": "add_h6.4_Bz",        "height_um": 6.4,  "components": ["Bz"],             "description": "Additional 6.4um Bz only",    "cost": 0.4},
+    {"id": "add_h12.8_Bz",       "height_um": 12.8, "components": ["Bz"],             "description": "Additional 12.8um Bz only",   "cost": 0.4},
+    {"id": "add_state2_Bz",      "height_um": 0.0,  "components": ["Bx", "By", "Bz"], "description": "Multi-state (2) baseline",    "cost": 0.8, "n_states": 2},
+    {"id": "add_state2_Bxyz",    "height_um": 0.0,  "components": ["Bx", "By", "Bz"], "description": "Multi-state (2) baseline Bxyz", "cost": 1.2, "n_states": 2},
+    {"id": "add_state4_Bz",      "height_um": 0.0,  "components": ["Bx", "By", "Bz"], "description": "Multi-state (4) baseline Bz",  "cost": 1.2, "n_states": 4},
+    {"id": "add_state4_Bxyz",    "height_um": 0.0,  "components": ["Bx", "By", "Bz"], "description": "Multi-state (4) baseline Bxyz", "cost": 1.5, "n_states": 4},
+    {"id": "add_h1.6_state2_Bz", "height_um": 1.6,  "components": ["Bz"],             "description": "1.6um Bz + 2-state excitation", "cost": 1.0, "n_states": 2},
+    {"id": "add_h1.6_state4_Bxyz", "height_um": 1.6,"components": ["Bx", "By", "Bz"], "description": "1.6um Bxyz + 4-state excitation", "cost": 2.0, "n_states": 4}
+  ],
+  "utility_weights": {
+    "interval_width": 1.0,
+    "near_null": 1.0,
+    "pairwise_distance": 0.5,
+    "wrong_accept": 2.0,
+    "cost": 0.1
+  }
+}

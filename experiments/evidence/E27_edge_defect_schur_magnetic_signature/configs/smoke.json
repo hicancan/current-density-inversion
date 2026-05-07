@@ -1,0 +1,53 @@
+{
+  "schema_version": "e27-edge-defect-schur-v1",
+  "random_seed": 27127,
+  "grid_size": 8,
+  "layer_count": 4,
+  "pixel_pitch_um": 1.0,
+  "layer_spacing_um": 1.2,
+  "sensor_height_um": 3.2,
+  "noise_sigma": 0.025,
+  "case_count_per_family": 2,
+  "families": [
+    "via_insertion",
+    "via_removal",
+    "return_path_insertion",
+    "return_path_removal"
+  ],
+  "candidate_defect_families": [
+    "via_insertion",
+    "via_removal",
+    "return_path_insertion",
+    "return_path_removal"
+  ],
+  "schur": {
+    "conductance_range": [0.5, 2.0],
+    "alpha_nominal": 0.5,
+    "alpha_removal_scale": -1.0,
+    "state_count": 4,
+    "minimax_candidates": 2,
+    "voltage_drop_scale": 1.0
+  },
+  "baselines": {
+    "random_state_count": 4,
+    "greedy_gamma_state_count": 4,
+    "max_current_norm_state_count": 4,
+    "max_resistance_contrast_state_count": 4
+  },
+  "decision": {
+    "accept_threshold_gamma": 0.01,
+    "reject_threshold_gamma": -0.05,
+    "tau_threshold": 0.05,
+    "consistent_set_min_posterior": 0.50,
+    "singleton_wrong_rate_max": 0.05,
+    "empty_rate_max": 0.20,
+    "truth_in_consistent_rate_min": 0.85
+  },
+  "operator_perturbation": {
+    "rho_scale": 0.03,
+    "finite_width_factor": 1.5,
+    "registration_jitter_um": 0.5,
+    "deep_layer_attenuation_boost": 2.0
+  },
+  "edge_segment_quadrature_points": 3
+}

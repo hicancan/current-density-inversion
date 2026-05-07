@@ -637,3 +637,223 @@
   caveat: "Pairwise extra_distance=0 for H1/H2/H3 confirms that graph hypothesis scoring cannot distinguish via/gap/return under single-height data without external constraints."
   evidence_files:
     - outputs/by_claim/C10_pdn_kcl_distribution_need/OQCI_E19_2_EVIDENCE.md
+
+- id: edge_E28_to_C02
+  from: E28_magnetic_transfer_matrix_observable_invariants
+  to: C02_single_plane_identifiability_boundary
+  relation: supports
+  strength: medium
+  scope: "generated-domain magnetic transfer-matrix observable quotient under multi-state excitation and gain nuisance"
+  caveat: "Supports only Q0={H0}, Q12={H1,H2}, Q3={H3} quotient separability with Gram invariant. Directional statistical Gram margins tighten quotient min Gamma from 0.4511206603 to 0.5323884196. H1_via vs H2_model_gap remains unresolved, and no real QDM/NV, CAD/GDS, or external-solver validation is provided."
+  evidence_files:
+    - experiments/evidence/E28_magnetic_transfer_matrix_observable_invariants/outputs/OBSERVABLE_QUOTIENT_CERTIFICATE.md
+    - experiments/evidence/E28_magnetic_transfer_matrix_observable_invariants/outputs/HARDCASE_GAIN_SWEEP.md
+    - experiments/evidence/E28_magnetic_transfer_matrix_observable_invariants/outputs/DIRECTIONAL_STATISTICAL_CERTIFICATE.md
+
+- id: edge_E28_limits_C02
+  from: E28_magnetic_transfer_matrix_observable_invariants
+  to: C02_single_plane_identifiability_boundary
+  relation: limits
+  strength: strong
+  scope: "generated-domain four-hypothesis separability boundary"
+  caveat: "Full H0/H1/H2/H3 robust separability fails because H1_via__H2_model_gap has Gram Gamma -0.1286141869 in the full run. The phase-diagram audit finds 0/32 positive H1/H2 Gram Gamma rows; the default row has Gamma -0.0948871365, zero-noise Gamma -0.0138906779, and observed eps+rho 0.0977529827 versus required <=0.0028658462. Directional statistical Gram improves H1/H2 to -0.0560703448 but remains negative. The valid object is the observable quotient, not the original four-class hypothesis space."
+  evidence_files:
+    - experiments/evidence/E28_magnetic_transfer_matrix_observable_invariants/outputs/RUN_REPORT.md
+    - experiments/evidence/E28_magnetic_transfer_matrix_observable_invariants/outputs/FAILURE_MODES.md
+    - experiments/evidence/E28_magnetic_transfer_matrix_observable_invariants/outputs/H1_H2_PHASE_DIAGRAM.md
+
+- id: edge_E28_to_C06
+  from: E28_magnetic_transfer_matrix_observable_invariants
+  to: C06_graph_hypothesis_system_identification
+  relation: motivates
+  strength: medium
+  scope: "transfer-matrix invariant features for generated hypothesis-system identification"
+  caveat: "The hypothesis set is hand-built and generated-domain only. The result motivates Gram-invariant features for graph hypotheses but does not validate real CAD/GDS-derived graph candidates."
+  evidence_files:
+    - experiments/evidence/E28_magnetic_transfer_matrix_observable_invariants/outputs/PROJECTOR_GRAM_AUDIT.md
+    - experiments/evidence/E28_magnetic_transfer_matrix_observable_invariants/outputs/RAW_VS_INVARIANT_MARGIN_TABLE.md
+
+- id: edge_E28_limits_C04
+  from: E28_magnetic_transfer_matrix_observable_invariants
+  to: C04_inverse_crime_and_operator_gap
+  relation: limits
+  strength: medium
+  scope: "same-forward generated transfer-matrix evidence"
+  caveat: "E28 uses the same ideal Biot-Savart generated operator family for construction and evaluation; it does not close external solver or real measurement operator gaps."
+  evidence_files:
+    - experiments/evidence/E28_magnetic_transfer_matrix_observable_invariants/outputs/RUN_REPORT.md
+
+- id: edge_E30_to_C06
+  from: E30_dual_schur_active_defect_certificate
+  to: C06_graph_hypothesis_system_identification
+  relation: supports
+  strength: medium
+  scope: "generated-domain local via-open graph-defect signature identification under local dual Schur excitation"
+  caveat: "Supports only the configured central via-open candidate set under local endpoint access. Boundary diagonal ports are negative in the control, and no real CAD/GDS, external-solver, or QDM/NV validation is provided."
+  evidence_files:
+    - experiments/evidence/E30_dual_schur_active_defect_certificate/outputs/RUN_REPORT.md
+    - experiments/evidence/E30_dual_schur_active_defect_certificate/outputs/DEFECT_SIGNATURE_CERTIFICATE.md
+
+- id: edge_E30_to_C02
+  from: E30_dual_schur_active_defect_certificate
+  to: C02_single_plane_identifiability_boundary
+  relation: supports
+  strength: medium
+  scope: "active-measurement observability boundary for generated central via-open localization"
+  caveat: "E30 shows the boundary moves when the source is Schur-aligned with the local defect edge: six boundary ports have min Gamma -0.06399999999 without nuisance and an 87-state top/bottom perimeter-boundary basis has min Gamma -0.06399999992, while dual local excitation has min Gamma 0.1348041937 after nuisance. This is a local-access upper bound, not pad-feasible hardware evidence."
+  evidence_files:
+    - experiments/evidence/E30_dual_schur_active_defect_certificate/outputs/ACTIVE_PORT_DESIGN_AUDIT.md
+    - experiments/evidence/E30_dual_schur_active_defect_certificate/outputs/DUAL_SCHUR_DERIVATION.md
+
+- id: edge_E30_to_C10
+  from: E30_dual_schur_active_defect_certificate
+  to: C10_pdn_kcl_distribution_need
+  relation: supports
+  strength: weak
+  scope: "generated KCL graph transfer-matrix local-defect evidence"
+  caveat: "The graph is generated and inherited from the E28 KCL/Biot-Savart setup; it is not imported CAD/GDS, broad PDN layout validation, or external-solver validation."
+  evidence_files:
+    - experiments/evidence/E30_dual_schur_active_defect_certificate/outputs/RUN_REPORT.md
+
+- id: edge_E30_limits_C04
+  from: E30_dual_schur_active_defect_certificate
+  to: C04_inverse_crime_and_operator_gap
+  relation: limits
+  strength: medium
+  scope: "same-forward generated local-defect certificate"
+  caveat: "E30 uses the same generated centerline Biot-Savart/KCL transfer operator for construction and evaluation and does not include finite-width, external-solver, or real-measurement operator gaps."
+  evidence_files:
+    - experiments/evidence/E30_dual_schur_active_defect_certificate/outputs/RUN_REPORT.md
+    - experiments/evidence/E30_dual_schur_active_defect_certificate/outputs/FAILURE_MODES.md
+
+- id: edge_E30_limits_C11
+  from: E30_dual_schur_active_defect_certificate
+  to: C11_mechanism_level_explanation
+  relation: limits
+  strength: medium
+  scope: "generated local-defect signature localization versus mechanism-level explanation"
+  caveat: "Pairwise via-open signature localization is not real mechanism-level failure explanation and does not audit wrong-layer, finite-width, return-overlap, or hidden mechanism labels."
+  evidence_files:
+    - experiments/evidence/E30_dual_schur_active_defect_certificate/outputs/RUN_REPORT.md
+    - experiments/evidence/E30_dual_schur_active_defect_certificate/outputs/FAILURE_MODES.md
+
+- id: edge_E31_to_C06
+  from: E31_pad_schur_reachability_certificate
+  to: C06_graph_hypothesis_system_identification
+  relation: supports
+  strength: medium
+  scope: "generated-domain pad-accessible Schur synthesis for central via-open graph-defect identification"
+  caveat: "Supports only configured central via-open candidates with generated top candidate-projection surface pads plus a reference pad. It does not validate real pad availability, CAD/GDS graphs, external solvers, or QDM/NV measurements."
+  evidence_files:
+    - experiments/evidence/E31_pad_schur_reachability_certificate/outputs/RUN_REPORT.md
+    - experiments/evidence/E31_pad_schur_reachability_certificate/outputs/PAD_ACCESS_CERTIFICATE.md
+
+- id: edge_E31_to_C02
+  from: E31_pad_schur_reachability_certificate
+  to: C02_single_plane_identifiability_boundary
+  relation: supports
+  strength: medium
+  scope: "active pad reachability boundary for generated central via-open localization"
+  caveat: "The exact reachability theorem shows perimeter pads are nearly uncontrollable (min ratio 2.48821324e-09), while top candidate-projection surface pads reach min ratio 0.4767196129 and produce min Gamma 0.01963293336 after nuisance. This is generated-domain design-for-test style evidence, not real hardware validation."
+  evidence_files:
+    - experiments/evidence/E31_pad_schur_reachability_certificate/outputs/PAD_SCHUR_REACHABILITY_THEOREM.md
+    - experiments/evidence/E31_pad_schur_reachability_certificate/outputs/ACTIVE_PAD_DESIGN_AUDIT.md
+
+- id: edge_E31_to_C10
+  from: E31_pad_schur_reachability_certificate
+  to: C10_pdn_kcl_distribution_need
+  relation: supports
+  strength: weak
+  scope: "generated KCL graph pad-Schur reachability"
+  caveat: "The KCL graph is generated and inherited from the E28/E30 setup; E31 does not validate real PDN layouts, pad parasitics, package effects, or external solvers."
+  evidence_files:
+    - experiments/evidence/E31_pad_schur_reachability_certificate/outputs/RUN_REPORT.md
+
+- id: edge_E31_limits_C04
+  from: E31_pad_schur_reachability_certificate
+  to: C04_inverse_crime_and_operator_gap
+  relation: limits
+  strength: medium
+  scope: "same-forward generated pad-Schur certificate"
+  caveat: "E31 uses the same generated centerline Biot-Savart/KCL operator for design and evaluation and does not include finite-width, contact resistance, package parasitics, external solver, or real measurement gaps."
+  evidence_files:
+    - experiments/evidence/E31_pad_schur_reachability_certificate/outputs/RUN_REPORT.md
+    - experiments/evidence/E31_pad_schur_reachability_certificate/outputs/FAILURE_MODES.md
+
+- id: edge_E32_to_C06
+  from: E32_pad_pitch_schur_phase_diagram
+  to: C06_graph_hypothesis_system_identification
+  relation: supports
+  strength: medium
+  scope: "generated-domain pad-pitch Schur reachability for central via-open graph-defect identification"
+  caveat: "Supports a pad-geometry locality barrier and design-for-test direction for the configured generated graph family only. It does not add a fresh magnetic Gamma certificate, real CAD/GDS graph validation, external solver validation, or QDM/NV evidence."
+  evidence_files:
+    - experiments/evidence/E32_pad_pitch_schur_phase_diagram/outputs/RUN_REPORT.md
+    - experiments/evidence/E32_pad_pitch_schur_phase_diagram/outputs/PAD_PITCH_PHASE_DIAGRAM.md
+    - experiments/evidence/E32_pad_pitch_schur_phase_diagram/outputs/DESIGN_RULE_IMPLICATIONS.md
+
+- id: edge_E32_to_C02
+  from: E32_pad_pitch_schur_phase_diagram
+  to: C02_single_plane_identifiability_boundary
+  relation: supports
+  strength: medium
+  scope: "active pad-geometry observability boundary for generated central via-open localization"
+  caveat: "E32 shows the E31 positive active-mode access is sharply local: exact top candidate pads preserve min eta 0.4767196129, top+bottom candidate pads reach 0.9534392258, while sparse grid offsets can collapse to 3.37239662e-04 at stride 2 or 4.75424120e-10 at stride 5+. This remains generated-domain reachability evidence only."
+  evidence_files:
+    - experiments/evidence/E32_pad_pitch_schur_phase_diagram/outputs/LOCALITY_BARRIER_DERIVATION.md
+    - experiments/evidence/E32_pad_pitch_schur_phase_diagram/outputs/PAD_PITCH_PHASE_DIAGRAM.md
+
+- id: edge_E32_to_C10
+  from: E32_pad_pitch_schur_phase_diagram
+  to: C10_pdn_kcl_distribution_need
+  relation: supports
+  strength: weak
+  scope: "generated KCL graph pad-pitch Schur reachability"
+  caveat: "The KCL graph is generated and inherited from the E28/E30/E31 setup; E32 does not validate real PDN layouts, contact/package parasitics, external solvers, or measured fields."
+  evidence_files:
+    - experiments/evidence/E32_pad_pitch_schur_phase_diagram/outputs/RUN_REPORT.md
+
+- id: edge_E32_limits_C04
+  from: E32_pad_pitch_schur_phase_diagram
+  to: C04_inverse_crime_and_operator_gap
+  relation: limits
+  strength: medium
+  scope: "same-forward generated pad-pitch reachability audit"
+  caveat: "E32 uses the same generated centerline Biot-Savart/KCL operator for reachability design and does not include finite-width, contact resistance, package parasitics, external solver, or real measurement operator gaps."
+  evidence_files:
+    - experiments/evidence/E32_pad_pitch_schur_phase_diagram/outputs/RUN_REPORT.md
+    - experiments/evidence/E32_pad_pitch_schur_phase_diagram/outputs/FAILURE_MODES.md
+
+- id: edge_E33_to_C02
+  from: E33_certified_observable_current_subspace_inversion
+  to: C02_single_plane_identifiability_boundary
+  relation: supports
+  strength: medium
+  scope: "generated-domain Fourier thin-sheet current-mode inversion boundary"
+  caveat: "E33 supports certified recovery of the Fisher-stable current projection and dark-mode refusal, not full current recovery. It uses a generated diagonal Fourier/Biot-Savart model and does not validate real QDM/NV, CAD/GDS, external solvers, finite-width conductors, or package effects."
+  evidence_files:
+    - experiments/evidence/E33_certified_observable_current_subspace_inversion/outputs/RUN_REPORT.md
+    - experiments/evidence/E33_certified_observable_current_subspace_inversion/outputs/CERTIFIED_OBSERVABLE_CURRENT_SUBSPACE.md
+    - experiments/evidence/E33_certified_observable_current_subspace_inversion/outputs/DARK_MODE_CERTIFICATE.md
+
+- id: edge_E33_limits_C04
+  from: E33_certified_observable_current_subspace_inversion
+  to: C04_inverse_crime_and_operator_gap
+  relation: limits
+  strength: medium
+  scope: "same-forward generated current-subspace certificate"
+  caveat: "E33 is a same-forward generated Fourier/thin-sheet audit. It sharpens inverse-crime boundaries by exposing full-inverse dark-mode hallucination, but it does not close external-solver or real measurement gaps."
+  evidence_files:
+    - experiments/evidence/E33_certified_observable_current_subspace_inversion/outputs/RUN_REPORT.md
+    - experiments/evidence/E33_certified_observable_current_subspace_inversion/outputs/STANDARD_INVERSION_AUDIT.md
+
+- id: edge_E33_to_C06
+  from: E33_certified_observable_current_subspace_inversion
+  to: C06_graph_hypothesis_system_identification
+  relation: motivates
+  strength: medium
+  scope: "observable-current projection as a bridge from current maps to graph/Hodge hypothesis inversion"
+  caveat: "The E33 basis is Fourier/stream-function, not CAD/GDS graph-Hodge. It motivates observable-current subspaces for graph hypotheses but does not validate real graph inference."
+  evidence_files:
+    - experiments/evidence/E33_certified_observable_current_subspace_inversion/outputs/CERTIFIED_OBSERVABLE_CURRENT_SUBSPACE.md
+    - experiments/evidence/E33_certified_observable_current_subspace_inversion/outputs/DARK_MODE_CERTIFICATE.md

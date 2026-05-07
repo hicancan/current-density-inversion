@@ -1,0 +1,15 @@
+# Valid Disambiguation Matrix
+
+Valid disambiguation rate (VDR) = fraction of cases where consistent set
+is a singleton AND that singleton equals truth.
+Higher is better. Empty sets score 0.
+
+| candidate | eps=0.5 | eps=1.0 | eps=1.5 | eps=2.0 | eps=2.5 | eps=3.0 | best |
+|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| add_h1.6_Bxyz | 0.0000 | 0.1667 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.1667 |
+| add_h6.4_Bz | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 |
+| add_state2_Bz | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 |
+| add_state4_Bxyz | 0.0000 | 0.1667 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.1667 |
+| add_h1.6_state2_Bz | 0.0000 | 0.1667 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.1667 |
+
+**Best overall**: add_h1.6_Bxyz at epsilon=1.0 (VDR=0.1667)

@@ -1,0 +1,37 @@
+{
+  "schema_version": "e31-pad-schur-reachability-v1",
+  "random_seed": 31031,
+  "grid_size": 8,
+  "layer_count": 3,
+  "pixel_pitch_um": 1.0,
+  "layer_spacing_um": 1.2,
+  "sensor_height_um": 3.2,
+  "sensor_heights_um": [3.2],
+  "noise_sigma": 0.018,
+  "directional_z_threshold": 3.0,
+  "directional_tau": 0.01,
+  "g_sheet": 1.0,
+  "g_via_nominal": 80.0,
+  "g_via_h0": 0.0001,
+  "g_return_enhance": 12.0,
+  "g_return_suppress": 0.002,
+  "h2_via_factor": 0.82,
+  "h2_sheet_jitter": 0.03,
+  "h2_sheet_jitter_seed": 42,
+  "defect_family": "central_via_open",
+  "defect_layers": [0],
+  "defect_rows": [3],
+  "defect_cols": [3, 4],
+  "defect_open_factor": 0.0001,
+  "active_drive_amplitude": 50.0,
+  "reference_pad_node": 0,
+  "nuisance_types": ["height_jitter", "gain_variation"],
+  "nuisance_magnitudes": [0.02],
+  "nuisance_samples": 1,
+  "port_config": {
+    "amplitude": 50.0,
+    "scheme": "diagonal_pairs"
+  },
+  "boundary_n_port_states": 4
+}
+

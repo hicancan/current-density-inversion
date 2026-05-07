@@ -1,0 +1,30 @@
+{
+  "schema": "layout-graph-import-v1",
+  "description": "Simple two-layer layout with one via and one return plane for Graph-Hodge basis construction.",
+  "stackup": [
+    {"layer": "M1", "z_top_um": 0.0, "z_bottom_um": -2.0, "material": "copper", "conductivity_sm": 5.8e7},
+    {"layer": "M2", "z_bottom_um": -12.0, "z_top_um": -10.0, "material": "copper", "conductivity_sm": 5.8e7}
+  ],
+  "layers": [
+    {"name": "M1", "type": "signal", "thickness_um": 2.0},
+    {"name": "M2", "type": "signal", "thickness_um": 2.0}
+  ],
+  "nets": [
+    {"name": "VDD", "voltage": 1.0},
+    {"name": "GND", "voltage": 0.0}
+  ],
+  "ports": [
+    {"name": "src", "layer": "M1", "position_mm": {"x": 0.0, "y": 0.0}, "net": "VDD", "role": "source"},
+    {"name": "sink", "layer": "M2", "position_mm": {"x": 5.0, "y": 0.0}, "net": "GND", "role": "sink"}
+  ],
+  "traces": [
+    {"name": "trace_top", "layer": "M1", "points_mm": [{"x": 0.0, "y": 0.0}, {"x": 2.5, "y": 0.0}], "width_um": 100.0, "net": "VDD"},
+    {"name": "trace_bot", "layer": "M2", "points_mm": [{"x": 2.5, "y": 0.0}, {"x": 5.0, "y": 0.0}], "width_um": 100.0, "net": "GND"}
+  ],
+  "vias": [
+    {"name": "via1", "from_layer": "M1", "to_layer": "M2", "position_mm": {"x": 2.5, "y": 0.0}, "net": "VDD"}
+  ],
+  "return_planes": [
+    {"name": "gnd_plane", "layer": "M2", "net": "GND", "outline_mm": [{"x": 0.0, "y": -1.0}, {"x": 5.0, "y": -1.0}, {"x": 5.0, "y": 1.0}, {"x": 0.0, "y": 1.0}]}
+  ]
+}

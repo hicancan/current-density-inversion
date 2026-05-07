@@ -522,3 +522,228 @@ E19_2_observable_quotient_identifiability_audit:
   result_summary: "OQCI with non-degenerate pairwise distances (unit-energy, claim-activated, per-case fitted) and epsilon sensitivity sweep (0.5-3.0 sigma). At tight epsilon (0.5sigma) all consistent sets empty; at 1.0sigma partial discriminating power emerges; at 1.5sigma+ all cases fully ambiguous. H1_vs_H3 claim-activated distance near-zero (0.001). Engineering gates pass (7/7), scientific gates fail as expected for single-height protocol. 15/15 tests pass."
   status: partial
   last_run: "2026-05-05"
+
+E28_magnetic_transfer_matrix_observable_invariants:
+  title: "Magnetic transfer-matrix Gram invariant observable quotient certificate"
+  claim: C02_single_plane_identifiability_boundary
+  secondary_claims:
+    - C06_graph_hypothesis_system_identification
+    - C04_inverse_crime_and_operator_gap
+    - C10_pdn_kcl_distribution_need
+  data:
+    - D08_pdn_kcl_circuit_graph
+  physics:
+    - P01_biot_savart_maxwell_forward
+    - P05_kcl_node_conservation
+  forward:
+    - F02_centerline_biot_savart
+  observation:
+    - O01_ideal_Bxyz
+    - O09_multi_state_excitation
+  representation:
+    - R08_hypothesis_set
+    - R11_transfer_matrix_invariant
+  algorithm:
+    - A15_transfer_matrix_observable_quotient
+  protocol:
+    - S11_no_leakage_calibration_heldout
+  metrics:
+    - M18_robust_margin_gamma
+    - M19_observable_quotient_certificate
+    - M20_directional_statistical_gamma
+  outputs:
+    - experiments/evidence/E28_magnetic_transfer_matrix_observable_invariants/outputs/RUN_REPORT.md
+    - experiments/evidence/E28_magnetic_transfer_matrix_observable_invariants/outputs/OBSERVABLE_QUOTIENT_CERTIFICATE.md
+    - experiments/evidence/E28_magnetic_transfer_matrix_observable_invariants/outputs/HARDCASE_GAIN_SWEEP.md
+    - experiments/evidence/E28_magnetic_transfer_matrix_observable_invariants/outputs/H1_H2_PHASE_DIAGRAM.md
+    - experiments/evidence/E28_magnetic_transfer_matrix_observable_invariants/outputs/DIRECTIONAL_STATISTICAL_CERTIFICATE.md
+  runtime:
+    package_dir: experiments/evidence/E28_magnetic_transfer_matrix_observable_invariants
+    run_command: "uv run python src/run_all.py --config configs/default.json --out outputs"
+    smoke_command: "uv run python src/run_all.py --config configs/smoke.json --out outputs_smoke"
+    test_command: "uv run python -m pytest -q tests"
+    metrics_files:
+      - experiments/evidence/E28_magnetic_transfer_matrix_observable_invariants/outputs/metrics.json
+  result_summary: "E28 fixes the prior best-invariant/gate leakage, uses deterministic nuisance seeds, and registers a generated-domain transfer-matrix result: selected invariant=Gram, Gram positive robust Gamma on 5/6 full pairs, Gram observable quotient Q0={H0}, Q12={H1,H2}, Q3={H3} all-positive with min Gamma 0.4511206603, H1/H2 explicitly unresolved with full-run Gamma -0.1286141869. Gain-only hardcase sweep finds 3/5 rows where raw quotient fails but Gram quotient remains positive. The H1/H2 phase diagram finds 0/32 positive Gamma rows; the default row has Gamma -0.0948871365 and needs eps+rho <=0.0028658462 versus observed 0.0977529827. The directional statistical Gram certificate tightens quotient min Gamma to 0.5323884196 (+0.0812677593) but still leaves H1/H2 negative at -0.0560703448. Engineering and scientific gates pass. Cannot claim real validation or full H0/H1/H2/H3 separability."
+  status: passed
+  last_run: "2026-05-06"
+
+E30_dual_schur_active_defect_certificate:
+  title: "Dual-Schur active local via-open defect certificate"
+  claim: C06_graph_hypothesis_system_identification
+  secondary_claims:
+    - C02_single_plane_identifiability_boundary
+    - C04_inverse_crime_and_operator_gap
+    - C10_pdn_kcl_distribution_need
+    - C11_mechanism_level_explanation
+  data:
+    - D08_pdn_kcl_circuit_graph
+  physics:
+    - P01_biot_savart_maxwell_forward
+    - P05_kcl_node_conservation
+  forward:
+    - F02_centerline_biot_savart
+  observation:
+    - O01_ideal_Bxyz
+    - O09_multi_state_excitation
+  representation:
+    - R08_hypothesis_set
+    - R11_transfer_matrix_invariant
+    - R12_dual_schur_defect_signature
+  algorithm:
+    - A16_dual_schur_active_defect_certificate
+  protocol:
+    - S11_no_leakage_calibration_heldout
+  metrics:
+    - M18_robust_margin_gamma
+    - M20_directional_statistical_gamma
+    - M21_dual_schur_defect_gamma
+  outputs:
+    - experiments/evidence/E30_dual_schur_active_defect_certificate/outputs/RUN_REPORT.md
+    - experiments/evidence/E30_dual_schur_active_defect_certificate/outputs/DUAL_SCHUR_DERIVATION.md
+    - experiments/evidence/E30_dual_schur_active_defect_certificate/outputs/DEFECT_SIGNATURE_CERTIFICATE.md
+    - experiments/evidence/E30_dual_schur_active_defect_certificate/outputs/ACTIVE_PORT_DESIGN_AUDIT.md
+  runtime:
+    package_dir: experiments/evidence/E30_dual_schur_active_defect_certificate
+    run_command: "uv run python src/run_all.py --config configs/default.json --out outputs"
+    smoke_command: "uv run python src/run_all.py --config configs/smoke.json --out outputs_smoke"
+    test_command: "uv run python -m pytest -q tests"
+    metrics_files:
+      - experiments/evidence/E30_dual_schur_active_defect_certificate/outputs/metrics.json
+  result_summary: "E30 registers a generated-domain local-access observability result for 8 central via-open candidates. Ordinary boundary diagonal ports remain negative even without nuisance subtraction (min Gamma -0.06399999999), and an optimistic top/bottom perimeter-boundary basis with 87 states also remains negative (min Gamma -0.06399999992). Dual Schur endpoint excitation gives all 28 pairwise defect certificates positive after directional noise, height/gain nuisance, and tau subtraction (min Gamma 0.1348041937; truth pairwise certified rate 1.0). The current-budget law reports dual critical amplitude 16.09623992 versus configured 50, boundary optimistic critical amplitude 3.191177882e11, and perimeter-boundary optimistic critical amplitude 4.117612711e10. This is a local-access upper bound and cannot claim pad-feasible active probing, real CAD/GDS/QDM validation, H1/H2 separation, or real chip reverse analysis."
+  status: passed
+  last_run: "2026-05-06"
+
+E31_pad_schur_reachability_certificate:
+  title: "Pad-Schur reachability and active surface-pad defect certificate"
+  claim: C06_graph_hypothesis_system_identification
+  secondary_claims:
+    - C02_single_plane_identifiability_boundary
+    - C04_inverse_crime_and_operator_gap
+    - C10_pdn_kcl_distribution_need
+  data:
+    - D08_pdn_kcl_circuit_graph
+  physics:
+    - P01_biot_savart_maxwell_forward
+    - P05_kcl_node_conservation
+  forward:
+    - F02_centerline_biot_savart
+  observation:
+    - O01_ideal_Bxyz
+    - O09_multi_state_excitation
+  representation:
+    - R12_dual_schur_defect_signature
+    - R13_pad_schur_reachability
+  algorithm:
+    - A16_dual_schur_active_defect_certificate
+    - A17_pad_schur_mode_synthesis
+  protocol:
+    - S11_no_leakage_calibration_heldout
+  metrics:
+    - M20_directional_statistical_gamma
+    - M21_dual_schur_defect_gamma
+    - M22_pad_schur_reachability_ratio
+  outputs:
+    - experiments/evidence/E31_pad_schur_reachability_certificate/outputs/RUN_REPORT.md
+    - experiments/evidence/E31_pad_schur_reachability_certificate/outputs/PAD_SCHUR_REACHABILITY_THEOREM.md
+    - experiments/evidence/E31_pad_schur_reachability_certificate/outputs/PAD_ACCESS_CERTIFICATE.md
+    - experiments/evidence/E31_pad_schur_reachability_certificate/outputs/ACTIVE_PAD_DESIGN_AUDIT.md
+  runtime:
+    package_dir: experiments/evidence/E31_pad_schur_reachability_certificate
+    run_command: "uv run python src/run_all.py --config configs/default.json --out outputs"
+    smoke_command: "uv run python src/run_all.py --config configs/smoke.json --out outputs_smoke"
+    test_command: "uv run python -m pytest -q tests"
+    metrics_files:
+      - experiments/evidence/E31_pad_schur_reachability_certificate/outputs/metrics.json
+  result_summary: "E31 converts E30's local-access upper bound into a generated-domain pad-Schur synthesis result. The exact reachability theorem eta_e(P)=osc_P(L^+d_e)/(d_e^T L^+d_e) shows perimeter pads are effectively uncontrollable for the 8 central via-open candidates (min ratio 2.48821324e-09), while top candidate-projection surface pads plus a reference pad reach min ratio 0.4767196129. The theorem-selected pad pairs produce a finite-difference magnetic certificate with 28/28 pairwise positive Gamma after directional noise and height/gain nuisance subtraction; min Gamma 0.01963293336, truth pairwise certified rate 1.0, critical amplitude 38.26243887 under configured amplitude 50. Negative control: top-candidate reference-basis min Gamma -0.004862585689 and positive rate 0.8571428571. Cannot claim real pad availability, package parasitics, external solver validation, or real chip reverse analysis."
+  status: passed
+  last_run: "2026-05-06"
+
+E32_pad_pitch_schur_phase_diagram:
+  title: "Pad-pitch Schur reachability phase diagram and locality barrier"
+  claim: C06_graph_hypothesis_system_identification
+  secondary_claims:
+    - C02_single_plane_identifiability_boundary
+    - C04_inverse_crime_and_operator_gap
+    - C10_pdn_kcl_distribution_need
+  data:
+    - D08_pdn_kcl_circuit_graph
+  physics:
+    - P01_biot_savart_maxwell_forward
+    - P05_kcl_node_conservation
+  forward:
+    - F02_centerline_biot_savart
+  observation:
+    - O01_ideal_Bxyz
+    - O09_multi_state_excitation
+  representation:
+    - R13_pad_schur_reachability
+    - R14_pad_pitch_schur_phase_diagram
+  algorithm:
+    - A17_pad_schur_mode_synthesis
+    - A18_pad_pitch_reachability_audit
+  protocol:
+    - S11_no_leakage_calibration_heldout
+  metrics:
+    - M22_pad_schur_reachability_ratio
+    - M23_pad_pitch_reachability_floor
+  outputs:
+    - experiments/evidence/E32_pad_pitch_schur_phase_diagram/outputs/RUN_REPORT.md
+    - experiments/evidence/E32_pad_pitch_schur_phase_diagram/outputs/PAD_PITCH_PHASE_DIAGRAM.md
+    - experiments/evidence/E32_pad_pitch_schur_phase_diagram/outputs/LOCALITY_BARRIER_DERIVATION.md
+    - experiments/evidence/E32_pad_pitch_schur_phase_diagram/outputs/DESIGN_RULE_IMPLICATIONS.md
+  runtime:
+    package_dir: experiments/evidence/E32_pad_pitch_schur_phase_diagram
+    run_command: "uv run python src/run_all.py --config configs/default.json --out outputs"
+    smoke_command: "uv run python src/run_all.py --config configs/smoke.json --out outputs_smoke"
+    test_command: "uv run python -m pytest -q tests"
+    metrics_files:
+      - experiments/evidence/E32_pad_pitch_schur_phase_diagram/outputs/metrics.json
+  result_summary: "E32 turns the E31 candidate-pad assumption into a generated-domain pad-pitch/locality barrier. Exact candidate-projection top pads preserve min Schur reachability 0.4767196129, top+bottom candidate pads reach 0.9534392258, perimeter pads remain near-null at 2.48821324e-09, and sparse regular-grid offsets can collapse to 3.37239662e-04 at stride 2 or 4.75424120e-10 at stride 5+. This proves that sparse pad failure is an active-mode reachability barrier for the configured graph family, not merely an optimizer failure. It is not a fresh magnetic Gamma certificate, real pad/package validation, external-solver evidence, or real chip reverse analysis."
+  status: passed
+  last_run: "2026-05-06"
+
+E33_certified_observable_current_subspace_inversion:
+  title: "Certified observable current subspace inversion and dark-mode refusal"
+  claim: C02_single_plane_identifiability_boundary
+  secondary_claims:
+    - C04_inverse_crime_and_operator_gap
+    - C06_graph_hypothesis_system_identification
+  data:
+    - D00_canonical_wire_loop_via
+  physics:
+    - P01_biot_savart_maxwell_forward
+  forward:
+    - F02_centerline_biot_savart
+  observation:
+    - O01_ideal_Bxyz
+    - O08_multi_height
+  representation:
+    - R01_pixel_current_map
+    - R03_stream_function
+    - R15_certified_observable_current_subspace
+  algorithm:
+    - A03_stream_function_or_pinn_baseline
+    - A19_certified_current_projection_inverse
+  protocol:
+    - S01_random_split
+    - S11_no_leakage_calibration_heldout
+  metrics:
+    - M02_current_l2_or_rmse
+    - M24_observable_current_subspace_fraction
+    - M25_dark_current_hallucination_norm
+  outputs:
+    - experiments/evidence/E33_certified_observable_current_subspace_inversion/outputs/RUN_REPORT.md
+    - experiments/evidence/E33_certified_observable_current_subspace_inversion/outputs/CERTIFIED_OBSERVABLE_CURRENT_SUBSPACE.md
+    - experiments/evidence/E33_certified_observable_current_subspace_inversion/outputs/DARK_MODE_CERTIFICATE.md
+    - experiments/evidence/E33_certified_observable_current_subspace_inversion/outputs/STANDARD_INVERSION_AUDIT.md
+  runtime:
+    package_dir: experiments/evidence/E33_certified_observable_current_subspace_inversion
+    run_command: "uv run python src/run_all.py --config configs/default.json --out outputs"
+    smoke_command: "uv run python src/run_all.py --config configs/smoke.json --out outputs_smoke"
+    test_command: "uv run python -m pytest -q tests"
+    metrics_files:
+      - experiments/evidence/E33_certified_observable_current_subspace_inversion/outputs/metrics.json
+  result_summary: "E33 registers the first generated-domain strict current-density inversion certificate in this line of work. In a Fourier/stream-function thin-sheet Biot-Savart model, current modes are split by Fisher eigenvalue lambda_i=phi_i^T A^T Sigma^-1 A phi_i. Under the single-height protocol, only 8/144 current modes are Fisher-stable, 136/144 are dark/refused, and the generated truth has 0.9228192454 dark-energy fraction. A full naive least-squares current inverse hallucinates dark modes and has total RMSE 720.7362501, while the certified projection refuses dark modes, has zero dark hallucination norm, stable-mode RMSE 0.1164511532, and 3-sigma stable coefficient coverage 1.0. Adding a second height expands the stable current subspace to 37 modes. E33 does not claim full current recovery, real QDM/NV validation, CAD/GDS validation, external-solver validation, or finite-width/package robustness."
+  status: passed
+  last_run: "2026-05-07"

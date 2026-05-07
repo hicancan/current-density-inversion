@@ -1,0 +1,98 @@
+{
+  "seed": 42,
+  "description": "E21 smoke config - minimal geometry set, quick operators, small grid",
+  "geoms": [
+    {
+      "name": "straight_wire",
+      "enabled": true,
+      "wire_half_length_um": 100.0,
+      "layer1_z_um": 0.0
+    },
+    {
+      "name": "wire_loop",
+      "enabled": true,
+      "loop_radius_um": 50.0,
+      "layer1_z_um": 0.0
+    },
+    {
+      "name": "via_vertical_segment",
+      "enabled": true,
+      "via_height_um": 50.0,
+      "via_radius_um": 5.0,
+      "layer1_z_um": 25.0,
+      "layer2_z_um": -25.0
+    },
+    {
+      "name": "finite_width_trace",
+      "enabled": true,
+      "wire_half_length_um": 100.0,
+      "wire_width_um": 20.0,
+      "layer1_z_um": 0.0
+    },
+    {
+      "name": "return_path_pair",
+      "enabled": true,
+      "wire_half_length_um": 100.0,
+      "layer1_z_um": 25.0,
+      "ground_z_um": -75.0,
+      "return_spacing_um": 80.0
+    }
+  ],
+  "grid": {
+    "n": 24,
+    "fov_um": 200.0,
+    "measurement_z_um": 50.0
+  },
+  "operators": [
+    {
+      "name": "analytic_reference",
+      "enabled": true,
+      "n_steps": 40
+    },
+    {
+      "name": "centerline_biot_savart",
+      "enabled": true,
+      "n_steps": 40
+    },
+    {
+      "name": "finite_width_surrogate",
+      "enabled": true,
+      "n_width_filaments": 5,
+      "n_steps": 40,
+      "return_scale": 0.8,
+      "depth_shift_um": 3.0
+    },
+    {
+      "name": "missing_return_surrogate",
+      "enabled": true,
+      "n_width_filaments": 5,
+      "n_steps": 40,
+      "depth_shift_um": 3.0
+    },
+    {
+      "name": "deep_layer_shift_surrogate",
+      "enabled": true,
+      "n_steps": 40,
+      "depth_shift_um": 15.0
+    },
+    {
+      "name": "registration_gap_surrogate",
+      "enabled": true,
+      "n_steps": 40
+    }
+  ],
+  "decision": {
+    "inverse_method": "ridge",
+    "ridge_alpha": 0.001,
+    "n_train": 50,
+    "n_test": 20,
+    "current_max_mA": 10.0,
+    "noise_std_uT": 0.1
+  },
+  "external_artifacts": {
+    "enabled": true,
+    "comsol_path": "",
+    "fasthenry_path": "",
+    "require_present": false
+  }
+}

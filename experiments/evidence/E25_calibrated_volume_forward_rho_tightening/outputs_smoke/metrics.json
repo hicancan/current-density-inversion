@@ -1,0 +1,37 @@
+{
+  "evidence_id": "E25_calibrated_volume_forward_rho_tightening",
+  "claim_id": "C04_inverse_crime_and_operator_gap",
+  "secondary_claims": [
+    "C10_pdn_kcl_distribution_need",
+    "C13_calibration_protocol_reality"
+  ],
+  "status": "partial",
+  "acceptance_gates": {
+    "package_runs_to_completion": true,
+    "canonical_geometries_generated": true,
+    "volume_quadrature_runs": true,
+    "quadrature_convergence_reported": true,
+    "rho_decomposition_reported": true,
+    "no_fake_external_solver_claim": true,
+    "reports_written": true,
+    "generated_domain_boundary_explicit": true,
+    "volume_quadrature_relative_change_le_0_05": false,
+    "multifilament_beats_centerline_error": true,
+    "rho_finite_width_relative_below_centerline_surrogate": true,
+    "rho_combined_budget_finite": true,
+    "dominant_rho_source_identified": true,
+    "recommended_gamma_rho_available": true,
+    "all_engineering_gates_passed": true,
+    "all_scientific_gates_passed": false,
+    "all_acceptance_gates_passed": false
+  },
+  "cannot_claim": [
+    "All results are generated-domain only; no real QDM/NV sensor data is used.",
+    "No external solver (PyPEEC, FastHenry, COMSOL) is used for cross-validation.",
+    "Volume quadrature is numerical; no analytic volume integral for rectangular prisms is implemented.",
+    "Multifilament approximation uses uniform filament spacing; no adaptive refinement.",
+    "Nuisance Jacobian uses first-order finite differences; higher-order effects are not quantified.",
+    "No real CAD/GDS layouts are used; all geometries are canonical generated families."
+  ],
+  "generated_at": "2026-05-06T10:25:30.867362+00:00"
+}

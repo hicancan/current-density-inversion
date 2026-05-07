@@ -1,0 +1,81 @@
+{
+  "seed": 42,
+  "R_h": 1.0,
+  "sensor_grid": {
+    "n": 21,
+    "fov_m": 0.0012,
+    "z_m": 0.00008
+  },
+  "families": {
+    "straight_strip": {
+      "enabled": true,
+      "length_m": 0.001,
+      "width_m": 0.00004,
+      "thickness_m": 0.00001,
+      "current_a": 0.001
+    },
+    "parallel_strips": {
+      "enabled": true,
+      "length_m": 0.001,
+      "width_m": 0.00004,
+      "thickness_m": 0.00001,
+      "current_a": 0.001,
+      "spacing_m": 0.0002
+    },
+    "rectangular_loop": {
+      "enabled": true,
+      "width_x_m": 0.0005,
+      "height_y_m": 0.0005,
+      "trace_width_m": 0.00004,
+      "thickness_m": 0.00001,
+      "current_a": 0.001
+    },
+    "vertical_via": {
+      "enabled": true,
+      "z0_m": -0.00005,
+      "z1_m": 0.00005,
+      "radius_m": 0.00002,
+      "current_a": 0.001
+    },
+    "two_layer_trace_with_return": {
+      "enabled": true,
+      "length_m": 0.001,
+      "width_m": 0.00004,
+      "thickness_m": 0.00001,
+      "current_a": 0.001,
+      "layer_gap_m": 0.00005
+    },
+    "four_layer_via_return_motif": {
+      "enabled": true,
+      "length_m": 0.001,
+      "width_m": 0.00004,
+      "thickness_m": 0.00001,
+      "current_a": 0.001,
+      "layer_gap_m": 0.00005
+    }
+  },
+  "volume_quadrature": {
+    "n_seg": 8,
+    "n_w": 5,
+    "n_t": 3
+  },
+  "multifilament": {
+    "n_w": 5,
+    "n_t": 3
+  },
+  "quadrature_convergence": {
+    "seg_levels": [2, 4, 8],
+    "w_levels": [2, 3, 5],
+    "t_levels": [1, 2, 3]
+  },
+  "nuisance": {
+    "parameters": [
+      {"name": "sensor_z", "delta": 0.0000001, "bound": 0.00001},
+      {"name": "sensor_dx", "delta": 0.0000001, "bound": 0.00001},
+      {"name": "sensor_dy", "delta": 0.0000001, "bound": 0.00001},
+      {"name": "layer_z", "delta": 0.0000001, "bound": 0.000005},
+      {"name": "width", "delta": 0.0000001, "bound": 0.000002},
+      {"name": "thickness", "delta": 0.0000001, "bound": 0.000001}
+    ]
+  }
+}

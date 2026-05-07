@@ -1,0 +1,2284 @@
+{
+  "schema_version": "research-ssot-metrics-v1",
+  "evidence_id": "E33_certified_observable_current_subspace_inversion",
+  "claim": "C02_single_plane_identifiability_boundary",
+  "secondary_claims": [
+    "C04_inverse_crime_and_operator_gap",
+    "C06_graph_hypothesis_system_identification"
+  ],
+  "timestamp_utc": "2026-05-07T08:28:45.267075+00:00",
+  "status": "passed",
+  "mode_count": 144,
+  "config": {
+    "mode_k_max": 12,
+    "single_height": [
+      0.9
+    ],
+    "multi_height": [
+      0.55,
+      0.9
+    ],
+    "noise_sigma": 0.02,
+    "stable_snr_threshold": 6.0,
+    "coverage_z": 3.0,
+    "acceptance": {
+      "min_single_stable_modes": 4,
+      "min_dark_truth_energy_fraction": 0.5,
+      "max_certified_stable_rmse": 0.12,
+      "min_full_to_certified_total_rmse_ratio": 10.0,
+      "max_certified_dark_hallucination_norm": 1e-12,
+      "min_stable_confidence_coverage": 0.95
+    }
+  },
+  "theory": {
+    "current_basis": "orthonormal divergence-free stream-function Fourier modes",
+    "singular_value_law": "s(q,h)=q*exp(-q*h)",
+    "fisher_eigenvalue_law": "lambda_i=sum_h s(q_i,h)^2/noise_sigma^2",
+    "certified_projection_rule": "recover modes with sqrt(lambda_i)>=stable_snr_threshold; refuse the rest"
+  },
+  "protocols": {
+    "single_height": {
+      "name": "single_height",
+      "heights": [
+        0.9
+      ],
+      "mode_count": 144,
+      "stable_mode_count": 8,
+      "dark_mode_count": 136,
+      "stable_mode_fraction": 0.05555555555555555,
+      "min_fisher_eigenvalue": 3.898821342888232e-08,
+      "max_fisher_eigenvalue": 392.13602382149185,
+      "min_stable_snr": 7.025184907609609,
+      "max_dark_snr": 5.042160265716871,
+      "worst_naive_noise_amplification_std": 5064.462183552374,
+      "truth_energy": 6.046509416008915,
+      "truth_dark_energy": 5.57983525662435,
+      "truth_dark_energy_fraction": 0.9228192454064514,
+      "full_naive_total_rmse": 720.736250077838,
+      "certified_total_rmse": 0.465795678708154,
+      "ridge_total_rmse": 0.4542784679363685,
+      "certified_stable_rmse": 0.11645115316690466,
+      "full_naive_stable_rmse": 0.11645115316690466,
+      "ridge_stable_rmse": 0.11828649031224524,
+      "full_to_certified_total_rmse_ratio": 1547.3227490575712,
+      "ridge_to_certified_stable_rmse_ratio": 1.0157605751031942,
+      "full_dark_hallucination_norm": 8649.23999606904,
+      "certified_dark_hallucination_norm": 0.0,
+      "ridge_dark_hallucination_norm": 0.4650431411671138,
+      "stable_confidence_coverage": 1.0,
+      "stable_modes": [
+        "stream_kx1_ky1",
+        "stream_kx1_ky2",
+        "stream_kx2_ky1",
+        "stream_kx2_ky2",
+        "stream_kx1_ky3",
+        "stream_kx3_ky1",
+        "stream_kx2_ky3",
+        "stream_kx3_ky2"
+      ],
+      "dark_modes_sample": [
+        "stream_kx1_ky4",
+        "stream_kx4_ky1",
+        "stream_kx3_ky3",
+        "stream_kx2_ky4",
+        "stream_kx4_ky2",
+        "stream_kx3_ky4",
+        "stream_kx4_ky3",
+        "stream_kx1_ky5",
+        "stream_kx5_ky1",
+        "stream_kx2_ky5",
+        "stream_kx5_ky2",
+        "stream_kx4_ky4",
+        "stream_kx3_ky5",
+        "stream_kx5_ky3",
+        "stream_kx1_ky6",
+        "stream_kx6_ky1",
+        "stream_kx2_ky6",
+        "stream_kx6_ky2",
+        "stream_kx4_ky5",
+        "stream_kx5_ky4"
+      ],
+      "spectral_rows": [
+        {
+          "mode_id": "stream_kx1_ky1",
+          "q": 1.4142135623730951,
+          "fisher_eigenvalue": 392.13602382149185,
+          "snr": 19.802424695513725,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx1_ky2",
+          "q": 2.23606797749979,
+          "fisher_eigenvalue": 223.31013915432433,
+          "snr": 14.943565142037704,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx2_ky1",
+          "q": 2.23606797749979,
+          "fisher_eigenvalue": 223.31013915432433,
+          "snr": 14.943565142037704,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx2_ky2",
+          "q": 2.8284271247461903,
+          "fisher_eigenvalue": 123.01652894282365,
+          "snr": 11.091281663668255,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx1_ky3",
+          "q": 3.1622776601683795,
+          "fisher_eigenvalue": 84.31259962196191,
+          "snr": 9.182189260844165,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx3_ky1",
+          "q": 3.1622776601683795,
+          "fisher_eigenvalue": 84.31259962196191,
+          "snr": 9.182189260844165,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx2_ky3",
+          "q": 3.605551275463989,
+          "fisher_eigenvalue": 49.353222986105834,
+          "snr": 7.025184907609609,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx3_ky2",
+          "q": 3.605551275463989,
+          "fisher_eigenvalue": 49.353222986105834,
+          "snr": 7.025184907609609,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx1_ky4",
+          "q": 4.123105625617661,
+          "fisher_eigenvalue": 25.423380145174026,
+          "snr": 5.042160265716871,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx4_ky1",
+          "q": 4.123105625617661,
+          "fisher_eigenvalue": 25.423380145174026,
+          "snr": 5.042160265716871,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx3_ky3",
+          "q": 4.242640687119285,
+          "fisher_eigenvalue": 21.707645635782182,
+          "snr": 4.659146449273964,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx2_ky4",
+          "q": 4.47213595499958,
+          "fisher_eigenvalue": 15.95757383971958,
+          "snr": 3.9946932097120524,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx4_ky2",
+          "q": 4.47213595499958,
+          "fisher_eigenvalue": 15.95757383971958,
+          "snr": 3.9946932097120524,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx3_ky4",
+          "q": 5.0,
+          "fisher_eigenvalue": 7.713112755417472,
+          "snr": 2.7772491345605768,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx4_ky3",
+          "q": 5.0,
+          "fisher_eigenvalue": 7.713112755417472,
+          "snr": 2.7772491345605768,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx1_ky5",
+          "q": 5.0990195135927845,
+          "fisher_eigenvalue": 6.712070175977048,
+          "snr": 2.590766329867873,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx5_ky1",
+          "q": 5.0990195135927845,
+          "fisher_eigenvalue": 6.712070175977048,
+          "snr": 2.590766329867873,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx2_ky5",
+          "q": 5.385164807134504,
+          "fisher_eigenvalue": 4.4729367681058525,
+          "snr": 2.1149318589746224,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx5_ky2",
+          "q": 5.385164807134504,
+          "fisher_eigenvalue": 4.4729367681058525,
+          "snr": 2.1149318589746224,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx4_ky4",
+          "q": 5.656854249492381,
+          "fisher_eigenvalue": 3.026613278628114,
+          "snr": 1.739716436270036,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx3_ky5",
+          "q": 5.830951894845301,
+          "fisher_eigenvalue": 2.3506529126821425,
+          "snr": 1.5331839135218392,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx5_ky3",
+          "q": 5.830951894845301,
+          "fisher_eigenvalue": 2.3506529126821425,
+          "snr": 1.5331839135218392,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx1_ky6",
+          "q": 6.082762530298219,
+          "fisher_eigenvalue": 1.6257859639331498,
+          "snr": 1.2750631215485568,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx6_ky1",
+          "q": 6.082762530298219,
+          "fisher_eigenvalue": 1.6257859639331498,
+          "snr": 1.2750631215485568,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx2_ky6",
+          "q": 6.324555320336759,
+          "fisher_eigenvalue": 1.1373783128021202,
+          "snr": 1.0664794010210044,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx6_ky2",
+          "q": 6.324555320336759,
+          "fisher_eigenvalue": 1.1373783128021202,
+          "snr": 1.0664794010210044,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx4_ky5",
+          "q": 6.4031242374328485,
+          "fisher_eigenvalue": 1.0120666720641236,
+          "snr": 1.0060152444491701,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx5_ky4",
+          "q": 6.4031242374328485,
+          "fisher_eigenvalue": 1.0120666720641236,
+          "snr": 1.0060152444491701,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx3_ky6",
+          "q": 6.708203932499369,
+          "fisher_eigenvalue": 0.6414278462483735,
+          "snr": 0.800891906719236,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx6_ky3",
+          "q": 6.708203932499369,
+          "fisher_eigenvalue": 0.6414278462483735,
+          "snr": 0.800891906719236,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx1_ky7",
+          "q": 7.0710678118654755,
+          "fisher_eigenvalue": 0.37088878022704924,
+          "snr": 0.6090063876734375,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx5_ky5",
+          "q": 7.0710678118654755,
+          "fisher_eigenvalue": 0.37088878022704924,
+          "snr": 0.6090063876734375,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx7_ky1",
+          "q": 7.0710678118654755,
+          "fisher_eigenvalue": 0.37088878022704924,
+          "snr": 0.6090063876734375,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx4_ky6",
+          "q": 7.211102550927978,
+          "fisher_eigenvalue": 0.29978346081431195,
+          "snr": 0.5475248494948078,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx6_ky4",
+          "q": 7.211102550927978,
+          "fisher_eigenvalue": 0.29978346081431195,
+          "snr": 0.5475248494948078,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx2_ky7",
+          "q": 7.280109889280518,
+          "fisher_eigenvalue": 0.26985786721929617,
+          "snr": 0.5194784569347377,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx7_ky2",
+          "q": 7.280109889280518,
+          "fisher_eigenvalue": 0.26985786721929617,
+          "snr": 0.5194784569347377,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx3_ky7",
+          "q": 7.615773105863909,
+          "fisher_eigenvalue": 0.1613946664627523,
+          "snr": 0.4017395505333677,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx7_ky3",
+          "q": 7.615773105863909,
+          "fisher_eigenvalue": 0.1613946664627523,
+          "snr": 0.4017395505333677,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx5_ky6",
+          "q": 7.810249675906654,
+          "fisher_eigenvalue": 0.11960871866301574,
+          "snr": 0.34584493441861447,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx6_ky5",
+          "q": 7.810249675906654,
+          "fisher_eigenvalue": 0.11960871866301574,
+          "snr": 0.34584493441861447,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx1_ky8",
+          "q": 8.06225774829855,
+          "fisher_eigenvalue": 0.08097371637336281,
+          "snr": 0.2845588100434826,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx4_ky7",
+          "q": 8.06225774829855,
+          "fisher_eigenvalue": 0.08097371637336281,
+          "snr": 0.2845588100434826,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx7_ky4",
+          "q": 8.06225774829855,
+          "fisher_eigenvalue": 0.08097371637336281,
+          "snr": 0.2845588100434826,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx8_ky1",
+          "q": 8.06225774829855,
+          "fisher_eigenvalue": 0.08097371637336281,
+          "snr": 0.2845588100434826,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx2_ky8",
+          "q": 8.246211251235321,
+          "fisher_eigenvalue": 0.06083277722409684,
+          "snr": 0.24664301576184322,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx8_ky2",
+          "q": 8.246211251235321,
+          "fisher_eigenvalue": 0.06083277722409684,
+          "snr": 0.24664301576184322,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx6_ky6",
+          "q": 8.48528137423857,
+          "fisher_eigenvalue": 0.04188638924877274,
+          "snr": 0.20466164576874862,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx3_ky8",
+          "q": 8.54400374531753,
+          "fisher_eigenvalue": 0.03820834661098924,
+          "snr": 0.1954695541791336,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx8_ky3",
+          "q": 8.54400374531753,
+          "fisher_eigenvalue": 0.03820834661098924,
+          "snr": 0.1954695541791336,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx5_ky7",
+          "q": 8.602325267042627,
+          "fisher_eigenvalue": 0.03487188448424257,
+          "snr": 0.18674015230860921,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx7_ky5",
+          "q": 8.602325267042627,
+          "fisher_eigenvalue": 0.03487188448424257,
+          "snr": 0.18674015230860921,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx4_ky8",
+          "q": 8.94427190999916,
+          "fisher_eigenvalue": 0.020371533028008204,
+          "snr": 0.14272887944634122,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx8_ky4",
+          "q": 8.94427190999916,
+          "fisher_eigenvalue": 0.020371533028008204,
+          "snr": 0.14272887944634122,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx1_ky9",
+          "q": 9.055385138137417,
+          "fisher_eigenvalue": 0.017095705445953863,
+          "snr": 0.1307505466373042,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx9_ky1",
+          "q": 9.055385138137417,
+          "fisher_eigenvalue": 0.017095705445953863,
+          "snr": 0.1307505466373042,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx2_ky9",
+          "q": 9.219544457292887,
+          "fisher_eigenvalue": 0.013187541039105735,
+          "snr": 0.11483701946282712,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx6_ky7",
+          "q": 9.219544457292887,
+          "fisher_eigenvalue": 0.013187541039105735,
+          "snr": 0.11483701946282712,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx7_ky6",
+          "q": 9.219544457292887,
+          "fisher_eigenvalue": 0.013187541039105735,
+          "snr": 0.11483701946282712,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx9_ky2",
+          "q": 9.219544457292887,
+          "fisher_eigenvalue": 0.013187541039105735,
+          "snr": 0.11483701946282712,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx5_ky8",
+          "q": 9.433981132056603,
+          "fisher_eigenvalue": 0.009386491881492032,
+          "snr": 0.09688390930124585,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx8_ky5",
+          "q": 9.433981132056603,
+          "fisher_eigenvalue": 0.009386491881492032,
+          "snr": 0.09688390930124585,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx3_ky9",
+          "q": 9.486832980505138,
+          "fisher_eigenvalue": 0.008630579007538887,
+          "snr": 0.09290090961631585,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx9_ky3",
+          "q": 9.486832980505138,
+          "fisher_eigenvalue": 0.008630579007538887,
+          "snr": 0.09290090961631585,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx4_ky9",
+          "q": 9.848857801796104,
+          "fisher_eigenvalue": 0.004848009581314565,
+          "snr": 0.06962764954610033,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx9_ky4",
+          "q": 9.848857801796104,
+          "fisher_eigenvalue": 0.004848009581314565,
+          "snr": 0.06962764954610033,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx7_ky7",
+          "q": 9.899494936611665,
+          "fisher_eigenvalue": 0.004471294136002205,
+          "snr": 0.06686773613636254,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx6_ky8",
+          "q": 10.0,
+          "fisher_eigenvalue": 0.0038074949361781574,
+          "snr": 0.061704902043339775,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx8_ky6",
+          "q": 10.0,
+          "fisher_eigenvalue": 0.0038074949361781574,
+          "snr": 0.061704902043339775,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx1_ky10",
+          "q": 10.04987562112089,
+          "fisher_eigenvalue": 0.00351537318415799,
+          "snr": 0.05929058259249938,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx10_ky1",
+          "q": 10.04987562112089,
+          "fisher_eigenvalue": 0.00351537318415799,
+          "snr": 0.05929058259249938,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx2_ky10",
+          "q": 10.198039027185569,
+          "fisher_eigenvalue": 0.002772423756753264,
+          "snr": 0.052653810467555566,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx10_ky2",
+          "q": 10.198039027185569,
+          "fisher_eigenvalue": 0.002772423756753264,
+          "snr": 0.052653810467555566,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx5_ky9",
+          "q": 10.295630140987,
+          "fisher_eigenvalue": 0.0023705123901946352,
+          "snr": 0.04868790804906938,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx9_ky5",
+          "q": 10.295630140987,
+          "fisher_eigenvalue": 0.0023705123901946352,
+          "snr": 0.04868790804906938,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx3_ky10",
+          "q": 10.44030650891055,
+          "fisher_eigenvalue": 0.0018787327042010253,
+          "snr": 0.043344350314672216,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx10_ky3",
+          "q": 10.44030650891055,
+          "fisher_eigenvalue": 0.0018787327042010253,
+          "snr": 0.043344350314672216,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx7_ky8",
+          "q": 10.63014581273465,
+          "fisher_eigenvalue": 0.0013839291250059866,
+          "snr": 0.037201197897460056,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx8_ky7",
+          "q": 10.63014581273465,
+          "fisher_eigenvalue": 0.0013839291250059866,
+          "snr": 0.037201197897460056,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx4_ky10",
+          "q": 10.770329614269007,
+          "fisher_eigenvalue": 0.0011038434941502472,
+          "snr": 0.03322414023191943,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx10_ky4",
+          "q": 10.770329614269007,
+          "fisher_eigenvalue": 0.0011038434941502472,
+          "snr": 0.03322414023191943,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx6_ky9",
+          "q": 10.816653826391969,
+          "fisher_eigenvalue": 0.0010242886146310524,
+          "snr": 0.032004509285896765,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx9_ky6",
+          "q": 10.816653826391969,
+          "fisher_eigenvalue": 0.0010242886146310524,
+          "snr": 0.032004509285896765,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx1_ky11",
+          "q": 11.045361017187261,
+          "fisher_eigenvalue": 0.0007076345461095707,
+          "snr": 0.02660140120575551,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx11_ky1",
+          "q": 11.045361017187261,
+          "fisher_eigenvalue": 0.0007076345461095707,
+          "snr": 0.02660140120575551,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx2_ky11",
+          "q": 11.180339887498949,
+          "fisher_eigenvalue": 0.0005686462344089296,
+          "snr": 0.023846304418272648,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx5_ky10",
+          "q": 11.180339887498949,
+          "fisher_eigenvalue": 0.0005686462344089296,
+          "snr": 0.023846304418272648,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx10_ky5",
+          "q": 11.180339887498949,
+          "fisher_eigenvalue": 0.0005686462344089296,
+          "snr": 0.023846304418272648,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx11_ky2",
+          "q": 11.180339887498949,
+          "fisher_eigenvalue": 0.0005686462344089296,
+          "snr": 0.023846304418272648,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx8_ky8",
+          "q": 11.313708498984761,
+          "fisher_eigenvalue": 0.000458019396918401,
+          "snr": 0.02140138773347189,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx3_ky11",
+          "q": 11.40175425099138,
+          "fisher_eigenvalue": 0.00039699884346306103,
+          "snr": 0.019924829822687597,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx7_ky9",
+          "q": 11.40175425099138,
+          "fisher_eigenvalue": 0.00039699884346306103,
+          "snr": 0.019924829822687597,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx9_ky7",
+          "q": 11.40175425099138,
+          "fisher_eigenvalue": 0.00039699884346306103,
+          "snr": 0.019924829822687597,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx11_ky3",
+          "q": 11.40175425099138,
+          "fisher_eigenvalue": 0.00039699884346306103,
+          "snr": 0.019924829822687597,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx6_ky10",
+          "q": 11.661903789690601,
+          "fisher_eigenvalue": 0.00026002678192475504,
+          "snr": 0.0161253459474442,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx10_ky6",
+          "q": 11.661903789690601,
+          "fisher_eigenvalue": 0.00026002678192475504,
+          "snr": 0.0161253459474442,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx4_ky11",
+          "q": 11.704699910719626,
+          "fisher_eigenvalue": 0.00024251841735598218,
+          "snr": 0.01557300283683215,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx11_ky4",
+          "q": 11.704699910719626,
+          "fisher_eigenvalue": 0.00024251841735598218,
+          "snr": 0.01557300283683215,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx1_ky12",
+          "q": 12.041594578792296,
+          "fisher_eigenvalue": 0.0001399688740134078,
+          "snr": 0.011830844180083169,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx8_ky9",
+          "q": 12.041594578792296,
+          "fisher_eigenvalue": 0.0001399688740134078,
+          "snr": 0.011830844180083169,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx9_ky8",
+          "q": 12.041594578792296,
+          "fisher_eigenvalue": 0.0001399688740134078,
+          "snr": 0.011830844180083169,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx12_ky1",
+          "q": 12.041594578792296,
+          "fisher_eigenvalue": 0.0001399688740134078,
+          "snr": 0.011830844180083169,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx5_ky11",
+          "q": 12.083045973594572,
+          "fisher_eigenvalue": 0.00013080143868176487,
+          "snr": 0.011436845661359817,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx11_ky5",
+          "q": 12.083045973594572,
+          "fisher_eigenvalue": 0.00013080143868176487,
+          "snr": 0.011436845661359817,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx2_ky12",
+          "q": 12.165525060596439,
+          "fisher_eigenvalue": 0.00011429967569825044,
+          "snr": 0.01069110264183496,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx12_ky2",
+          "q": 12.165525060596439,
+          "fisher_eigenvalue": 0.00011429967569825044,
+          "snr": 0.01069110264183496,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx7_ky10",
+          "q": 12.206555615733702,
+          "fisher_eigenvalue": 0.00010687957853633385,
+          "snr": 0.01033825800298744,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx10_ky7",
+          "q": 12.206555615733702,
+          "fisher_eigenvalue": 0.00010687957853633385,
+          "snr": 0.01033825800298744,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx3_ky12",
+          "q": 12.36931687685298,
+          "fisher_eigenvalue": 8.187749050525945e-05,
+          "snr": 0.009048618154462009,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx12_ky3",
+          "q": 12.36931687685298,
+          "fisher_eigenvalue": 8.187749050525945e-05,
+          "snr": 0.009048618154462009,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx6_ky11",
+          "q": 12.529964086141668,
+          "fisher_eigenvalue": 6.292018504319721e-05,
+          "snr": 0.007932224470046042,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx11_ky6",
+          "q": 12.529964086141668,
+          "fisher_eigenvalue": 6.292018504319721e-05,
+          "snr": 0.007932224470046042,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx4_ky12",
+          "q": 12.649110640673518,
+          "fisher_eigenvalue": 5.174517705730392e-05,
+          "snr": 0.007193412059468296,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx12_ky4",
+          "q": 12.649110640673518,
+          "fisher_eigenvalue": 5.174517705730392e-05,
+          "snr": 0.007193412059468296,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx9_ky9",
+          "q": 12.727922061357855,
+          "fisher_eigenvalue": 4.54627447387396e-05,
+          "snr": 0.006742606672403456,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx8_ky10",
+          "q": 12.806248474865697,
+          "fisher_eigenvalue": 3.997186141279806e-05,
+          "snr": 0.006322330378333456,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx10_ky8",
+          "q": 12.806248474865697,
+          "fisher_eigenvalue": 3.997186141279806e-05,
+          "snr": 0.006322330378333456,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx5_ky12",
+          "q": 13.0,
+          "fisher_eigenvalue": 2.906269182464363e-05,
+          "snr": 0.005390982454492282,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx12_ky5",
+          "q": 13.0,
+          "fisher_eigenvalue": 2.906269182464363e-05,
+          "snr": 0.005390982454492282,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx7_ky11",
+          "q": 13.038404810405298,
+          "fisher_eigenvalue": 2.7281978258174277e-05,
+          "snr": 0.00522321531799851,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx11_ky7",
+          "q": 13.038404810405298,
+          "fisher_eigenvalue": 2.7281978258174277e-05,
+          "snr": 0.00522321531799851,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx6_ky12",
+          "q": 13.416407864998739,
+          "fisher_eigenvalue": 1.4628610913522746e-05,
+          "snr": 0.0038247367116603917,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx12_ky6",
+          "q": 13.416407864998739,
+          "fisher_eigenvalue": 1.4628610913522746e-05,
+          "snr": 0.0038247367116603917,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx9_ky10",
+          "q": 13.45362404707371,
+          "fisher_eigenvalue": 1.3756759665587737e-05,
+          "snr": 0.003709010604674478,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx10_ky9",
+          "q": 13.45362404707371,
+          "fisher_eigenvalue": 1.3756759665587737e-05,
+          "snr": 0.003709010604674478,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx8_ky11",
+          "q": 13.601470508735444,
+          "fisher_eigenvalue": 1.0775396981859206e-05,
+          "snr": 0.0032825899807711603,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx11_ky8",
+          "q": 13.601470508735444,
+          "fisher_eigenvalue": 1.0775396981859206e-05,
+          "snr": 0.0032825899807711603,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx7_ky12",
+          "q": 13.892443989449804,
+          "fisher_eigenvalue": 6.65818933998643e-06,
+          "snr": 0.002580346748014001,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx12_ky7",
+          "q": 13.892443989449804,
+          "fisher_eigenvalue": 6.65818933998643e-06,
+          "snr": 0.002580346748014001,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx10_ky10",
+          "q": 14.142135623730951,
+          "fisher_eigenvalue": 4.401871593545867e-06,
+          "snr": 0.0020980637725164283,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx9_ky11",
+          "q": 14.212670403551895,
+          "fisher_eigenvalue": 3.91579173370529e-06,
+          "snr": 0.0019788359542178553,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx11_ky9",
+          "q": 14.212670403551895,
+          "fisher_eigenvalue": 3.91579173370529e-06,
+          "snr": 0.0019788359542178553,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx8_ky12",
+          "q": 14.422205101855956,
+          "fisher_eigenvalue": 2.765234565470959e-06,
+          "snr": 0.0016628994453877718,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx12_ky8",
+          "q": 14.422205101855956,
+          "fisher_eigenvalue": 2.765234565470959e-06,
+          "snr": 0.0016628994453877718,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx10_ky11",
+          "q": 14.866068747318506,
+          "fisher_eigenvalue": 1.3215370951614796e-06,
+          "snr": 0.0011495812694896693,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx11_ky10",
+          "q": 14.866068747318506,
+          "fisher_eigenvalue": 1.3215370951614796e-06,
+          "snr": 0.0011495812694896693,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx9_ky12",
+          "q": 15.0,
+          "fisher_eigenvalue": 1.0572349593032345e-06,
+          "snr": 0.0010282193147880634,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx12_ky9",
+          "q": 15.0,
+          "fisher_eigenvalue": 1.0572349593032345e-06,
+          "snr": 0.0010282193147880634,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx11_ky11",
+          "q": 15.556349186104045,
+          "fisher_eigenvalue": 4.177240466239379e-07,
+          "snr": 0.0006463157483954247,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx10_ky12",
+          "q": 15.620499351813308,
+          "fisher_eigenvalue": 3.7524578571038566e-07,
+          "snr": 0.0006125730860153633,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx12_ky10",
+          "q": 15.620499351813308,
+          "fisher_eigenvalue": 3.7524578571038566e-07,
+          "snr": 0.0006125730860153633,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx11_ky12",
+          "q": 16.278820596099706,
+          "fisher_eigenvalue": 1.2460697710456783e-07,
+          "snr": 0.00035299713469739074,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx12_ky11",
+          "q": 16.278820596099706,
+          "fisher_eigenvalue": 1.2460697710456783e-07,
+          "snr": 0.00035299713469739074,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx12_ky12",
+          "q": 16.97056274847714,
+          "fisher_eigenvalue": 3.898821342888232e-08,
+          "snr": 0.00019745433251484333,
+          "stable": false
+        }
+      ]
+    },
+    "multi_height": {
+      "name": "multi_height",
+      "heights": [
+        0.55,
+        0.9
+      ],
+      "mode_count": 144,
+      "stable_mode_count": 37,
+      "dark_mode_count": 107,
+      "stable_mode_fraction": 0.2569444444444444,
+      "min_fisher_eigenvalue": 0.005624599122307314,
+      "max_fisher_eigenvalue": 1447.4127094720436,
+      "min_stable_snr": 6.660266848825532,
+      "max_dark_snr": 5.789135560886537,
+      "worst_naive_noise_amplification_std": 13.333808473032315,
+      "truth_energy": 6.046509416008915,
+      "truth_dark_energy": 4.887644390680866,
+      "truth_dark_energy_fraction": 0.8083414833920868,
+      "full_naive_total_rmse": 2.0594978977961573,
+      "certified_total_rmse": 0.4095049618205179,
+      "ridge_total_rmse": 0.3833729449992746,
+      "certified_stable_rmse": 0.08365202878845361,
+      "full_naive_stable_rmse": 0.08365202878845361,
+      "ridge_stable_rmse": 0.11648704221816132,
+      "full_to_certified_total_rmse_ratio": 5.029237957558169,
+      "ridge_to_certified_stable_rmse_ratio": 1.3925190327749695,
+      "full_dark_hallucination_norm": 25.55903744374454,
+      "certified_dark_hallucination_norm": 0.0,
+      "ridge_dark_hallucination_norm": 0.776067856733086,
+      "stable_confidence_coverage": 1.0,
+      "stable_modes": [
+        "stream_kx1_ky1",
+        "stream_kx1_ky2",
+        "stream_kx2_ky1",
+        "stream_kx2_ky2",
+        "stream_kx1_ky3",
+        "stream_kx3_ky1",
+        "stream_kx2_ky3",
+        "stream_kx3_ky2",
+        "stream_kx1_ky4",
+        "stream_kx4_ky1",
+        "stream_kx3_ky3",
+        "stream_kx2_ky4",
+        "stream_kx4_ky2",
+        "stream_kx3_ky4",
+        "stream_kx4_ky3",
+        "stream_kx1_ky5",
+        "stream_kx5_ky1",
+        "stream_kx2_ky5",
+        "stream_kx5_ky2",
+        "stream_kx4_ky4",
+        "stream_kx3_ky5",
+        "stream_kx5_ky3",
+        "stream_kx1_ky6",
+        "stream_kx6_ky1",
+        "stream_kx2_ky6",
+        "stream_kx6_ky2",
+        "stream_kx4_ky5",
+        "stream_kx5_ky4",
+        "stream_kx3_ky6",
+        "stream_kx6_ky3",
+        "stream_kx1_ky7",
+        "stream_kx5_ky5",
+        "stream_kx7_ky1",
+        "stream_kx4_ky6",
+        "stream_kx6_ky4",
+        "stream_kx2_ky7",
+        "stream_kx7_ky2"
+      ],
+      "dark_modes_sample": [
+        "stream_kx3_ky7",
+        "stream_kx7_ky3",
+        "stream_kx5_ky6",
+        "stream_kx6_ky5",
+        "stream_kx1_ky8",
+        "stream_kx4_ky7",
+        "stream_kx7_ky4",
+        "stream_kx8_ky1",
+        "stream_kx2_ky8",
+        "stream_kx8_ky2",
+        "stream_kx6_ky6",
+        "stream_kx3_ky8",
+        "stream_kx8_ky3",
+        "stream_kx5_ky7",
+        "stream_kx7_ky5",
+        "stream_kx4_ky8",
+        "stream_kx8_ky4",
+        "stream_kx1_ky9",
+        "stream_kx9_ky1",
+        "stream_kx2_ky9"
+      ],
+      "spectral_rows": [
+        {
+          "mode_id": "stream_kx1_ky1",
+          "q": 1.4142135623730951,
+          "fisher_eigenvalue": 1447.4127094720436,
+          "snr": 38.044877572046985,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx1_ky2",
+          "q": 2.23606797749979,
+          "fisher_eigenvalue": 1291.5944022377796,
+          "snr": 35.938759052557444,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx2_ky1",
+          "q": 2.23606797749979,
+          "fisher_eigenvalue": 1291.5944022377796,
+          "snr": 35.938759052557444,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx2_ky2",
+          "q": 2.8284271247461903,
+          "fisher_eigenvalue": 1013.9036355649139,
+          "snr": 31.841853519619644,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx1_ky3",
+          "q": 3.1622776601683795,
+          "fisher_eigenvalue": 855.6498348162349,
+          "snr": 29.251492864745124,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx3_ky1",
+          "q": 3.1622776601683795,
+          "fisher_eigenvalue": 855.6498348162349,
+          "snr": 29.251492864745124,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx2_ky3",
+          "q": 3.605551275463989,
+          "fisher_eigenvalue": 665.1327355482515,
+          "snr": 25.790167419934512,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx3_ky2",
+          "q": 3.605551275463989,
+          "fisher_eigenvalue": 665.1327355482515,
+          "snr": 25.790167419934512,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx1_ky4",
+          "q": 4.123105625617661,
+          "fisher_eigenvalue": 481.1272392402146,
+          "snr": 21.93461281263507,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx4_ky1",
+          "q": 4.123105625617661,
+          "fisher_eigenvalue": 481.1272392402146,
+          "snr": 21.93461281263507,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx3_ky3",
+          "q": 4.242640687119285,
+          "fisher_eigenvalue": 444.7672225600184,
+          "snr": 21.089505033547336,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx2_ky4",
+          "q": 4.47213595499958,
+          "fisher_eigenvalue": 381.15157920028327,
+          "snr": 19.523103728666793,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx4_ky2",
+          "q": 4.47213595499958,
+          "fisher_eigenvalue": 381.15157920028327,
+          "snr": 19.523103728666793,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx3_ky4",
+          "q": 5.0,
+          "fisher_eigenvalue": 263.1363276594216,
+          "snr": 16.22147735748571,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx4_ky3",
+          "q": 5.0,
+          "fisher_eigenvalue": 263.1363276594216,
+          "snr": 16.22147735748571,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx1_ky5",
+          "q": 5.0990195135927845,
+          "fisher_eigenvalue": 244.93837534082516,
+          "snr": 15.650507191168764,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx5_ky1",
+          "q": 5.0990195135927845,
+          "fisher_eigenvalue": 244.93837534082516,
+          "snr": 15.650507191168764,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx2_ky5",
+          "q": 5.385164807134504,
+          "fisher_eigenvalue": 198.43460497823554,
+          "snr": 14.086681829949718,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx5_ky2",
+          "q": 5.385164807134504,
+          "fisher_eigenvalue": 198.43460497823554,
+          "snr": 14.086681829949718,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx4_ky4",
+          "q": 5.656854249492381,
+          "fisher_eigenvalue": 161.762580627724,
+          "snr": 12.718591927871733,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx3_ky5",
+          "q": 5.830951894845301,
+          "fisher_eigenvalue": 141.61298715659106,
+          "snr": 11.900125510119254,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx5_ky3",
+          "q": 5.830951894845301,
+          "fisher_eigenvalue": 141.61298715659106,
+          "snr": 11.900125510119254,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx1_ky6",
+          "q": 6.082762530298219,
+          "fisher_eigenvalue": 116.51004060887747,
+          "snr": 10.793981684664722,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx6_ky1",
+          "q": 6.082762530298219,
+          "fisher_eigenvalue": 116.51004060887747,
+          "snr": 10.793981684664722,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx2_ky6",
+          "q": 6.324555320336759,
+          "fisher_eigenvalue": 96.33115917634535,
+          "snr": 9.814843818234978,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx6_ky2",
+          "q": 6.324555320336759,
+          "fisher_eigenvalue": 96.33115917634535,
+          "snr": 9.814843818234978,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx4_ky5",
+          "q": 6.4031242374328485,
+          "fisher_eigenvalue": 90.50694662229893,
+          "snr": 9.513513894576437,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx5_ky4",
+          "q": 6.4031242374328485,
+          "fisher_eigenvalue": 90.50694662229893,
+          "snr": 9.513513894576437,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx3_ky6",
+          "q": 6.708203932499369,
+          "fisher_eigenvalue": 70.86500944808732,
+          "snr": 8.418135746594213,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx6_ky3",
+          "q": 6.708203932499369,
+          "fisher_eigenvalue": 70.86500944808732,
+          "snr": 8.418135746594213,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx1_ky7",
+          "q": 7.0710678118654755,
+          "fisher_eigenvalue": 52.71787800450461,
+          "snr": 7.26070781704543,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx5_ky5",
+          "q": 7.0710678118654755,
+          "fisher_eigenvalue": 52.71787800450461,
+          "snr": 7.26070781704543,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx7_ky1",
+          "q": 7.0710678118654755,
+          "fisher_eigenvalue": 52.71787800450461,
+          "snr": 7.26070781704543,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx4_ky6",
+          "q": 7.211102550927978,
+          "fisher_eigenvalue": 46.96863368743261,
+          "snr": 6.853366595143777,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx6_ky4",
+          "q": 7.211102550927978,
+          "fisher_eigenvalue": 46.96863368743261,
+          "snr": 6.853366595143777,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx2_ky7",
+          "q": 7.280109889280518,
+          "fisher_eigenvalue": 44.359154497564376,
+          "snr": 6.660266848825532,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx7_ky2",
+          "q": 7.280109889280518,
+          "fisher_eigenvalue": 44.359154497564376,
+          "snr": 6.660266848825532,
+          "stable": true
+        },
+        {
+          "mode_id": "stream_kx3_ky7",
+          "q": 7.615773105863909,
+          "fisher_eigenvalue": 33.514090542321085,
+          "snr": 5.789135560886537,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx7_ky3",
+          "q": 7.615773105863909,
+          "fisher_eigenvalue": 33.514090542321085,
+          "snr": 5.789135560886537,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx5_ky6",
+          "q": 7.810249675906654,
+          "fisher_eigenvalue": 28.441788386394073,
+          "snr": 5.333084322077991,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx6_ky5",
+          "q": 7.810249675906654,
+          "fisher_eigenvalue": 28.441788386394073,
+          "snr": 5.333084322077991,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx1_ky8",
+          "q": 8.06225774829855,
+          "fisher_eigenvalue": 22.953804044592392,
+          "snr": 4.791012841205124,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx4_ky7",
+          "q": 8.06225774829855,
+          "fisher_eigenvalue": 22.953804044592392,
+          "snr": 4.791012841205124,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx7_ky4",
+          "q": 8.06225774829855,
+          "fisher_eigenvalue": 22.953804044592392,
+          "snr": 4.791012841205124,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx8_ky1",
+          "q": 8.06225774829855,
+          "fisher_eigenvalue": 22.953804044592392,
+          "snr": 4.791012841205124,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx2_ky8",
+          "q": 8.246211251235321,
+          "fisher_eigenvalue": 19.6058687484347,
+          "snr": 4.427851482201577,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx8_ky2",
+          "q": 8.246211251235321,
+          "fisher_eigenvalue": 19.6058687484347,
+          "snr": 4.427851482201577,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx6_ky6",
+          "q": 8.48528137423857,
+          "fisher_eigenvalue": 15.951166889454454,
+          "snr": 3.9938911964967767,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx3_ky8",
+          "q": 8.54400374531753,
+          "fisher_eigenvalue": 15.159462775073514,
+          "snr": 3.8935154776979526,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx8_ky3",
+          "q": 8.54400374531753,
+          "fisher_eigenvalue": 15.159462775073514,
+          "snr": 3.8935154776979526,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx5_ky7",
+          "q": 8.602325267042627,
+          "fisher_eigenvalue": 14.410773564945789,
+          "snr": 3.7961524686115795,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx7_ky5",
+          "q": 8.602325267042627,
+          "fisher_eigenvalue": 14.410773564945789,
+          "snr": 3.7961524686115795,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx4_ky8",
+          "q": 8.94427190999916,
+          "fisher_eigenvalue": 10.689704457131322,
+          "snr": 3.2695113483716987,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx8_ky4",
+          "q": 8.94427190999916,
+          "fisher_eigenvalue": 10.689704457131322,
+          "snr": 3.2695113483716987,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx1_ky9",
+          "q": 9.055385138137417,
+          "fisher_eigenvalue": 9.69496348356073,
+          "snr": 3.1136736315100095,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx9_ky1",
+          "q": 9.055385138137417,
+          "fisher_eigenvalue": 9.69496348356073,
+          "snr": 3.1136736315100095,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx2_ky9",
+          "q": 9.219544457292887,
+          "fisher_eigenvalue": 8.387746078061115,
+          "snr": 2.8961605753240125,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx6_ky7",
+          "q": 9.219544457292887,
+          "fisher_eigenvalue": 8.387746078061115,
+          "snr": 2.8961605753240125,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx7_ky6",
+          "q": 9.219544457292887,
+          "fisher_eigenvalue": 8.387746078061115,
+          "snr": 2.8961605753240125,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx9_ky2",
+          "q": 9.219544457292887,
+          "fisher_eigenvalue": 8.387746078061115,
+          "snr": 2.8961605753240125,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx5_ky8",
+          "q": 9.433981132056603,
+          "fisher_eigenvalue": 6.935529787773793,
+          "snr": 2.6335394031177497,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx8_ky5",
+          "q": 9.433981132056603,
+          "fisher_eigenvalue": 6.935529787773793,
+          "snr": 2.6335394031177497,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx3_ky9",
+          "q": 9.486832980505138,
+          "fisher_eigenvalue": 6.6170162755152875,
+          "snr": 2.5723561719783845,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx9_ky3",
+          "q": 9.486832980505138,
+          "fisher_eigenvalue": 6.6170162755152875,
+          "snr": 2.5723561719783845,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx4_ky9",
+          "q": 9.848857801796104,
+          "fisher_eigenvalue": 4.787587069065661,
+          "snr": 2.1880555452423187,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx9_ky4",
+          "q": 9.848857801796104,
+          "fisher_eigenvalue": 4.787587069065661,
+          "snr": 2.1880555452423187,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx7_ky7",
+          "q": 9.899494936611665,
+          "fisher_eigenvalue": 4.5747265556346495,
+          "snr": 2.1388610416842533,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx6_ky8",
+          "q": 10.0,
+          "fisher_eigenvalue": 4.179232692497592,
+          "snr": 2.044317170230097,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx8_ky6",
+          "q": 10.0,
+          "fisher_eigenvalue": 4.179232692497592,
+          "snr": 2.044317170230097,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx1_ky10",
+          "q": 10.04987562112089,
+          "fisher_eigenvalue": 3.9955592295983537,
+          "snr": 1.9988894990965242,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx10_ky1",
+          "q": 10.04987562112089,
+          "fisher_eigenvalue": 3.9955592295983537,
+          "snr": 1.9988894990965242,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx2_ky10",
+          "q": 10.198039027185569,
+          "fisher_eigenvalue": 3.495189191294928,
+          "snr": 1.8695425085552155,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx10_ky2",
+          "q": 10.198039027185569,
+          "fisher_eigenvalue": 3.495189191294928,
+          "snr": 1.8695425085552155,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx5_ky9",
+          "q": 10.295630140987,
+          "fisher_eigenvalue": 3.1996233405233,
+          "snr": 1.7887490993773554,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx9_ky5",
+          "q": 10.295630140987,
+          "fisher_eigenvalue": 3.1996233405233,
+          "snr": 1.7887490993773554,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx3_ky10",
+          "q": 10.44030650891055,
+          "fisher_eigenvalue": 2.80590611140647,
+          "snr": 1.6750839117508323,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx10_ky3",
+          "q": 10.44030650891055,
+          "fisher_eigenvalue": 2.80590611140647,
+          "snr": 1.6750839117508323,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx7_ky8",
+          "q": 10.63014581273465,
+          "fisher_eigenvalue": 2.3604679939062425,
+          "snr": 1.5363814610656568,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx8_ky7",
+          "q": 10.63014581273465,
+          "fisher_eigenvalue": 2.3604679939062425,
+          "snr": 1.5363814610656568,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx4_ky10",
+          "q": 10.770329614269007,
+          "fisher_eigenvalue": 2.076752325417263,
+          "snr": 1.4410941417607883,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx10_ky4",
+          "q": 10.770329614269007,
+          "fisher_eigenvalue": 2.076752325417263,
+          "snr": 1.4410941417607883,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx6_ky9",
+          "q": 10.816653826391969,
+          "fisher_eigenvalue": 1.9905588778411314,
+          "snr": 1.410871673059294,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx9_ky6",
+          "q": 10.816653826391969,
+          "fisher_eigenvalue": 1.9905588778411314,
+          "snr": 1.410871673059294,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx1_ky11",
+          "q": 11.045361017187261,
+          "fisher_eigenvalue": 1.6138272228318535,
+          "snr": 1.2703649959093857,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx11_ky1",
+          "q": 11.045361017187261,
+          "fisher_eigenvalue": 1.6138272228318535,
+          "snr": 1.2703649959093857,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx2_ky11",
+          "q": 11.180339887498949,
+          "fisher_eigenvalue": 1.425303703786627,
+          "snr": 1.1938608393722556,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx5_ky10",
+          "q": 11.180339887498949,
+          "fisher_eigenvalue": 1.425303703786627,
+          "snr": 1.1938608393722556,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx10_ky5",
+          "q": 11.180339887498949,
+          "fisher_eigenvalue": 1.425303703786627,
+          "snr": 1.1938608393722556,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx11_ky2",
+          "q": 11.180339887498949,
+          "fisher_eigenvalue": 1.425303703786627,
+          "snr": 1.1938608393722556,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx8_ky8",
+          "q": 11.313708498984761,
+          "fisher_eigenvalue": 1.2603133859095812,
+          "snr": 1.122636800532381,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx3_ky11",
+          "q": 11.40175425099138,
+          "fisher_eigenvalue": 1.1618255827190067,
+          "snr": 1.077880133743547,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx7_ky9",
+          "q": 11.40175425099138,
+          "fisher_eigenvalue": 1.1618255827190067,
+          "snr": 1.077880133743547,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx9_ky7",
+          "q": 11.40175425099138,
+          "fisher_eigenvalue": 1.1618255827190067,
+          "snr": 1.077880133743547,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx11_ky3",
+          "q": 11.40175425099138,
+          "fisher_eigenvalue": 1.1618255827190067,
+          "snr": 1.077880133743547,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx6_ky10",
+          "q": 11.661903789690601,
+          "fisher_eigenvalue": 0.9129187439142642,
+          "snr": 0.9554678141697208,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx10_ky6",
+          "q": 11.661903789690601,
+          "fisher_eigenvalue": 0.9129187439142642,
+          "snr": 0.9554678141697208,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx4_ky11",
+          "q": 11.704699910719626,
+          "fisher_eigenvalue": 0.8773348902395803,
+          "snr": 0.9366615665434236,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx11_ky4",
+          "q": 11.704699910719626,
+          "fisher_eigenvalue": 0.8773348902395803,
+          "snr": 0.9366615665434236,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx1_ky12",
+          "q": 12.041594578792296,
+          "fisher_eigenvalue": 0.6409807249432361,
+          "snr": 0.800612718449586,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx8_ky9",
+          "q": 12.041594578792296,
+          "fisher_eigenvalue": 0.6409807249432361,
+          "snr": 0.800612718449586,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx9_ky8",
+          "q": 12.041594578792296,
+          "fisher_eigenvalue": 0.6409807249432361,
+          "snr": 0.800612718449586,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx12_ky1",
+          "q": 12.041594578792296,
+          "fisher_eigenvalue": 0.6409807249432361,
+          "snr": 0.800612718449586,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx5_ky11",
+          "q": 12.083045973594572,
+          "fisher_eigenvalue": 0.6166301960287884,
+          "snr": 0.78525804423055,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx11_ky5",
+          "q": 12.083045973594572,
+          "fisher_eigenvalue": 0.6166301960287884,
+          "snr": 0.78525804423055,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx2_ky12",
+          "q": 12.165525060596439,
+          "fisher_eigenvalue": 0.5708555738518893,
+          "snr": 0.7555498486876225,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx12_ky2",
+          "q": 12.165525060596439,
+          "fisher_eigenvalue": 0.5708555738518893,
+          "snr": 0.7555498486876225,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx7_ky10",
+          "q": 12.206555615733702,
+          "fisher_eigenvalue": 0.5493473815969029,
+          "snr": 0.7411797228721944,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx10_ky7",
+          "q": 12.206555615733702,
+          "fisher_eigenvalue": 0.5493473815969029,
+          "snr": 0.7411797228721944,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx3_ky12",
+          "q": 12.36931687685298,
+          "fisher_eigenvalue": 0.47161561198514423,
+          "snr": 0.6867427553204651,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx12_ky3",
+          "q": 12.36931687685298,
+          "fisher_eigenvalue": 0.47161561198514423,
+          "snr": 0.6867427553204651,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx6_ky11",
+          "q": 12.529964086141668,
+          "fisher_eigenvalue": 0.40554902267118875,
+          "snr": 0.636827309928829,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx11_ky6",
+          "q": 12.529964086141668,
+          "fisher_eigenvalue": 0.40554902267118875,
+          "snr": 0.636827309928829,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx4_ky12",
+          "q": 12.649110640673518,
+          "fisher_eigenvalue": 0.3625259817809089,
+          "snr": 0.6021013052476376,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx12_ky4",
+          "q": 12.649110640673518,
+          "fisher_eigenvalue": 0.3625259817809089,
+          "snr": 0.6021013052476376,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx9_ky9",
+          "q": 12.727922061357855,
+          "fisher_eigenvalue": 0.33657413662403923,
+          "snr": 0.5801500983573469,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx8_ky10",
+          "q": 12.806248474865697,
+          "fisher_eigenvalue": 0.3125993294148545,
+          "snr": 0.5591058302458082,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx10_ky8",
+          "q": 12.806248474865697,
+          "fisher_eigenvalue": 0.3125993294148545,
+          "snr": 0.5591058302458082,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx5_ky12",
+          "q": 13.0,
+          "fisher_eigenvalue": 0.2602939747326169,
+          "snr": 0.5101901358636963,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx12_ky5",
+          "q": 13.0,
+          "fisher_eigenvalue": 0.2602939747326169,
+          "snr": 0.5101901358636963,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx7_ky11",
+          "q": 13.038404810405298,
+          "fisher_eigenvalue": 0.25100255877002225,
+          "snr": 0.5010015556562896,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx11_ky7",
+          "q": 13.038404810405298,
+          "fisher_eigenvalue": 0.25100255877002225,
+          "snr": 0.5010015556562896,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx6_ky12",
+          "q": 13.416407864998739,
+          "fisher_eigenvalue": 0.17535156773945157,
+          "snr": 0.4187500062560615,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx12_ky6",
+          "q": 13.416407864998739,
+          "fisher_eigenvalue": 0.17535156773945157,
+          "snr": 0.4187500062560615,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx9_ky10",
+          "q": 13.45362404707371,
+          "fisher_eigenvalue": 0.1692527486797519,
+          "snr": 0.411403389241936,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx10_ky9",
+          "q": 13.45362404707371,
+          "fisher_eigenvalue": 0.1692527486797519,
+          "snr": 0.411403389241936,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx8_ky11",
+          "q": 13.601470508735444,
+          "fisher_eigenvalue": 0.14702650061178565,
+          "snr": 0.38344034817919936,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx11_ky8",
+          "q": 13.601470508735444,
+          "fisher_eigenvalue": 0.14702650061178565,
+          "snr": 0.38344034817919936,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx7_ky12",
+          "q": 13.892443989449804,
+          "fisher_eigenvalue": 0.11137054402651834,
+          "snr": 0.3337222558153986,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx12_ky7",
+          "q": 13.892443989449804,
+          "fisher_eigenvalue": 0.11137054402651834,
+          "snr": 0.3337222558153986,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx10_ky10",
+          "q": 14.142135623730951,
+          "fisher_eigenvalue": 0.08769103485868576,
+          "snr": 0.2961267209467693,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx9_ky11",
+          "q": 14.212670403551895,
+          "fisher_eigenvalue": 0.08195573822779238,
+          "snr": 0.2862791264269758,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx11_ky9",
+          "q": 14.212670403551895,
+          "fisher_eigenvalue": 0.08195573822779238,
+          "snr": 0.2862791264269758,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx8_ky12",
+          "q": 14.422205101855956,
+          "fisher_eigenvalue": 0.06701758312608952,
+          "snr": 0.25887754465401114,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx12_ky8",
+          "q": 14.422205101855956,
+          "fisher_eigenvalue": 0.06701758312608952,
+          "snr": 0.25887754465401114,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx10_ky11",
+          "q": 14.866068747318506,
+          "fisher_eigenvalue": 0.04369871129188152,
+          "snr": 0.20904236721746508,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx11_ky10",
+          "q": 14.866068747318506,
+          "fisher_eigenvalue": 0.04369871129188152,
+          "snr": 0.20904236721746508,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx9_ky12",
+          "q": 15.0,
+          "fisher_eigenvalue": 0.038395076226842934,
+          "snr": 0.19594661575756528,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx12_ky9",
+          "q": 15.0,
+          "fisher_eigenvalue": 0.038395076226842934,
+          "snr": 0.19594661575756528,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx11_ky11",
+          "q": 15.556349186104045,
+          "fisher_eigenvalue": 0.022393563307189567,
+          "snr": 0.14964479044453757,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx10_ky12",
+          "q": 15.620499351813308,
+          "fisher_eigenvalue": 0.021040266685293612,
+          "snr": 0.1450526341894335,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx12_ky10",
+          "q": 15.620499351813308,
+          "fisher_eigenvalue": 0.021040266685293612,
+          "snr": 0.1450526341894335,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx11_ky12",
+          "q": 16.278820596099706,
+          "fisher_eigenvalue": 0.011076654659493878,
+          "snr": 0.10524568713013317,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx12_ky11",
+          "q": 16.278820596099706,
+          "fisher_eigenvalue": 0.011076654659493878,
+          "snr": 0.10524568713013317,
+          "stable": false
+        },
+        {
+          "mode_id": "stream_kx12_ky12",
+          "q": 16.97056274847714,
+          "fisher_eigenvalue": 0.005624599122307314,
+          "snr": 0.07499732743443138,
+          "stable": false
+        }
+      ]
+    }
+  },
+  "leakage_audit": {
+    "generated_domain_only": true,
+    "heldout_rows_used_for_tuning": false,
+    "hidden_rows_used_for_tuning": false,
+    "external_or_real_rows_used": false,
+    "blueprint_text_used_as_evidence": false
+  },
+  "run_audit": {
+    "fresh_full_run_completed": true,
+    "runtime_s": 0.01010839999980817,
+    "command": "uv run python src/run_all.py --config configs/default.json --out outputs"
+  },
+  "cannot_claim": [
+    "full current-density recovery",
+    "dark current modes are recovered",
+    "real QDM/NV validation",
+    "real CAD/Gerber/GDS validation",
+    "external FEM/FastHenry/COMSOL validation",
+    "finite-width conductor or package parasitic robustness",
+    "multi-layer chip current recovery under real layouts",
+    "that the Fourier thin-sheet generated result transfers to measured data"
+  ],
+  "next_required_evidence": [
+    "Move the certified observable-subspace split from diagonal Fourier modes to graph/Hodge/CAD-like current bases.",
+    "Add finite-width, registration, background, and external-solver rho terms to the Fisher threshold.",
+    "Validate the observable projection on independent solver rows and then real QDM/NV sanity-gated rows.",
+    "Combine E33 observable current modes with E30-E32 active pad reachability for observable-reachable current-mode inversion."
+  ],
+  "engineering_gates": {
+    "package_runs_to_completion": true,
+    "mode_table_constructed": true,
+    "single_height_protocol_executed": true,
+    "multi_height_protocol_executed": true,
+    "fisher_spectrum_reported": true,
+    "reports_written": true,
+    "generated_domain_boundary_explicit": true,
+    "no_external_or_real_data_used": true
+  },
+  "scientific_gates": {
+    "single_height_has_stable_modes": true,
+    "truth_contains_material_dark_energy": true,
+    "certified_stable_projection_rmse_below_gate": true,
+    "full_naive_inverse_is_worse_than_certified_projection": true,
+    "certified_inverse_does_not_hallucinate_dark_modes": true,
+    "stable_confidence_intervals_cover_truth": true,
+    "multi_height_expands_stable_current_subspace": true,
+    "multi_height_reduces_dark_energy_fraction": true
+  },
+  "acceptance_gates": {
+    "package_runs_to_completion": true,
+    "mode_table_constructed": true,
+    "single_height_protocol_executed": true,
+    "multi_height_protocol_executed": true,
+    "fisher_spectrum_reported": true,
+    "reports_written": true,
+    "generated_domain_boundary_explicit": true,
+    "no_external_or_real_data_used": true,
+    "single_height_has_stable_modes": true,
+    "truth_contains_material_dark_energy": true,
+    "certified_stable_projection_rmse_below_gate": true,
+    "full_naive_inverse_is_worse_than_certified_projection": true,
+    "certified_inverse_does_not_hallucinate_dark_modes": true,
+    "stable_confidence_intervals_cover_truth": true,
+    "multi_height_expands_stable_current_subspace": true,
+    "multi_height_reduces_dark_energy_fraction": true
+  },
+  "engineering_gates_passed": true,
+  "scientific_gates_passed": true,
+  "all_acceptance_gates_passed": true
+}

@@ -9,10 +9,11 @@ uv run --with-requirements requirements.txt python src/run_all.py --config confi
 uv run --with-requirements requirements.txt --with pytest pytest -q
 ```
 
-WSL CUDA:
+Windows GPU (cu128):
 
 ```powershell
-wsl -d Ubuntu -- bash -lc 'cd /mnt/d/code/github/hicancan/magnetic-system-identification-ssot/experiments/evidence/E04_topology_baseline && source ~/conda/etc/profile.d/conda.sh && conda activate quantum-dev && python src/run_all.py --config configs/default.json'
+uv pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128
+uv run python src/run_all.py --config configs/default.json
 ```
 
 Expected key outputs:

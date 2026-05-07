@@ -1,0 +1,28 @@
+{
+  "elapsed_s": 5.362208366394043,
+  "families_tested": 6,
+  "gates": {
+    "package_runs_to_completion": true,
+    "canonical_geometries_generated": true,
+    "volume_quadrature_runs": true,
+    "quadrature_convergence_reported": true,
+    "rho_decomposition_reported": true,
+    "no_fake_external_solver_claim": true,
+    "reports_written": true,
+    "generated_domain_boundary_explicit": true,
+    "volume_quadrature_relative_change_le_0_05": true,
+    "multifilament_beats_centerline_error": true,
+    "rho_finite_width_relative_below_centerline_surrogate": true,
+    "rho_combined_budget_finite": true,
+    "dominant_rho_source_identified": true,
+    "recommended_gamma_rho_available": true,
+    "all_engineering_gates_passed": true,
+    "all_scientific_gates_passed": true,
+    "all_acceptance_gates_passed": true
+  },
+  "dominant_rho_source": "four_layer_via_return_motif/rho_combined_conservative",
+  "recommended_rho_abs": 0.0023675359887411216,
+  "recommended_rho_rel": 0.1258809072188123,
+  "e23_verdict": "E23 rho was OVER-CONSERVATIVE: finite-width gap is small (median rel 0.09). The E23 surrogate inflated rho substantially. Recalibration with E25 volume quadrature reduces rho.",
+  "median_fw_rel": 0.0884583434180384
+}

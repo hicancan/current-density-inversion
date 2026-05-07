@@ -219,6 +219,35 @@ R10_multilayer_chip_like_pdn_graph:
     resistance, loads, via stacks, boundary ports, solved currents, and generated
     Bxyz fields.
   status: implemented
+R11_transfer_matrix_invariant:
+  type: representation
+  description: Magnetic transfer-matrix representations and nuisance-invariant summaries
+    such as whitened Gram, column-space projector, differential responses, and
+    observable quotient classes.
+  status: implemented
+R12_dual_schur_defect_signature:
+  type: representation
+  description: Local defect signature family S_e(B)=T(C+Delta C_e;B)-T(C;B)
+    evaluated under Schur-aligned active excitations and ordinary boundary-port
+    controls.
+  status: implemented
+R13_pad_schur_reachability:
+  type: representation
+  description: Exact pad-accessible Schur reachability ratio
+    osc_P(L^+ d_e)/(d_e^T L^+ d_e) and theorem-selected pad-pair active states
+    for candidate local defects.
+  status: implemented
+R14_pad_pitch_schur_phase_diagram:
+  type: representation
+  description: Pad-pitch, offset, and local-patch phase diagram of exact Schur
+    reachability floors across accessible pad sets for candidate local defects.
+  status: implemented
+R15_certified_observable_current_subspace:
+  type: representation
+  description: Fisher-stable current-mode subspace and complementary dark-mode
+    certificate for current-density inversion under a specified magnetic
+    observation protocol.
+  status: implemented
 A01_unet:
   type: algorithm
   description: Image-to-image U-Net baseline.
@@ -276,6 +305,37 @@ A14_pdn_physics_aware_learner:
   description: CPU baseline that learns generated PDN hypotheses from Bxyz features
     and derives predicted currents through graph/KCL projection instead of unconstrained
     edge-current regression.
+  status: implemented
+A15_transfer_matrix_observable_quotient:
+  type: algorithm
+  description: Transfer-matrix robust-margin algorithm that compares hypothesis
+    response operators through raw and invariant distances, subtracts noise and
+    nuisance radii, and certifies observable quotient classes.
+  status: implemented
+A16_dual_schur_active_defect_certificate:
+  type: algorithm
+  description: Active local-defect certificate that aligns graph injections with
+    candidate edge incidence directions, computes pairwise magnetic signatures,
+    subtracts directional noise and nuisance, and reports the critical current
+    needed for positive Gamma.
+  status: implemented
+A17_pad_schur_mode_synthesis:
+  type: algorithm
+  description: Pad-accessible active design that computes L^+ d_e over an
+    accessible pad set, selects max/min Schur pad pairs, and certifies the
+    resulting magnetic defect signatures with directional Gamma.
+  status: implemented
+A18_pad_pitch_reachability_audit:
+  type: algorithm
+  description: Design-for-test pad geometry audit that enumerates perimeter,
+    full-surface, candidate-local, top/bottom-local, regular-grid, and
+    nearest-grid pad sets and reports exact Schur reachability floors.
+  status: implemented
+A19_certified_current_projection_inverse:
+  type: algorithm
+  description: Current inversion algorithm that estimates only Fisher-stable
+    current modes, refuses dark modes, reports confidence intervals, and audits
+    full-inverse dark-mode hallucination.
   status: implemented
 S01_random_split:
   type: protocol
@@ -393,4 +453,46 @@ M17_predicted_current_closure_error:
   type: metric
   description: Current entering VDD plus current leaving GND error computed on model-predicted
     or projected PDN edge currents.
+  status: implemented
+M18_robust_margin_gamma:
+  type: metric
+  description: Pairwise robust margin Gamma after subtracting noise floor, nuisance
+    radii, and acceptance threshold from raw or invariant transfer-matrix distances.
+  status: implemented
+M19_observable_quotient_certificate:
+  type: metric
+  description: Positive-minimum-margin certificate over observable quotient classes,
+    with unresolved intra-quotient hard pairs explicitly reported.
+  status: implemented
+M20_directional_statistical_gamma:
+  type: metric
+  description: Directional matched-filter robust margin that subtracts noise and
+    nuisance projected onto each hypothesis-separation direction rather than a
+    full feature-space uncertainty ball.
+  status: implemented
+M21_dual_schur_defect_gamma:
+  type: metric
+  description: Pairwise local-defect robust margin under active Schur-aligned
+    excitation; defect-signature distance minus directional noise, directional
+    nuisance projections, and decision threshold.
+  status: implemented
+M22_pad_schur_reachability_ratio:
+  type: metric
+  description: Exact fraction of local dual-Schur voltage drop obtainable from
+    a specified accessible pad set under the same balanced current budget.
+  status: implemented
+M23_pad_pitch_reachability_floor:
+  type: metric
+  description: Minimum exact pad-Schur reachability ratio over candidate defects
+    for a pad-pitch, offset, or local-patch design family.
+  status: implemented
+M24_observable_current_subspace_fraction:
+  type: metric
+  description: Fraction of current modes whose Fisher/SNR eigenvalues exceed a
+    specified observable-current threshold under the observation protocol.
+  status: implemented
+M25_dark_current_hallucination_norm:
+  type: metric
+  description: Norm of current estimated in Fisher-dark modes by an inverse
+    method, used to audit unsupported full-map current recovery.
   status: implemented

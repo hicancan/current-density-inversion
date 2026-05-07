@@ -1,0 +1,22 @@
+{
+  "schema_version": "e26-active-port-gamma-config-v1",
+  "random_seed": 12345,
+  "layout_count": 24,
+  "port_count_min": 3,
+  "port_count_max": 8,
+  "grid_size": 8,
+  "grid_internal": 16,
+  "pixel_pitch_um": 5.0,
+  "layer_spacing_um": 2.0,
+  "sensor_height_um": 3.2,
+  "noise_sigma": 1e-11,
+  "max_selected_states": 4,
+  "candidate_state_count_min": 12,
+  "hypothesis_count": 4,
+  "operator_rho": 1e-13,
+  "gate_thresholds": {
+    "greedy_beats_random_margin": 0.10,
+    "truth_missing_max": 0.10,
+    "positive_gamma_min_rate": 0.50
+  }
+}

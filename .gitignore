@@ -17,3 +17,5 @@ experiments/evidence/**/outputs/**/*.pdf
 data/raw/
 data/generated/
 data/external/
+.claude/worktrees/
+*.log

@@ -1,0 +1,47 @@
+{
+  "schema": "layout-graph-import-v1",
+  "description": "Four-layer PDN-like layout with power straps, mesh layers, via stacks, and return grid for Graph-Hodge basis construction.",
+  "stackup": [
+    {"layer": "TOP", "z_top_um": 0.0, "z_bottom_um": -3.0, "material": "copper", "conductivity_sm": 5.8e7},
+    {"layer": "SIG1", "z_top_um": -8.0, "z_bottom_um": -11.0, "material": "copper", "conductivity_sm": 5.8e7},
+    {"layer": "SIG2", "z_top_um": -16.0, "z_bottom_um": -19.0, "material": "copper", "conductivity_sm": 5.8e7},
+    {"layer": "BOT", "z_top_um": -26.0, "z_bottom_um": -29.0, "material": "copper", "conductivity_sm": 5.8e7}
+  ],
+  "layers": [
+    {"name": "TOP", "type": "power_strap", "thickness_um": 3.0},
+    {"name": "SIG1", "type": "mesh", "thickness_um": 3.0},
+    {"name": "SIG2", "type": "mesh", "thickness_um": 3.0},
+    {"name": "BOT", "type": "return_grid", "thickness_um": 3.0}
+  ],
+  "nets": [
+    {"name": "VDD", "voltage": 1.0},
+    {"name": "GND", "voltage": 0.0}
+  ],
+  "ports": [
+    {"name": "vdd_port1", "layer": "TOP", "position_mm": {"x": 0.0, "y": -0.5}, "net": "VDD", "role": "source"},
+    {"name": "vdd_port2", "layer": "TOP", "position_mm": {"x": 0.0, "y": 0.5}, "net": "VDD", "role": "source"},
+    {"name": "gnd_port1", "layer": "BOT", "position_mm": {"x": 5.0, "y": -0.5}, "net": "GND", "role": "sink"},
+    {"name": "gnd_port2", "layer": "BOT", "position_mm": {"x": 5.0, "y": 0.5}, "net": "GND", "role": "sink"}
+  ],
+  "traces": [
+    {"name": "top_strap_h", "layer": "TOP", "points_mm": [{"x": 0.0, "y": -0.5}, {"x": 5.0, "y": -0.5}], "width_um": 200.0, "net": "VDD"},
+    {"name": "top_strap_h2", "layer": "TOP", "points_mm": [{"x": 0.0, "y": 0.5}, {"x": 5.0, "y": 0.5}], "width_um": 200.0, "net": "VDD"},
+    {"name": "sig1_mesh_h", "layer": "SIG1", "points_mm": [{"x": 1.0, "y": -0.3}, {"x": 4.0, "y": -0.3}], "width_um": 150.0, "net": "VDD"},
+    {"name": "sig1_mesh_h2", "layer": "SIG1", "points_mm": [{"x": 1.0, "y": 0.3}, {"x": 4.0, "y": 0.3}], "width_um": 150.0, "net": "VDD"},
+    {"name": "sig2_mesh_h", "layer": "SIG2", "points_mm": [{"x": 1.0, "y": -0.3}, {"x": 4.0, "y": -0.3}], "width_um": 150.0, "net": "VDD"},
+    {"name": "sig2_mesh_h2", "layer": "SIG2", "points_mm": [{"x": 1.0, "y": 0.3}, {"x": 4.0, "y": 0.3}], "width_um": 150.0, "net": "VDD"},
+    {"name": "bot_gnd1", "layer": "BOT", "points_mm": [{"x": 1.0, "y": -0.5}, {"x": 5.0, "y": -0.5}], "width_um": 200.0, "net": "GND"},
+    {"name": "bot_gnd2", "layer": "BOT", "points_mm": [{"x": 1.0, "y": 0.5}, {"x": 5.0, "y": 0.5}], "width_um": 200.0, "net": "GND"}
+  ],
+  "vias": [
+    {"name": "via_top_sig1_1", "from_layer": "TOP", "to_layer": "SIG1", "position_mm": {"x": 1.0, "y": -0.3}, "net": "VDD"},
+    {"name": "via_top_sig1_2", "from_layer": "TOP", "to_layer": "SIG1", "position_mm": {"x": 1.0, "y": 0.3}, "net": "VDD"},
+    {"name": "via_sig1_sig2_1", "from_layer": "SIG1", "to_layer": "SIG2", "position_mm": {"x": 4.0, "y": -0.3}, "net": "VDD"},
+    {"name": "via_sig1_sig2_2", "from_layer": "SIG1", "to_layer": "SIG2", "position_mm": {"x": 4.0, "y": 0.3}, "net": "VDD"},
+    {"name": "via_load1", "from_layer": "SIG2", "to_layer": "BOT", "position_mm": {"x": 1.0, "y": -0.5}, "net": "VDD"},
+    {"name": "via_load2", "from_layer": "SIG2", "to_layer": "BOT", "position_mm": {"x": 1.0, "y": 0.5}, "net": "VDD"}
+  ],
+  "return_planes": [
+    {"name": "gnd_grid", "layer": "BOT", "net": "GND", "outline_mm": [{"x": 0.0, "y": -1.0}, {"x": 5.5, "y": -1.0}, {"x": 5.5, "y": 1.0}, {"x": 0.0, "y": 1.0}]}
+  ]
+}

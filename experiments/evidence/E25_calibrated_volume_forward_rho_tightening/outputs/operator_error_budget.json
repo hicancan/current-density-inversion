@@ -1,0 +1,326 @@
+{
+  "evidence_id": "E25_calibrated_volume_forward_rho_tightening",
+  "generated_at": "2026-05-06T10:27:59.610981+00:00",
+  "rho_decomposition_by_family": {
+    "straight_strip": {
+      "components": {
+        "rho_finite_width_centerline_to_volume": {
+          "absolute_radius": 0.0016693470848614285,
+          "relative_radius": 0.09395208251682464
+        },
+        "rho_multifilament_to_volume": {
+          "absolute_radius": 0.0016540009255736861,
+          "relative_radius": 0.09308838937787627
+        },
+        "rho_centerline_to_multifilament": {
+          "absolute_radius": 0.0003463904238729124,
+          "relative_radius": 0.019495107986753513
+        },
+        "rho_combined_conservative": {
+          "absolute_radius": 0.003669738434308027,
+          "relative_radius": 0.20653557988145443
+        },
+        "rho_combined_rss": {
+          "absolute_radius": 0.0023753789334093234,
+          "relative_radius": 0.13368807456774337
+        }
+      },
+      "signal_scale": 0.017768069000093607
+    },
+    "parallel_strips": {
+      "components": {
+        "rho_finite_width_centerline_to_volume": {
+          "absolute_radius": 0.0016580401360382388,
+          "relative_radius": 0.08296460431925215
+        },
+        "rho_multifilament_to_volume": {
+          "absolute_radius": 0.0016429126328110543,
+          "relative_radius": 0.08220765803532176
+        },
+        "rho_centerline_to_multifilament": {
+          "absolute_radius": 0.00034625460355390764,
+          "relative_radius": 0.017325802646858814
+        },
+        "rho_combined_conservative": {
+          "absolute_radius": 0.0036472073724032007,
+          "relative_radius": 0.18249806500143273
+        },
+        "rho_combined_rss": {
+          "absolute_radius": 0.00235969304407292,
+          "relative_radius": 0.1180737398698812
+        }
+      },
+      "signal_scale": 0.01998490982561688
+    },
+    "rectangular_loop": {
+      "components": {
+        "rho_finite_width_centerline_to_volume": {
+          "absolute_radius": 0.00018754968193136862,
+          "relative_radius": 0.015500925177527828
+        },
+        "rho_multifilament_to_volume": {
+          "absolute_radius": 0.0001235415348124079,
+          "relative_radius": 0.010210670941819334
+        },
+        "rho_centerline_to_multifilament": {
+          "absolute_radius": 0.00023513041324953128,
+          "relative_radius": 0.019433458405308985
+        },
+        "rho_combined_conservative": {
+          "absolute_radius": 0.0005462216299933078,
+          "relative_radius": 0.04514505452465615
+        },
+        "rho_combined_rss": {
+          "absolute_radius": 0.0003251518187727977,
+          "relative_radius": 0.026873700676168594
+        }
+      },
+      "signal_scale": 0.01209925728841432
+    },
+    "vertical_via": {
+      "components": {
+        "rho_finite_width_centerline_to_volume": {
+          "absolute_radius": 4.071293882128599e-05,
+          "relative_radius": 0.01473580834149435
+        },
+        "rho_multifilament_to_volume": {
+          "absolute_radius": 3.45717966958496e-05,
+          "relative_radius": 0.012513058130423995
+        },
+        "rho_centerline_to_multifilament": {
+          "absolute_radius": 7.419576673075375e-05,
+          "relative_radius": 0.02685472063546984
+        },
+        "rho_combined_conservative": {
+          "absolute_radius": 0.00014948050224788934,
+          "relative_radius": 0.05410358710738818
+        },
+        "rho_combined_rss": {
+          "absolute_radius": 9.142080898247049e-05,
+          "relative_radius": 0.033089223195199885
+        }
+      },
+      "signal_scale": 0.0027628575153656834
+    },
+    "two_layer_trace_with_return": {
+      "components": {
+        "rho_finite_width_centerline_to_volume": {
+          "absolute_radius": 0.0036944471223151593,
+          "relative_radius": 0.1425980518244663
+        },
+        "rho_multifilament_to_volume": {
+          "absolute_radius": 0.0036340946092487626,
+          "relative_radius": 0.14026856908968954
+        },
+        "rho_centerline_to_multifilament": {
+          "absolute_radius": 0.0007920371244828433,
+          "relative_radius": 0.030571002151230958
+        },
+        "rho_combined_conservative": {
+          "absolute_radius": 0.008120578856046765,
+          "relative_radius": 0.3134376230653868
+        },
+        "rho_combined_rss": {
+          "absolute_radius": 0.0052424141361697785,
+          "relative_radius": 0.2023463911986887
+        }
+      },
+      "signal_scale": 0.0259081177831441
+    },
+    "four_layer_via_return_motif": {
+      "components": {
+        "rho_finite_width_centerline_to_volume": {
+          "absolute_radius": 0.29300910588654466,
+          "relative_radius": 0.9411164754466105
+        },
+        "rho_multifilament_to_volume": {
+          "absolute_radius": 0.30745757225519554,
+          "relative_radius": 0.9875235306244067
+        },
+        "rho_centerline_to_multifilament": {
+          "absolute_radius": 0.08630461291098242,
+          "relative_radius": 0.27720194180251123
+        },
+        "rho_combined_conservative": {
+          "absolute_radius": 0.6867712910527226,
+          "relative_radius": 2.2058419478735285
+        },
+        "rho_combined_rss": {
+          "absolute_radius": 0.4333970247696743,
+          "relative_radius": 1.392028685204808
+        }
+      },
+      "signal_scale": 0.31134202145116635
+    }
+  },
+  "nuisance_jacobian_radii": {
+    "rho_sensor_z": {
+      "absolute_radius": 0.0018573624340246662,
+      "relative_radius": 0.10453372474042515,
+      "bound": 1e-05
+    },
+    "rho_sensor_dx": {
+      "absolute_radius": 0.0008585932017732705,
+      "relative_radius": 0.048322257290240554,
+      "bound": 1e-05
+    },
+    "rho_sensor_dy": {
+      "absolute_radius": 0.0017220086454223273,
+      "relative_radius": 0.09691591390225102,
+      "bound": 1e-05
+    },
+    "rho_layer_z": {
+      "absolute_radius": 0.0009286812170123331,
+      "relative_radius": 0.05226686237021257,
+      "bound": 5e-06
+    },
+    "rho_width": {
+      "absolute_radius": 2.559518004528374e-05,
+      "relative_radius": 0.0014405155701021253,
+      "bound": 2e-06
+    },
+    "rho_thickness": {
+      "absolute_radius": 3.5951859184148444e-06,
+      "relative_radius": 0.00020233970941895284,
+      "bound": 1e-06
+    },
+    "rho_nuisance_combined_box": {
+      "absolute_radius": 0.005395835864196296,
+      "relative_radius": 0.30368161358265033,
+      "bound": null
+    },
+    "rho_nuisance_combined_rss": {
+      "absolute_radius": 0.0028311496099290468,
+      "relative_radius": 0.15933918367348368,
+      "bound": null
+    }
+  },
+  "comparison_summary": {
+    "straight_strip": {
+      "operator_frobenius": {
+        "centerline_vs_volume": 0.09395208251682464,
+        "multifilament_vs_volume": 0.09308838937787627,
+        "centerline_vs_multifilament": 0.019625641295364794
+      },
+      "rho_current_family": {
+        "centerline_vs_volume": {
+          "absolute": 1.6693470848614293e-06,
+          "relative": 0.09395208251682467
+        },
+        "multifilament_vs_volume": {
+          "absolute": 1.654000925573686e-06,
+          "relative": 0.09308838937787624
+        },
+        "centerline_vs_multifilament": {
+          "absolute": 3.4639042387291247e-07,
+          "relative": 0.019495107986753517
+        }
+      }
+    },
+    "parallel_strips": {
+      "operator_frobenius": {
+        "centerline_vs_volume": 0.09338101281837421,
+        "multifilament_vs_volume": 0.09254898401761812,
+        "centerline_vs_multifilament": 0.01945999019889317
+      },
+      "rho_current_family": {
+        "centerline_vs_volume": {
+          "absolute": 2.34482412783563e-06,
+          "relative": 0.1097466355228179
+        },
+        "multifilament_vs_volume": {
+          "absolute": 2.3234294811622227e-06,
+          "relative": 0.10874528516023305
+        },
+        "centerline_vs_multifilament": {
+          "absolute": 4.896875693899624e-07,
+          "relative": 0.022919229873116537
+        }
+      }
+    },
+    "rectangular_loop": {
+      "operator_frobenius": {
+        "centerline_vs_volume": 0.01655458218935036,
+        "multifilament_vs_volume": 0.010925387992761531,
+        "centerline_vs_multifilament": 0.02083676775664029
+      },
+      "rho_current_family": {
+        "centerline_vs_volume": {
+          "absolute": 3.751965979668346e-07,
+          "relative": 0.015365315828179385
+        },
+        "multifilament_vs_volume": {
+          "absolute": 2.467733475296022e-07,
+          "relative": 0.010106036257569104
+        },
+        "centerline_vs_multifilament": {
+          "absolute": 4.7032291299702715e-07,
+          "relative": 0.019260995804837908
+        }
+      }
+    },
+    "vertical_via": {
+      "operator_frobenius": {
+        "centerline_vs_volume": 0.01473580834149435,
+        "multifilament_vs_volume": 0.012513058130423995,
+        "centerline_vs_multifilament": 0.027049827712493008
+      },
+      "rho_current_family": {
+        "centerline_vs_volume": {
+          "absolute": 4.0712938821285987e-08,
+          "relative": 0.014735808341494348
+        },
+        "multifilament_vs_volume": {
+          "absolute": 3.45717966958496e-08,
+          "relative": 0.012513058130423993
+        },
+        "centerline_vs_multifilament": {
+          "absolute": 7.419576673075374e-08,
+          "relative": 0.026854720635469835
+        }
+      }
+    },
+    "two_layer_trace_with_return": {
+      "operator_frobenius": {
+        "centerline_vs_volume": 0.1589659595123886,
+        "multifilament_vs_volume": 0.15628763335650456,
+        "centerline_vs_multifilament": 0.03446509108233118
+      },
+      "rho_current_family": {
+        "centerline_vs_volume": {
+          "absolute": 3.612900155571507e-06,
+          "relative": 0.37731072867085813
+        },
+        "multifilament_vs_volume": {
+          "absolute": 3.5475419449140163e-06,
+          "relative": 0.3704850891497182
+        },
+        "centerline_vs_multifilament": {
+          "absolute": 7.577839034902279e-07,
+          "relative": 0.07913863779490934
+        }
+      }
+    },
+    "four_layer_via_return_motif": {
+      "operator_frobenius": {
+        "centerline_vs_volume": 0.9325437108798019,
+        "multifilament_vs_volume": 0.978171055048341,
+        "centerline_vs_multifilament": 2.844696224122458
+      },
+      "rho_current_family": {
+        "centerline_vs_volume": {
+          "absolute": 0.00045647747432241864,
+          "relative": 0.9445772319959227
+        },
+        "multifilament_vs_volume": {
+          "absolute": 0.0004781966734943595,
+          "relative": 0.9895202186470221
+        },
+        "centerline_vs_multifilament": {
+          "absolute": 0.00013402131603195428,
+          "relative": 0.27732690186701037
+        }
+      }
+    }
+  }
+}

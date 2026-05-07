@@ -76,12 +76,12 @@ a training or calibration split.
 
 PyPEEC 5.x exposes multiple FFT backends in its tolerance schema, including a
 `CuPy` backend for GPU FFTs. The default repository configuration uses
-`pypeec.solver.fft_library = "SciPy"` because it is the most portable backend and
-because the current Windows `uv` PyPEEC environment does not have `cupy`
-installed. If `fft_library` is changed to `CuPy`, the adapter checks for CuPy and
-fails loudly when it is missing instead of silently pretending to use the GPU.
-Current full-run metadata therefore represents CPU/SciPy PyPEEC solves unless a
-CuPy-enabled PyPEEC environment is installed explicitly.
+`pypeec.solver.fft_library = "SciPy"` because it is the most portable backend.
+If `fft_library` is changed to `CuPy`, install it via `uv pip install cupy`
+and the adapter checks for CuPy, failing loudly when it is missing instead of
+silently pretending to use the GPU. Current full-run metadata therefore
+represents CPU/SciPy PyPEEC solves unless a CuPy-enabled environment is
+installed explicitly.
 
 ## Current Result Boundary
 

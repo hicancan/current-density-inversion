@@ -1,0 +1,17 @@
+{
+  "seed": 20260506,
+  "grid_size": 12,
+  "sensor_z": 0.35,
+  "source_current": 1.0,
+  "kcl_residual_threshold": 1e-10,
+  "current_closure_threshold": 1e-10,
+  "basis_rank_tolerance": 1e-8,
+  "oqci_epsilon": 0.1,
+  "heights": [0.35, 0.70, 1.40],
+  "component_mode": "Bxyz",
+  "ensemble_count": 44,
+  "max_layouts": 44,
+  "n_adversarial_configs": 8,
+  "examples": [],
+  "hypotheses": ["H0_nominal", "H1_via_defect", "H2_return_bottleneck", "H3_bend_width_artifact"]
+}

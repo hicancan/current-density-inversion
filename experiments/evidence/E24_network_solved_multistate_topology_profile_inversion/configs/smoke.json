@@ -1,0 +1,32 @@
+{
+  "schema_version": "e24-network-profile-config-v1",
+  "random_seed": 24001,
+  "layout_count": 4,
+  "multiport_layout_count": 2,
+  "state_count": 2,
+  "hypothesis_count": 4,
+  "case_count_per_family": 2,
+  "noise_sigma": 0.005,
+  "grid_size_min": 5,
+  "grid_size_max": 7,
+  "layer_count": 2,
+  "sensor_heights_um": [3.2],
+  "sensor_grid_n": 8,
+  "sensor_pitch_um": 0.8,
+  "pixel_pitch_um": 1.0,
+  "layer_spacing_um": 1.2,
+  "regularization_lambda": 0.01,
+  "optimization_max_iter": 50,
+  "operator_stress_count": 4,
+  "families": ["H0_nominal", "H1_via", "H2_open", "H3_return"],
+  "epsilon_policy": {
+    "mode": "known_noise",
+    "c": 2.5
+  },
+  "operator_stress": [
+    {"class": "sensor_height_error", "magnitude": 5e-7},
+    {"class": "registration_gap", "magnitude": 5e-7},
+    {"class": "finite_width", "magnitude": 1e-5},
+    {"class": "deep_layer_shift", "magnitude": 5e-7}
+  ]
+}

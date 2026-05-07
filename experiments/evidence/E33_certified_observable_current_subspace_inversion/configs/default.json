@@ -1,0 +1,22 @@
+{
+  "schema_version": "e33-certified-observable-current-subspace-v1",
+  "random_seed": 33033,
+  "mode_k_max": 12,
+  "single_height": [0.9],
+  "multi_height": [0.55, 0.9],
+  "noise_sigma": 0.02,
+  "stable_snr_threshold": 6.0,
+  "coverage_z": 3.0,
+  "background_current_scale": 0.2,
+  "visible_current_scale": 0.8,
+  "dark_current_scale": 0.5,
+  "ridge_prior_precision": 36.0,
+  "acceptance": {
+    "min_single_stable_modes": 4,
+    "min_dark_truth_energy_fraction": 0.5,
+    "max_certified_stable_rmse": 0.12,
+    "min_full_to_certified_total_rmse_ratio": 10.0,
+    "max_certified_dark_hallucination_norm": 1.0e-12,
+    "min_stable_confidence_coverage": 0.95
+  }
+}

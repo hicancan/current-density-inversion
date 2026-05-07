@@ -1,0 +1,271 @@
+{
+  "schema_version": "research-ssot-metrics-v1",
+  "evidence_id": "E27_edge_defect_schur_magnetic_signature",
+  "claim": "C06_graph_hypothesis_system_identification",
+  "secondary_claims": [
+    "C02_single_plane_identifiability_boundary",
+    "C10_pdn_kcl_distribution_need",
+    "C13_calibration_protocol_reality"
+  ],
+  "timestamp_utc": "2026-05-06T11:20:28.924675+00:00",
+  "status": "passed_with_limitations",
+  "engineering_gates_passed": true,
+  "scientific_gates_passed": false,
+  "all_acceptance_gates_passed": false,
+  "engineering_gates": {
+    "package_runs_to_completion": true,
+    "laplacian_solve_valid": true,
+    "sherman_morrison_matches_direct_solve": true,
+    "candidate_edge_families_generated": true,
+    "edge_segment_forward_runs": true,
+    "schur_state_design_implemented": true,
+    "baselines_implemented": true,
+    "reports_written": true,
+    "generated_domain_boundary_explicit": true
+  },
+  "scientific_gates": {
+    "schur_states_beat_random_signal_by_2x": false,
+    "schur_states_beat_e26_generic_gamma": true,
+    "positive_edge_gamma_rate_ge_0_50": false,
+    "positive_pairwise_defect_gamma_rate_ge_0_30": false,
+    "via_return_pair_gamma_positive_rate_ge_0_50": false,
+    "truth_in_consistent_set_rate_ge_0_90": false,
+    "singleton_wrong_rate_eq_0": false,
+    "empty_rate_le_0_10": false
+  },
+  "acceptance_gates": {
+    "package_runs_to_completion": true,
+    "laplacian_solve_valid": true,
+    "sherman_morrison_matches_direct_solve": true,
+    "candidate_edge_families_generated": true,
+    "edge_segment_forward_runs": true,
+    "schur_state_design_implemented": true,
+    "baselines_implemented": true,
+    "reports_written": true,
+    "generated_domain_boundary_explicit": true,
+    "schur_states_beat_random_signal_by_2x": false,
+    "schur_states_beat_e26_generic_gamma": true,
+    "positive_edge_gamma_rate_ge_0_50": false,
+    "positive_pairwise_defect_gamma_rate_ge_0_30": false,
+    "via_return_pair_gamma_positive_rate_ge_0_50": false,
+    "truth_in_consistent_set_rate_ge_0_90": false,
+    "singleton_wrong_rate_eq_0": false,
+    "empty_rate_le_0_10": false
+  },
+  "operator_diagnostics": {
+    "shape": [
+      192,
+      640
+    ],
+    "edge_count": 640,
+    "node_count": 256,
+    "via_edges_nonzero": true,
+    "via_column_norm_min": 0.008374923741490148,
+    "via_column_norm_mean": 0.014054367410696602,
+    "sheet_column_norm_mean": 0.021871779360231772,
+    "laplacian_rank": 255,
+    "laplacian_condition": 1671.3547901938148,
+    "grounded_nodes": 255
+  },
+  "config": {
+    "grid_size": 8,
+    "layer_count": 4,
+    "noise_sigma": 0.025,
+    "case_count_per_family": 2,
+    "families": [
+      "via_insertion",
+      "via_removal",
+      "return_path_insertion",
+      "return_path_removal"
+    ],
+    "candidate_defect_families": [
+      "via_insertion",
+      "via_removal",
+      "return_path_insertion",
+      "return_path_removal"
+    ],
+    "schur_state_count": 4
+  },
+  "sherman_morrison_max_error": 2.149604629152107e-14,
+  "sherman_morrison_mean_error": 7.177857562430898e-15,
+  "sherman_morrison_valid": true,
+  "candidate_edge_sensitivity": {
+    "candidate_defect_count": 8,
+    "families_covered": 4,
+    "mean_edge_signal": 0.0034136390713508475,
+    "mean_edge_gamma": -0.07168877010078968,
+    "positive_edge_gamma_rate": 0.0
+  },
+  "schur_state_info": {
+    "state_count": 4,
+    "mean_signal": 0.0034136390713508475,
+    "mean_gamma": -0.07168877010078968,
+    "positive_gamma_rate": 0.0
+  },
+  "signal_gamma_improvement": {
+    "schur_mean_signal": 0.0034136390713508475,
+    "schur_mean_gamma": -0.07168877010078968,
+    "best_other_baseline_signal": 0.002053439818947526,
+    "best_other_baseline_gamma": -0.07300816337562091,
+    "signal_improvement_ratio": 1.66240034884513,
+    "gamma_improvement": 0.0013193932748312293,
+    "schur_positive_gamma_rate": 0.0
+  },
+  "baseline_summaries": [
+    {
+      "strategy": "random",
+      "state_count": 4,
+      "mean_signal": 0.0012979608728972071,
+      "mean_gamma": -0.07374097795328971,
+      "positive_gamma_rate": 0.0,
+      "defect_count": 8,
+      "best_defect_signal": 0.011079706182615414,
+      "best_defect_gamma": -0.06425268500286305
+    },
+    {
+      "strategy": "max_current_norm",
+      "state_count": 4,
+      "mean_signal": 0.0018995511283107168,
+      "mean_gamma": -0.07315743540553861,
+      "positive_gamma_rate": 0.0,
+      "defect_count": 8,
+      "best_defect_signal": 0.012083883753006744,
+      "best_defect_gamma": -0.06327863275958347
+    },
+    {
+      "strategy": "max_resistance_contrast",
+      "state_count": 4,
+      "mean_signal": 0.002053439818947526,
+      "mean_gamma": -0.07300816337562091,
+      "positive_gamma_rate": 0.0,
+      "defect_count": 8,
+      "best_defect_signal": 0.010910231311550634,
+      "best_defect_gamma": -0.06441707562779589
+    },
+    {
+      "strategy": "schur_voltage_drop",
+      "state_count": 4,
+      "mean_signal": 0.0034136390713508475,
+      "mean_gamma": -0.07168877010078968,
+      "positive_gamma_rate": 0.0,
+      "defect_count": 8,
+      "best_defect_signal": 0.024877939041412334,
+      "best_defect_gamma": -0.05086839912983004
+    },
+    {
+      "strategy": "oracle",
+      "state_count": 4,
+      "mean_signal": 0.0007256918179924855,
+      "mean_gamma": -0.0742960789365473,
+      "positive_gamma_rate": 0.0,
+      "defect_count": 8,
+      "best_defect_signal": 0.007439015854739123,
+      "best_defect_gamma": -0.06778415462090305
+    }
+  ],
+  "pairwise_gamma_summary": {
+    "pairwise_delta_mean": 0.010166481381945662,
+    "pairwise_delta_max": 0.025271619990068436,
+    "pairwise_delta_min": 0.00011757502604905075,
+    "pairwise_gamma_mean": -0.06544350750097108,
+    "pairwise_gamma_max": -0.051244677209335676,
+    "pairwise_gamma_min": -0.0748894794755139,
+    "positive_pairwise_gamma_rate": 0.0,
+    "total_pairs": 28,
+    "pairwise_gamma_matrix": {
+      "DEF_000_via_insertion__vs__DEF_001_via_insertion": -0.07444308413377239,
+      "DEF_000_via_insertion__vs__DEF_002_via_removal": -0.07456658937696731,
+      "DEF_000_via_insertion__vs__DEF_003_via_removal": -0.07469929004903708,
+      "DEF_000_via_insertion__vs__DEF_004_return_path_insertion": -0.0724449734858708,
+      "DEF_000_via_insertion__vs__DEF_005_return_path_insertion": -0.07472528907670149,
+      "DEF_000_via_insertion__vs__DEF_006_return_path_removal": -0.060155670659946495,
+      "DEF_000_via_insertion__vs__DEF_007_return_path_removal": -0.05154882022274584,
+      "DEF_001_via_insertion__vs__DEF_002_via_removal": -0.0746002107081514,
+      "DEF_001_via_insertion__vs__DEF_003_via_removal": -0.0744957047583898,
+      "DEF_001_via_insertion__vs__DEF_004_return_path_insertion": -0.0727438578588004,
+      "DEF_001_via_insertion__vs__DEF_005_return_path_insertion": -0.07451548713300322,
+      "DEF_001_via_insertion__vs__DEF_006_return_path_removal": -0.059815364013455816,
+      "DEF_001_via_insertion__vs__DEF_007_return_path_removal": -0.051742025454921466,
+      "DEF_002_via_removal__vs__DEF_003_via_removal": -0.07476637363642454,
+      "DEF_002_via_removal__vs__DEF_004_return_path_insertion": -0.07258368341164309,
+      "DEF_002_via_removal__vs__DEF_005_return_path_insertion": -0.07478873520664715,
+      "DEF_002_via_removal__vs__DEF_006_return_path_removal": -0.05997513463256515,
+      "DEF_002_via_removal__vs__DEF_007_return_path_removal": -0.05162067151303495,
+      "DEF_003_via_removal__vs__DEF_004_return_path_insertion": -0.07246038052069806,
+      "DEF_003_via_removal__vs__DEF_005_return_path_insertion": -0.0748894794755139,
+      "DEF_003_via_removal__vs__DEF_006_return_path_removal": -0.06007590786763013,
+      "DEF_003_via_removal__vs__DEF_007_return_path_removal": -0.05162857599671157,
+      "DEF_004_return_path_insertion__vs__DEF_005_return_path_insertion": -0.07241138611260292,
+      "DEF_004_return_path_insertion__vs__DEF_006_return_path_removal": -0.05793542202630017,
+      "DEF_004_return_path_insertion__vs__DEF_007_return_path_removal": -0.051244677209335676,
+      "DEF_005_return_path_insertion__vs__DEF_006_return_path_removal": -0.06013565212801893,
+      "DEF_005_return_path_insertion__vs__DEF_007_return_path_removal": -0.05160795166774435,
+      "DEF_006_return_path_removal__vs__DEF_007_return_path_removal": -0.05579781169055619
+    }
+  },
+  "per_family_edge_gamma": {
+    "via_insertion": {
+      "count": 2,
+      "mean_gamma": -0.07463286133219392,
+      "max_gamma": -0.07454689698091094,
+      "min_gamma": -0.0747188256834769,
+      "positive_rate": 0.0
+    },
+    "via_removal": {
+      "count": 2,
+      "mean_gamma": -0.07483813336825484,
+      "max_gamma": -0.07478766824768271,
+      "min_gamma": -0.07488859848882698,
+      "positive_rate": 0.0
+    },
+    "return_path_insertion": {
+      "count": 2,
+      "mean_gamma": -0.07366181330715874,
+      "max_gamma": -0.07239117266069978,
+      "min_gamma": -0.0749324539536177,
+      "positive_rate": 0.0
+    },
+    "return_path_removal": {
+      "count": 2,
+      "mean_gamma": -0.055240984091119785,
+      "max_gamma": -0.05086839912983004,
+      "min_gamma": -0.059613569052409526,
+      "positive_rate": 0.0
+    }
+  },
+  "consistent_set_metrics": {
+    "total_defects": 8,
+    "defects_in_consistent_set": 0,
+    "defects_in_consistent_set_rate": 0.0,
+    "singleton_wrong_count": 8,
+    "singleton_wrong_rate": 1.0,
+    "empty_count": 8,
+    "empty_rate": 1.0,
+    "truth_in_consistent_count": 0,
+    "truth_in_consistent_rate": 0.0
+  },
+  "leakage_audit": {
+    "generated_domain_only": true,
+    "heldout_rows_used_for_tuning": false,
+    "hidden_rows_used_for_tuning": false,
+    "external_or_real_rows_used": false,
+    "truth_visible_to_inference": false,
+    "blueprint_text_used_as_evidence": false
+  },
+  "run_audit": {
+    "fresh_full_run_completed": true,
+    "runtime_s": 3.2576699999990524,
+    "command": "python src/run_all.py --config <config> --out <out>"
+  },
+  "cannot_claim": [
+    "real QDM/NV validation",
+    "real CAD/Gerber/GDS validation",
+    "external FEM/FastHenry/COMSOL validation",
+    "real-board PDN/KCL robustness",
+    "Schur minimax with hardware port constraints (current limits, pad positions)",
+    "universal edge-defect detection",
+    "finite-width conductor corrections (multifilament)",
+    "multi-height sensor validation",
+    "generated-domain evidence transfers to real hardware"
+  ]
+}

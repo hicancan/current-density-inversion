@@ -52,13 +52,21 @@ Agent-native audit commands:
 
 ## Compute policy
 
-- Default to CPU for scripts, data processing, fitting, and evidence runs.
-- Only target GPU when the task is explicitly: deep learning, CUDA/PyTorch
-  acceleration, large matrix computation, or GPU-enabled simulation/rendering.
-- Do not assume GPU is faster by default.
-- GPU tasks use the WSL `quantum-dev` conda environment; entrypoint:
-  `wsl -d Ubuntu -- bash -lc 'source ~/conda/etc/profile.d/conda.sh && conda activate quantum-dev && python <script.py>'`
+- Select compute by the task itself. Use GPU when the workload is naturally
+  GPU-accelerated and expected to be materially faster on GPU; otherwise use
+  CPU.
+- Prefer GPU for deep learning training/inference, CUDA/PyTorch/JAX/CuPy
+  workloads, large dense or sparse matrix decompositions/solves, large batched
+  forward/operator evaluations, and GPU-enabled simulation/rendering.
+- Prefer CPU for small deterministic scripts, file/data plumbing, config work,
+  graph bookkeeping, light fitting, short tests, and workloads where data
+  transfer overhead likely dominates.
+- If uncertain, run or design a small benchmark/scale estimate before choosing
+  the expensive path. Do not assume GPU is faster by default.
+- GPU tasks use Windows-native `uv` with the cu128 PyTorch index:
+  `uv pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128`
 - Never hard-code CUDA; GPU must remain optional with CPU fallback.
+- CuPy/JAX GPU backends install via `uv pip install` in the project venv as needed.
 
 ## Core algorithm blueprint pool
 

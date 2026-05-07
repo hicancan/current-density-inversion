@@ -27,6 +27,6 @@ uv run python scripts/validate_graph.py
 ```
 
 GPU note: this smoke evidence uses closed-form CPU baselines. If a future run
-scales to PyTorch training large enough to exceed reasonable CPU time, use the
-WSL `quantum-dev` environment explicitly and record the command here.
+scales to PyTorch training large enough to exceed reasonable CPU time, install
+GPU PyTorch via `uv pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128` and record the command here.
 

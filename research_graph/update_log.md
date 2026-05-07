@@ -1,5 +1,437 @@
 # Update Log
 
+## 2026-05-07 - GPU environment migrated from WSL conda to Windows-native uv
+
+Claim affected:
+- None. Compute environment migration, not scientific evidence.
+
+Change type:
+- Migrated GPU PyTorch from WSL `quantum-dev` conda to Windows-native `uv pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128`
+- Verified: CUDA 12.8, RTX 5060 Laptop GPU, torch 2.11.0+cu128
+- Updated all project docs: AGENTS.md, worktree protocol, E07/E12 reproduce guides
+- CuPy/JAX GPU backends now install via `uv pip install` in project venv
+- Removed WSL-specific GPU entrypoint; everything is Windows-native
+
+Evidence:
+- `uv run python -c "import torch; print(torch.cuda.is_available())"` → True
+- `torch.cuda.get_device_name(0)` → "NVIDIA GeForce RTX 5060 Laptop GPU"
+
+Cannot claim:
+- GPU is always available (still requires NVIDIA driver + cu128-compatible GPU).
+
+Next required evidence:
+- None. This is infrastructure, not evidence.
+
+Files changed:
+- `AGENTS.md`
+- `docs/research_strategy/claude_worktree_breakthrough_protocol.md`
+- `experiments/evidence/E07_solver_bridge/README.md`
+- `experiments/evidence/E12_pdn_physics_learning/REPRODUCE.md`
+
+## 2026-05-06 - Compute policy clarified for CPU/GPU selection
+
+Claim affected:
+- None. This is an agent execution policy update, not scientific evidence.
+
+Change type:
+- Updated global and project agent instructions so GPU is selected when the
+  workload itself is naturally GPU-accelerated and materially faster on GPU
+- Preserved CPU as default for small scripts, metadata, IO, lightweight fitting,
+  and short tests
+- Documented WSL `quantum-dev` as the GPU environment and retained CPU fallback
+
+Evidence:
+- None. This does not support or upgrade any claim.
+
+Cannot claim:
+- A GPU run is more scientifically valid than CPU by default.
+- CUDA is always faster or always available.
+
+Next required evidence:
+- For future evidence packages using GPU, record the compute path and preserve
+  reproducible CPU fallback where feasible.
+
+Files changed:
+- `AGENTS.md`
+- `docs/research_strategy/claude_worktree_breakthrough_protocol.md`
+- global `C:\Users\yunca\.claude\CLAUDE.md`
+
+## 2026-05-06 - First-principles magnetic-current inversion breakthrough strategy
+
+Claim affected:
+- C02_single_plane_identifiability_boundary
+- C04_inverse_crime_and_operator_gap
+- C06_graph_hypothesis_system_identification
+- C10_pdn_kcl_distribution_need
+- C12_real_qdm_nv_validation
+- C13_calibration_protocol_reality
+
+Change type:
+- Strategic design document added under `docs/research_strategy/`
+- No new evidence package
+- No claim status change
+
+Evidence:
+- None. The document is a first-principles research strategy and cannot support
+  or upgrade claims.
+
+Cannot claim:
+- That the taxonomy is experimental validation.
+- That direction coverage proves practical recovery of all chip currents.
+- That generated-domain, external-solver, or real QDM/NV gaps are closed.
+
+Next required evidence:
+- Active OQCI measurement design over multi-height/multi-state/vector channels.
+- External-solver operator-gap validation.
+- Real QDM/NV simple-wire or known-via sanity rows.
+- CAD/GDS-derived Graph-Hodge current bases.
+
+Files changed:
+- `docs/research_strategy/current_inversion_breakthrough_first_principles.md`
+- `research_graph/overclaim_guardrails.md`
+- `research_graph/update_log.md`
+
+## 2026-05-06 - Claude worktree breakthrough protocol
+
+Claim affected:
+- C02_single_plane_identifiability_boundary
+- C04_inverse_crime_and_operator_gap
+- C06_graph_hypothesis_system_identification
+- C10_pdn_kcl_distribution_need
+- C12_real_qdm_nv_validation
+- C13_calibration_protocol_reality
+
+Change type:
+- Operating protocol added for future Claude Code worktree delegation
+- Requires `--effort max` for all Claude worker invocations
+- Establishes design-first, worktree-isolated, Codex-audited breakthrough loop
+- No new evidence package
+- No claim status change
+
+Evidence:
+- None. This is orchestration protocol, not scientific evidence.
+
+Cannot claim:
+- Claude worker output is evidence before Codex audit and research graph
+  registration.
+- Claude implementation success proves real validation.
+
+Next required evidence:
+- Write detailed algorithm design documents for the next top-level breakthrough
+  packages before launching workers.
+- Launch up to three `claude --effort max --worktree ...` workers on disjoint
+  scopes, then audit and iterate.
+
+Files changed:
+- `docs/research_strategy/claude_worktree_breakthrough_protocol.md`
+- `research_graph/overclaim_guardrails.md`
+- `research_graph/update_log.md`
+
+## 2026-05-06 - Top-level breakthrough design documents E20/E21/E23
+
+Claim affected:
+- C02_single_plane_identifiability_boundary
+- C04_inverse_crime_and_operator_gap
+- C06_graph_hypothesis_system_identification
+- C10_pdn_kcl_distribution_need
+- C12_real_qdm_nv_validation
+- C13_calibration_protocol_reality
+
+Change type:
+- Three detailed algorithm blueprint documents added before implementation
+- E20 targets active OQCI measurement design
+- E21 targets external-solver/operator-gap ladder
+- E23 targets CAD/GDS-derived Graph-Hodge current basis
+- No new evidence package
+- No claim status change
+
+Evidence:
+- None. These are implementation blueprints for Claude worktree workers.
+
+Cannot claim:
+- The design documents validate the algorithms.
+- The planned packages close real QDM/NV, real CAD/GDS, or external-solver gaps
+  before implementation and audit.
+
+Next required evidence:
+- Launch `claude --effort max --worktree ...` workers on E20, E21, and E23.
+- Audit worker outputs and iterate until evidence packages produce useful
+  metrics or preserved failure modes.
+
+Files changed:
+- `docs/algorithm_blueprints/E20_active_oqci_measurement_design.md`
+- `docs/algorithm_blueprints/E21_external_solver_operator_gap_ladder.md`
+- `docs/algorithm_blueprints/E23_cad_gds_graph_hodge_basis.md`
+- `research_graph/update_log.md`
+
+## 2026-05-06 - Round-2 worker directives after E20/E21/E23 audit
+
+Claim affected:
+- C02_single_plane_identifiability_boundary
+- C04_inverse_crime_and_operator_gap
+- C06_graph_hypothesis_system_identification
+- C10_pdn_kcl_distribution_need
+- C12_real_qdm_nv_validation
+- C13_calibration_protocol_reality
+
+Change type:
+- Added three round-2 directive documents after auditing first Claude worker
+  outputs
+- E20 round 2 targets epsilon sweep and multi-state active OQCI
+- E21 round 2 targets stronger operator perturbation and PyPEEC attempt
+- E23 round 2 targets projected KCL-compatible Graph-Hodge blocks and
+  multi-height OQCI
+- No new evidence integrated into main worktree
+- No claim status change
+
+Evidence:
+- None in main worktree. First worker outputs remain in isolated worktrees until
+  audited and integrated.
+
+Cannot claim:
+- Round-1 worker outputs are registered evidence.
+- Round-2 directives validate any algorithm.
+
+Next required evidence:
+- Resume the three Claude workers with `--effort max` using these directives.
+- Audit round-2 outputs before any integration.
+
+Files changed:
+- `docs/algorithm_blueprints/E20_round2_epsilon_multistate_directive.md`
+- `docs/algorithm_blueprints/E21_round2_pypeec_decision_instability_directive.md`
+- `docs/algorithm_blueprints/E23_round2_projected_multheight_hodge_directive.md`
+- `research_graph/update_log.md`
+
+## 2026-05-06 - Round-3 decisive validation directives
+
+Claim affected:
+- C02_single_plane_identifiability_boundary
+- C04_inverse_crime_and_operator_gap
+- C06_graph_hypothesis_system_identification
+- C10_pdn_kcl_distribution_need
+
+Change type:
+- Added three round-3 directive documents after auditing round-2 outputs
+- E20 round 3 tests whether the multi-state signal is real using truth coverage,
+  singleton correctness, and empty-set separation
+- E21 round 3 fixes mechanism-instability reporting and adds a stronger
+  template/nonlinear scorer
+- E23 round 3 replaces pseudoinverse projection with SVD nullspace projection
+  and tests multi-state Graph-Hodge OQCI
+- No new evidence integrated into main worktree
+- No claim status change
+
+Evidence:
+- None in main worktree. Worker outputs remain isolated until audited and
+  integrated.
+
+Cannot claim:
+- The E20 round-2 interval shrink is a breakthrough before truth coverage is
+  audited.
+- E21 mechanism instability is fully reported until report/metrics consistency
+  is fixed.
+- E23 Graph-Hodge projection is KCL-safe until SVD projection passes.
+
+Next required evidence:
+- Resume the three Claude workers with `--effort max` using these round-3
+  directives.
+- Audit whether E20 produces nonempty singleton-correct consistent sets.
+
+Files changed:
+- `docs/algorithm_blueprints/E20_round3_truth_coverage_directive.md`
+- `docs/algorithm_blueprints/E21_round3_nonlinear_report_fix_directive.md`
+- `docs/algorithm_blueprints/E23_round3_svd_multistate_graph_hodge_directive.md`
+- `research_graph/update_log.md`
+
+## 2026-05-06 - Round-4 robustness directives for generated-domain signal
+
+Claim affected:
+- C02_single_plane_identifiability_boundary
+- C04_inverse_crime_and_operator_gap
+- C06_graph_hypothesis_system_identification
+- C10_pdn_kcl_distribution_need
+
+Change type:
+- Added three round-4 directive documents after auditing round-3 worker outputs
+- E23 round 4 stress-tests the first credible generated-domain signal using
+  per-layout hard-case metrics, finite-width/operator perturbations, and
+  port-feasible multi-state separation
+- E20 round 4 tests whether regularized/reduced-basis consistent sets can
+  remove empty-set discrimination and improve truth coverage
+- E21 round 4 tests a ridge evidence scorer and margin-refusal policy under
+  operator gap
+- No new evidence integrated into main worktree
+- No claim status change
+
+Evidence:
+- None in main worktree. These are implementation directives for Claude
+  workers and cannot support claims by themselves.
+
+Cannot claim:
+- The E23 round-3 multi-state Graph-Hodge signal is robust until per-layout
+  hard-case and finite-width stress gates pass.
+- E20 active OQCI is a breakthrough unless nonempty singleton-correct
+  consistent sets dominate under calibrated epsilon.
+- E21 operator-gap mitigation works unless a stronger scorer survives
+  cross-operator shifts with bounded wrong accepts.
+
+Next required evidence:
+- Resume the three Claude workers with `--effort max` using these round-4
+  directives.
+- Audit whether E23 keeps H1/H2 separation under finite-width and
+  port-feasible excitation states.
+- Keep all generated-domain claims separated from real CAD/GDS, PyPEEC, and
+  real QDM/NV validation.
+
+Files changed:
+- `docs/algorithm_blueprints/E20_round4_regularized_consistent_set_directive.md`
+- `docs/algorithm_blueprints/E21_round4_ridge_evidence_scorer_directive.md`
+- `docs/algorithm_blueprints/E23_round4_min_perlayout_finitewidth_directive.md`
+- `research_graph/update_log.md`
+
+## 2026-05-06 - Round-5 theorem-driven mathematical directives
+
+Claim affected:
+- C02_single_plane_identifiability_boundary
+- C04_inverse_crime_and_operator_gap
+- C06_graph_hypothesis_system_identification
+- C10_pdn_kcl_distribution_need
+- C12_real_qdm_nv_validation
+- C13_calibration_protocol_reality
+
+Change type:
+- Added a top-level mathematical breakthrough program for magnetic-field to
+  current inversion
+- Added three round-5 Claude worker directives with explicit formulas for
+  Graph-Hodge KCL affine current spaces, OQCI observation manifolds, pairwise
+  affine separation, robust operator/noise margins, active port-excitation
+  design, and operator-gap certificates
+- E23 round 5 targets robust observable-quotient certification over a generated
+  layout ensemble and adversarial perturbations
+- E20 round 5 targets pairwise-margin active measurement design
+- E21 round 5 targets multi-basis operator-gap margin certificates
+- No new evidence integrated into main worktree
+- No claim status change
+
+Evidence:
+- None. These are theorem-driven design documents and worker directives, not
+  experimental evidence.
+
+Cannot claim:
+- The mathematical program proves practical current recovery without runnable
+  evidence.
+- The E23 generated-domain signal is robust until positive margins survive
+  layout ensemble, port-feasible excitation, and adversarial perturbation gates.
+- E20/E21 improvements support real QDM/NV, real CAD/GDS, or external-solver
+  validation before those data/artifacts are added.
+
+Next required evidence:
+- Resume the three Claude workers with `--effort max` using the round-5
+  directives.
+- Audit robust margins rather than raw distance gains.
+- Treat a negative E20/E21 result as useful boundary evidence if it is
+  mathematically quantified and cannot-claim guarded.
+
+Files changed:
+- `docs/research_strategy/current_inversion_mathematical_breakthrough_program.md`
+- `docs/algorithm_blueprints/E20_round5_pairwise_margin_active_design_directive.md`
+- `docs/algorithm_blueprints/E21_round5_multibasis_operator_gap_certificate_directive.md`
+- `docs/algorithm_blueprints/E23_round5_robust_observable_quotient_certificate_directive.md`
+- `research_graph/update_log.md`
+
+## 2026-05-06 - E24/E25/E26 high-density breakthrough directives
+
+Claim affected:
+- C02_single_plane_identifiability_boundary
+- C04_inverse_crime_and_operator_gap
+- C06_graph_hypothesis_system_identification
+- C10_pdn_kcl_distribution_need
+- C13_calibration_protocol_reality
+
+Change type:
+- Added three dense mathematical directives for the next breakthrough cycle
+- E24 targets network-solved multi-state topology profile inversion where all
+  excitation states share one topology and one conductance vector
+- E25 targets calibrated volume forward modeling and operator-radius
+  decomposition to replace crude finite-width uncertainty penalties
+- E26 targets active port-state design that optimizes robust profile margin
+  rather than raw distance, entropy, or top-1 accuracy
+- Added guardrails that raw generated-domain distance and network-profile
+  success do not constitute real chip reverse-analysis validation
+- No new evidence integrated into main worktree
+- No claim status change
+
+Evidence:
+- None. These are design directives for Claude workers and cannot support
+  claims by themselves.
+
+Cannot claim:
+- E24/E25/E26 design text proves a current-inversion breakthrough.
+- A generated positive distance is a breakthrough before the robust margin
+  remains positive after noise, calibration, and operator-radius subtraction.
+- Network-solved generated topology inversion proves real chip reverse analysis
+  before real layout, external solver, and measured QDM/NV gates.
+
+Next required evidence:
+- Launch `claude --effort max` workers on E24, E25, and E26 in isolated
+  worktrees.
+- Audit whether E24 produces profile separation from shared conductance
+  constraints, whether E25 tightens or confirms the operator radius, and whether
+  E26 finds port states that improve certified Gamma.
+
+Files changed:
+- `docs/algorithm_blueprints/E24_network_solved_multistate_topology_profile_inversion.md`
+- `docs/algorithm_blueprints/E25_calibrated_volume_forward_rho_tightening.md`
+- `docs/algorithm_blueprints/E26_active_port_state_gamma_design.md`
+- `research_graph/overclaim_guardrails.md`
+- `research_graph/update_log.md`
+
+## 2026-05-06 - E27/E28/E29 Schur-signature breakthrough directives
+
+Claim affected:
+- C02_single_plane_identifiability_boundary
+- C04_inverse_crime_and_operator_gap
+- C06_graph_hypothesis_system_identification
+- C10_pdn_kcl_distribution_need
+- C13_calibration_protocol_reality
+
+Change type:
+- Added three high-density directives after auditing E24/E25/E26 outputs
+- E27 targets edge-defect Schur/Sherman-Morrison magnetic signatures, using
+  analytic network perturbation to design defect-sensitive port states
+- E28 targets magnetic transfer-matrix invariants, including projector, Gram,
+  and differential common-mode cancellation representations
+- E29 targets rho-integrated conservative/RSS Schur Gamma certificates using
+  E25-style calibrated operator-radius budgets
+- No new evidence integrated into the research graph
+- No claim status change
+
+Evidence:
+- None in main research graph. E24/E25/E26 worker outputs remain implementation
+  material until audited, migrated if needed, and registered.
+
+Cannot claim:
+- E24 shared-network smoke output is a breakthrough; profile gaps remained too
+  small and robust Gamma stayed negative.
+- E25 operator-radius calibration alone creates current-inversion
+  identifiability.
+- E26 active port-state search solves topology diagnosis; generic states did
+  not produce positive Gamma.
+- E27/E28/E29 design text proves a breakthrough before runnable evidence and
+  robust certificates exist.
+
+Next required evidence:
+- Launch `claude --effort max` workers on E27, E28, and E29.
+- Prioritize positive conservative Gamma, not raw signal energy.
+- If conservative Gamma fails but raw/RSS gains pass, preserve the boundary
+  rather than upgrading claims.
+
+Files changed:
+- `docs/algorithm_blueprints/E27_edge_defect_schur_magnetic_signature.md`
+- `docs/algorithm_blueprints/E28_magnetic_transfer_matrix_observable_invariants.md`
+- `docs/algorithm_blueprints/E29_rho_integrated_schur_gamma_certificate.md`
+- `research_graph/update_log.md`
+
 ## 2026-05-05 - E19.2 OQCI identifiability audit
 
 - E19.2_observable_quotient_identifiability_audit implemented as new evidence package
@@ -790,3 +1222,396 @@ Cannot claim:
 Next required evidence:
 - replace hand-authored layout JSON with actual CAD/Gerber/GDS parsing.
 - validate a small generated/CAD-like subset against independent external solvers.
+# 2026-05-06: E01-E29 critical review and next breakthrough direction
+
+- Added `docs/research_strategy/E01_E29_critical_review_next_breakthrough.md`.
+- Scope: strategic mathematical audit only; not evidence and not claim support.
+- Main conclusion: no E01-E29 package is yet a claim-level major
+  current-inversion breakthrough.
+- Strongest next candidate identified as transfer-operator observable quotient
+  inversion: multi-state port-to-magnetic transfer Gram invariants plus
+  Graph-Hodge/KCL/network bases, E25-style calibrated rho, hard-case
+  layout-ensemble certification, and active port-state design.
+- Audit risks recorded in the document include E28 best-invariant/gate
+  inconsistency, E25 over-lenient convergence gate, E26 metric inconsistency,
+  and E29 split-discipline failure.
+- Claim status unchanged.
+
+# 2026-05-06: E28 transfer-matrix Gram quotient evidence
+
+Claim affected:
+- `C02_single_plane_identifiability_boundary`
+- secondary: `C06_graph_hypothesis_system_identification`,
+  `C04_inverse_crime_and_operator_gap`, `C10_pdn_kcl_distribution_need`
+
+Evidence added:
+- `E28_magnetic_transfer_matrix_observable_invariants`
+
+Change type:
+- New generated-domain evidence package.
+- Fixed best-invariant selection to exclude raw observations and bind gates to
+  one selected invariant.
+- Added deterministic nuisance seeding, observable quotient certificate, and
+  gain-only hard-case sweep.
+
+Metrics:
+- selected invariant: Gram.
+- Gram positive full-pair Gamma rate: 5/6 = 0.8333333333.
+- Gram observable quotient Q0={H0}, Q12={H1,H2}, Q3={H3}: all cross-quotient
+  margins positive; min Gamma = 0.4511206603.
+- H1_via vs H2_model_gap remains unresolved; Gram Gamma = -0.1286141869.
+- Gain-only hardcase sweep: 3/5 rows where raw quotient fails but Gram quotient
+  remains positive; first gain = 0.08; max tested positive Gram quotient gain =
+  0.18.
+- Consistent-set truth-in-consistent rate: 1.0; singleton wrong rate: 0.0.
+- Engineering and scientific gates pass under the revised E28 gates.
+
+Claim status change:
+- `C02_single_plane_identifiability_boundary` remains `supported`.
+- E28 adds medium generated-domain support for quotient identifiability and
+  strong limitations against full four-hypothesis separability.
+
+Cannot claim:
+- full H0/H1/H2/H3 robust separability.
+- H1_via versus H2_model_gap separation.
+- real QDM/NV validation.
+- real CAD/Gerber/GDS validation.
+- external solver validation.
+- real chip reverse analysis.
+
+Next required evidence:
+- Broader layout ensemble hard cases.
+- External-solver held-out transfer matrices.
+- Real-calibrated gain, standoff, registration, background, and noise nuisance.
+- Richer hypotheses or observations that could split H1_via from
+  H2_model_gap.
+
+# 2026-05-06: E01-E29 deep replay and next breakthrough strategy
+
+Change type:
+- Strategic audit document added; not evidence and not claim support.
+
+Files changed:
+- `docs/research_strategy/E01_E29_deep_replay_next_major_breakthrough.md`
+
+Conclusion:
+- E28 is the only current positive major-breakthrough candidate, but only for
+  an observable quotient Q0={H0}, Q12={H1,H2}, Q3={H3}.
+- E20/E21/E23/E24/E26/E27/E29 remain negative, partial, or provisional for
+  claim-level breakthrough purposes.
+- The next most likely major breakthrough is an E28-centered calibrated
+  transfer-operator quotient certificate: transfer-matrix Gram invariant,
+  E25-style rho, family-heldout hard cases, Graph-Hodge/shared-network physics,
+  and active port states scored by robust invariant Gamma.
+
+Cannot claim:
+- new experimental evidence.
+- claim status upgrade.
+- real QDM/NV, real CAD/GDS, or external solver validation.
+- full H0/H1/H2/H3 separability.
+
+# 2026-05-06: E28 H1/H2 phase-diagram audit
+
+Claim affected:
+- `C02_single_plane_identifiability_boundary`
+- secondary: `C06_graph_hypothesis_system_identification`,
+  `C04_inverse_crime_and_operator_gap`, `C10_pdn_kcl_distribution_need`
+
+Evidence updated:
+- `E28_magnetic_transfer_matrix_observable_invariants`
+
+Change type:
+- Added parameterized H2 model-gap controls:
+  `h2_via_factor`, `h2_sheet_jitter`, `h2_sheet_jitter_seed`.
+- Added `H1_H2_PHASE_DIAGRAM.md` and top-level
+  `h1_h2_phase_diagram` metrics.
+- The phase diagram sweeps 32 generated-domain H2 via-factor/sheet-jitter rows
+  and evaluates the same robust Gram Gamma with an explicit reduced nuisance
+  budget.
+
+Metrics:
+- E28 status remains `passed`; engineering and scientific gates pass.
+- Gram observable quotient Q0={H0}, Q12={H1,H2}, Q3={H3} remains all-positive.
+- H1/H2 phase rows with positive Gram Gamma: 0/32.
+- Default H1/H2 row: Gamma = -0.0948871365.
+- Default zero-noise H1/H2 row: Gamma = -0.0138906779.
+- Default required eps+rho for H1/H2: <= 0.0028658462.
+- Default observed eps+rho for H1/H2: 0.0977529827.
+- Gram quotient survival across phase rows: 1.0.
+
+Claim status change:
+- `C02_single_plane_identifiability_boundary` remains `supported`.
+- E28's positive support remains the observable quotient, not full
+  H0/H1/H2/H3 separability.
+
+Cannot claim:
+- H1_via versus H2_model_gap separation under the default generated row.
+- that the phase-diagram axes span all real model-gap mechanisms.
+- real QDM/NV validation, real CAD/GDS validation, external solver validation,
+  or real chip reverse analysis.
+
+Next required evidence:
+- Stop treating default H1/H2 splitting as the next likely breakthrough under
+  the same observation/Gram setup.
+- Prioritize broader quotient certification, calibrated nuisance/rho tightening,
+  external-solver transfer matrices, and real-calibrated observation nuisance.
+
+# 2026-05-06: E28 directional statistical Gamma certificate
+
+Claim affected:
+- `C02_single_plane_identifiability_boundary`
+- secondary: `C06_graph_hypothesis_system_identification`,
+  `C04_inverse_crime_and_operator_gap`, `C10_pdn_kcl_distribution_need`
+
+Evidence updated:
+- `E28_magnetic_transfer_matrix_observable_invariants`
+
+Change type:
+- Added `DIRECTIONAL_STATISTICAL_CERTIFICATE.md`.
+- Added `directional_statistical_certificate` metrics.
+- Added `M20_directional_statistical_gamma`.
+- Implemented raw and Gram directional matched-filter margins:
+  hypothesis separation `delta` minus z-threshold directional noise, directional
+  nuisance, and tau.
+
+Metrics:
+- E28 status remains `passed`; engineering and scientific gates pass.
+- Baseline selected Gram quotient min Gamma: 0.4511206603.
+- Directional Gram quotient min Gamma: 0.5323884196.
+- Directional Gram quotient improvement: +0.0812677593.
+- Directional Gram quotient all-positive: true.
+- Directional Gram H1/H2 Gamma: -0.0560703448.
+- Directional raw H1/H2 Gamma: -0.2327572519.
+
+Claim status change:
+- `C02_single_plane_identifiability_boundary` remains `supported`.
+- The update sharpens the quotient certificate but does not upgrade to full
+  H0/H1/H2/H3 separability.
+
+Cannot claim:
+- H1_via versus H2_model_gap separation.
+- real detection risk control.
+- real QDM/NV validation, real CAD/GDS validation, external solver validation,
+  or real chip reverse analysis.
+
+Next required evidence:
+- Test whether directional Gamma survives broader layout ensembles and
+  external-solver transfer matrices.
+- Treat H1/H2 splitting as requiring new physical information, not merely
+  tighter full-ball-to-directional statistical accounting.
+
+# 2026-05-06: E30 dual-Schur active local defect certificate
+
+Claim affected:
+- `C06_graph_hypothesis_system_identification`
+- secondary: `C02_single_plane_identifiability_boundary`,
+  `C04_inverse_crime_and_operator_gap`, `C10_pdn_kcl_distribution_need`,
+  `C11_mechanism_level_explanation`
+
+Evidence added:
+- `E30_dual_schur_active_defect_certificate`
+
+Change type:
+- Added a generated-domain local via-open defect certificate using E28's
+  transfer-matrix forward operator.
+- Compared ordinary boundary diagonal ports against local dual Schur endpoint
+  excitations.
+- Added the current-budget law
+  `Gamma_ij(I) = I*s_ij - z*sigma - rho_i(I) - rho_j(I) - tau`.
+
+Metrics:
+- E30 status: `passed`; engineering and scientific gates pass.
+- Candidate defects: 8 central via-open candidates.
+- Pairwise dual Schur certificates: 28/28 positive.
+- Boundary control min Gamma without nuisance: -0.06399999999.
+- Perimeter-boundary upper-bound min Gamma without nuisance: -0.06399999992.
+- Dual Schur min Gamma after noise/nuisance/tau: 0.1348041937.
+- Truth pairwise certified rate: 1.0.
+- Dual critical amplitude: 16.09623992 under configured amplitude 50.
+- Boundary optimistic critical amplitude: 3.191177882e11.
+- Perimeter-boundary optimistic critical amplitude: 4.117612711e10.
+
+Claim status change:
+- `C06_graph_hypothesis_system_identification` remains `supported_generated`
+  but gains a positive local-access defect-signature certificate.
+- `C02_single_plane_identifiability_boundary` remains `supported` with a new
+  active-measurement boundary: local Schur access changes observability, while
+  ordinary boundary ports remain negative for the E30 control.
+
+Cannot claim:
+- pad-feasible active probing.
+- arbitrary current recovery or real chip reverse analysis.
+- real QDM/NV validation, real CAD/GDS validation, or external solver
+  validation.
+- H1_via versus H2_model_gap separation.
+- via-short, return-path, dense-cluster, finite-width, or real mechanism-level
+  explanation.
+
+Next required evidence:
+- Constrain dual Schur endpoint patterns to real pad-accessible boundary ports.
+- Repeat over broader generated layout ensembles and non-central defect
+  families.
+- Add finite-width, registration, layer-z, and external-solver rho components.
+- Validate against CAD/GDS-derived graph candidates and independent solver rows.
+
+# 2026-05-06: E31 pad-Schur reachability certificate
+
+Claim affected:
+- `C06_graph_hypothesis_system_identification`
+- secondary: `C02_single_plane_identifiability_boundary`,
+  `C04_inverse_crime_and_operator_gap`, `C10_pdn_kcl_distribution_need`
+
+Evidence added:
+- `E31_pad_schur_reachability_certificate`
+
+Change type:
+- Added exact pad reachability theorem:
+  `eta_e(P)=osc_P(L^+ d_e)/(d_e^T L^+ d_e)`.
+- Added theorem-selected max/min pad-pair synthesis for top candidate-projection
+  surface pads plus a reference pad.
+- Added finite-difference magnetic directional Gamma certificate with
+  height/gain nuisance subtraction.
+
+Metrics:
+- E31 status: `passed`; engineering and scientific gates pass.
+- Candidate defects: 8 central via-open candidates.
+- Perimeter pad reachability min ratio: 2.48821324e-09.
+- Top candidate-projection surface pad reachability min ratio: 0.4767196129.
+- Pad-Schur pairwise certificates: 28/28 positive.
+- Pad-Schur min Gamma after nuisance: 0.01963293336.
+- Truth pairwise certified rate: 1.0.
+- Pad-Schur critical amplitude: 38.26243887 under configured amplitude 50.
+- Negative control top-candidate reference-basis min Gamma: -0.004862585689.
+
+Claim status change:
+- `C06_graph_hypothesis_system_identification` remains `supported_generated`
+  but now has a positive generated-domain pad-accessible Schur synthesis result,
+  not only a local endpoint-access upper bound.
+- `C02_single_plane_identifiability_boundary` gains a sharper active-access
+  boundary: perimeter pads are provably near-null for the E31 central via-open
+  set, while candidate-projection surface pads are sufficient in the generated
+  model.
+
+Cannot claim:
+- real pad availability or package/contact parasitic robustness.
+- perimeter-only probing works.
+- arbitrary current recovery or real chip reverse analysis.
+- real QDM/NV validation, real CAD/GDS validation, or external solver
+  validation.
+
+Next required evidence:
+- Add realistic pad pitch/current/contact/package constraints.
+- Stress over broader/non-central defect families and layout ensembles.
+- Add finite-width, registration, layer-z, and external-solver rho.
+- Validate on CAD/GDS-derived graph candidates and independent solver rows.
+
+# 2026-05-06: E32 pad-pitch Schur phase diagram
+
+Claim affected:
+- `C06_graph_hypothesis_system_identification`
+- secondary: `C02_single_plane_identifiability_boundary`,
+  `C04_inverse_crime_and_operator_gap`, `C10_pdn_kcl_distribution_need`
+
+Evidence added:
+- `E32_pad_pitch_schur_phase_diagram`
+
+Change type:
+- Added exact pad-pitch, offset, and local-patch Schur reachability phase
+  diagram using the E31 theorem.
+- Added locality barrier derivation: low
+  `osc_P(L^+d_e)/(d_e^T L^+d_e)` is a pad-space active-mode reachability
+  limit, not an optimizer failure.
+- Added design-rule evidence separating candidate-local pads, top+bottom
+  local pads, perimeter pads, and sparse regular-grid offsets.
+
+Metrics:
+- E32 status: `passed`; engineering and scientific gates pass.
+- Candidate defects: 8 central via-open candidates.
+- Candidate-projection top pad min reachability: 0.4767196129.
+- Top+bottom candidate pad min reachability: 0.9534392258.
+- Perimeter pad min reachability: 2.48821324e-09.
+- Stride-2 worst min reachability: 3.37239662e-04.
+- Stride-5+ worst min reachability: 4.75424120e-10.
+- Candidate/stride-2 worst current multiplier proxy: about 1413.59.
+- Candidate/stride-5+ worst current multiplier proxy: about 1.0027e9.
+
+Claim status change:
+- `C06_graph_hypothesis_system_identification` remains `supported_generated`.
+  E32 adds a generated-domain pad-geometry locality barrier and design-for-test
+  direction, not real pad/package validation.
+- `C02_single_plane_identifiability_boundary` gains a sharper active-access
+  boundary: sparse or perimeter pad spaces can be mathematically unable to
+  synthesize the local Schur defect mode even before magnetic post-processing.
+
+Cannot claim:
+- fresh magnetic Gamma evidence beyond E31.
+- real pad availability, contact resistance, package parasitic robustness, or
+  driver current/voltage feasibility.
+- arbitrary current recovery or real chip reverse analysis.
+- real QDM/NV validation, real CAD/GDS validation, or external solver
+  validation.
+
+Next required evidence:
+- Run magnetic Gamma only on the E32-selected physically plausible local pad
+  designs.
+- Add contact resistance, voltage/current driver limits, and package return
+  impedance.
+- Repeat over broader/non-central generated layout families.
+- Move reachability and Gamma audits to CAD/GDS-derived graph candidates and
+  independent solver rows.
+
+# 2026-05-07: E33 certified observable current subspace inversion
+
+Claim affected:
+- `C02_single_plane_identifiability_boundary`
+- secondary: `C04_inverse_crime_and_operator_gap`,
+  `C06_graph_hypothesis_system_identification`
+
+Evidence added:
+- `E33_certified_observable_current_subspace_inversion`
+
+Change type:
+- Added strict current-density inversion certificate based on the Fisher
+  spectrum `G_obs=Phi^T A^T Sigma^-1 A Phi`.
+- Added a generated Fourier/stream-function thin-sheet runnable slice where
+  each current mode has response `s(q,h)=q exp(-q h)` and Fisher eigenvalue
+  `lambda(q)=sum_h s(q,h)^2/sigma^2`.
+- Added explicit dark-mode refusal and full-inverse hallucination audit.
+
+Metrics:
+- E33 status: `passed`; engineering and scientific gates pass.
+- Mode count: 144.
+- Single-height stable current modes: 8.
+- Single-height dark/refused current modes: 136.
+- Generated truth dark-energy fraction: 0.9228192454.
+- Certified stable projection RMSE: 0.1164511532.
+- Full naive least-squares current inverse total RMSE: 720.7362501.
+- Full/certified total RMSE ratio: 1547.322749.
+- Full naive dark hallucination norm: 8649.239996.
+- Certified dark hallucination norm: 0.0.
+- Stable 3-sigma coefficient coverage: 1.0.
+- Multi-height stable current modes: 37.
+
+Claim status change:
+- `C02_single_plane_identifiability_boundary` remains `supported`, now with a
+  strict generated-domain current-inversion certificate: the data-supported
+  object is `Pi_obs J`, not full `J`.
+- `C04_inverse_crime_and_operator_gap` remains limited because E33 is
+  same-forward generated Fourier/thin-sheet evidence.
+- `C06_graph_hypothesis_system_identification` gains a bridge from current-map
+  inversion to observable graph/Hodge current modes.
+
+Cannot claim:
+- full current-density recovery.
+- recovery of dark current modes.
+- real QDM/NV validation, real CAD/GDS validation, or external solver
+  validation.
+- finite-width, package, contact, or real multilayer chip robustness.
+
+Next required evidence:
+- Move the observable-current subspace split from diagonal Fourier modes to
+  graph/Hodge/CAD-like current bases.
+- Add finite-width, registration, background, and external-solver rho to the
+  Fisher threshold.
+- Combine E33 observable current modes with E30-E32 active pad reachability.
+- Validate on independent solver rows, then real QDM/NV sanity-gated rows.

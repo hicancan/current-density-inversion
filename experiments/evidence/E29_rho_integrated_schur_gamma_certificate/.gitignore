@@ -1,0 +1,7 @@
+outputs/
+outputs_smoke/
+__pycache__/
+.pytest_cache/
+*.pyc
+*.npz
+*.npy

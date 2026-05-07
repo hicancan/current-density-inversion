@@ -1,0 +1,92 @@
+[
+  {
+    "geometry_family": "straight_strip",
+    "operator_pair": "rho_finite_width_centerline_to_volume",
+    "nuisance_name": "finite_width_centerline_to_volume",
+    "absolute_radius": 0.002495214466395836,
+    "relative_radius": 0.2796578263924765,
+    "recommended_for_gamma": false,
+    "calibration_status": "calibrated"
+  },
+  {
+    "geometry_family": "straight_strip",
+    "operator_pair": "rho_multifilament_to_volume",
+    "nuisance_name": "multifilament_to_volume",
+    "absolute_radius": 0.0024345103891252368,
+    "relative_radius": 0.272854254783188,
+    "recommended_for_gamma": false,
+    "calibration_status": "calibrated"
+  },
+  {
+    "geometry_family": "straight_strip",
+    "operator_pair": "rho_centerline_to_multifilament",
+    "nuisance_name": "centerline_to_multifilament",
+    "absolute_radius": 0.00028403315852449366,
+    "relative_radius": 0.03183377493441826,
+    "recommended_for_gamma": true,
+    "calibration_status": "calibrated"
+  },
+  {
+    "geometry_family": "straight_strip",
+    "operator_pair": "rho_combined_conservative",
+    "nuisance_name": "combined_conservative",
+    "absolute_radius": 0.0052137580140455666,
+    "relative_radius": 0.5843458561100827,
+    "recommended_for_gamma": false,
+    "calibration_status": "over_conservative"
+  },
+  {
+    "geometry_family": "straight_strip",
+    "operator_pair": "rho_combined_rss",
+    "nuisance_name": "combined_rss",
+    "absolute_radius": 0.0034976579168368035,
+    "relative_radius": 0.3920093537690505,
+    "recommended_for_gamma": false,
+    "calibration_status": "calibrated"
+  },
+  {
+    "geometry_family": "parallel_strips",
+    "operator_pair": "rho_finite_width_centerline_to_volume",
+    "nuisance_name": "finite_width_centerline_to_volume",
+    "absolute_radius": 0.002434625680590812,
+    "relative_radius": 0.2427693394106408,
+    "recommended_for_gamma": false,
+    "calibration_status": "calibrated"
+  },
+  {
+    "geometry_family": "parallel_strips",
+    "operator_pair": "rho_multifilament_to_volume",
+    "nuisance_name": "multifilament_to_volume",
+    "absolute_radius": 0.002393622187554126,
+    "relative_radius": 0.2386806653292808,
+    "recommended_for_gamma": false,
+    "calibration_status": "calibrated"
+  },
+  {
+    "geometry_family": "parallel_strips",
+    "operator_pair": "rho_centerline_to_multifilament",
+    "nuisance_name": "centerline_to_multifilament",
+    "absolute_radius": 0.0002700381397201261,
+    "relative_radius": 0.026926924051677868,
+    "recommended_for_gamma": true,
+    "calibration_status": "calibrated"
+  },
+  {
+    "geometry_family": "parallel_strips",
+    "operator_pair": "rho_combined_conservative",
+    "nuisance_name": "combined_conservative",
+    "absolute_radius": 0.005098286007865064,
+    "relative_radius": 0.5083769287915995,
+    "recommended_for_gamma": false,
+    "calibration_status": "over_conservative"
+  },
+  {
+    "geometry_family": "parallel_strips",
+    "operator_pair": "rho_combined_rss",
+    "nuisance_name": "combined_rss",
+    "absolute_radius": 0.003424872257215907,
+    "relative_radius": 0.34151203697496796,
+    "recommended_for_gamma": false,
+    "calibration_status": "calibrated"
+  }
+]

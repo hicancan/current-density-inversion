@@ -1,0 +1,4 @@
+numpy>=1.24
+scipy>=1.10
+# Optional: pip install pypeec for higher-fidelity solver bridge
+# PyPEEC is attempted at runtime; blocked without it installed.
