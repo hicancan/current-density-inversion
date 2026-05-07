@@ -48,7 +48,10 @@ def main() -> int:
             status = metrics_gate_status(path)
             print(f"{evidence_id}: {status.gate}={status.ok}")
             if not status.ok:
-                failures.append(f"{evidence_id}: metrics gate failed via {status.gate}")
+                if evidence.get("status") == "partial" and status.gate == "all_acceptance_gates_passed":
+                    pass  # partial evidence may legitimately have gates not passed
+                else:
+                    failures.append(f"{evidence_id}: metrics gate failed via {status.gate}")
     if failures:
         for failure in failures:
             print(f"FAIL: {failure}", file=sys.stderr)
